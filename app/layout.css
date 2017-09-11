@@ -1,0 +1,197 @@
+html, body, #main, #mmp {
+    height: 100%
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    margin: 0;
+    position: relative;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#main {
+    visibility: hidden;
+}
+
+/* Loader */
+
+#loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #657c7e;
+    border-left: 4px solid #657c7e;
+    border-radius: 50%;
+    animation: spin .3s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Toolbar */
+
+#toolbar {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+}
+
+#toolbar > div {
+    float: left;
+    border-right: 1px solid lightgray;
+}
+
+.toolbar-buttons {
+    opacity: .75;
+    float: left;
+    padding: 3px 6px;
+    cursor: pointer;
+}
+
+.toolbar-buttons:hover {
+    opacity: 1;
+    background-color: #e2e2e2;
+}
+
+.toolbar-buttons.disable {
+    opacity: .5;
+    cursor: default;
+    pointer-events: none;
+}
+
+.toolbar-buttons.disable:hover {
+    opacity: .5;
+    background-color: transparent;
+}
+
+.toolbar-buttons.active {
+    opacity: 1;
+    background-color: #dbdbdb;
+}
+
+/* Floating buttons */
+
+.floating-buttons {
+    z-index: 2;
+    position: absolute;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 40px;
+    background-color: #f1f1f1;
+}
+
+.floating-buttons:hover {
+    background-color: #ececec;
+}
+
+#add-node, #remove-node,
+#undo, #repeat {
+    top: 50px;
+}
+
+#zoom-in, #zoom-out, #center {
+    padding: 7px;
+}
+
+#add-node {
+    left: 20px;
+}
+
+#zoom-in, #center {
+    left: 25px;
+}
+
+#remove-node {
+    left: 85px;
+}
+
+#zoom-in, #zoom-out {
+    top: 120px;
+}
+
+#zoom-out {
+    left: 75px;
+}
+
+#center {
+    top: 175px;
+}
+
+#repeat {
+    right: 20px;
+}
+
+#undo {
+    right: 85px;
+}
+
+/* Colors */
+
+#colors {
+    z-index: 2;
+    position: absolute;
+    right: 20px;
+    top: 40%;
+}
+
+#background-color, #text-color, #branch-color {
+    cursor: pointer;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0;
+    padding: 15px;
+    border: 2px solid #b5b5b5;
+    border-radius: 20px;
+}
+
+/* Sliders */
+
+.slider {
+    z-index: 2;
+    position: absolute;
+    -webkit-appearance: none;
+    -webkit-transform: rotate(-90deg);
+    top: 48%;
+    width: 180px;
+    height: 10px;
+    border-radius: 5px;
+    background: #e1e1e1;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #657c7e;
+    cursor: pointer;
+}
+
+#font-size {
+    left: -60px;
+}
+
+#image-size {
+    left: -30px;
+}

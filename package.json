@@ -1,0 +1,26 @@
+{
+    "name": "mindmapp",
+    "version": "0.1.0",
+    "description": "Electron application to draw mind maps",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build:windows": "electron-packager . app --platform win32 --arch x64 --out dist/",
+        "build:linux": "electron-packager . app --platform linux --arch x64 --out dist/"
+    },
+    "homepage": "https://github.com/cedoor/mindmapp",
+    "license": "MIT",
+    "author": "Omar Desogus <omardesogus9@gmail.com> (http://cedoor.github.io)",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cedoor/mindmapp.git"
+    },
+    "devDependencies": {
+        "electron": "~1.6.2",
+        "electron-packager": "^9.0.1",
+        "elemon": "^5.0.3"
+    },
+    "dependencies": {
+        "electron-is-dev": "^0.3.0"
+    }
+}
