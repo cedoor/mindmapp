@@ -1,0 +1,23 @@
+<div id="colors-panel">
+    <div #obscure id="obscure"></div>
+    <div id="panel">
+        <input *ngIf="colors['background-color']"
+               id="background-color" class="colors"
+               (cpToggleChange)="colorPickerToggleChange($event, 'background-color', colors['background-color'])"
+               (colorPickerChange)="colorPickerChange('background-color', colors['background-color'])"
+               [(colorPicker)]="colors['background-color']" [style.background]="colors['background-color']"
+               cpPosition="left"/>
+        <input *ngIf="colors['text-color']"
+               id="text-color" class="colors"
+               (cpToggleChange)="colorPickerToggleChange($event, 'text-color', colors['text-color'])"
+               (colorPickerChange)="colorPickerChange('text-color', colors['text-color'])"
+               [(colorPicker)]="colors['text-color']" [style.background]="colors['text-color']"
+               cpPosition="left"/>
+        <input *ngIf="colors['branch-color']"
+               id="branch-color" class="colors"
+               (cpToggleChange)="colorPickerToggleChange($event, 'branch-color', colors['branch-color'])"
+               (colorPickerChange)="colorPickerChange('branch-color', colors['branch-color'])"
+               [(colorPicker)]="colors['branch-color']" [style.background]="colors['branch-color']"
+               cpPosition="left"/>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+#toolbar {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+}
+
+#toolbar > div {
+    float: left;
+    border-right: 1px solid lightgray;
+}
+
+.toolbar-buttons {
+    opacity: .75;
+    float: left;
+    padding: 3px 6px;
+    cursor: pointer;
+}
+
+.toolbar-buttons:hover {
+    opacity: 1;
+    background-color: #e2e2e2;
+}
+
+.toolbar-buttons.disable {
+    opacity: .5;
+    cursor: default;
+    pointer-events: none;
+}
+
+.toolbar-buttons.disable:hover {
+    opacity: .5;
+    background-color: transparent;
+}
+
+.toolbar-buttons.active {
+    opacity: 1;
+    background-color: #dbdbdb;
+}

@@ -6,6 +6,7 @@ interface NodeModule {
 }
 
 declare var window: Window;
+declare var mmp: any;
 
 interface Window {
     process: any;

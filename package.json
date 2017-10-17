@@ -41,9 +41,9 @@
         "@angular/http": "4.4.3",
         "@angular/platform-browser": "4.4.3",
         "@angular/platform-browser-dynamic": "4.4.3",
-        "@angular/router": "4.4.3",
         "core-js": "2.4.1",
         "enhanced-resolve": "3.3.0",
+        "ngx-color-picker": "4.4.0",
         "rxjs": "5.4.3",
         "zone.js": "0.8.17"
     },
@@ -69,6 +69,7 @@
         "less-loader": "4.0.5",
         "minimist": "1.2.0",
         "mkdirp": "0.5.1",
+        "mmp": "^0.1.4",
         "npm-run-all": "^4.1.1",
         "postcss-loader": "2.0.6",
         "postcss-url": "7.1.2",

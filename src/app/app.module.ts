@@ -7,22 +7,26 @@ import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 
 import {AppComponent} from "./app.component";
-import {HomeComponent} from "./components/home/home.component";
-
-import {AppRoutingModule} from "./app-routing.module";
-
-import {ElectronService} from "./providers/electron.service";
+import {ElectronService} from "./services/electron.service";
+import {ToolbarComponent} from "./components/toolbar/toolbar.component";
+import {SlidersPanelComponent} from "./components/sliders-panel/sliders-panel.component";
+import {ColorsPanelComponent} from "./components/colors-panel/colors-panel.component";
+import {ColorPickerModule} from "ngx-color-picker";
+import {FloatingButtonsComponent} from "./components/floating-buttons/floating-buttons.component";
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent
+        ToolbarComponent,
+        SlidersPanelComponent,
+        ColorsPanelComponent,
+        FloatingButtonsComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        AppRoutingModule
+        ColorPickerModule
     ],
     providers: [ElectronService],
     bootstrap: [AppComponent]
