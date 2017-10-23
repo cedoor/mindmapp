@@ -16,8 +16,9 @@ function createWindow() {
     win = new BrowserWindow({
         x: 0,
         y: 0,
-        width: size.width,
-        height: size.height
+        width: size.width, minWidth: 800,
+        height: size.height, minHeight: 700,
+        icon: __dirname + "/assets/icon.png"
     });
 
     // and load the index.html of the app.
