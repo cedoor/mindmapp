@@ -34,7 +34,6 @@ export class AppComponent implements OnInit {
                 "font-size": value["font-size"],
                 "image-size": value["image-src"] ? value["image-size"] : 0
             };
-            console.log(this.sizes)
         });
         mmp.init("mmp");
 
