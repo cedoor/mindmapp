@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
-import {ipcRenderer, remote} from "electron";
-import * as childProcess from "child_process";
+import {remote} from "electron";
 import * as fs from "fs";
 import * as mmp from "mmp";
 
@@ -126,8 +125,7 @@ export class ElectronService {
     }];
 
     remote: typeof remote;
-    ipcRenderer: typeof ipcRenderer;
-    childProcess: typeof childProcess;
+    fs: typeof fs;
 
     filePath: string = "";
     saved: boolean = false;
@@ -136,9 +134,8 @@ export class ElectronService {
 
     constructor() {
         if (this.isElectron()) {
-            this.ipcRenderer = window.require("electron").ipcRenderer;
             this.remote = window.require("electron").remote;
-            this.childProcess = window.require("child_process");
+            this.fs = window.require("fs");
         }
 
         mmp.on("mmcreate", () => {
@@ -172,13 +169,13 @@ export class ElectronService {
                 ]
             }, path => {
                 if (typeof path === "string") {
-                    fs.writeFileSync(path, data);
+                    this.fs.writeFileSync(path, data);
                     this.filePath = path;
                     this.setSavedStatus();
                 }
             });
         } else {
-            fs.writeFileSync(this.filePath, data);
+            this.fs.writeFileSync(this.filePath, data);
             this.setSavedStatus();
         }
     }
@@ -191,7 +188,7 @@ export class ElectronService {
                 title: "Esporta immagine"
             }, path => {
                 path = path + "." + ext;
-                if (typeof path === "string") fs.writeFileSync(path, buf);
+                if (typeof path === "string") this.fs.writeFileSync(path, buf);
             });
         }, ext);
     }
@@ -206,7 +203,7 @@ export class ElectronService {
                 ]
             }, files => {
                 if (files) {
-                    const data = fs.readFileSync(files[0], "utf8");
+                    const data = this.fs.readFileSync(files[0], "utf8");
                     mmp.data(JSON.parse(data));
                     this.filePath = files[0];
                     this.saved = true;
@@ -261,7 +258,7 @@ export class ElectronService {
                 if (files) {
                     let url = files[0],
                         ext = url.split(".").pop(),
-                        buffer = new Buffer(fs.readFileSync(url)).toString("base64"),
+                        buffer = new Buffer(this.fs.readFileSync(url)).toString("base64"),
                         base64 = "data:image/" + ext + ";base64," + buffer;
 
                     mmp.node.update("image-src", base64);
@@ -272,7 +269,7 @@ export class ElectronService {
 
     checkSavedFile() {
         if (this.filePath) {
-            let fileData = fs.readFileSync(this.filePath, "utf8"),
+            let fileData = this.fs.readFileSync(this.filePath, "utf8"),
                 mapData = JSON.stringify(mmp.data());
 
             if (fileData !== mapData) this.setSavedStatus(false);

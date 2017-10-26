@@ -1,12 +1,10 @@
-/* SystemJS module definition */
-declare var nodeModule: NodeModule;
+declare var module: NodeModule;
 
 interface NodeModule {
     id: string;
 }
 
 declare var window: Window;
-declare var mmp: any;
 
 interface Window {
     process: any;

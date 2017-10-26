@@ -1,8 +1,7 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "project": {
-        "name": "mindmapp",
-        "ejected": true
+        "name": "mindmapp"
     },
     "apps": [
         {
@@ -18,22 +17,16 @@
             "tsconfig": "tsconfig.app.json",
             "prefix": "app",
             "styles": [
-                "styles.scss"
+                "styles.css"
             ],
             "scripts": [
-                "node_modules/mmp/build/mmp.min.js",
-                "node_modules/d3/build/d3.min.js"
-            ],
-            "environmentSource": "environments/environment.ts",
-            "environments": {
-                "dev": "environments/environment.ts",
-                "prod": "environments/environment.prod.ts"
-            }
+                "../node_modules/mmp/build/mmp.min.js",
+                "../node_modules/d3/build/d3.min.js"
+            ]
         }
     ],
     "defaults": {
-        "styleExt": "scss",
-        "component": {
-        }
+        "styleExt": "css",
+        "component": {}
     }
 }

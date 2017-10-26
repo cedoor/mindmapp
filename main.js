@@ -1,4 +1,6 @@
-import {app, BrowserWindow, screen} from "electron";
+const electron = require('electron');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
 
 let win, serve;
 const args = process.argv.slice(1);
@@ -10,7 +12,7 @@ if (serve) {
 
 function createWindow() {
 
-    const size = screen.getPrimaryDisplay().workAreaSize;
+    const size = electron.screen.getPrimaryDisplay().workAreaSize;
 
     // Create the browser window.
     win = new BrowserWindow({
