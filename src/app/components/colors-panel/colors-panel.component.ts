@@ -8,7 +8,7 @@ import * as mmp from "mmp";
 })
 export class ColorsPanelComponent {
 
-    @Input() colors: any;
+    @Input() values: any;
 
     @ViewChild("obscure") obscure: ElementRef;
 

@@ -18,7 +18,7 @@ function createWindow() {
         y: 0,
         width: size.width, minWidth: 800,
         height: size.height, minHeight: 700,
-        icon: __dirname + "/assets/icon.png"
+        icon: __dirname + "/icon.png"
     });
 
     // and load the index.html of the app.

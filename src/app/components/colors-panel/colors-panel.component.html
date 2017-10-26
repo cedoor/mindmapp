@@ -1,23 +1,23 @@
 <div id="colors-panel">
     <div #obscure id="obscure"></div>
     <div id="panel">
-        <input *ngIf="colors['background-color']"
+        <input *ngIf="values['background-color']"
                id="background-color" class="colors"
-               (cpToggleChange)="colorPickerToggleChange($event, 'background-color', colors['background-color'])"
-               (colorPickerChange)="colorPickerChange('background-color', colors['background-color'])"
-               [(colorPicker)]="colors['background-color']" [style.background]="colors['background-color']"
+               (cpToggleChange)="colorPickerToggleChange($event, 'background-color', values['background-color'])"
+               (colorPickerChange)="colorPickerChange('background-color', values['background-color'])"
+               [(colorPicker)]="values['background-color']" [style.background]="values['background-color']"
                cpPosition="left"/>
-        <input *ngIf="colors['text-color']"
+        <input *ngIf="values['text-color']"
                id="text-color" class="colors"
-               (cpToggleChange)="colorPickerToggleChange($event, 'text-color', colors['text-color'])"
-               (colorPickerChange)="colorPickerChange('text-color', colors['text-color'])"
-               [(colorPicker)]="colors['text-color']" [style.background]="colors['text-color']"
+               (cpToggleChange)="colorPickerToggleChange($event, 'text-color', values['text-color'])"
+               (colorPickerChange)="colorPickerChange('text-color', values['text-color'])"
+               [(colorPicker)]="values['text-color']" [style.background]="values['text-color']"
                cpPosition="left"/>
-        <input *ngIf="colors['branch-color']"
+        <input *ngIf="values['branch-color']"
                id="branch-color" class="colors"
-               (cpToggleChange)="colorPickerToggleChange($event, 'branch-color', colors['branch-color'])"
-               (colorPickerChange)="colorPickerChange('branch-color', colors['branch-color'])"
-               [(colorPicker)]="colors['branch-color']" [style.background]="colors['branch-color']"
+               (cpToggleChange)="colorPickerToggleChange($event, 'branch-color', values['branch-color'])"
+               (colorPickerChange)="colorPickerChange('branch-color', values['branch-color'])"
+               [(colorPicker)]="values['branch-color']" [style.background]="values['branch-color']"
                cpPosition="left"/>
     </div>
 </div>

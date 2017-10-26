@@ -3,3 +3,51 @@ html, body {
     padding: 0;
     height: 100%;
 }
+
+#loader {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #657c7e;
+    border-left: 4px solid #657c7e;
+    border-radius: 50%;
+    animation: spin .3s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: 4px solid #708685;
+    border-radius: 30px;
+    height: 40px;
+    width: 40px;
+    margin: -15px 0 0 -15px;
+    opacity: 0;
+
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(.1);
+        opacity: 0.0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}

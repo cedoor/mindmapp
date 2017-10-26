@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
+import {ElectronService} from "../../services/electron.service";
 import * as mmp from "mmp";
 
 @Component({
@@ -8,9 +9,11 @@ import * as mmp from "mmp";
 })
 export class ToolbarComponent implements OnInit {
 
+    @Input() values: any;
+
     mmp: any;
 
-    constructor() {
+    constructor(public electron: ElectronService) {
         this.mmp = mmp;
     }
 

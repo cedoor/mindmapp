@@ -10,30 +10,22 @@
 
 #toolbar > div {
     float: left;
+    padding: 0 5px;
     border-right: 1px solid lightgray;
 }
 
 .toolbar-buttons {
     opacity: .75;
     float: left;
-    padding: 3px 6px;
+    padding: 6px 8px;
     cursor: pointer;
-}
-
-.toolbar-buttons:hover {
-    opacity: 1;
-    background-color: #e2e2e2;
+    width: 22px;
 }
 
 .toolbar-buttons.disable {
     opacity: .5;
     cursor: default;
     pointer-events: none;
-}
-
-.toolbar-buttons.disable:hover {
-    opacity: .5;
-    background-color: transparent;
 }
 
 .toolbar-buttons.active {

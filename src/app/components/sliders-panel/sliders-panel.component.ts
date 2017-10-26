@@ -8,7 +8,7 @@ import * as mmp from "mmp";
 })
 export class SlidersPanelComponent {
 
-    @Input() sizes: any;
+    @Input() values: any;
 
     mmp: any;
 

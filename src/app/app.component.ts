@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {ElectronService} from "./services/electron.service";
 import * as mmp from "mmp";
+import {ElectronService} from "./services/electron.service";
 
 @Component({
     selector: "app-root",
@@ -8,35 +8,40 @@ import * as mmp from "mmp";
 })
 export class AppComponent implements OnInit {
 
-    colors: any;
-    sizes: any;
+    values: any = {};
 
-    constructor(public electronService: ElectronService) {
-        if (electronService.isElectron()) {
-            console.log("Mode electron");
-            // Check if electron is correctly injected (see externals in webpack.config.js)
-            console.log("c", electronService.ipcRenderer);
-            // Check if nodeJs childProcess is correctly injected (see externals in webpack.config.js)
-            console.log("c", electronService.childProcess);
-        } else {
-            console.log("Mode web");
-        }
+    constructor(public electron: ElectronService) {
+        this.electron.setMenu();
     }
 
     ngOnInit() {
         mmp.on("nodeselect", (key, value) => {
-            this.colors = {
-                "background-color": value["background-color"],
-                "text-color": value["text-color"],
-                "branch-color": value["branch-color"]
-            };
-            this.sizes = {
-                "font-size": value["font-size"],
-                "image-size": value["image-src"] ? value["image-size"] : 0
-            };
+            Object.assign(this.values, value);
         });
+
         mmp.init("mmp");
 
-        mmp.node.add()
+        mmp.on("nodeupdate", (key, value) => {
+            Object.assign(this.values, value);
+
+            this.electron.checkSavedFile();
+        });
+
+        mmp.on("mmundo", () => {
+            this.electron.checkSavedFile();
+        });
+
+        mmp.on("mmrepeat", () => {
+            this.electron.checkSavedFile();
+        });
+
+        mmp.on("nodecreate", () => {
+                this.electron.checkSavedFile();
+        });
+
+        mmp.on("noderemove", () => {
+            this.electron.checkSavedFile();
+        });
     }
+
 }

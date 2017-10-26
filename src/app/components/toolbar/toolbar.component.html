@@ -1,22 +1,32 @@
 <div id="toolbar">
     <div>
+        <img class="toolbar-buttons" id="new-map"
+             [src]="'./assets/toolbar/new.png'"
+             (click)="electron.newDialog()">
         <img class="toolbar-buttons" id="open-map"
-             src="../../../assets/toolbar/open.png">
+             [src]="'./assets/toolbar/open.png'"
+             (click)="electron.openDialog()">
         <img class="toolbar-buttons" id="save-map"
-             src="../../../assets/toolbar/save.png">
+             [src]="'./assets/toolbar/save.png'"
+             (click)="electron.saveDialog()">
+        <img class="toolbar-buttons" id="save-map-as"
+             [src]="'./assets/toolbar/save-as.png'"
+             (click)="electron.saveDialog(true)">
     </div>
     <div>
         <img class="toolbar-buttons" id="lock-node"
-             src="../../../assets/toolbar/lock.png">
+             [src]="'./assets/toolbar/' + (values['fixed'] ? 'lock.png' : 'unlock.png')"
+             (click)="mmp.node.update('fixed')">
         <img class="toolbar-buttons" id="add-image"
-             src="../../../assets/toolbar/image.png">
+             [src]="'./assets/toolbar/image.png'"
+             (click)="electron.addImageDialog()">
     </div>
     <div>
         <img class="toolbar-buttons" id="bold"
-             src="../../../assets/toolbar/bold.png"
+             [src]="'./assets/toolbar/bold.svg'"
              (click)="mmp.node.update('bold')">
         <img class="toolbar-buttons" id="italic"
-             src="../../../assets/toolbar/italic.png"
+             [src]="'./assets/toolbar/italic.svg'"
              (click)="mmp.node.update('italic')">
     </div>
 </div>
