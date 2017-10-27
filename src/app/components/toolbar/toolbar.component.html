@@ -6,7 +6,7 @@
         <img class="toolbar-buttons" id="open-map"
              src="./assets/toolbar/open.png"
              (click)="electron.openDialog()">
-        <img class="toolbar-buttons" id="save-map"
+        <img class="toolbar-buttons disable" id="save-map"
              src="./assets/toolbar/save.png"
              (click)="electron.saveDialog()">
         <img class="toolbar-buttons" id="save-map-as"
@@ -18,8 +18,11 @@
              [src]="'./assets/toolbar/' + (values['fixed'] ? 'lock.png' : 'unlock.png')"
              (click)="mmp.node.update('fixed')">
         <img class="toolbar-buttons" id="add-image"
-             src="./assets/toolbar/image.png"
+             src="./assets/toolbar/add-image.png"
              (click)="electron.addImageDialog()">
+        <img class="toolbar-buttons" id="remove-image"
+             src="./assets/toolbar/remove-image.png"
+             (click)="mmp.node.update('image-src', '')">
     </div>
     <div>
         <img class="toolbar-buttons" id="bold"

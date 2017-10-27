@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import * as mmp from "mmp";
 import {ElectronService} from "./services/electron.service";
+import * as mmp from "mmp";
 
 @Component({
     selector: "app-root",
@@ -11,19 +11,17 @@ export class AppComponent implements OnInit {
     values: any = {};
 
     constructor(public electron: ElectronService) {
-        this.electron.setMenu();
     }
 
     ngOnInit() {
         mmp.on("nodeselect", (key, value) => {
-            Object.assign(this.values, value);
+            this.values = value;
         });
 
         mmp.init("mmp");
 
         mmp.on("nodeupdate", (key, value) => {
-            Object.assign(this.values, value);
-
+            this.values = value;
             this.electron.checkSavedFile();
         });
 
@@ -36,12 +34,15 @@ export class AppComponent implements OnInit {
         });
 
         mmp.on("nodecreate", () => {
-                this.electron.checkSavedFile();
+            this.electron.checkSavedFile();
         });
 
         mmp.on("noderemove", () => {
             this.electron.checkSavedFile();
         });
+
+        this.electron.setInitialMap();
+        this.electron.setMenu();
     }
 
 }

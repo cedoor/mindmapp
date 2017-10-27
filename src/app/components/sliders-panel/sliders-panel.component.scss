@@ -23,6 +23,12 @@
         cursor: pointer;
     }
 
+    .slider.disable {
+        opacity: .5;
+        cursor: default;
+        pointer-events: none;
+    }
+
     #font-size {
         left: -60px;
     }

@@ -1,20 +1,17 @@
 <div id="colors-panel">
-    <div #obscure id="obscure"></div>
+    <div #background id="background"></div>
     <div id="panel">
-        <input *ngIf="values['background-color']"
-               id="background-color" class="colors"
+        <input id="background-color" class="colors"
                (cpToggleChange)="colorPickerToggleChange($event, 'background-color', values['background-color'])"
                (colorPickerChange)="colorPickerChange('background-color', values['background-color'])"
                [(colorPicker)]="values['background-color']" [style.background]="values['background-color']"
                cpPosition="left"/>
-        <input *ngIf="values['text-color']"
-               id="text-color" class="colors"
+        <input id="text-color" class="colors"
                (cpToggleChange)="colorPickerToggleChange($event, 'text-color', values['text-color'])"
                (colorPickerChange)="colorPickerChange('text-color', values['text-color'])"
                [(colorPicker)]="values['text-color']" [style.background]="values['text-color']"
                cpPosition="left"/>
-        <input *ngIf="values['branch-color']"
-               id="branch-color" class="colors"
+        <input id="branch-color" class="colors" [ngClass]="{'disable': !values['branch-color']}"
                (cpToggleChange)="colorPickerToggleChange($event, 'branch-color', values['branch-color'])"
                (colorPickerChange)="colorPickerChange('branch-color', values['branch-color'])"
                [(colorPicker)]="values['branch-color']" [style.background]="values['branch-color']"

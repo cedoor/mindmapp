@@ -10,9 +10,10 @@ export class ColorsPanelComponent {
 
     @Input() values: any;
 
-    @ViewChild("obscure") obscure: ElementRef;
+    @ViewChild("background") background: ElementRef;
 
     constructor() {
+        this.fixColorPickerFlicker();
     }
 
     colorPickerChange(property, value) {
@@ -20,9 +21,20 @@ export class ColorsPanelComponent {
     }
 
     colorPickerToggleChange(opening, property, value) {
-        this.obscure.nativeElement.style.visibility = opening ? "visible" : "hidden";
+        this.background.nativeElement.style.visibility = opening ? "visible" : "hidden";
 
         if (!opening) mmp.node.update(property, value);
+    }
+
+    fixColorPickerFlicker() {
+        window.onload = () => {
+            let colors: any = window.document.getElementById("panel").children;
+            for (let color of colors) {
+                color.onmousedown = (e) => {
+                    e.preventDefault()
+                }
+            }
+        };
     }
 
 }

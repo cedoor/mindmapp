@@ -137,22 +137,20 @@ export class ElectronService {
             this.remote = window.require("electron").remote;
             this.fs = window.require("fs");
         }
-
-        mmp.on("mmcreate", () => {
-            setTimeout(() => {
-                let data = mmp.data();
-                delete data[0].value.x;
-                delete data[0].value.y;
-                delete data[0].value.k;
-
-                this.initialMap = JSON.stringify(data);
-            }, 500);
-        });
     }
 
     isElectron = () => {
         return window && window.process && window.process.type;
     };
+
+    setInitialMap() {
+        let data = mmp.data();
+        delete data[0].value.x;
+        delete data[0].value.y;
+        delete data[0].value.k;
+
+        this.initialMap = JSON.stringify(data);
+    }
 
     setMenu() {
         this.remote.Menu.setApplicationMenu(this.remote.Menu.buildFromTemplate(this.menu));
@@ -245,9 +243,7 @@ export class ElectronService {
     }
 
     addImageDialog() {
-        if (mmp.node.select().value["image-src"]) {
-            mmp.node.update("image-src", "");
-        } else {
+        if (!mmp.node.select().value["image-src"]) {
             this.remote.dialog.showOpenDialog({
                 title: "Inserisci un'immagine",
                 properties: ["openFile"],
@@ -295,10 +291,11 @@ export class ElectronService {
         if (saved) {
             window.document.title = this.windowTitle;
             this.saved = true;
+            window.document.getElementById("save-map").classList.add("disable");
         } else {
             window.document.title = this.windowTitle + "*";
             this.saved = false;
+            window.document.getElementById("save-map").classList.remove("disable");
         }
     }
-
 }
