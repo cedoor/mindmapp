@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, NgZone} from "@angular/core";
 import {remote} from "electron";
 import * as fs from "fs";
 import * as mmp from "mmp";
@@ -132,7 +132,7 @@ export class ElectronService {
 
     initialMap: string;
 
-    constructor() {
+    constructor(private _ngZone: NgZone) {
         if (this.isElectron()) {
             this.remote = window.require("electron").remote;
             this.fs = window.require("fs");
@@ -202,9 +202,11 @@ export class ElectronService {
             }, files => {
                 if (files) {
                     const data = this.fs.readFileSync(files[0], "utf8");
-                    mmp.data(JSON.parse(data));
                     this.filePath = files[0];
-                    this.saved = true;
+                    this.setSavedStatus();
+                    this._ngZone.run(() => {
+                        mmp.data(JSON.parse(data));
+                    });
                 }
             });
         };
@@ -226,7 +228,9 @@ export class ElectronService {
         let newDialog = () => {
             this.filePath = "";
             this.setSavedStatus();
-            mmp.new();
+            this._ngZone.run(() => {
+                mmp.new();
+            });
         };
 
         if (!this.isInitialMap() && !this.saved) {
@@ -257,7 +261,9 @@ export class ElectronService {
                         buffer = new Buffer(this.fs.readFileSync(url)).toString("base64"),
                         base64 = "data:image/" + ext + ";base64," + buffer;
 
-                    mmp.node.update("image-src", base64);
+                    this._ngZone.run(() => {
+                        mmp.node.update("image-src", base64);
+                    });
                 }
             });
         }

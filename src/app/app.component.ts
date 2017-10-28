@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         mmp.on("nodeselect", (key, value) => {
+            if (!value["branch-color"]) value["branch-color"] = "";
             Object.assign(this.values, value);
         });
 

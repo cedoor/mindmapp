@@ -19,9 +19,11 @@
              (click)="mmp.node.update('fixed')">
         <img class="toolbar-buttons" id="add-image"
              src="./assets/toolbar/add-image.png"
+             [ngClass]="{'disable': values['image-src']}"
              (click)="electron.addImageDialog()">
         <img class="toolbar-buttons" id="remove-image"
              src="./assets/toolbar/remove-image.png"
+             [ngClass]="{'disable': !values['image-src']}"
              (click)="mmp.node.update('image-src', '')">
     </div>
     <div>
