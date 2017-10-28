@@ -1,14 +1,12 @@
-const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const electron = require("electron");
+const {app, BrowserWindow} = electron;
 
 let win, serve;
-const args = process.argv.slice(1);
-serve = args.some(val => val === "--serve");
 
-if (serve) {
-    require("electron-reload")(__dirname, {});
-}
+const args = process.argv.slice(1);
+serve = args.some(val => val === "--dev");
+
+if (serve) require("electron-reload")(__dirname, {});
 
 function createWindow() {
 
@@ -68,3 +66,5 @@ try {
     // Catch Error
     // throw e;
 }
+
+

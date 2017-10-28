@@ -21,7 +21,7 @@
     "private": true,
     "scripts": {
         "start": "ng build --watch",
-        "electron": "cp main.js package.json dist && electron ./dist --serve",
+        "electron": "cp main.js package.json dist && electron ./dist --dev",
         "build": "ng build && cp main.js package.json dist",
         "build:linux": "npm run build && node package.js --asar --platform=linux --arch=x64",
         "build:windows": "npm run build && node package.js --asar --platform=win32 --arch=ia32",
