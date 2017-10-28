@@ -22,8 +22,9 @@ export class ColorsPanelComponent {
 
     colorPickerToggleChange(opening, property, value) {
         this.background.nativeElement.style.visibility = opening ? "visible" : "hidden";
-
-        if (!opening) mmp.node.update(property, value);
+        if (!opening) {
+            mmp.node.update(property, value);
+        }
     }
 
     fixColorPickerFlicker() {

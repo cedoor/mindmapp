@@ -15,13 +15,13 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         mmp.on("nodeselect", (key, value) => {
-            this.values = value;
+            Object.assign(this.values, value);
         });
 
         mmp.init("mmp");
 
         mmp.on("nodeupdate", (key, value) => {
-            this.values = value;
+            Object.assign(this.values, value);
             this.electron.checkSavedFile();
         });
 
