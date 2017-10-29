@@ -4,7 +4,7 @@ import * as mmp from "mmp";
 @Component({
     selector: "app-sliders-panel",
     templateUrl: "./sliders-panel.component.html",
-    styleUrls: ["./sliders-panel.component.scss"]
+    styleUrls: ["./sliders-panel.component.css"]
 })
 export class SlidersPanelComponent {
 

@@ -4,7 +4,7 @@ import * as mmp from "mmp";
 @Component({
     selector: "app-colors-panel",
     templateUrl: "./colors-panel.component.html",
-    styleUrls: ["./colors-panel.component.scss"]
+    styleUrls: ["./colors-panel.component.css"]
 })
 export class ColorsPanelComponent {
 

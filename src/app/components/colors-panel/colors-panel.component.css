@@ -1,4 +1,4 @@
-#colors-panel #panel {
+#panel {
     z-index: 3;
     position: fixed;
     right: 20px;
@@ -6,7 +6,7 @@
 
 }
 
-#colors-panel #panel .colors {
+#panel .colors {
     cursor: pointer;
     display: block;
     margin-bottom: 5px;
@@ -16,13 +16,13 @@
     border-radius: 20px;
 }
 
-#colors-panel #panel .colors.disable {
+#panel .colors.disable {
     opacity: .5;
     cursor: default;
     pointer-events: none;
 }
 
-#colors-panel #background {
+#background {
     z-index: 2;
     position: fixed;
     visibility: hidden;

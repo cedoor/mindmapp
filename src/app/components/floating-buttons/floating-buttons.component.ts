@@ -4,7 +4,7 @@ import * as mmp from "mmp";
 @Component({
     selector: "app-floating-buttons",
     templateUrl: "./floating-buttons.component.html",
-    styleUrls: ["./floating-buttons.component.scss"]
+    styleUrls: ["./floating-buttons.component.css"]
 })
 export class FloatingButtonsComponent {
 
