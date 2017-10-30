@@ -17,7 +17,7 @@
             "tsconfig": "tsconfig.app.json",
             "prefix": "app",
             "styles": [
-                "styles.css"
+                "styles.scss"
             ],
             "scripts": [
                 "../node_modules/d3/build/d3.min.js",
@@ -26,7 +26,7 @@
         }
     ],
     "defaults": {
-        "styleExt": "css",
+        "styleExt": "scss",
         "component": {}
     }
 }

@@ -8,25 +8,6 @@ html, body {
     outline: none;
 }
 
-#loader {
-    width: 50px;
-    height: 50px;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #657c7e;
-    border-left: 4px solid #657c7e;
-    border-radius: 50%;
-    animation: spin .3s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
 .loader {
     position: absolute;
     left: 50%;
