@@ -53,13 +53,17 @@ export class ElectronService {
             label: "Annulla",
             accelerator: "Ctrl+z",
             click: () => {
-                mmp.undo();
+                this._ngZone.run(() => {
+                    mmp.undo();
+                });
             }
         }, {
             label: "Ripeti",
             accelerator: "Ctrl+Shift+z",
             click: () => {
-                mmp.repeat();
+                this._ngZone.run(() => {
+                    mmp.repeat();
+                });
             }
         }, {
             type: "separator"
@@ -67,13 +71,17 @@ export class ElectronService {
             label: "Aggiungi nodo",
             accelerator: "Alt+=",
             click: () => {
-                mmp.node.add();
+                this._ngZone.run(() => {
+                    mmp.node.add();
+                });
             }
         }, {
             label: "Rimuovi nodo",
             accelerator: "Alt+-",
             click: () => {
-                mmp.node.remove();
+                this._ngZone.run(() => {
+                    mmp.node.remove();
+                });
             }
         }, {
             type: "separator"
@@ -95,19 +103,25 @@ export class ElectronService {
             label: "Reset zoom",
             accelerator: "Alt+c",
             click: () => {
-                mmp.center();
+                this._ngZone.run(() => {
+                    mmp.center();
+                });
             }
         }, {
             label: "Zoom in",
             accelerator: "Ctrl+=",
             click: () => {
-                mmp.zoomIn();
+                this._ngZone.run(() => {
+                    mmp.zoomIn();
+                });
             }
         }, {
             label: "Zoom out",
             accelerator: "Ctrl+-",
             click: () => {
-                mmp.zoomOut();
+                this._ngZone.run(() => {
+                    mmp.zoomOut();
+                });
             }
         }, {
             type: "separator"
