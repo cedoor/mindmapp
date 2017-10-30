@@ -81,7 +81,8 @@ export class ElectronService {
             label: "Preferenze",
             click: () => {
                 console.log("preferences");
-            }
+            },
+            enabled: false
         }
         ]
     }, {
@@ -118,9 +119,11 @@ export class ElectronService {
         label: "Aiuto",
         role: "help",
         submenu: [{
-            label: "Informazioni"
+            label: "Informazioni",
+            enabled: false
         }, {
-            label: "Tutorial"
+            label: "Tutorial",
+            enabled: false
         }]
     }];
 
