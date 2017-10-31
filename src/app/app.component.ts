@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
 
         this.electron.setInitialMap();
         this.electron.setMenu();
+        this.electron.setDragAndDrop();
     }
 
 }
