@@ -86,13 +86,91 @@ export class ElectronService {
         }, {
             type: "separator"
         }, {
+            label: "Muovi a sinistra",
+            accelerator: "Alt+Shift+left",
+            click: () => {
+                this._ngZone.run(() => {
+                    mmp.node.moveTo("left");
+                });
+            }
+        }, {
+            label: "Muovi a destra",
+            accelerator: "Alt+Shift+right",
+            click: () => {
+                this._ngZone.run(() => {
+                    mmp.node.moveTo("right");
+                });
+            }
+        }, {
+            label: "Muovi in alto",
+            accelerator: "Alt+Shift+up",
+            click: () => {
+                this._ngZone.run(() => {
+                    mmp.node.moveTo("up");
+                });
+            }
+        }, {
+            label: "Muovi in basso",
+            accelerator: "Alt+Shift+down",
+            click: () => {
+                this._ngZone.run(() => {
+                    mmp.node.moveTo("down");
+                });
+            }
+        }, {
+            type: "separator"
+        }, {
             label: "Preferenze",
             click: () => {
                 console.log("preferences");
             },
             enabled: false
-        }
-        ]
+        }]
+    }, {
+        label: "Seleziona",
+        submenu: [{
+            label: "Seleziona a sinistra",
+            accelerator: "Alt+left",
+            click: () => {
+                this._ngZone.run(() => {
+                    mmp.node.selectTo("left");
+                });
+            }
+        }, {
+            label: "Seleziona a destra",
+            accelerator: "Alt+right",
+            click: () => {
+                this._ngZone.run(() => {
+                    mmp.node.selectTo("right");
+                });
+            }
+        }, {
+            label: "Seleziona in alto",
+            accelerator: "Alt+up",
+            click: () => {
+                this._ngZone.run(() => {
+                    mmp.node.selectTo("up");
+                });
+            }
+        }, {
+            label: "Seleziona in basso",
+            accelerator: "Alt+down",
+            click: () => {
+                this._ngZone.run(() => {
+                    mmp.node.selectTo("down");
+                });
+            }
+        }, {
+            type: "separator"
+        }, {
+            label: "Seleziona radice",
+            accelerator: "Alt+r",
+            click: () => {
+                this._ngZone.run(() => {
+                    mmp.node.select("node0");
+                });
+            }
+        }]
     }, {
         label: "Visualizza",
         submenu: [{
