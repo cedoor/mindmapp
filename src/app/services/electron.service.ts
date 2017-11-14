@@ -251,26 +251,30 @@ export class ElectronService {
         this.remote.Menu.setApplicationMenu(this.remote.Menu.buildFromTemplate(this.menu));
     }
 
-    saveDialog(saveAs: boolean = false) {
-        const data = JSON.stringify(mmp.data());
+    saveDialog(saveAs: boolean = false): Promise<any> {
+        return new Promise(resolve => {
+            const data = JSON.stringify(mmp.data());
 
-        if (saveAs || !this.filePath) {
-            this.remote.dialog.showSaveDialog({
-                title: "Salva mappa",
-                filters: [
-                    {name: "Mind map", extensions: ["mmp"]}
-                ]
-            }, path => {
-                if (typeof path === "string") {
-                    this.fs.writeFileSync(path, data);
-                    this.filePath = path;
-                    this.setSavedStatus();
-                }
-            });
-        } else {
-            this.fs.writeFileSync(this.filePath, data);
-            this.setSavedStatus();
-        }
+            if (saveAs || !this.filePath) {
+                this.remote.dialog.showSaveDialog({
+                    title: "Salva mappa",
+                    filters: [
+                        {name: "Mind map", extensions: ["mmp"]}
+                    ]
+                }, path => {
+                    if (typeof path === "string") {
+                        this.fs.writeFileSync(path, data);
+                        this.filePath = path;
+                        this.setSavedStatus();
+                    }
+                    resolve();
+                });
+            } else {
+                this.fs.writeFileSync(this.filePath, data);
+                this.setSavedStatus();
+                resolve();
+            }
+        });
     }
 
     exportDialog(ext: string = "png") {
@@ -313,7 +317,7 @@ export class ElectronService {
                 message: "Vuoi salvare la mappa corrente prima di aprirne un'altra?",
                 buttons: ["Si", "No", "Annulla"]
             }, index => {
-                if (index === 0) this.saveDialog();
+                if (index === 0) this.saveDialog().then(() => openDialog());
                 else if (index === 1) openDialog();
             });
         } else openDialog();
@@ -335,7 +339,7 @@ export class ElectronService {
                 message: "Vuoi salvare la mappa corrente prima di crearne un'altra?",
                 buttons: ["Si", "No", "Annulla"]
             }, index => {
-                if (index === 0) this.saveDialog();
+                if (index === 0) this.saveDialog().then(() => newDialog());
                 else if (index === 1) newDialog();
             });
         } else newDialog();
