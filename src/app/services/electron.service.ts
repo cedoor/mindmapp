@@ -6,8 +6,6 @@ import * as mmp from "mmp";
 @Injectable()
 export class ElectronService {
 
-    windowTitle: string = window.document.title;
-
     menu: any[] = [{
         label: "File",
         submenu: [{
@@ -219,6 +217,8 @@ export class ElectronService {
         }]
     }];
 
+    windowTitle: string = window.document.title;
+
     remote: typeof remote;
     fs: typeof fs;
 
@@ -249,6 +249,26 @@ export class ElectronService {
 
     setMenu() {
         this.remote.Menu.setApplicationMenu(this.remote.Menu.buildFromTemplate(this.menu));
+    }
+
+    setExitEvent() {
+        let win = this.remote.getCurrentWindow();
+
+        window.onbeforeunload = e => {
+            if (!this.isInitialMap() && !this.saved) {
+                this.remote.dialog.showMessageBox({
+                    type: "question",
+                    title: "Salva mappa",
+                    message: "Vuoi salvare la mappa corrente prima di uscire?",
+                    buttons: ["Si", "No", "Annulla"]
+                }, index => {
+                    if (index === 0) this.saveDialog().then(() => win.destroy());
+                    else if (index === 1) win.destroy();
+                });
+
+                e.returnValue = false;
+            }
+        };
     }
 
     saveDialog(saveAs: boolean = false): Promise<any> {
