@@ -440,7 +440,9 @@ export class ElectronService {
                     buffer = new Buffer(this.fs.readFileSync(url)).toString("base64"),
                     base64 = "data:image/" + ext + ";base64," + buffer;
 
-                mmp.node.update("image-src", base64);
+                this._ngZone.run(() => {
+                    mmp.node.update("image-src", base64);
+                });
             }
         };
     }
