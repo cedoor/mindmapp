@@ -13,6 +13,7 @@
         outline: none;
         -webkit-transition: .2s;
         transition: opacity .2s;
+        user-select: none;
     }
 
     .slider::-webkit-slider-thumb {

@@ -405,15 +405,19 @@ export class ElectronService {
             ev.preventDefault();
         };
 
-        window.document.body.ondrop = (ev) => {
+        window.document.body.ondrop = ev => {
             ev.preventDefault();
-            console.log();
-            let url = ev.dataTransfer.files[0].path,
-                ext = url.split(".").pop(),
-                buffer = new Buffer(this.fs.readFileSync(url)).toString("base64"),
-                base64 = "data:image/" + ext + ";base64," + buffer;
 
-            mmp.node.update("image-src", base64);
+            let files = ev.dataTransfer.files;
+
+            if (files.length > 0) {
+                let url = files[0].path,
+                    ext = url.split(".").pop(),
+                    buffer = new Buffer(this.fs.readFileSync(url)).toString("base64"),
+                    base64 = "data:image/" + ext + ";base64," + buffer;
+
+                mmp.node.update("image-src", base64);
+            }
         };
     }
 
