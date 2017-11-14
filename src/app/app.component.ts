@@ -19,7 +19,16 @@ export class AppComponent implements OnInit {
             Object.assign(this.values, value);
         });
 
-        mmp.init("mmp");
+        mmp.init("mmp", {
+            "root-node": {
+                "name": "Nodo radice",
+                "font-size": 26
+            },
+            "node": {
+                "name": "Nodo",
+                "font-size": 22
+            }
+        });
 
         mmp.on("nodeupdate", (key, value) => {
             Object.assign(this.values, value);
