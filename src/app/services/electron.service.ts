@@ -436,13 +436,39 @@ export class ElectronService {
 
             if (files.length > 0) {
                 let url = files[0].path,
-                    ext = url.split(".").pop(),
-                    buffer = new Buffer(this.fs.readFileSync(url)).toString("base64"),
-                    base64 = "data:image/" + ext + ";base64," + buffer;
+                    ext = url.split(".").pop();
 
-                this._ngZone.run(() => {
-                    mmp.node.update("image-src", base64);
-                });
+                if (ext === "png" || ext === "jpeg" || ext === "jpg" || ext === "gif") {
+                    let buffer = new Buffer(this.fs.readFileSync(url)).toString("base64"),
+                        base64 = "data:image/" + ext + ";base64," + buffer;
+
+                    this._ngZone.run(() => {
+                        mmp.node.update("image-src", base64);
+                    });
+                }
+
+                if (ext === "mmp") {
+                    let openMap = () => {
+                        const data = this.fs.readFileSync(url, "utf8");
+                        this.filePath = url;
+                        this.setSavedStatus();
+                        this._ngZone.run(() => {
+                            mmp.data(JSON.parse(data));
+                        });
+                    };
+
+                    if (!this.isInitialMap() && !this.saved) {
+                        this.remote.dialog.showMessageBox({
+                            type: "question",
+                            title: "Salva mappa",
+                            message: "Vuoi salvare la mappa corrente prima di aprirne un'altra?",
+                            buttons: ["Si", "No", "Annulla"]
+                        }, index => {
+                            if (index === 0) this.saveDialog().then(() => openMap());
+                            else if (index === 1) openMap();
+                        });
+                    } else openMap();
+                }
             }
         };
     }
