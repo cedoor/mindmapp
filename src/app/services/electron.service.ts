@@ -385,6 +385,8 @@ export class ElectronService {
                     });
                 }
             });
+        } else {
+            mmp.node.update("image-src", "");
         }
     }
 
