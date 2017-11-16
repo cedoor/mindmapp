@@ -2,13 +2,13 @@
     <div>
         <img class="toolbar-buttons" id="new-map"
              src="./assets/toolbar/new.svg"
-             (click)="electron.newDialog()">
+             (click)="dialog.newMap()">
         <img class="toolbar-buttons" id="open-map"
              src="./assets/toolbar/open.svg"
-             (click)="electron.openDialog()">
+             (click)="dialog.openMap()">
         <img class="toolbar-buttons disable" id="save-map"
              src="./assets/toolbar/save.svg"
-             (click)="electron.saveDialog()">
+             (click)="dialog.saveMap()">
     </div>
     <div>
         <img class="toolbar-buttons" id="lock-node"
@@ -17,7 +17,7 @@
         <img class="toolbar-buttons" id="image"
              src="./assets/toolbar/image.svg"
              [ngClass]="{'fade': values['image-src']}"
-             (click)="electron.addImageDialog()">
+             (click)="dialog.addNodeImage()">
     </div>
     <div>
         <img class="toolbar-buttons" id="bold"

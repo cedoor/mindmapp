@@ -1,6 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {ElectronService} from "./services/electron.service";
+import {DialogService} from "./services/dialog.service";
+import {DragDropService} from "./services/dragdrop.service";
+import {UtilsService} from "./services/utils.service";
 import * as mmp from "mmp";
+import {MenuService} from "./services/menu.service";
 
 @Component({
     selector: "app-root",
@@ -10,10 +13,21 @@ export class AppComponent implements OnInit {
 
     values: any = {};
 
-    constructor(public electron: ElectronService) {
+    constructor(public dialog: DialogService,
+                public dragDrop: DragDropService,
+                public menu: MenuService,
+                public utils: UtilsService) {
     }
 
     ngOnInit() {
+        this.setMmpEvents();
+        this.menu.setMenu();
+        this.dialog.setExitDialog();
+        this.utils.setInitialMap();
+        this.dragDrop.setDragAndDrop();
+    }
+
+    setMmpEvents() {
         mmp.on("nodeselect", (key, value) => {
             if (!value["branch-color"]) value["branch-color"] = "";
             Object.assign(this.values, value);
@@ -32,29 +46,24 @@ export class AppComponent implements OnInit {
 
         mmp.on("nodeupdate", (key, value) => {
             Object.assign(this.values, value);
-            this.electron.checkSavedFile();
+            this.utils.checkSavedFile();
         });
 
         mmp.on("mmundo", () => {
-            this.electron.checkSavedFile();
+            this.utils.checkSavedFile();
         });
 
         mmp.on("mmrepeat", () => {
-            this.electron.checkSavedFile();
+            this.utils.checkSavedFile();
         });
 
         mmp.on("nodecreate", () => {
-            this.electron.checkSavedFile();
+            this.utils.checkSavedFile();
         });
 
         mmp.on("noderemove", () => {
-            this.electron.checkSavedFile();
+            this.utils.checkSavedFile();
         });
-
-        this.electron.setInitialMap();
-        this.electron.setMenu();
-        this.electron.setDragAndDrop();
-        this.electron.setExitEvent();
     }
 
 }

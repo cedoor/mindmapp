@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {ElectronService} from "../../services/electron.service";
+import {Component, Input} from "@angular/core";
+import {DialogService} from "../../services/dialog.service";
 import * as mmp from "mmp";
 
 @Component({
@@ -7,17 +7,14 @@ import * as mmp from "mmp";
     templateUrl: "./toolbar.component.html",
     styleUrls: ["./toolbar.component.scss"]
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent {
 
     @Input() values: any;
 
     mmp: any;
 
-    constructor(public electron: ElectronService) {
+    constructor(public dialog: DialogService) {
         this.mmp = mmp;
-    }
-
-    ngOnInit() {
     }
 
 }
