@@ -22,7 +22,13 @@
             "scripts": [
                 "../node_modules/d3/build/d3.min.js",
                 "../node_modules/mmp/build/mmp.min.js"
-            ]
+            ],
+            "environmentSource": "environments/environment.ts",
+            "environments": {
+                "dev": "environments/environment.ts",
+                "prod": "environments/environment.prod.ts"
+            }
+
         }
     ],
     "defaults": {

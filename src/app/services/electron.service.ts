@@ -2,6 +2,7 @@ import {Injectable, NgZone} from "@angular/core";
 import {remote} from "electron";
 import * as fs from "fs";
 import * as mmp from "mmp";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class ElectronService {
@@ -252,23 +253,25 @@ export class ElectronService {
     }
 
     setExitEvent() {
-        let win = this.remote.getCurrentWindow();
+        if (environment.production) {
+            let win = this.remote.getCurrentWindow();
 
-        window.onbeforeunload = e => {
-            if (!this.isInitialMap() && !this.saved) {
-                this.remote.dialog.showMessageBox({
-                    type: "question",
-                    title: "Salva mappa",
-                    message: "Vuoi salvare la mappa corrente prima di uscire?",
-                    buttons: ["Si", "No", "Annulla"]
-                }, index => {
-                    if (index === 0) this.saveDialog().then(() => win.destroy());
-                    else if (index === 1) win.destroy();
-                });
+            window.onbeforeunload = e => {
+                if (!this.isInitialMap() && !this.saved) {
+                    this.remote.dialog.showMessageBox({
+                        type: "question",
+                        title: "Salva mappa",
+                        message: "Vuoi salvare la mappa corrente prima di uscire?",
+                        buttons: ["Si", "No", "Annulla"]
+                    }, index => {
+                        if (index === 0) this.saveDialog().then(() => win.destroy());
+                        else if (index === 1) win.destroy();
+                    });
 
-                e.returnValue = false;
-            }
-        };
+                    e.returnValue = false;
+                }
+            };
+        }
     }
 
     saveDialog(saveAs: boolean = false): Promise<any> {
