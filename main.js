@@ -8,11 +8,13 @@ if (serve) require("electron-reload")(__dirname, {});
 
 let mainWindow, loadingScreen;
 
-function createLoadingScreen() {
+function createLoadingScreen(size) {
     const entryPath = path.join("file://", __dirname, "loading.html");
 
     loadingScreen = new BrowserWindow({
         icon: __dirname + "/icon.png",
+        x: size.width / 2 - 400,
+        y: size.height / 2 - 300,
         width: 800,
         height: 600,
         frame: false
@@ -25,11 +27,9 @@ function createLoadingScreen() {
     });
 }
 
-function createMainWindow() {
-    const indexPath = path.join("file://", __dirname, "index.html"),
-        size = electron.screen.getPrimaryDisplay().workAreaSize;
+function createMainWindow(size) {
+    const indexPath = path.join("file://", __dirname, "index.html");
 
-    // Create the browser window.
     mainWindow = new BrowserWindow({
         icon: __dirname + "/icon.png",
         x: 0, y: 0,
@@ -40,7 +40,6 @@ function createMainWindow() {
 
     mainWindow.loadURL(indexPath);
 
-    // Open the DevTools.
     if (serve) {
         mainWindow.webContents.openDevTools();
     }
@@ -51,8 +50,10 @@ function createMainWindow() {
 }
 
 app.on("ready", () => {
-    createLoadingScreen();
-    createMainWindow();
+    let size = electron.screen.getPrimaryDisplay().workAreaSize;
+
+    createLoadingScreen(size);
+    createMainWindow(size);
 
     setTimeout(() => {
         mainWindow.show();
