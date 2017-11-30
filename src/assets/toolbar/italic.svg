@@ -30,7 +30,7 @@
      id="namedview8"
      showgrid="true"
      inkscape:zoom="33.37544"
-     inkscape:cx="10.466102"
+     inkscape:cx="5.6721577"
      inkscape:cy="8.8015139"
      inkscape:window-x="0"
      inkscape:window-y="27"
@@ -57,7 +57,7 @@
      id="title2">italic</title>
   <path
      id="path4"
-     d="M 18,0 V 1 H 15 L 8,19 h 3 v 1 H 1 V 19 H 4 L 11,1 H 8 V 0 Z"
+     d="M 18,0 V 2 H 15 L 9,18 h 3 v 2 H 2 V 18 H 5 L 11,2 H 8 V 0 Z"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccccccccccc"
      style="fill:#2c3536;fill-opacity:1" />
