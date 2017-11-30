@@ -9,7 +9,6 @@
             "outDir": "dist",
             "assets": [
                 "assets",
-                "icon.png",
                 "loading.html"
             ],
             "index": "index.html",
