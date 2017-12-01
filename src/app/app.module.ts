@@ -12,6 +12,7 @@ import {DragDropService} from "./services/dragdrop.service";
 import {UtilsService} from "./services/utils.service";
 import {MenuService} from "./services/menu.service";
 import {DialogService} from "./services/dialog.service";
+import {DatService} from "./services/dat.service";
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import {DialogService} from "./services/dialog.service";
         DialogService,
         DragDropService,
         MenuService,
-        UtilsService
+        UtilsService,
+        DatService
     ],
     bootstrap: [AppComponent]
 })

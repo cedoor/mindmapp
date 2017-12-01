@@ -36,7 +36,10 @@
         "@angular/platform-browser": "4.2.4",
         "@angular/platform-browser-dynamic": "4.2.4",
         "core-js": "2.4.1",
+        "dat": "13.9.2",
+        "mirror-folder": "2.1.1",
         "ngx-color-picker": "4.4.0",
+        "random-access-memory": "2.4.0",
         "rxjs": "5.4.2",
         "zone.js": "0.8.14"
     },
@@ -44,14 +47,14 @@
         "@angular/cli": "1.4.9",
         "@angular/compiler-cli": "4.2.4",
         "@angular/language-service": "4.2.4",
-        "@types/node": "~6.0.60",
+        "@types/node": "6.0.60",
         "electron": "1.7.6",
         "electron-packager": "9.1.0",
         "electron-reload": "1.2.1",
         "mmp": "0.1.6",
         "minimist": "1.2.0",
-        "ts-node": "~3.2.0",
-        "typescript": "~2.3.3"
+        "ts-node": "3.2.0",
+        "typescript": "2.3.3"
     },
     "license": "MIT"
 }
