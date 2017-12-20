@@ -6,46 +6,65 @@ import * as mmp from "mmp";
 export class IPFSService {
 
     private ipfs: any;
-    private ipfsApi: any;
     private online: boolean;
 
     constructor(private modal: ModalService) {
-        this.ipfs = new window["Ipfs"]();
-        this.ipfsApi = window["IpfsApi"];
+        let Ipfs = window["Ipfs"];
 
-        this.ipfs.on("ready", () => {
-            this.online = true;
-        });
+        if (Ipfs) {
+            this.ipfs = new Ipfs({
+                repo: "ipfs-" + Math.random(),
+                config: {
+                    Addresses: {
+                        Swarm: [
+                            "/dns4/wrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star"
+                        ]
+                    }
+                }
+            });
+
+            this.ipfs.on("ready", () => {
+                this.online = this.ipfs.isOnline();
+            });
+        }
     }
 
     share(): Promise<any> {
-        return new Promise(resolve => {
-            const data = JSON.stringify(mmp.data());
-            this.ipfs.files.add(this.ipfsApi().Buffer.from(data), (err, files) => {
-                if (err) {
-                    throw err;
-                }
+        if (this.online) {
+            return new Promise(resolve => {
+                const data = JSON.stringify(mmp.data());
+                this.ipfs.files.add(new this.ipfs.types.Buffer(data), (err, files) => {
+                    if (err) {
+                        throw err;
+                    }
 
-                resolve(files[0].path);
+                    resolve(files[0].hash);
+                });
             });
-        });
+        } else {
+            return Promise.reject("Offline");
+        }
     }
 
     download(): Promise<any> {
-        return this.modal.openInput("Copia qui la chiave...", "key")
-            .then(key => {
-                if (key.length === 46) {
-                    return new Promise(resolve => {
-                        this.ipfs.files.cat(key, (err, file) => {
-                            if (err) {
-                                throw err;
-                            }
+        if (this.online) {
+            return this.modal.openInput("Copia qui la chiave...", "key")
+                .then(key => {
+                    if (key.length === 46) {
+                        return new Promise(resolve => {
+                            this.ipfs.files.cat(key, (err, file) => {
+                                if (err) {
+                                    throw err;
+                                }
 
-                            resolve(file.toString("utf8"));
+                                resolve(file.toString("utf8"));
+                            });
                         });
-                    });
-                }
-            });
+                    }
+                });
+        } else {
+            return Promise.reject("Offline");
+        }
     }
 
     stop(): Promise<any> {
