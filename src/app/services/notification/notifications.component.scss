@@ -1,0 +1,15 @@
+#notifications {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 250px;
+    word-wrap: break-word;
+    text-align: center;
+    z-index: 2;
+    background-color: #eaeaea;
+    border: 1px solid lightgray;
+    color: #5b6868;
+}

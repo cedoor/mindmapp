@@ -2,6 +2,8 @@ import {Injectable, NgZone} from "@angular/core";
 import {DialogService} from "./dialog.service";
 import {remote} from "electron";
 import * as mmp from "mmp";
+import {IPFSService} from "./ipfs.service";
+import {NotificationService} from "./notification/notification.service";
 
 @Injectable()
 export class MenuService {
@@ -215,11 +217,35 @@ export class MenuService {
             label: "Tutorial",
             enabled: false
         }]
+    }, {
+        label: "IPFS",
+        submenu: [{
+            label: "Importa",
+            click: () => {
+                this.ipfs.download().then(data => {
+                    if (data) {
+                        this.dialog.importMap(data);
+                    }
+                });
+            }
+        }, {
+            label: "Esporta",
+            click: () => {
+                this.ipfs.share().then(key => {
+                    this._ngZone.run(() => {
+                        this.notifications.send("La chiave della mappa esportata è: " + key);
+                    });
+
+                });
+            }
+        }]
     }];
 
     remote: typeof remote;
 
     constructor(private _ngZone: NgZone,
+                private ipfs: IPFSService,
+                private notifications: NotificationService,
                 private dialog: DialogService) {
         this.remote = window.require("electron").remote;
     }
