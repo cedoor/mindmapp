@@ -6,13 +6,15 @@ import {AppComponent} from "./app.component";
 import {ToolbarComponent} from "./components/toolbar/toolbar.component";
 import {SlidersPanelComponent} from "./components/sliders-panel/sliders-panel.component";
 import {ColorsPanelComponent} from "./components/colors-panel/colors-panel.component";
-import {ColorPickerModule} from "ngx-color-picker";
 import {FloatingButtonsComponent} from "./components/floating-buttons/floating-buttons.component";
+import {ColorPickerModule} from "ngx-color-picker";
 import {DragDropService} from "./services/dragdrop.service";
 import {UtilsService} from "./services/utils.service";
 import {MenuService} from "./services/menu.service";
 import {DialogService} from "./services/dialog.service";
-import {DatService} from "./services/dat.service";
+import {IPFSService} from "./services/ipfs.service";
+import {ModalService} from "./services/modal/modal.service";
+import {NotificationService} from "./services/notification/notification.service";
 
 @NgModule({
     declarations: [
@@ -20,7 +22,9 @@ import {DatService} from "./services/dat.service";
         ToolbarComponent,
         SlidersPanelComponent,
         ColorsPanelComponent,
-        FloatingButtonsComponent
+        FloatingButtonsComponent,
+        NotificationService,
+        ModalService
     ],
     imports: [
         BrowserModule,
@@ -33,7 +37,9 @@ import {DatService} from "./services/dat.service";
         DragDropService,
         MenuService,
         UtilsService,
-        DatService
+        IPFSService,
+        NotificationService,
+        ModalService
     ],
     bootstrap: [AppComponent]
 })

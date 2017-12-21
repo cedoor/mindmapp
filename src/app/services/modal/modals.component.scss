@@ -1,0 +1,33 @@
+#modals {
+    #input {
+        display: none;
+        z-index: 2;
+        position: absolute;
+        top: 32px;
+        left: 50%;
+        margin-left: -125px;
+
+        input {
+            float: left;
+            border: 1px solid lightgray;
+            border-top: 0;
+            padding: 6px 8px;
+            width: 250px;
+            color: #4c4c4c;
+            height: 16px;
+        }
+
+        img {
+            float: left;
+            padding: 4px;
+            border-right: 1px solid lightgray;
+            border-bottom: 1px solid lightgray;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        img:hover {
+            background-color: #e8e8e8;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 import {Injectable, NgZone} from "@angular/core";
 import {UtilsService} from "./utils.service";
+import {IPFSService} from "./ipfs.service";
 import {environment} from "../../environments/environment";
 import {remote} from "electron";
 import * as fs from "fs";
@@ -12,6 +13,7 @@ export class DialogService {
     fs: typeof fs;
 
     constructor(private _ngZone: NgZone,
+                private ipfs: IPFSService,
                 private utils: UtilsService) {
         this.remote = window.require("electron").remote;
         this.fs = window.require("fs");
@@ -130,6 +132,26 @@ export class DialogService {
         } else {
             mmp.node.update("image-src", "");
         }
+    }
+
+    importMap(data: any) {
+        let importMap = () => {
+            this._ngZone.run(() => {
+                mmp.data(JSON.parse(data));
+            });
+            this.utils.setFilePath("");
+            this.utils.setSavedStatus(false);
+        };
+
+        if (!this.utils.isInitialMap() && !this.utils.isSaved()) {
+            this.showMessage(
+                "Salva mappa",
+                "Vuoi salvare la mappa corrente prima di importarne un'altra?")
+                .then(response => {
+                    if (response === 0) this.saveMap().then(() => importMap());
+                    else if (response === 1) importMap();
+                });
+        } else importMap();
     }
 
     showMessage(title: string, message: string): Promise<number> {
