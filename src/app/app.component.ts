@@ -4,6 +4,7 @@ import {DragDropService} from "./services/dragdrop.service";
 import {UtilsService} from "./services/utils.service";
 import * as mmp from "mmp";
 import {MenuService} from "./services/menu.service";
+import {IPFSService} from "./services/ipfs.service";
 
 @Component({
     selector: "app-root",
@@ -15,12 +16,14 @@ export class AppComponent implements OnInit {
 
     constructor(public dialog: DialogService,
                 public dragDrop: DragDropService,
+                public ipfs: IPFSService,
                 public menu: MenuService,
                 public utils: UtilsService) {
     }
 
     ngOnInit() {
         this.setMmpEvents();
+        //this.ipfs.start();
         this.menu.setMenu();
         this.dialog.setExitDialog();
         this.utils.setInitialMap();

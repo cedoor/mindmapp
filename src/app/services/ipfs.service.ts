@@ -9,6 +9,9 @@ export class IPFSService {
     private online: boolean;
 
     constructor(private modal: ModalService) {
+    }
+
+    start() {
         let Ipfs = window["Ipfs"];
 
         if (Ipfs) {
