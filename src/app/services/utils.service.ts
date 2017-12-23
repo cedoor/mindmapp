@@ -30,14 +30,17 @@ export class UtilsService {
     }
 
     watchFile() {
-        this.fileWatcher = this.fs.watch(this.filePath, (eventType, filename) => {
+        this.fileWatcher = this.fs.watch(this.filePath, eventType => {
             if (eventType === "change") {
                 let fileData = this.fs.readFileSync(this.filePath, "utf8"),
                     mapData = JSON.stringify(mmp.data());
 
-                if (fileData !== mapData) {
+                if (this.isJsonString(fileData) && fileData !== mapData) {
                     mmp.data(JSON.parse(fileData));
                 }
+            } else if (eventType === "rename") {
+                this.setFilePath("");
+                this.setSavedStatus(false);
             }
         });
     }
@@ -77,10 +80,9 @@ export class UtilsService {
 
     setFilePath(filePath: string) {
         this.filePath = filePath;
+        this.stopFileWatching();
         if (this.filePath) {
             this.watchFile();
-        } else {
-            this.stopFileWatching();
         }
     }
 
@@ -90,6 +92,15 @@ export class UtilsService {
 
     isSaved(): boolean {
         return this.mapSaved;
+    }
+
+    isJsonString(string: string) {
+        try {
+            JSON.parse(string);
+        } catch (e) {
+            return false;
+        }
+        return true;
     }
 
     // To get mmp snapshot without coordinates and k constant
