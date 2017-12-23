@@ -9,6 +9,8 @@ export class UtilsService {
 
     initialMap: string;
 
+    fileWatcher: any;
+
     windowTitle: string = window.document.title;
     filePath: string = "";
     mapSaved: boolean = false;
@@ -25,6 +27,25 @@ export class UtilsService {
     isInitialMap(): boolean {
         let data = this.getFilteredMapData();
         return this.initialMap === JSON.stringify(data);
+    }
+
+    watchFile() {
+        this.fileWatcher = this.fs.watch(this.filePath, (eventType, filename) => {
+            if (eventType === "change") {
+                let fileData = this.fs.readFileSync(this.filePath, "utf8"),
+                    mapData = JSON.stringify(mmp.data());
+
+                if (fileData !== mapData) {
+                    mmp.data(JSON.parse(fileData));
+                }
+            }
+        });
+    }
+
+    stopFileWatching() {
+        if (this.fileWatcher) {
+            this.fileWatcher.close();
+        }
     }
 
     checkSavedFile() {
@@ -56,6 +77,11 @@ export class UtilsService {
 
     setFilePath(filePath: string) {
         this.filePath = filePath;
+        if (this.filePath) {
+            this.watchFile();
+        } else {
+            this.stopFileWatching();
+        }
     }
 
     getFilePath(): string {
