@@ -36,6 +36,7 @@
         "@angular/platform-browser": "4.2.4",
         "@angular/platform-browser-dynamic": "4.2.4",
         "core-js": "2.4.1",
+        "mmp": "0.1.7",
         "ngx-color-picker": "4.4.0",
         "random-access-memory": "2.4.0",
         "rxjs": "5.4.2",
@@ -50,7 +51,6 @@
         "electron": "1.7.9",
         "electron-packager": "9.1.0",
         "electron-reload": "1.2.1",
-        "mmp": "0.1.6",
         "minimist": "1.2.0",
         "ts-node": "3.2.0",
         "typescript": "2.3.3"
