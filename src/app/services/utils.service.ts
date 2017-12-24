@@ -10,6 +10,7 @@ export class UtilsService {
     initialMap: string;
 
     fileWatcher: any;
+    fileSync: boolean = false;
 
     windowTitle: string = window.document.title;
     filePath: string = "";
@@ -31,7 +32,7 @@ export class UtilsService {
 
     watchFile() {
         this.fileWatcher = this.fs.watch(this.filePath, eventType => {
-            if (eventType === "change") {
+            if (eventType === "change" && this.fileSync) {
                 let fileData = this.fs.readFileSync(this.filePath, "utf8"),
                     mapData = JSON.stringify(mmp.data());
 
@@ -43,6 +44,10 @@ export class UtilsService {
                 this.setSavedStatus(false);
             }
         });
+    }
+
+    setFileSync(flag: boolean) {
+        this.fileSync = flag;
     }
 
     stopFileWatching() {
