@@ -15,6 +15,8 @@ import {DialogService} from "./services/dialog.service";
 import {IPFSService} from "./services/ipfs.service";
 import {ModalService} from "./services/modal/modal.service";
 import {NotificationService} from "./services/notification/notification.service";
+import {PreferencesService} from "./services/preferences/preferences.service";
+import { SliderComponent } from './components/shared/slider/slider.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +25,9 @@ import {NotificationService} from "./services/notification/notification.service"
         SlidersPanelComponent,
         ColorsPanelComponent,
         FloatingButtonsComponent,
+        SliderComponent,
         NotificationService,
+        PreferencesService,
         ModalService
     ],
     imports: [
@@ -39,6 +43,7 @@ import {NotificationService} from "./services/notification/notification.service"
         UtilsService,
         IPFSService,
         NotificationService,
+        PreferencesService,
         ModalService
     ],
     bootstrap: [AppComponent]

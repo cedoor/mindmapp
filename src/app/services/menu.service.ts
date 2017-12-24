@@ -4,6 +4,7 @@ import {remote} from "electron";
 import * as mmp from "mmp";
 import {IPFSService} from "./ipfs.service";
 import {NotificationService} from "./notification/notification.service";
+import {PreferencesService} from "./preferences/preferences.service";
 
 @Injectable()
 export class MenuService {
@@ -122,9 +123,8 @@ export class MenuService {
         }, {
             label: "Preferenze",
             click: () => {
-                console.log("preferences");
-            },
-            enabled: false
+                this.preferences.open();
+            }
         }]
     }, {
         label: "Seleziona",
@@ -245,6 +245,7 @@ export class MenuService {
 
     constructor(private _ngZone: NgZone,
                 private ipfs: IPFSService,
+                private preferences: PreferencesService,
                 private notifications: NotificationService,
                 private dialog: DialogService) {
         this.remote = window.require("electron").remote;
