@@ -1,11 +1,10 @@
 import {Injectable} from "@angular/core";
 import * as mmp from "mmp";
-import * as fs from "fs";
 
 @Injectable()
 export class UtilsService {
 
-    fs: typeof fs;
+    fs;
 
     initialMap: string;
 
