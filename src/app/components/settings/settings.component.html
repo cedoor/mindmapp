@@ -1,0 +1,19 @@
+<div *ngIf="actived" id="settings">
+    <h2>{{ title }}</h2>
+    <span (click)="settings.close()" id="close">x</span>
+    <div id="vertical-menu">
+        <div *ngFor="let option of options; let i = index"
+             (click)="selectOption(i)"
+             [class.selected]="i === index">
+            {{ option }}
+        </div>
+    </div>
+    <div class="content" *ngIf="index === 0">
+        <div>
+            <app-slider (slide)="settings.setFileSync($event)" [value]="values?.synchronization?.file" name="File watcher"></app-slider>
+        </div>
+        <div>
+            <app-slider (slide)="settings.setIpfs($event)" [value]="values?.synchronization?.ipfs" name="IPFS"></app-slider>
+        </div>
+    </div>
+</div>
