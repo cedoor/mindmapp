@@ -1,7 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {ToolbarComponent} from "./components/toolbar/toolbar.component";
 import {SlidersPanelComponent} from "./components/sliders-panel/sliders-panel.component";
@@ -14,9 +13,12 @@ import {MenuService} from "./services/menu.service";
 import {DialogService} from "./services/dialog.service";
 import {IPFSService} from "./services/ipfs.service";
 import {ModalService} from "./services/modal/modal.service";
-import {NotificationService} from "./services/notification/notification.service";
-import {PreferencesService} from "./services/preferences/preferences.service";
-import { SliderComponent } from './components/shared/slider/slider.component';
+import {SliderComponent} from "./components/shared/slider/slider.component";
+import {SettingsComponent} from "./components/settings/settings.component";
+import {SettingsService} from "./services/settings.service";
+import {NotificationsComponent} from "./components/notification/notifications.component";
+import {NotificationsService} from "./services/notifications.service";
+import {StorageService} from "./services/storage.service";
 
 @NgModule({
     declarations: [
@@ -25,15 +27,14 @@ import { SliderComponent } from './components/shared/slider/slider.component';
         SlidersPanelComponent,
         ColorsPanelComponent,
         FloatingButtonsComponent,
+        SettingsComponent,
+        NotificationsComponent,
         SliderComponent,
-        NotificationService,
-        PreferencesService,
         ModalService
     ],
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule,
         ColorPickerModule
     ],
     providers: [
@@ -42,8 +43,9 @@ import { SliderComponent } from './components/shared/slider/slider.component';
         MenuService,
         UtilsService,
         IPFSService,
-        NotificationService,
-        PreferencesService,
+        SettingsService,
+        StorageService,
+        NotificationsService,
         ModalService
     ],
     bootstrap: [AppComponent]
