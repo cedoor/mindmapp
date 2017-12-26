@@ -3,8 +3,8 @@ import {DialogService} from "./dialog.service";
 import {remote} from "electron";
 import * as mmp from "mmp";
 import {IPFSService} from "./ipfs.service";
-import {NotificationService} from "./notification/notification.service";
-import {PreferencesService} from "./preferences/preferences.service";
+import {SettingsService} from "./settings.service";
+import {NotificationsService} from "./notifications.service";
 
 @Injectable()
 export class MenuService {
@@ -123,7 +123,9 @@ export class MenuService {
         }, {
             label: "Preferenze",
             click: () => {
-                this.preferences.open();
+                this._ngZone.run(() => {
+                    this.settings.open();
+                });
             }
         }]
     }, {
@@ -245,8 +247,8 @@ export class MenuService {
 
     constructor(private _ngZone: NgZone,
                 private ipfs: IPFSService,
-                private preferences: PreferencesService,
-                private notifications: NotificationService,
+                private settings: SettingsService,
+                private notifications: NotificationsService,
                 private dialog: DialogService) {
         this.remote = window.require("electron").remote;
     }
