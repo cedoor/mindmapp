@@ -28,32 +28,31 @@
         "build:mac": "npm run build && node package.js --asar --platform=darwin --arch=x64"
     },
     "dependencies": {
-        "@angular/common": "4.2.4",
-        "@angular/compiler": "4.2.4",
-        "@angular/core": "4.2.4",
-        "@angular/forms": "4.2.4",
-        "@angular/http": "4.2.4",
-        "@angular/platform-browser": "4.2.4",
-        "@angular/platform-browser-dynamic": "4.2.4",
+        "@angular/common": "5.0.0",
+        "@angular/compiler": "5.0.0",
+        "@angular/core": "5.0.0",
+        "@angular/forms": "5.0.0",
+        "@angular/http": "5.0.0",
+        "@angular/platform-browser": "5.0.0",
+        "@angular/platform-browser-dynamic": "5.0.0",
         "core-js": "2.4.1",
+        "electron-json-storage": "4.0.2",
         "mmp": "0.1.7",
         "ngx-color-picker": "4.4.0",
-        "random-access-memory": "2.4.0",
-        "rxjs": "5.4.2",
+        "rxjs": "5.5.2",
         "zone.js": "0.8.14"
     },
     "devDependencies": {
-        "@angular/cli": "1.4.9",
-        "@angular/compiler-cli": "4.2.4",
-        "@angular/language-service": "4.2.4",
-        "@types/electron": "1.6.10",
+        "@angular/cli": "1.6.2",
+        "@angular/compiler-cli": "5.0.0",
+        "@angular/language-service": "5.0.0",
         "@types/node": "6.0.60",
-        "electron": "1.7.9",
-        "electron-packager": "9.1.0",
-        "electron-reload": "1.2.1",
+        "electron": "1.7.10",
+        "electron-packager": "10.1.0",
+        "electron-reload": "1.2.2",
         "minimist": "1.2.0",
         "ts-node": "3.2.0",
-        "typescript": "2.3.3"
+        "typescript": "2.4.2"
     },
     "license": "MIT"
 }
