@@ -1,6 +1,6 @@
 <div class="app-slider">
     <label class="switch">
-        <input (change)="slide.emit($event.srcElement.checked)" type="checkbox">
+        <input (change)="slide.emit($event.srcElement.checked)" type="checkbox" [checked]="value">
         <span class="slider"></span>
     </label>
     <span>{{ name }}</span>

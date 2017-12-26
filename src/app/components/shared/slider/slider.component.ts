@@ -8,6 +8,7 @@ import {Component, EventEmitter, Input, Output} from "@angular/core";
 export class SliderComponent {
 
     @Input() name: string;
+    @Input() value: boolean;
     @Output() slide: EventEmitter<boolean> = new EventEmitter();
 
     constructor() {
