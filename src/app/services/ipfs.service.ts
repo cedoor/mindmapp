@@ -72,10 +72,14 @@ export class IPFSService {
 
     stop(): Promise<any> {
         return new Promise(resolve => {
-            this.ipfs.stop(() => {
-                this.online = false;
+            if (this.online) {
+                this.ipfs.stop(() => {
+                    this.online = false;
+                    resolve();
+                });
+            } else {
                 resolve();
-            });
+            }
         });
     }
 
