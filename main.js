@@ -12,7 +12,7 @@ function createLoadingScreen(size) {
     const entryPath = path.join("file://", __dirname, "loading.html");
 
     loadingScreen = new BrowserWindow({
-        icon: __dirname + "/assets/icons/png/64x64.png",
+        icon: __dirname + "/assets/icon/png/64x64.png",
         x: size.width / 2 - 400,
         y: size.height / 2 - 300,
         width: 800,
@@ -31,7 +31,7 @@ function createMainWindow(size) {
     const indexPath = path.join("file://", __dirname, "index.html");
 
     mainWindow = new BrowserWindow({
-        icon: __dirname + "/assets/icons/png/64x64.png",
+        icon: __dirname + "/assets/icon/png/64x64.png",
         x: 0, y: 0,
         width: size.width, minWidth: 800,
         height: size.height, minHeight: 700,

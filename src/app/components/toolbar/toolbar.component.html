@@ -1,30 +1,30 @@
 <div id="toolbar">
     <div>
         <img class="toolbar-buttons" id="new-map"
-             src="./assets/toolbar/new.svg"
+             src="./assets/images/toolbar/new.svg"
              (click)="dialog.newMap()">
         <img class="toolbar-buttons" id="open-map"
-             src="./assets/toolbar/open.svg"
+             src="./assets/images/toolbar/open.svg"
              (click)="dialog.openMap()">
         <img class="toolbar-buttons disable" id="save-map"
-             src="./assets/toolbar/save.svg"
+             src="./assets/images/toolbar/save.svg"
              (click)="dialog.saveMap()">
     </div>
     <div>
         <img class="toolbar-buttons" id="lock-node"
-             [src]="'./assets/toolbar/' + (values['fixed'] ? 'lock.svg' : 'unlock.svg')"
+             [src]="'./assets/images/toolbar/' + (values['fixed'] ? 'lock.svg' : 'unlock.svg')"
              (click)="mmp.node.update('fixed')">
         <img class="toolbar-buttons" id="image"
-             src="./assets/toolbar/image.svg"
+             src="./assets/images/toolbar/image.svg"
              [ngClass]="{'fade': values['image-src']}"
              (click)="dialog.addNodeImage()">
     </div>
     <div>
         <img class="toolbar-buttons" id="bold"
-             src="./assets/toolbar/bold.svg"
+             src="./assets/images/toolbar/bold.svg"
              (click)="mmp.node.update('bold')">
         <img class="toolbar-buttons" id="italic"
-             src="./assets/toolbar/italic.svg"
+             src="./assets/images/toolbar/italic.svg"
              (click)="mmp.node.update('italic')">
     </div>
 </div>
