@@ -1,0 +1,24 @@
+{
+    "IPFS": "IPFS",
+    "FILE": "File",
+    "NEW": "Nuovo",
+    "OPEN": "Apri",
+    "SAVE": "Salva",
+    "SAVE_WITH_NAME": "Salva con nome",
+    "EXPORT_IMAGE": "Esporta immagine",
+    "QUIT": "Esci",
+    "EDIT": "Modifica",
+    "SELECT": "Seleziona",
+    "VIEW": "Visualizza",
+    "IMPORT": "Importa",
+    "EXPORT": "Esporta",
+    "SETTINGS": "Impostazioni",
+    "HELP": "Aiuto",
+    "LANGUAGE": "Lingua",
+    "MAP": "Mappa",
+    "SYNCHRONIZATION": "Sincronizzazione",
+    "LANGUAGES": {
+        "EN": "Inglese",
+        "IT": "Italiano"
+    }
+}
