@@ -1,7 +1,8 @@
-<div class="app-slider">
+<div class="app-slider" fxLayout="row" fxLayoutAlign=" center">
     <label class="switch">
-        <input (change)="slide.emit($event.srcElement.checked)" type="checkbox" [checked]="value">
+        <input (click)="click($event)" type="checkbox" [checked]="value">
         <span class="slider"></span>
     </label>
-    <span>{{ name }}</span>
+    <span class="label">{{ name }}</span>
+    <div style="clear: both"></div>
 </div>
