@@ -4,6 +4,7 @@ export class Settings {
         ipfs: boolean,
         file: boolean
     };
-    language: {};
+    map: {};
+    language: string;
 
 }

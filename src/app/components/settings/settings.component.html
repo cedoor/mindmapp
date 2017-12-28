@@ -1,19 +1,42 @@
 <div *ngIf="actived" id="settings">
-    <h2>{{ title }}</h2>
-    <span (click)="settings.close()" id="close">x</span>
-    <div id="vertical-menu">
-        <div *ngFor="let option of options; let i = index"
-             (click)="selectOption(i)"
-             [class.selected]="i === index">
-            {{ option }}
-        </div>
-    </div>
-    <div class="content" *ngIf="index === 0">
-        <div>
-            <app-slider (slide)="settings.setFileSync($event)" [value]="values?.synchronization?.file" name="File watcher"></app-slider>
-        </div>
-        <div>
-            <app-slider (slide)="settings.setIpfs($event)" [value]="values?.synchronization?.ipfs" name="IPFS"></app-slider>
+    <div>
+        <h2>{{ "SETTINGS" | translate }}</h2>
+        <span (click)="settings.close()" id="close">&#10799;</span>
+
+        <div id="content">
+            <div fxLayout="row" fxFill>
+                <div id="vertical-menu" fxFlex="30">
+                    <div *ngFor="let option of menuLabels; let i = index"
+                         (click)="selectOption(i)"
+                         [class.selected]="i === index">
+                        {{ option | translate }}
+                    </div>
+                </div>
+                <div class="options" *ngIf="index === 0">
+                    <div>
+                        <app-slider (slide)="settings.setFileSync($event)"
+                                    [value]="values?.synchronization?.file"
+                                    [name]="'FILE' | translate"></app-slider>
+                    </div>
+                    <div>
+                        <app-slider (slide)="settings.setIpfs($event)"
+                                    [value]="values?.synchronization?.ipfs"
+                                    [name]="'IPFS' | translate"></app-slider>
+                    </div>
+                </div>
+                <div class="options" *ngIf="index === 2">
+                    <div>
+                        <app-slider (slide)="settings.setLanguage('en')" onlyTrue="true"
+                                    [value]="values?.language === 'en'"
+                                    [name]="'LANGUAGES.EN' | translate"></app-slider>
+                    </div>
+                    <div>
+                        <app-slider (slide)="settings.setLanguage('it')" onlyTrue="true"
+                                    [value]="values?.language === 'it'"
+                                    [name]="'LANGUAGES.IT' | translate"></app-slider>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

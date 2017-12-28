@@ -19,6 +19,14 @@ import {SettingsService} from "./services/settings.service";
 import {NotificationsComponent} from "./components/notification/notifications.component";
 import {NotificationsService} from "./services/notifications.service";
 import {StorageService} from "./services/storage.service";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {FlexLayoutModule} from "@angular/flex-layout";
+
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http, "./assets/i18n/");
+}
 
 @NgModule({
     declarations: [
@@ -35,6 +43,15 @@ import {StorageService} from "./services/storage.service";
     imports: [
         BrowserModule,
         FormsModule,
+        FlexLayoutModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
         ColorPickerModule
     ],
     providers: [

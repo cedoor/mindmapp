@@ -9,24 +9,29 @@ import {Settings} from "../../models/settings";
 })
 export class SettingsComponent implements OnInit {
 
-    title: string = "Preferenze";
-
     values: Settings;
 
     actived: boolean = false;
 
     index: number = 0;
-    options = ["Sincronizzazione", "Lingua"];
+    menuLabels: string[] = [];
 
     constructor(public settings: SettingsService) {
     }
 
     ngOnInit() {
-        this.settings.init().then(settings => {
+        this.settings.init().then((settings: Settings) => {
+            this.values = settings;
+            for (let menuLabel in settings) {
+                this.menuLabels.push(menuLabel.toUpperCase());
+            }
+        });
+
+        this.settings.onUpdate.subscribe((settings: Settings) => {
             this.values = settings;
         });
 
-        this.settings.active.subscribe((actived) => {
+        this.settings.onActive.subscribe((actived) => {
             this.actived = actived;
         });
     }

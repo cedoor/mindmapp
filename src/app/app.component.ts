@@ -2,10 +2,12 @@ import {Component, OnInit} from "@angular/core";
 import {DialogService} from "./services/dialog.service";
 import {DragDropService} from "./services/dragdrop.service";
 import {UtilsService} from "./services/utils.service";
-import * as mmp from "mmp";
 import {MenuService} from "./services/menu.service";
-import {IPFSService} from "./services/ipfs.service";
+import {TranslateService} from "@ngx-translate/core";
 import {SettingsService} from "./services/settings.service";
+import {Settings} from "./models/settings";
+import {IPFSService} from "./services/ipfs.service";
+import * as mmp from "mmp";
 
 @Component({
     selector: "app-root",
@@ -17,19 +19,30 @@ export class AppComponent implements OnInit {
 
     constructor(public dialog: DialogService,
                 public dragDrop: DragDropService,
+                public translate: TranslateService,
+                public ipfs: IPFSService,
+                public settings: SettingsService,
                 public menu: MenuService,
                 public utils: UtilsService) {
     }
 
     ngOnInit() {
-        this.setMmpEvents();
-        this.menu.setMenu();
-        this.dialog.setExitDialog();
-        this.utils.setInitialMap();
-        this.dragDrop.setDragAndDrop();
+        // Settings initialization
+        this.settings.onInit.subscribe((settings: Settings) => {
+            // Set background services
+            this.setBackgroundServices(settings);
+            // Set translations
+            this.setTranslations(settings.language).then(() => {
+                this.createMindMap();
+                this.menu.createMenu();
+                this.dialog.setExitDialog();
+                this.utils.setInitialMap();
+                this.dragDrop.setDragAndDrop();
+            });
+        });
     }
 
-    setMmpEvents() {
+    createMindMap() {
         mmp.on("nodeselect", (key, value) => {
             if (!value["branch-color"]) value["branch-color"] = "";
             Object.assign(this.values, value);
@@ -66,6 +79,22 @@ export class AppComponent implements OnInit {
         mmp.on("noderemove", () => {
             this.utils.checkSavedFile();
         });
+    }
+
+    setTranslations(language: string): Promise<any> {
+        this.translate.setDefaultLang(language);
+        return this.translate.use(language).toPromise();
+    }
+
+    setBackgroundServices(settings: Settings) {
+        // IPFS for export/import maps
+        if (settings.synchronization.ipfs) {
+            this.ipfs.start();
+        }
+        // Node fs file synchronization
+        if (settings.synchronization.file) {
+            this.utils.setFileSync(true);
+        }
     }
 
 }
