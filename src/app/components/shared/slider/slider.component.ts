@@ -9,6 +9,7 @@ export class SliderComponent {
 
     @Input() name: string;
     @Input() value: boolean;
+    @Input() disable: boolean;
     @Input() onlyTrue: boolean;
     @Output() slide: EventEmitter<boolean> = new EventEmitter();
 
