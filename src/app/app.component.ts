@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
 
     setBackgroundServices(settings: Settings) {
         // IPFS for export/import maps
-        if (settings.synchronization.ipfs) {
+        if (settings.sharing.ipfs) {
             this.ipfs.start();
         }
         // Node fs file synchronization

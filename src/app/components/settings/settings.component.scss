@@ -3,7 +3,7 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, .05);
+    background-color: rgba(0, 0, 0, .15);
 
     > div {
         position: absolute;
@@ -12,8 +12,8 @@
         width: 700px;
         margin: -250px 0 0 -350px;
         background-color: white;
-        border: 1px solid #c4c4c4;
-        box-shadow: 0 0 15px lightgray;
+        border: 1px solid #ababab;
+        box-shadow: 0 0 15px #989898;
         color: #5b6868;
 
         h2 {

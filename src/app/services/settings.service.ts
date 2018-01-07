@@ -13,10 +13,11 @@ export class SettingsService {
 
     private defaultSettings: Settings = {
         synchronization: {
-            ipfs: false,
             file: false
         },
-        map: {},
+        sharing: {
+            ipfs: false
+        },
         language: "en"
     } as Settings;
     private currentSettings: Settings = {} as Settings;
@@ -62,7 +63,7 @@ export class SettingsService {
     }
 
     setIpfs(flag: boolean) {
-        this.currentSettings.synchronization.ipfs = flag;
+        this.currentSettings.sharing.ipfs = flag;
 
         this.update(this.currentSettings).then(() => {
             flag ? this.ipfs.start() : this.ipfs.stop();

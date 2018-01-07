@@ -18,9 +18,12 @@
                                     [value]="values?.synchronization?.file"
                                     [name]="'FILE' | translate"></app-slider>
                     </div>
+                </div>
+                <div class="options" *ngIf="index === 1">
                     <div>
                         <app-slider (slide)="settings.setIpfs($event)"
-                                    [value]="values?.synchronization?.ipfs"
+                                    disable="false"
+                                    [value]="values?.sharing?.ipfs"
                                     [name]="'IPFS' | translate"></app-slider>
                     </div>
                 </div>
