@@ -4,8 +4,10 @@ import {IPFSService} from "./ipfs.service";
 import {SettingsService} from "./settings.service";
 import {NotificationsService} from "./notifications.service";
 import {TranslateService} from "@ngx-translate/core";
+import {StorageService} from "./storage.service";
 import {remote} from "electron";
 import * as mmp from "mmp";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class MenuService {
@@ -15,6 +17,7 @@ export class MenuService {
     constructor(private _ngZone: NgZone,
                 private ipfs: IPFSService,
                 private settings: SettingsService,
+                private storage: StorageService,
                 private notifications: NotificationsService,
                 private translate: TranslateService,
                 private dialog: DialogService) {
@@ -38,7 +41,7 @@ export class MenuService {
     }
 
     createTemplate(translations: string[]): Electron.MenuItemConstructorOptions[] {
-        return [{
+        let template: Electron.MenuItemConstructorOptions[] = [{
             label: translations["FILE"],
             submenu: [{
                 label: translations["NEW"],
@@ -80,7 +83,7 @@ export class MenuService {
         }, {
             label: translations["EDIT"],
             submenu: [{
-                label: "Annulla",
+                label: translations["UNDO"],
                 accelerator: "Ctrl+z",
                 click: () => {
                     this._ngZone.run(() => {
@@ -88,7 +91,7 @@ export class MenuService {
                     });
                 }
             }, {
-                label: "Ripeti",
+                label: translations["REPEAT"],
                 accelerator: "Ctrl+Shift+z",
                 click: () => {
                     this._ngZone.run(() => {
@@ -98,7 +101,7 @@ export class MenuService {
             }, {
                 type: "separator"
             }, {
-                label: "Aggiungi nodo",
+                label: translations["ADD_NODE"],
                 accelerator: "Alt+=",
                 click: () => {
                     this._ngZone.run(() => {
@@ -106,7 +109,7 @@ export class MenuService {
                     });
                 }
             }, {
-                label: "Rimuovi nodo",
+                label: translations["REMOVE_NODE"],
                 accelerator: "Alt+-",
                 click: () => {
                     this._ngZone.run(() => {
@@ -116,7 +119,7 @@ export class MenuService {
             }, {
                 type: "separator"
             }, {
-                label: "Muovi a sinistra",
+                label: translations["MOVE_ON_THE_LEFT"],
                 accelerator: "Alt+Shift+left",
                 click: () => {
                     this._ngZone.run(() => {
@@ -124,7 +127,7 @@ export class MenuService {
                     });
                 }
             }, {
-                label: "Muovi a destra",
+                label: translations["MOVE_ON_THE_RIGHT"],
                 accelerator: "Alt+Shift+right",
                 click: () => {
                     this._ngZone.run(() => {
@@ -132,7 +135,7 @@ export class MenuService {
                     });
                 }
             }, {
-                label: "Muovi in alto",
+                label: translations["MOVE_ABOVE"],
                 accelerator: "Alt+Shift+up",
                 click: () => {
                     this._ngZone.run(() => {
@@ -140,7 +143,7 @@ export class MenuService {
                     });
                 }
             }, {
-                label: "Muovi in basso",
+                label: translations["MOVE_BELOW"],
                 accelerator: "Alt+Shift+down",
                 click: () => {
                     this._ngZone.run(() => {
@@ -151,6 +154,7 @@ export class MenuService {
                 type: "separator"
             }, {
                 label: translations["SETTINGS"],
+                accelerator: "Ctrl+Alt+S",
                 click: () => {
                     this._ngZone.run(() => {
                         this.settings.open();
@@ -160,7 +164,7 @@ export class MenuService {
         }, {
             label: translations["SELECT"],
             submenu: [{
-                label: "Seleziona a sinistra",
+                label: translations["SELECT_ON_THE_LEFT"],
                 accelerator: "Alt+left",
                 click: () => {
                     this._ngZone.run(() => {
@@ -168,7 +172,7 @@ export class MenuService {
                     });
                 }
             }, {
-                label: "Seleziona a destra",
+                label: translations["SELECT_ON_THE_RIGHT"],
                 accelerator: "Alt+right",
                 click: () => {
                     this._ngZone.run(() => {
@@ -176,7 +180,7 @@ export class MenuService {
                     });
                 }
             }, {
-                label: "Seleziona in alto",
+                label: translations["SELECT_ABOVE"],
                 accelerator: "Alt+up",
                 click: () => {
                     this._ngZone.run(() => {
@@ -184,7 +188,7 @@ export class MenuService {
                     });
                 }
             }, {
-                label: "Seleziona in basso",
+                label: translations["SELECT_BELOW"],
                 accelerator: "Alt+down",
                 click: () => {
                     this._ngZone.run(() => {
@@ -194,7 +198,7 @@ export class MenuService {
             }, {
                 type: "separator"
             }, {
-                label: "Seleziona radice",
+                label: translations["SELECT_ROOT"],
                 accelerator: "Alt+r",
                 click: () => {
                     this._ngZone.run(() => {
@@ -205,11 +209,7 @@ export class MenuService {
         }, {
             label: translations["VIEW"],
             submenu: [{
-                role: "reload"
-            }, {
-                type: "separator"
-            }, {
-                label: "Reset zoom",
+                label: translations["RESET_ZOOM"],
                 accelerator: "Alt+c",
                 click: () => {
                     this._ngZone.run(() => {
@@ -217,7 +217,7 @@ export class MenuService {
                     });
                 }
             }, {
-                label: "Zoom in",
+                label: translations["ZOOM_OUT"],
                 accelerator: "Ctrl+=",
                 click: () => {
                     this._ngZone.run(() => {
@@ -225,7 +225,7 @@ export class MenuService {
                     });
                 }
             }, {
-                label: "Zoom out",
+                label: translations["ZOOM_IN"],
                 accelerator: "Ctrl+-",
                 click: () => {
                     this._ngZone.run(() => {
@@ -235,42 +235,61 @@ export class MenuService {
             }, {
                 type: "separator"
             }, {
-                label: "Schermo intero",
+                label: translations["FULL_SCREEN"],
                 role: "togglefullscreen"
             }]
         }, {
             label: translations["HELP"],
             role: "help",
             submenu: [{
-                label: "Informazioni",
+                label: translations["INFORMATIONS"],
                 enabled: false
             }, {
-                label: "Tutorial",
+                label: translations["TUTORIAL"],
                 enabled: false
-            }]
-        }, {
-            label: translations["IPFS"],
-            submenu: [{
-                label: translations["IMPORT"],
-                click: () => {
-                    this.ipfs.download().then(data => {
-                        if (data) {
-                            this.dialog.importMap(data);
-                        }
-                    });
-                }
-            }, {
-                label: translations["EXPORT"],
-                click: () => {
-                    this.ipfs.share().then(key => {
-                        this._ngZone.run(() => {
-                            this.notifications.send("La chiave della mappa esportata è: " + key);
-                        });
-
-                    });
-                }
             }]
         }];
+
+        if (!environment.production) {
+            template.push({
+                label: "Dev",
+                submenu: [{
+                    label: translations["RELOAD"],
+                    role: "reload"
+                }, {
+                    label: translations["CLEAN_CACHE"],
+                    click: () => {
+                        this.storage.clear();
+                    }
+                }, {
+                    type: "separator"
+                }, {
+                    label: translations["IPFS"],
+                    submenu: [{
+                        label: translations["IMPORT"],
+                        click: () => {
+                            this.ipfs.download().then(data => {
+                                if (data) {
+                                    this.dialog.importMap(data);
+                                }
+                            });
+                        }
+                    }, {
+                        label: translations["EXPORT"],
+                        click: () => {
+                            this.ipfs.share().then(key => {
+                                this._ngZone.run(() => {
+                                    this.notifications.send("La chiave della mappa esportata è: " + key);
+                                });
+
+                            });
+                        }
+                    }]
+                }]
+            });
+        }
+
+        return template;
     }
 
 }
