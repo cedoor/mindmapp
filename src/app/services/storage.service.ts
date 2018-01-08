@@ -39,8 +39,7 @@ export class StorageService {
 
     set(key: string, data: any): Promise<any> {
         return new Promise<any>((resolve) => {
-            data = JSON.stringify(data);
-            this.storage.setItem(key, data);
+            this.storage.setItem(key, JSON.stringify(data));
             resolve(data);
         });
     }
