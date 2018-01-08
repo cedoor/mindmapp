@@ -23,7 +23,7 @@
         "start": "ng build --watch",
         "electron": "cp main.js package.json dist && electron ./dist --dev",
         "build": "ng build -prod && cp main.js package.json dist",
-        "build:linux": "npm run build && node package.js --asar --platform=linux --arch=all",
+        "build:linux": "npm run build && node package.js --asar --platform=linux --arch=x64",
         "build:windows": "npm run build && node package.js --asar --platform=win32 --arch=all",
         "build:mac": "npm run build && node package.js --asar --platform=darwin --arch=x64"
     },
@@ -39,7 +39,6 @@
         "@ngx-translate/core": "9.0.2",
         "@ngx-translate/http-loader": "2.0.1",
         "core-js": "2.4.1",
-        "electron-json-storage": "4.0.2",
         "mmp": "0.1.7",
         "ngx-color-picker": "4.4.0",
         "rxjs": "5.5.2",
