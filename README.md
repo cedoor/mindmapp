@@ -11,9 +11,23 @@ Mindmapp is a desktop application to draw mind maps quickly and efficiently. It 
 
 ## Development
 
-For a faster and more efficient development, some rules are used in the commits and in the branches.
+### Clone and install dependencies
 
-### # commits
+```sh
+> git clone https://github.com/Mindmapp/mindmapp.git
+> cd mindmapp
+> npm i
+```
+
+### Run angular & electron
+
+```sh
+> npm start
+> npm run electron
+```
+### Rules
+
+#### Commits
 
 * Use this commit message format (angular style):  
 
@@ -37,7 +51,7 @@ and `body` must be should include the motivation for the change and contrast thi
 * Don't capitalize first letter.
 * No dot (.) at the end.
 
-### # branches
+#### Branches
 
 * There is a master branch, used only for release.
 * There is a dev branch, used to merge all sub dev branch.
