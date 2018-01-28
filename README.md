@@ -4,6 +4,7 @@
 [![](https://img.shields.io/github/license/mindmapp/mindmapp.svg?style=flat-square)](https://github.com/Mindmapp/mindmapp/blob/dev/LICENSE.md)
 [![](https://img.shields.io/david/mindmapp/mindmapp.svg?style=flat-square)](https://david-dm.org/mindmapp/mindmapp)
 [![](https://img.shields.io/david/dev/mindmapp/mindmapp.svg?style=flat-square)](https://david-dm.org/mindmapp/mindmapp?type=dev)
+[![](https://img.shields.io/github/downloads/mindmapp/mindmapp/total.svg?style=flat-square)](https://github.com/Mindmapp/mindmapp/releases)
 
 Mindmapp is a desktop application to draw mind maps quickly and efficiently. It was born with the intention of making the creation of maps extremely simple, while maintaining the fundamental properties that make the mind maps so efficient.
 
@@ -11,9 +12,23 @@ Mindmapp is a desktop application to draw mind maps quickly and efficiently. It 
 
 ## Development
 
-For a faster and more efficient development, some rules are used in the commits and in the branches.
+### Clone and install dependencies
 
-### # commits
+```sh
+> git clone https://github.com/Mindmapp/mindmapp.git
+> cd mindmapp
+> npm i
+```
+
+### Run angular & electron
+
+```sh
+> npm start
+> npm run electron
+```
+### Rules
+
+#### Commits
 
 * Use this commit message format (angular style):  
 
@@ -37,7 +52,7 @@ and `body` must be should include the motivation for the change and contrast thi
 * Don't capitalize first letter.
 * No dot (.) at the end.
 
-### # branches
+#### Branches
 
 * There is a master branch, used only for release.
 * There is a dev branch, used to merge all sub dev branch.
