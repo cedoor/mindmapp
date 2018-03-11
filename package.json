@@ -39,7 +39,7 @@
         "@ngx-translate/core": "9.1.1",
         "@ngx-translate/http-loader": "2.0.1",
         "core-js": "2.5.3",
-        "mmp": "0.2.5",
+        "mmp": "0.2.6",
         "ngx-color-picker": "4.5.3",
         "rxjs": "5.5.6",
         "zone.js": "0.8.20"

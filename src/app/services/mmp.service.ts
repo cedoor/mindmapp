@@ -210,7 +210,7 @@ export class MmpService {
      * @returns {boolean}
      */
     public isInitialMap(): boolean {
-        return this.currentMap.history().length === 1;
+        return this.currentMap.history().index === 0;
     }
 
     /**
