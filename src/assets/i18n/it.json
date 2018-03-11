@@ -23,7 +23,7 @@
     "ZOOM_IN": "Zoom in",
     "ZOOM_OUT": "Zoom out",
     "RESET_ZOOM": "Ripristina zoom",
-    "SELECT_ROOT": "Seleziona radice",
+    "DESELECT": "Deseleziona nodo",
     "SELECT_BELOW": "Seleziona sotto",
     "SELECT_ABOVE": "Seleziona sopra",
     "SELECT_ON_THE_RIGHT": "Seleziona a destra",

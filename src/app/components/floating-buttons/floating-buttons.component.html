@@ -1,10 +1,10 @@
 <div id="floating-buttons">
     <img class="floating-buttons" id="add-node"
          src="./assets/images/floating/add.svg"
-         (click)="mmp.node.add()">
+         (click)="mmp.addNode()">
     <img class="floating-buttons" id="remove-node"
          src="./assets/images/floating/remove.svg"
-         (click)="mmp.node.remove()">
+         (click)="mmp.removeNode()">
     <img class="floating-buttons" id="zoom-in"
          src="./assets/images/floating/zoomin.svg"
          (click)="mmp.zoomIn()">
@@ -19,5 +19,5 @@
          (click)="mmp.undo()">
     <img class="floating-buttons" id="repeat"
          src="./assets/images/floating/repeat.svg"
-         (click)="mmp.repeat()">
+         (click)="mmp.redo()">
 </div>

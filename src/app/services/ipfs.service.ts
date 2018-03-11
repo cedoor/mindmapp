@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {ModalService} from "./modal/modal.service";
-import * as mmp from "mmp";
+import {MmpService} from "./mmp.service";
 
 @Injectable()
 export class IPFSService {
@@ -8,7 +8,8 @@ export class IPFSService {
     private ipfs: any;
     private online: boolean;
 
-    constructor(private modal: ModalService) {
+    constructor(private modal: ModalService,
+                private mmp: MmpService) {
     }
 
     start() {
@@ -35,7 +36,7 @@ export class IPFSService {
     share(): Promise<any> {
         if (this.online) {
             return new Promise(resolve => {
-                const data = JSON.stringify(mmp.data());
+                const data = JSON.stringify(this.mmp.exportAsJson());
                 this.ipfs.files.add(new this.ipfs.types.Buffer(data), (err, files) => {
                     if (err) {
                         throw err;

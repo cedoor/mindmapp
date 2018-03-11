@@ -7,7 +7,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {SettingsService} from "./services/settings.service";
 import {Settings} from "./models/settings";
 import {IPFSService} from "./services/ipfs.service";
-import * as mmp from "mmp";
+import {MmpService} from "./services/mmp.service";
 
 @Component({
     selector: "app-root",
@@ -15,15 +15,17 @@ import * as mmp from "mmp";
 })
 export class AppComponent implements OnInit {
 
-    values: any = {};
+    node: any;
 
     constructor(public dialog: DialogService,
                 public dragDrop: DragDropService,
                 public translate: TranslateService,
                 public ipfs: IPFSService,
+                public mmp: MmpService,
                 public settings: SettingsService,
                 public menu: MenuService,
                 public utils: UtilsService) {
+        this.node = {};
     }
 
     ngOnInit() {
@@ -33,50 +35,58 @@ export class AppComponent implements OnInit {
             this.setBackgroundServices(settings);
             // Set translations
             this.setTranslations(settings.language).then(() => {
-                this.createMindMap();
+                this.createMap();
+                this.setMapListeners();
+
                 this.menu.createMenu();
                 this.dialog.setExitDialog();
-                this.utils.setInitialMap();
                 this.dragDrop.setDragAndDrop();
             });
         });
     }
 
-    createMindMap() {
-        mmp.on("nodeselect", (key, value) => {
-            if (!value["branch-color"]) value["branch-color"] = "";
-            Object.assign(this.values, value);
-        });
-
-        mmp.init("mmp", {
-            "root-node": {
-                "name": "Nodo radice",
-                "font-size": 26
+    createMap() {
+        this.mmp.create("mmp", {
+            defaultNode: {
+                name: "Nodo",
+                font: {
+                    size: 22
+                }
             },
-            "node": {
-                "name": "Nodo",
-                "font-size": 22
+            rootNode: {
+                name: "Nodo radice",
+                font: {
+                    size: 26
+                }
             }
         });
 
-        mmp.on("nodeupdate", (key, value) => {
-            Object.assign(this.values, value);
+        this.node = this.mmp.selectNode();
+    }
+
+    setMapListeners() {
+        this.mmp.on("nodeSelect").subscribe((node) => {
+            Object.assign(this.node, node);
+        });
+
+        this.mmp.on("nodeUpdate").subscribe((node) => {
+            Object.assign(this.node, node);
             this.utils.checkSavedFile();
         });
 
-        mmp.on("mmundo", () => {
+        this.mmp.on("undo").subscribe(() => {
             this.utils.checkSavedFile();
         });
 
-        mmp.on("mmrepeat", () => {
+        this.mmp.on("redo").subscribe(() => {
             this.utils.checkSavedFile();
         });
 
-        mmp.on("nodecreate", () => {
+        this.mmp.on("nodeCreate").subscribe(() => {
             this.utils.checkSavedFile();
         });
 
-        mmp.on("noderemove", () => {
+        this.mmp.on("nodeRemove").subscribe(() => {
             this.utils.checkSavedFile();
         });
     }

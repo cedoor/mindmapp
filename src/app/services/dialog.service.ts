@@ -4,7 +4,7 @@ import {IPFSService} from "./ipfs.service";
 import {environment} from "../../environments/environment";
 import {remote} from "electron";
 import * as fs from "fs";
-import * as mmp from "mmp";
+import {MmpService} from "./mmp.service";
 
 @Injectable()
 export class DialogService {
@@ -14,6 +14,7 @@ export class DialogService {
 
     constructor(private _ngZone: NgZone,
                 private ipfs: IPFSService,
+                private mmp: MmpService,
                 private utils: UtilsService) {
         this.remote = window.require("electron").remote;
         this.fs = window.require("fs");
@@ -21,13 +22,13 @@ export class DialogService {
 
     saveMap(saveAs: boolean = false): Promise<any> {
         return new Promise(resolve => {
-            const data = JSON.stringify(mmp.data());
+            const data = JSON.stringify(this.mmp.exportAsJson());
 
             if (saveAs || !this.utils.getFilePath()) {
                 this.remote.dialog.showSaveDialog({
                     title: "Salva mappa",
                     filters: [
-                        {name: "Mind map", extensions: ["mmp"]}
+                        {name: "Mind mmp", extensions: ["mmp"]}
                     ]
                 }, path => {
                     if (typeof path === "string") {
@@ -46,7 +47,7 @@ export class DialogService {
     }
 
     exportImage(ext: string = "png") {
-        mmp.image(url => {
+        this.mmp.exportAsImage(ext).then(url => {
             const data = url.replace(/^data:image\/\w+;base64,/, ""),
                 buf = new Buffer(data, "base64");
             this.remote.dialog.showSaveDialog({
@@ -55,7 +56,7 @@ export class DialogService {
                 path = path + "." + ext;
                 if (typeof path === "string") this.fs.writeFileSync(path, buf);
             });
-        }, ext);
+        });
     }
 
     openMap() {
@@ -64,21 +65,21 @@ export class DialogService {
                 title: "Apri mappa",
                 properties: ["openFile"],
                 filters: [
-                    {name: "Mind map", extensions: ["mmp"]}
+                    {name: "Mind mmp", extensions: ["mmp"]}
                 ]
             }, files => {
                 if (files) {
-                    const data = this.fs.readFileSync(files[0], "utf8");
+                    const data = this.fs.readFileSync(files[0]).toString();
                     this.utils.setFilePath(files[0]);
                     this.utils.setSavedStatus();
                     this._ngZone.run(() => {
-                        mmp.data(JSON.parse(data));
+                        this.mmp.new(JSON.parse(data));
                     });
                 }
             });
         };
 
-        if (!this.utils.isInitialMap() && !this.utils.isSaved()) {
+        if (!this.mmp.isInitialMap() && !this.utils.isSaved()) {
             this.showMessage(
                 "Salva mappa",
                 "Vuoi salvare la mappa corrente prima di aprirne un'altra?")
@@ -94,11 +95,11 @@ export class DialogService {
             this.utils.setFilePath("");
             this.utils.setSavedStatus();
             this._ngZone.run(() => {
-                mmp.new();
+                this.mmp.new();
             });
         };
 
-        if (!this.utils.isInitialMap() && !this.utils.isSaved()) {
+        if (!this.mmp.isInitialMap() && !this.utils.isSaved()) {
             this.showMessage(
                 "Salva mappa",
                 "Vuoi salvare la mappa corrente prima di crearne un'altra?")
@@ -110,7 +111,7 @@ export class DialogService {
     }
 
     addNodeImage() {
-        if (!mmp.node.select().value["image-src"]) {
+        if (!this.mmp.selectNode().image.src) {
             this.remote.dialog.showOpenDialog({
                 title: "Inserisci un'immagine",
                 properties: ["openFile"],
@@ -125,25 +126,25 @@ export class DialogService {
                         base64 = "data:image/" + ext + ";base64," + buffer;
 
                     this._ngZone.run(() => {
-                        mmp.node.update("image-src", base64);
+                        this.mmp.updateNode("imageSrc", base64);
                     });
                 }
             });
         } else {
-            mmp.node.update("image-src", "");
+            this.mmp.updateNode("imageSrc", "");
         }
     }
 
     importMap(data: any) {
         let importMap = () => {
             this._ngZone.run(() => {
-                mmp.data(JSON.parse(data));
+                this.mmp.new(JSON.parse(data));
             });
             this.utils.setFilePath("");
             this.utils.setSavedStatus(false);
         };
 
-        if (!this.utils.isInitialMap() && !this.utils.isSaved()) {
+        if (!this.mmp.isInitialMap() && !this.utils.isSaved()) {
             this.showMessage(
                 "Salva mappa",
                 "Vuoi salvare la mappa corrente prima di importarne un'altra?")
@@ -170,7 +171,7 @@ export class DialogService {
             let win = this.remote.getCurrentWindow();
 
             window.onbeforeunload = e => {
-                if (!this.utils.isInitialMap() && !this.utils.isSaved()) {
+                if (!this.mmp.isInitialMap() && !this.utils.isSaved()) {
                     this.remote.dialog.showMessageBox({
                         type: "question",
                         title: "Salva mappa",

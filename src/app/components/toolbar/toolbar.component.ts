@@ -1,6 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {DialogService} from "../../services/dialog.service";
-import * as mmp from "mmp";
+import {MmpService} from "../../services/mmp.service";
 
 @Component({
     selector: "app-toolbar",
@@ -9,12 +9,30 @@ import * as mmp from "mmp";
 })
 export class ToolbarComponent {
 
-    @Input() values: any;
+    @Input() node: any;
 
-    mmp: any;
+    constructor(public dialog: DialogService,
+                public mmp: MmpService) {
+    }
 
-    constructor(public dialog: DialogService) {
-        this.mmp = mmp;
+    toogleNodeFontStyle() {
+        let currentStyle = this.mmp.selectNode().font.style;
+
+        if (currentStyle === "italic") {
+            this.mmp.updateNode("fontStyle", "normal");
+        } else {
+            this.mmp.updateNode("fontStyle", "italic");
+        }
+    }
+
+    toogleNodeFontWeight() {
+        let currentWeight = this.mmp.selectNode().font.weight;
+
+        if (currentWeight === "bold") {
+            this.mmp.updateNode("fontWeight", "normal");
+        } else {
+            this.mmp.updateNode("fontWeight", "bold");
+        }
     }
 
 }

@@ -1,12 +1,10 @@
 import {Injectable} from "@angular/core";
-import * as mmp from "mmp";
+import {MmpService} from "./mmp.service";
 
 @Injectable()
 export class UtilsService {
 
     fs;
-
-    initialMap: string;
 
     fileWatcher: any;
     fileSync: boolean = false;
@@ -15,28 +13,18 @@ export class UtilsService {
     filePath: string = "";
     mapSaved: boolean = false;
 
-    constructor() {
+    constructor(private mmp: MmpService) {
         this.fs = window.require("fs");
-    }
-
-    setInitialMap() {
-        let data = this.getFilteredMapData();
-        this.initialMap = JSON.stringify(data);
-    }
-
-    isInitialMap(): boolean {
-        let data = this.getFilteredMapData();
-        return this.initialMap === JSON.stringify(data);
     }
 
     watchFile() {
         this.fileWatcher = this.fs.watch(this.filePath, eventType => {
             if (eventType === "change" && this.fileSync) {
                 let fileData = this.fs.readFileSync(this.filePath, "utf8"),
-                    mapData = JSON.stringify(mmp.data());
+                    mapData = JSON.stringify(this.mmp.exportAsJson());
 
                 if (this.isJsonString(fileData) && fileData !== mapData) {
-                    mmp.data(JSON.parse(fileData));
+                    this.mmp.new(JSON.parse(fileData));
                 }
             } else if (eventType === "rename") {
                 this.setFilePath("");
@@ -57,12 +45,12 @@ export class UtilsService {
 
     checkSavedFile() {
         if (this.filePath) {
-            let fileData = this.fs.readFileSync(this.filePath, "utf8"),
-                mapData = JSON.stringify(mmp.data());
+            let fileData = this.fs.readFileSync(this.filePath),
+                mapData = JSON.stringify(this.mmp.exportAsJson());
 
             if (fileData !== mapData) this.setSavedStatus(false);
             else this.setSavedStatus();
-        } else if (!this.isInitialMap()) {
+        } else if (!this.mmp.isInitialMap()) {
             this.setSavedStatus(false);
         } else {
             this.setSavedStatus();
@@ -105,15 +93,6 @@ export class UtilsService {
             return false;
         }
         return true;
-    }
-
-    // To get mmp snapshot without coordinates and k constant
-    private getFilteredMapData() {
-        let data = mmp.data();
-        delete data[0].value.x;
-        delete data[0].value.y;
-        delete data[0].value.k;
-        return data;
     }
 
 }

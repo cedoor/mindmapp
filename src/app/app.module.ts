@@ -23,6 +23,7 @@ import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MmpService} from "./services/mmp.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/");
@@ -59,6 +60,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         DragDropService,
         MenuService,
         UtilsService,
+        MmpService,
         IPFSService,
         SettingsService,
         StorageService,

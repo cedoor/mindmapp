@@ -12,19 +12,19 @@
     </div>
     <div>
         <img class="toolbar-buttons" id="lock-node"
-             [src]="'./assets/images/toolbar/' + (values['fixed'] ? 'lock.svg' : 'unlock.svg')"
-             (click)="mmp.node.update('fixed')">
+             [src]="'./assets/images/toolbar/' + (node?.locked ? 'lock.svg' : 'unlock.svg')"
+             (click)="mmp.updateNode('locked')">
         <img class="toolbar-buttons" id="image"
              src="./assets/images/toolbar/image.svg"
-             [ngClass]="{'fade': values['image-src']}"
+             [ngClass]="{'fade': node?.image?.src}"
              (click)="dialog.addNodeImage()">
     </div>
     <div>
         <img class="toolbar-buttons" id="bold"
              src="./assets/images/toolbar/bold.svg"
-             (click)="mmp.node.update('bold')">
+             (click)="toogleNodeFontWeight()">
         <img class="toolbar-buttons" id="italic"
              src="./assets/images/toolbar/italic.svg"
-             (click)="mmp.node.update('italic')">
+             (click)="toogleNodeFontStyle()">
     </div>
 </div>

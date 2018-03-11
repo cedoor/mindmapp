@@ -1,13 +1,15 @@
 <div id="sliders-panel">
-    <input (change)="mmp.node.update('font-size', $event.srcElement.value)"
-           (input)="mmp.node.update('font-size', $event.srcElement.value, true)"
+    <input *ngIf="node.font"
+           (change)="updateNodeFontSize($event)"
+           (input)="updateNodeFontSize($event, true)"
            id="font-size" class="slider"
            min="15" max="70" type="range"
-           [value]="values['font-size']">
-    <input (change)="mmp.node.update('image-size', $event.srcElement.value)"
-           (input)="mmp.node.update('image-size', $event.srcElement.value, true)"
+           [value]="node.font.size">
+    <input *ngIf="node.image"
+           (change)="updateNodeImageSize($event)"
+           (input)="updateNodeImageSize($event, true)"
            id="image-size" class="slider"
-           [ngClass]="{'disable': !values['image-src']}"
+           [ngClass]="{'disable': !node.image.src}"
            min="50" max="150" type="range"
-           [value]="values['image-size']">
+           [value]="node.image.size">
 </div>

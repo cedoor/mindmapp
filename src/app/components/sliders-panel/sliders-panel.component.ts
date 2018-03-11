@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import * as mmp from "mmp";
+import {MmpService} from "../../services/mmp.service";
 
 @Component({
     selector: "app-sliders-panel",
@@ -8,12 +8,21 @@ import * as mmp from "mmp";
 })
 export class SlidersPanelComponent {
 
-    @Input() values: any;
+    @Input() node: any;
 
-    mmp: any;
+    constructor(public mmp: MmpService) {
+    }
 
-    constructor() {
-        this.mmp = mmp;
+    updateNodeFontSize(event: any, graphic?: boolean) {
+        let value = parseInt(event.srcElement.value);
+
+        this.mmp.updateNode("fontSize", value, graphic);
+    }
+
+    updateNodeImageSize(event: any, graphic?: boolean) {
+        let value = parseInt(event.srcElement.value);
+
+        this.mmp.updateNode("imageSize", value, graphic);
     }
 
 }

@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import * as mmp from "mmp";
+import {MmpService} from "../../services/mmp.service";
 
 @Component({
     selector: "app-floating-buttons",
@@ -10,8 +10,7 @@ export class FloatingButtonsComponent {
 
     mmp: any;
 
-    constructor() {
-        this.mmp = mmp;
+    constructor(public mmp: MmpService) {
     }
 
 }

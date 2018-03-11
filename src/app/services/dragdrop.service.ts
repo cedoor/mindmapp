@@ -1,8 +1,8 @@
 import {Injectable, NgZone} from "@angular/core";
 import {DialogService} from "./dialog.service";
 import {UtilsService} from "./utils.service";
+import {MmpService} from "./mmp.service";
 import * as fs from "fs";
-import * as mmp from "mmp";
 
 @Injectable()
 export class DragDropService {
@@ -10,6 +10,7 @@ export class DragDropService {
     fs: typeof fs;
 
     constructor(private _ngZone: NgZone,
+                private mmp: MmpService,
                 private utils: UtilsService,
                 private dialog: DialogService) {
         this.fs = window.require("fs");
@@ -34,21 +35,21 @@ export class DragDropService {
                         base64 = "data:image/" + ext + ";base64," + buffer;
 
                     this._ngZone.run(() => {
-                        mmp.node.update("image-src", base64);
+                        this.mmp.updateNode("imageSrc", base64);
                     });
                 }
 
                 if (ext === "mmp") {
                     let openMap = () => {
-                        const data = this.fs.readFileSync(url, "utf8");
+                        const data = this.fs.readFileSync(url).toString();
                         this.utils.setFilePath(url);
                         this.utils.setSavedStatus();
                         this._ngZone.run(() => {
-                            mmp.data(JSON.parse(data));
+                            this.mmp.new(JSON.parse(data));
                         });
                     };
 
-                    if (!this.utils.isInitialMap() && !this.utils.isSaved()) {
+                    if (!this.mmp.isInitialMap() && !this.utils.isSaved()) {
                         this.dialog.showMessage(
                             "Salva mappa",
                             "Vuoi salvare la mappa corrente prima di aprirne un'altra?")

@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, ViewChild} from "@angular/core";
-import * as mmp from "mmp";
+import {MmpService} from "../../services/mmp.service";
 
 @Component({
     selector: "app-colors-panel",
@@ -8,22 +8,22 @@ import * as mmp from "mmp";
 })
 export class ColorsPanelComponent {
 
-    @Input() values: any;
+    @Input() node: any;
 
     @ViewChild("background") background: ElementRef;
 
-    constructor() {
+    constructor(public mmp: MmpService) {
         this.fixColorPickerFlicker();
     }
 
     colorPickerChange(property, value) {
-        mmp.node.update(property, value, true);
+        this.mmp.updateNode(property, value, true);
     }
 
     colorPickerToggleChange(opening, property, value) {
         this.background.nativeElement.style.visibility = opening ? "visible" : "hidden";
         if (!opening) {
-            mmp.node.update(property, value);
+            this.mmp.updateNode(property, value);
         }
     }
 

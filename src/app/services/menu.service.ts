@@ -5,9 +5,9 @@ import {SettingsService} from "./settings.service";
 import {NotificationsService} from "./notifications.service";
 import {TranslateService} from "@ngx-translate/core";
 import {StorageService} from "./storage.service";
-import {remote} from "electron";
-import * as mmp from "mmp";
+import {MmpService} from "./mmp.service";
 import {environment} from "../../environments/environment";
+import {remote} from "electron";
 
 @Injectable()
 export class MenuService {
@@ -18,6 +18,7 @@ export class MenuService {
                 private ipfs: IPFSService,
                 private settings: SettingsService,
                 private storage: StorageService,
+                private mmp: MmpService,
                 private notifications: NotificationsService,
                 private translate: TranslateService,
                 private dialog: DialogService) {
@@ -87,7 +88,7 @@ export class MenuService {
                 accelerator: "Ctrl+z",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.undo();
+                        this.mmp.undo();
                     });
                 }
             }, {
@@ -95,7 +96,7 @@ export class MenuService {
                 accelerator: "Ctrl+Shift+z",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.repeat();
+                        this.mmp.redo();
                     });
                 }
             }, {
@@ -105,7 +106,7 @@ export class MenuService {
                 accelerator: "Alt+=",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.node.add();
+                        this.mmp.addNode();
                     });
                 }
             }, {
@@ -113,7 +114,7 @@ export class MenuService {
                 accelerator: "Alt+-",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.node.remove();
+                        this.mmp.removeNode();
                     });
                 }
             }, {
@@ -123,7 +124,7 @@ export class MenuService {
                 accelerator: "Alt+Shift+left",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.node.moveTo("left");
+                        this.mmp.moveNodeTo("left");
                     });
                 }
             }, {
@@ -131,7 +132,7 @@ export class MenuService {
                 accelerator: "Alt+Shift+right",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.node.moveTo("right");
+                        this.mmp.moveNodeTo("right");
                     });
                 }
             }, {
@@ -139,7 +140,7 @@ export class MenuService {
                 accelerator: "Alt+Shift+up",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.node.moveTo("up");
+                        this.mmp.moveNodeTo("up");
                     });
                 }
             }, {
@@ -147,7 +148,7 @@ export class MenuService {
                 accelerator: "Alt+Shift+down",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.node.moveTo("down");
+                        this.mmp.moveNodeTo("down");
                     });
                 }
             }, {
@@ -168,7 +169,7 @@ export class MenuService {
                 accelerator: "Alt+left",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.node.selectTo("left");
+                        this.mmp.selectNode("left");
                     });
                 }
             }, {
@@ -176,7 +177,7 @@ export class MenuService {
                 accelerator: "Alt+right",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.node.selectTo("right");
+                        this.mmp.selectNode("right");
                     });
                 }
             }, {
@@ -184,7 +185,7 @@ export class MenuService {
                 accelerator: "Alt+up",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.node.selectTo("up");
+                        this.mmp.selectNode("up");
                     });
                 }
             }, {
@@ -192,17 +193,17 @@ export class MenuService {
                 accelerator: "Alt+down",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.node.selectTo("down");
+                        this.mmp.selectNode("down");
                     });
                 }
             }, {
                 type: "separator"
             }, {
-                label: translations["SELECT_ROOT"],
-                accelerator: "Alt+r",
+                label: translations["DESELECT"],
+                accelerator: "Esc",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.node.select("node0");
+                        this.mmp.deselectNode();
                     });
                 }
             }]
@@ -213,7 +214,7 @@ export class MenuService {
                 accelerator: "Alt+c",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.center();
+                        this.mmp.center();
                     });
                 }
             }, {
@@ -221,7 +222,7 @@ export class MenuService {
                 accelerator: "Ctrl+=",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.zoomIn();
+                        this.mmp.zoomIn();
                     });
                 }
             }, {
@@ -229,7 +230,7 @@ export class MenuService {
                 accelerator: "Ctrl+-",
                 click: () => {
                     this._ngZone.run(() => {
-                        mmp.zoomOut();
+                        this.mmp.zoomOut();
                     });
                 }
             }, {

@@ -1,20 +1,23 @@
-<div id="colors-panel">
+<div *ngIf="node.colors" id="colors-panel">
     <div #background id="background"></div>
     <div id="panel">
         <input id="background-color" class="colors"
-               (cpToggleChange)="colorPickerToggleChange($event, 'background-color', values['background-color'])"
-               (colorPickerChange)="colorPickerChange('background-color', values['background-color'])"
-               [(colorPicker)]="values['background-color']" [style.background]="values['background-color']"
+               (cpToggleChange)="colorPickerToggleChange($event, 'backgroundColor', node.colors.background)"
+               (colorPickerChange)="colorPickerChange('backgroundColor', node.colors.background)"
+               [(colorPicker)]="node.colors.background"
+               [style.background]="node.colors.background"
                cpPosition="left"/>
         <input id="text-color" class="colors"
-               (cpToggleChange)="colorPickerToggleChange($event, 'text-color', values['text-color'])"
-               (colorPickerChange)="colorPickerChange('text-color', values['text-color'])"
-               [(colorPicker)]="values['text-color']" [style.background]="values['text-color']"
+               (cpToggleChange)="colorPickerToggleChange($event, 'nameColor', node.colors.name)"
+               (colorPickerChange)="colorPickerChange('nameColor', node.colors.name)"
+               [(colorPicker)]="node.colors.name"
+               [style.background]="node.colors.name"
                cpPosition="left"/>
-        <input id="branch-color" class="colors" [ngClass]="{'disable': !values['branch-color']}"
-               (cpToggleChange)="colorPickerToggleChange($event, 'branch-color', values['branch-color'])"
-               (colorPickerChange)="colorPickerChange('branch-color', values['branch-color'])"
-               [(colorPicker)]="values['branch-color']" [style.background]="values['branch-color']"
+        <input id="branch-color" class="colors" [ngClass]="{'disable': !node.colors.branch}"
+               (cpToggleChange)="colorPickerToggleChange($event, 'branchColor', node.colors.branch)"
+               (colorPickerChange)="colorPickerChange('branchColor', node.colors.branch)"
+               [(colorPicker)]="node.colors.branch"
+               [style.background]="node.colors.branch"
                cpPosition="left"/>
     </div>
 </div>
