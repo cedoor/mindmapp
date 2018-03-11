@@ -8,8 +8,6 @@ import {MmpService} from "../../services/mmp.service";
 })
 export class FloatingButtonsComponent {
 
-    mmp: any;
-
     constructor(public mmp: MmpService) {
     }
 

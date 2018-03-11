@@ -24,6 +24,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MmpService} from "./services/mmp.service";
+import { MapComponent } from './components/map/map.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/");
@@ -39,7 +40,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         SettingsComponent,
         NotificationsComponent,
         SliderComponent,
-        ModalService
+        ModalService,
+        MapComponent
     ],
     imports: [
         BrowserModule,

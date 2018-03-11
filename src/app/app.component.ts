@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
     }
 
     createMap() {
-        this.mmp.create("mmp", {
+        this.mmp.create("map", {
             defaultNode: {
                 name: "Nodo",
                 font: {
