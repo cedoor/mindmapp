@@ -158,7 +158,11 @@ export class MenuService {
                 accelerator: "Ctrl+Alt+S",
                 click: () => {
                     this._ngZone.run(() => {
-                        this.settings.open();
+                        if (this.settings.getStatus()) {
+                            this.settings.close();
+                        } else {
+                            this.settings.open();
+                        }
                     });
                 }
             }]
@@ -203,7 +207,11 @@ export class MenuService {
                 accelerator: "Esc",
                 click: () => {
                     this._ngZone.run(() => {
-                        this.mmp.deselectNode();
+                        if (this.settings.getStatus()) {
+                            this.settings.close();
+                        } else {
+                            this.mmp.deselectNode();
+                        }
                     });
                 }
             }]

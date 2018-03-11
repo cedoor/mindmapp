@@ -31,6 +31,8 @@ export class SettingsService {
     private onUpdateSource = new Subject<Settings>();
     onUpdate = this.onUpdateSource.asObservable();
 
+    private actived: boolean = false;
+
     constructor(private storage: StorageService,
                 private translate: TranslateService,
                 private ipfs: IPFSService,
@@ -55,11 +57,13 @@ export class SettingsService {
     }
 
     open() {
-        this.onActiveSource.next(true);
+        this.actived = true;
+        this.onActiveSource.next(this.actived);
     }
 
     close() {
-        this.onActiveSource.next(false);
+        this.actived = false;
+        this.onActiveSource.next(this.actived);
     }
 
     setIpfs(flag: boolean) {
@@ -84,6 +88,10 @@ export class SettingsService {
         this.update(this.currentSettings).then(() => {
             this.translate.use(lang);
         });
+    }
+
+    getStatus(): boolean {
+        return this.actived;
     }
 
     private update(settings: Settings): Promise<Settings> {

@@ -28,7 +28,7 @@ export class DialogService {
                 this.remote.dialog.showSaveDialog({
                     title: "Salva mappa",
                     filters: [
-                        {name: "Mind mmp", extensions: ["mmp"]}
+                        {name: "Mind map", extensions: ["mmp"]}
                     ]
                 }, path => {
                     if (typeof path === "string") {
@@ -65,7 +65,7 @@ export class DialogService {
                 title: "Apri mappa",
                 properties: ["openFile"],
                 filters: [
-                    {name: "Mind mmp", extensions: ["mmp"]}
+                    {name: "Mind map", extensions: ["mmp"]}
                 ]
             }, files => {
                 if (files) {
