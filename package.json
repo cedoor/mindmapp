@@ -42,6 +42,7 @@
         "@ngx-translate/core": "9.1.1",
         "@ngx-translate/http-loader": "2.0.1",
         "core-js": "2.5.3",
+        "hammerjs": "2.0.8",
         "material-design-icons": "3.0.1",
         "mmp": "0.2.6",
         "ngx-color-picker": "4.5.3",
