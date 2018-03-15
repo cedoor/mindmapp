@@ -25,6 +25,8 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MmpService} from "./services/mmp.service";
 import { MapComponent } from './components/map/map.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatButtonModule, MatIconModule} from "@angular/material";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/");
@@ -45,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         FlexLayoutModule,
         HttpClientModule,
@@ -55,6 +58,8 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
+        MatButtonModule,
+        MatIconModule,
         ColorPickerModule
     ],
     providers: [
