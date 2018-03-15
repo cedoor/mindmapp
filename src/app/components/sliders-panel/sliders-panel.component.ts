@@ -14,7 +14,7 @@ export class SlidersPanelComponent {
     }
 
     updateNodeFontSize(event: any, graphic?: boolean) {
-        let value = parseInt(event.srcElement.value);
+        let value = parseInt(event.source.value);
 
         this.mmp.updateNode("fontSize", value, graphic);
     }
