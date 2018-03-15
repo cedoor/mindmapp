@@ -1,23 +1,26 @@
 <div id="floating-buttons">
-    <img class="floating-buttons" id="add-node"
-         src="./assets/images/floating/add.svg"
-         (click)="mmp.addNode()">
-    <img class="floating-buttons" id="remove-node"
-         src="./assets/images/floating/remove.svg"
-         (click)="mmp.removeNode()">
-    <img class="floating-buttons" id="zoom-in"
-         src="./assets/images/floating/zoomin.svg"
-         (click)="mmp.zoomIn()">
-    <img class="floating-buttons" id="zoom-out"
-         src="./assets/images/floating/zoomout.svg"
-         (click)="mmp.zoomOut()">
-    <img class="floating-buttons" id="center"
-         src="./assets/images/floating/center.svg"
-         (click)="mmp.center()">
-    <img class="floating-buttons" id="undo"
-         src="./assets/images/floating/undo.svg"
-         (click)="mmp.undo()">
-    <img class="floating-buttons" id="repeat"
-         src="./assets/images/floating/repeat.svg"
-         (click)="mmp.redo()">
+    <button (click)="mmp.addNode()" id="add-node" mat-mini-fab>
+        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+    <button (click)="mmp.removeNode()" id="remove-node" mat-mini-fab>
+        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">remove</mat-icon>
+    </button>
+
+    <button (click)="mmp.zoomIn()" id="zoom-in" mat-mini-fab>
+        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">zoom_in</mat-icon>
+    </button>
+    <button (click)="mmp.zoomOut()" id="zoom-out" mat-mini-fab>
+        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">zoom_out</mat-icon>
+    </button>
+
+    <button (click)="mmp.center()" id="center" mat-mini-fab>
+        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">center_focus_weak</mat-icon>
+    </button>
+
+    <button (click)="mmp.undo()" id="undo" mat-mini-fab>
+        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">undo</mat-icon>
+    </button>
+    <button (click)="mmp.redo()" id="redo" mat-mini-fab>
+        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">redo</mat-icon>
+    </button>
 </div>
