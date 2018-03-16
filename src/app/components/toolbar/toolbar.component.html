@@ -2,52 +2,52 @@
     <mat-toolbar>
 
         <button (click)="dialog.newMap()" id="new-map"
-                color="primary" mat-icon-button>
-            <mat-icon aria-label="Example icon-button with a heart icon">
-                note_add
-            </mat-icon>
+                color="primary" [matTooltip]="'TOOLTIPS.NEW_MAP' | translate"
+                [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="right"
+                mat-icon-button>
+            <mat-icon>note_add</mat-icon>
         </button>
         <button (click)="dialog.openMap()" id="open-map"
-                color="primary" mat-icon-button>
-            <mat-icon aria-label="Example icon-button with a heart icon">
-                folder_open
-            </mat-icon>
+                color="primary" [matTooltip]="'TOOLTIPS.OPEN_MAP' | translate"
+                [matTooltipShowDelay]="tooltip.delay"
+                mat-icon-button>
+            <mat-icon>folder_open</mat-icon>
         </button>
         <button (click)="dialog.saveMap()" id="save-map"
-                color="primary" mat-icon-button>
-            <mat-icon aria-label="Example icon-button with a heart icon">
-                save
-            </mat-icon>
+                color="primary" [matTooltip]="'TOOLTIPS.SAVE_MAP' | translate"
+                [matTooltipShowDelay]="tooltip.delay"
+                mat-icon-button>
+            <mat-icon>save</mat-icon>
         </button>
 
         <div class="vertical-line"></div>
 
         <button (click)="mmp.updateNode('locked')" id="lock-node"
-                color="primary" mat-icon-button>
-            <mat-icon aria-label="Example icon-button with a heart icon">
-                {{ node?.locked ? "lock_outline" : "lock_open" }}
-            </mat-icon>
+                color="primary" [matTooltip]="'TOOLTIPS.LOCK_NODE' | translate"
+                [matTooltipShowDelay]="tooltip.delay"
+                mat-icon-button>
+            <mat-icon>{{ node?.locked ? "lock_outline" : "lock_open" }}</mat-icon>
         </button>
         <button (click)="dialog.addNodeImage()" id="image"
-                color="primary" mat-icon-button>
-            <mat-icon aria-label="Example icon-button with a heart icon">
-                {{ node?.image?.src ? "broken_image" : "image" }}
-            </mat-icon>
+                color="primary" [matTooltip]="'TOOLTIPS.NODE_IMAGE' | translate"
+                [matTooltipShowDelay]="tooltip.delay"
+                mat-icon-button>
+            <mat-icon>{{ node?.image?.src ? "broken_image" : "image" }}</mat-icon>
         </button>
 
         <div class="vertical-line"></div>
 
         <button (click)="toogleNodeFontWeight()" id="bold"
-                color="primary" mat-icon-button>
-            <mat-icon aria-label="Example icon-button with a heart icon">
-                format_bold
-            </mat-icon>
+                color="primary" [matTooltip]="'TOOLTIPS.BOLD_TEXT' | translate"
+                [matTooltipShowDelay]="tooltip.delay"
+                mat-icon-button>
+            <mat-icon>format_bold</mat-icon>
         </button>
         <button (click)="toogleNodeFontStyle()" id="italic"
-                color="primary" mat-icon-button>
-            <mat-icon aria-label="Example icon-button with a heart icon">
-                format_italic
-            </mat-icon>
+                color="primary" [matTooltip]="'TOOLTIPS.ITALIC_TEXT' | translate"
+                [matTooltipShowDelay]="tooltip.delay"
+                mat-icon-button>
+            <mat-icon>format_italic</mat-icon>
         </button>
 
     </mat-toolbar>

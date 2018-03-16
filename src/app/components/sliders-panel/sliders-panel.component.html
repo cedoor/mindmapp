@@ -4,6 +4,8 @@
                 [value]="node.font.size"
                 (change)="updateNodeFontSize($event)"
                 (input)="updateNodeFontSize($event, true)"
+                [matTooltip]="'TOOLTIPS.TEXT_SIZE' | translate"
+                [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="right"
                 color="primary"
                 vertical>
     </mat-slider>
@@ -13,6 +15,8 @@
                 (change)="updateNodeImageSize($event)"
                 (input)="updateNodeImageSize($event, true)"
                 [disabled]="!node.image.src"
+                [matTooltip]="'TOOLTIPS.IMAGE_SIZE' | translate"
+                [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="right"
                 color="primary"
                 vertical>
     </mat-slider>

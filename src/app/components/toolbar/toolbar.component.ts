@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {DialogService} from "../../services/dialog.service";
 import {MmpService} from "../../services/mmp.service";
 
@@ -7,12 +7,20 @@ import {MmpService} from "../../services/mmp.service";
     templateUrl: "./toolbar.component.html",
     styleUrls: ["./toolbar.component.scss"]
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements OnInit {
 
     @Input() node: any;
 
+    tooltip: any;
+
     constructor(public dialog: DialogService,
                 public mmp: MmpService) {
+    }
+
+    ngOnInit() {
+        this.tooltip = {
+            delay: 1000
+        }
     }
 
     toogleNodeFontStyle() {

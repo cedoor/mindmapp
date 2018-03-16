@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {MmpService} from "../../services/mmp.service";
 
 @Component({
@@ -6,11 +6,19 @@ import {MmpService} from "../../services/mmp.service";
     templateUrl: "./sliders-panel.component.html",
     styleUrls: ["./sliders-panel.component.scss"]
 })
-export class SlidersPanelComponent {
+export class SlidersPanelComponent implements OnInit {
 
     @Input() node: any;
 
+    tooltip: any;
+
     constructor(public mmp: MmpService) {
+    }
+
+    ngOnInit() {
+        this.tooltip = {
+            delay: 1000
+        };
     }
 
     updateNodeFontSize(event: any, graphic?: boolean) {
