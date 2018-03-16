@@ -22,7 +22,6 @@
                 <div class="options" *ngIf="index === 1">
                     <div>
                         <app-slider (slide)="settings.setIpfs($event)"
-                                    disable="false"
                                     [value]="values?.sharing?.ipfs"
                                     [name]="'IPFS' | translate"></app-slider>
                     </div>

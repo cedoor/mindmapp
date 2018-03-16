@@ -270,30 +270,6 @@ export class MenuService {
                     click: () => {
                         this.storage.clear();
                     }
-                }, {
-                    type: "separator"
-                }, {
-                    label: translations["IPFS"],
-                    submenu: [{
-                        label: translations["IMPORT"],
-                        click: () => {
-                            this.ipfs.download().then(data => {
-                                if (data) {
-                                    this.dialog.importMap(data);
-                                }
-                            });
-                        }
-                    }, {
-                        label: translations["EXPORT"],
-                        click: () => {
-                            this.ipfs.share().then(key => {
-                                this._ngZone.run(() => {
-                                    this.notifications.send("La chiave della mappa esportata è: " + key);
-                                });
-
-                            });
-                        }
-                    }]
                 }]
             });
         }
