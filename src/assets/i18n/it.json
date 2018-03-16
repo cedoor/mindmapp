@@ -43,5 +43,16 @@
     "LANGUAGES": {
         "EN": "Inglese",
         "IT": "Italiano"
+    },
+    "TOOLTIPS": {
+        "NEW_MAP": "Pulisce la mappa",
+        "OPEN_MAP": "Carica una mappa esistente",
+        "SAVE_MAP": "Salva la mappa",
+        "LOCK_NODE": "Blocca o sblocca il nodo",
+        "NODE_IMAGE": "Aggiunge un'immagine al nodo",
+        "BOLD_TEXT": "Cambia la larghezza del testo",
+        "ITALIC_TEXT": "Cambia lo stile del testo",
+        "TEXT_SIZE": "Cambia la dimensione del testo e del nodo",
+        "IMAGE_SIZE": "Cambia la dimensione dell'immage del nodo"
     }
 }

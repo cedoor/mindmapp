@@ -43,5 +43,16 @@
     "LANGUAGES": {
         "EN": "English",
         "IT": "Italian"
+    },
+    "TOOLTIPS": {
+        "NEW_MAP": "Clear the map daw",
+        "OPEN_MAP": "Load an existing map",
+        "SAVE_MAP": "Save the map",
+        "LOCK_NODE": "Lock or unlock the node",
+        "NODE_IMAGE": "Add an image to the node",
+        "BOLD_TEXT": "Change the weight of the text",
+        "ITALIC_TEXT": "Change the style of the text",
+        "TEXT_SIZE": "Change the size of the text and the node",
+        "IMAGE_SIZE": "Change the size of the node image"
     }
 }
