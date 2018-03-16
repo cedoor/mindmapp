@@ -26,7 +26,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MmpService} from "./services/mmp.service";
 import { MapComponent } from './components/map/map.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatButtonModule, MatIconModule, MatSliderModule} from "@angular/material";
+import {MatButtonModule, MatIconModule, MatSliderModule, MatToolbarModule} from "@angular/material";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/");
@@ -60,6 +60,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         }),
         MatButtonModule,
         MatIconModule,
+        MatToolbarModule,
         MatSliderModule,
         ColorPickerModule
     ],

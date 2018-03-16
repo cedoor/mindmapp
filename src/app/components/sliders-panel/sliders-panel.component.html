@@ -12,7 +12,7 @@
                 [value]="node.image.size"
                 (change)="updateNodeImageSize($event)"
                 (input)="updateNodeImageSize($event, true)"
-                [disabled]="node.image.src"
+                [disabled]="!node.image.src"
                 color="primary"
                 vertical>
     </mat-slider>

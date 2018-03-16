@@ -8,30 +8,15 @@
     border-bottom: 1px solid lightgray;
     border-top: 1px solid lightgray;
 
-    >div {
-        float: left;
-        padding: 0 5px;
-        border-right: 1px solid lightgray;
-    }
+    mat-toolbar.mat-toolbar {
+        height: 45px;
 
-    .toolbar-buttons {
-        user-select: none;
-        opacity: .75;
-        float: left;
-        border-radius: 1px;
-        padding: 1px 2px;
-        margin: 4px 8px;
-        cursor: pointer;
-    }
-
-    .toolbar-buttons.disable {
-        opacity: .4;
-        cursor: default;
-        pointer-events: none;
-    }
-
-    .toolbar-buttons.fade {
-        opacity: .5;
+        div.vertical-line {
+            width: 1px;
+            height: 100%;
+            margin: 0 8px;
+            background-color: #c2c2c2;
+        }
     }
 
 }

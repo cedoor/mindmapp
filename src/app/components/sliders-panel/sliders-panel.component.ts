@@ -20,7 +20,7 @@ export class SlidersPanelComponent {
     }
 
     updateNodeImageSize(event: any, graphic?: boolean) {
-        let value = parseInt(event.srcElement.value);
+        let value = parseInt(event.source.value);
 
         this.mmp.updateNode("imageSize", value, graphic);
     }

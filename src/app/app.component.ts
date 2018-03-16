@@ -69,17 +69,27 @@ export class AppComponent implements OnInit {
             Object.assign(this.node, node);
         });
 
+        this.mmp.on("nodeDeselect").subscribe(() => {
+            Object.assign(this.node, this.mmp.selectNode());
+        });
+
         this.mmp.on("nodeUpdate").subscribe((node) => {
             Object.assign(this.node, node);
             this.utils.checkSavedFile();
         });
 
         this.mmp.on("undo").subscribe(() => {
+            Object.assign(this.node, this.mmp.selectNode());
             this.utils.checkSavedFile();
         });
 
         this.mmp.on("redo").subscribe(() => {
+            Object.assign(this.node, this.mmp.selectNode());
             this.utils.checkSavedFile();
+        });
+
+        this.mmp.on("create").subscribe(() => {
+            Object.assign(this.node, this.mmp.selectNode());
         });
 
         this.mmp.on("nodeCreate").subscribe(() => {

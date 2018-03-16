@@ -1,30 +1,54 @@
 <div id="toolbar">
-    <div>
-        <img class="toolbar-buttons" id="new-map"
-             src="./assets/images/toolbar/new.svg"
-             (click)="dialog.newMap()">
-        <img class="toolbar-buttons" id="open-map"
-             src="./assets/images/toolbar/open.svg"
-             (click)="dialog.openMap()">
-        <img class="toolbar-buttons disable" id="save-map"
-             src="./assets/images/toolbar/save.svg"
-             (click)="dialog.saveMap()">
-    </div>
-    <div>
-        <img class="toolbar-buttons" id="lock-node"
-             [src]="'./assets/images/toolbar/' + (node?.locked ? 'lock.svg' : 'unlock.svg')"
-             (click)="mmp.updateNode('locked')">
-        <img class="toolbar-buttons" id="image"
-             src="./assets/images/toolbar/image.svg"
-             [ngClass]="{'fade': node?.image?.src}"
-             (click)="dialog.addNodeImage()">
-    </div>
-    <div>
-        <img class="toolbar-buttons" id="bold"
-             src="./assets/images/toolbar/bold.svg"
-             (click)="toogleNodeFontWeight()">
-        <img class="toolbar-buttons" id="italic"
-             src="./assets/images/toolbar/italic.svg"
-             (click)="toogleNodeFontStyle()">
-    </div>
+    <mat-toolbar>
+
+        <button (click)="dialog.newMap()" id="new-map"
+                color="primary" mat-icon-button>
+            <mat-icon aria-label="Example icon-button with a heart icon">
+                note_add
+            </mat-icon>
+        </button>
+        <button (click)="dialog.openMap()" id="open-map"
+                color="primary" mat-icon-button>
+            <mat-icon aria-label="Example icon-button with a heart icon">
+                folder_open
+            </mat-icon>
+        </button>
+        <button (click)="dialog.saveMap()" id="save-map"
+                color="primary" mat-icon-button>
+            <mat-icon aria-label="Example icon-button with a heart icon">
+                save
+            </mat-icon>
+        </button>
+
+        <div class="vertical-line"></div>
+
+        <button (click)="mmp.updateNode('locked')" id="lock-node"
+                color="primary" mat-icon-button>
+            <mat-icon aria-label="Example icon-button with a heart icon">
+                {{ node?.locked ? "lock_outline" : "lock_open" }}
+            </mat-icon>
+        </button>
+        <button (click)="dialog.addNodeImage()" id="image"
+                color="primary" mat-icon-button>
+            <mat-icon aria-label="Example icon-button with a heart icon">
+                {{ node?.image?.src ? "broken_image" : "image" }}
+            </mat-icon>
+        </button>
+
+        <div class="vertical-line"></div>
+
+        <button (click)="toogleNodeFontWeight()" id="bold"
+                color="primary" mat-icon-button>
+            <mat-icon aria-label="Example icon-button with a heart icon">
+                format_bold
+            </mat-icon>
+        </button>
+        <button (click)="toogleNodeFontStyle()" id="italic"
+                color="primary" mat-icon-button>
+            <mat-icon aria-label="Example icon-button with a heart icon">
+                format_italic
+            </mat-icon>
+        </button>
+
+    </mat-toolbar>
 </div>
