@@ -1,18 +1,19 @@
 import {Injectable} from "@angular/core";
-import {Subject} from "rxjs/Subject";
-import {Notification} from "../models/notification";
+import {MatSnackBar} from "@angular/material";
+import {TranslateService} from "@ngx-translate/core";
 
 @Injectable()
 export class NotificationsService {
 
-    private onSource = new Subject<Notification>();
-
-    on = this.onSource.asObservable();
+    constructor(public snackBar: MatSnackBar,
+                public translate: TranslateService) {
+    }
 
     send(message: string, duration: number = 8000) {
-        this.onSource.next({
-            message: message,
-            duration: duration
+        this.translate.get("DISMISS").toPromise().then((translation: string) => {
+            this.snackBar.open(message, translation, {
+                duration: duration,
+            });
         });
     }
 

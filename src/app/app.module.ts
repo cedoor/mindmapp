@@ -12,11 +12,9 @@ import {UtilsService} from "./services/utils.service";
 import {MenuService} from "./services/menu.service";
 import {DialogService} from "./services/dialog.service";
 import {IPFSService} from "./services/ipfs.service";
-import {ModalService} from "./services/modal/modal.service";
 import {SliderComponent} from "./components/shared/slider/slider.component";
 import {SettingsComponent} from "./components/settings/settings.component";
 import {SettingsService} from "./services/settings.service";
-import {NotificationsComponent} from "./components/notification/notifications.component";
 import {NotificationsService} from "./services/notifications.service";
 import {StorageService} from "./services/storage.service";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
@@ -24,9 +22,9 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MmpService} from "./services/mmp.service";
-import { MapComponent } from './components/map/map.component';
+import {MapComponent} from "./components/map/map.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatButtonModule, MatIconModule, MatSliderModule, MatToolbarModule} from "@angular/material";
+import {MatButtonModule, MatIconModule, MatSliderModule, MatSnackBarModule, MatToolbarModule} from "@angular/material";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/");
@@ -40,9 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         ColorsPanelComponent,
         FloatingButtonsComponent,
         SettingsComponent,
-        NotificationsComponent,
         SliderComponent,
-        ModalService,
         MapComponent
     ],
     imports: [
@@ -60,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         }),
         MatButtonModule,
         MatIconModule,
+        MatSnackBarModule,
         MatToolbarModule,
         MatSliderModule,
         ColorPickerModule
@@ -73,8 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         IPFSService,
         SettingsService,
         StorageService,
-        NotificationsService,
-        ModalService
+        NotificationsService
     ],
     bootstrap: [AppComponent]
 })
