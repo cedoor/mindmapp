@@ -1,5 +1,4 @@
 import {Injectable} from "@angular/core";
-import {Subject} from "rxjs/Subject";
 import {StorageService} from "./storage.service";
 import {UtilsService} from "./utils.service";
 import {IPFSService} from "./ipfs.service";
@@ -20,18 +19,8 @@ export class SettingsService {
         },
         language: "en"
     } as Settings;
+
     private currentSettings: Settings = {} as Settings;
-
-    private onActiveSource = new Subject<boolean>();
-    onActive = this.onActiveSource.asObservable();
-
-    private onInitSource = new Subject<Settings>();
-    onInit = this.onInitSource.asObservable();
-
-    private onUpdateSource = new Subject<Settings>();
-    onUpdate = this.onUpdateSource.asObservable();
-
-    private actived: boolean = false;
 
     constructor(private storage: StorageService,
                 private translate: TranslateService,
@@ -50,20 +39,8 @@ export class SettingsService {
             // Object assignment to fix reference problem
             Object.assign(this.currentSettings, settings);
 
-            this.onInitSource.next(settings);
-            this.onInitSource.complete();
             return settings;
         });
-    }
-
-    open() {
-        this.actived = true;
-        this.onActiveSource.next(this.actived);
-    }
-
-    close() {
-        this.actived = false;
-        this.onActiveSource.next(this.actived);
     }
 
     setIpfs(flag: boolean) {
@@ -90,13 +67,12 @@ export class SettingsService {
         });
     }
 
-    getStatus(): boolean {
-        return this.actived;
+    public getSettings() {
+        return this.currentSettings;
     }
 
     private update(settings: Settings): Promise<Settings> {
         return this.storage.set(this.SETTINGS_KEY, settings).then((settings: Settings) => {
-            this.onUpdateSource.next(settings);
             return settings;
         });
     }

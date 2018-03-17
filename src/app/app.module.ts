@@ -12,7 +12,6 @@ import {UtilsService} from "./services/utils.service";
 import {MenuService} from "./services/menu.service";
 import {DialogService} from "./services/dialog.service";
 import {IPFSService} from "./services/ipfs.service";
-import {SliderComponent} from "./components/shared/slider/slider.component";
 import {SettingsComponent} from "./components/settings/settings.component";
 import {SettingsService} from "./services/settings.service";
 import {NotificationsService} from "./services/notifications.service";
@@ -25,7 +24,12 @@ import {MmpService} from "./services/mmp.service";
 import {MapComponent} from "./components/map/map.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-    MatButtonModule, MatIconModule, MatSliderModule, MatSnackBarModule, MatToolbarModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatIconModule,
+    MatSliderModule, MatSlideToggleModule,
+    MatSnackBarModule, MatTabsModule,
+    MatToolbarModule,
     MatTooltipModule
 } from "@angular/material";
 
@@ -41,7 +45,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         ColorsPanelComponent,
         FloatingButtonsComponent,
         SettingsComponent,
-        SliderComponent,
         MapComponent
     ],
     imports: [
@@ -62,6 +65,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatSnackBarModule,
         MatToolbarModule,
         MatTooltipModule,
+        MatDialogModule,
+        MatTabsModule,
+        MatSlideToggleModule,
         MatSliderModule,
         ColorPickerModule
     ],
@@ -76,6 +82,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         StorageService,
         NotificationsService
     ],
+    entryComponents: [SettingsComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {

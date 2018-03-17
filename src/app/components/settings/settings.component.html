@@ -1,44 +1,40 @@
-<div *ngIf="actived" id="settings">
-    <div>
-        <h2>{{ "SETTINGS" | translate }}</h2>
-        <span (click)="settings.close()" id="close">&#10799;</span>
+<div id="settings">
+    <h2 mat-dialog-title>{{ "SETTINGS" | translate }}</h2>
 
-        <div id="content">
-            <div fxLayout="row" fxFill>
-                <div id="vertical-menu" fxFlex="30">
-                    <div *ngFor="let option of menuLabels; let i = index"
-                         (click)="selectOption(i)"
-                         [class.selected]="i === index">
-                        {{ option | translate }}
-                    </div>
+    <mat-dialog-content>
+        <mat-tab-group>
+            <mat-tab [label]="titles[2] | translate">
+                <div class="content" id="languages">
+                    <mat-slide-toggle (change)="settingsService.setLanguage('en')"
+                                      [checked]="settings?.language === 'en'"
+                                      color="primary">
+                        {{ "LANGUAGES.EN" | translate }}
+                    </mat-slide-toggle>
+                    <mat-slide-toggle (change)="settingsService.setLanguage('it')"
+                                      [checked]="settings?.language === 'it'"
+                                      color="primary">
+                        {{ "LANGUAGES.IT" | translate }}
+                    </mat-slide-toggle>
                 </div>
-                <div class="options" *ngIf="index === 0">
-                    <div>
-                        <app-slider (slide)="settings.setFileSync($event)"
-                                    [value]="values?.synchronization?.file"
-                                    [name]="'FILE' | translate"></app-slider>
-                    </div>
+            </mat-tab>
+            <mat-tab [label]="titles[0] | translate">
+                <div class="content" id="synchronization">
+                    <mat-slide-toggle (change)="settingsService.setFileSync($event.source)"
+                                      [checked]="settings?.synchronization?.file"
+                                      color="primary">
+                        {{ "FILE" | translate }}
+                    </mat-slide-toggle>
                 </div>
-                <div class="options" *ngIf="index === 1">
-                    <div>
-                        <app-slider (slide)="settings.setIpfs($event)"
-                                    [value]="values?.sharing?.ipfs"
-                                    [name]="'IPFS' | translate"></app-slider>
-                    </div>
+            </mat-tab>
+            <mat-tab [label]="titles[1] | translate">
+                <div class="content" id="sharing">
+                    <mat-slide-toggle (change)="settingsService.setIpfs($event.source)"
+                                      [checked]="settings?.sharing?.ipfs"
+                                      color="primary">
+                        {{ "IPFS" | translate }}
+                    </mat-slide-toggle>
                 </div>
-                <div class="options" *ngIf="index === 2">
-                    <div>
-                        <app-slider (slide)="settings.setLanguage('en')" onlyTrue="true"
-                                    [value]="values?.language === 'en'"
-                                    [name]="'LANGUAGES.EN' | translate"></app-slider>
-                    </div>
-                    <div>
-                        <app-slider (slide)="settings.setLanguage('it')" onlyTrue="true"
-                                    [value]="values?.language === 'it'"
-                                    [name]="'LANGUAGES.IT' | translate"></app-slider>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-dialog-content>
 </div>

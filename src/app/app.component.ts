@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         // Settings initialization
-        this.settings.onInit.subscribe((settings: Settings) => {
+        this.settings.init().then((settings: Settings) => {
             // Set background services
             this.setBackgroundServices(settings);
             // Set translations

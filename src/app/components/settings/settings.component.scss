@@ -1,82 +1,17 @@
-#settings {
-    z-index: 10;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, .15);
+div#settings {
 
-    > div {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 700px;
-        margin: -250px 0 0 -350px;
-        background-color: white;
-        border: 1px solid #ababab;
-        box-shadow: 0 0 15px #989898;
-        color: #5b6868;
+    h2 {
+        text-align: center;
+    }
 
-        h2 {
-            text-align: center;
-            margin: 0;
-            font-weight: normal;
-            padding: 12px;
-            background-color: #f9f9f9;
-            border-bottom: 1px solid lightgray;
-        }
+    div.content {
+        padding: 20px;
+        height: 200px;
 
-        #close {
-            position: absolute;
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: black;
-            top: 0;
-            right: 5px;
-            padding: 10px;
-            text-shadow: 0 1px 0 #fff;
-            opacity: .5;
-            cursor: pointer;
-        }
-
-        #close:hover {
-            opacity: 0.6;
-        }
-
-        #content {
-            height: 450px;
-
-            div {
-                #vertical-menu {
-                    padding: 10px 0 10px 10px;
-                    font-size: 18px;
-                    border-right: 1px solid lightgray;
-
-                    div {
-                        position: relative;
-                        right: -1px;
-                        padding: 10px 0 10px 10px;
-                        cursor: pointer;
-                        border: 1px solid white;
-                        border-right-color: lightgray;
-                    }
-
-                    div.selected {
-                        border: 1px solid lightgray;
-                        border-right-color: white;
-                        border-bottom-left-radius: 3px;
-                        border-top-left-radius: 3px;
-                    }
-                }
-
-                .options {
-                    float: left;
-                    padding: 23px 30px;
-
-                    > div {
-                        padding-bottom: 10px;
-                    }
-                }
-            }
+        mat-slide-toggle.mat-slide-toggle {
+            display: block;
+            margin-bottom: 8px;
         }
     }
+
 }

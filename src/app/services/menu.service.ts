@@ -1,10 +1,9 @@
 import {Injectable, NgZone} from "@angular/core";
 import {DialogService} from "./dialog.service";
 import {IPFSService} from "./ipfs.service";
-import {SettingsService} from "./settings.service";
 import {NotificationsService} from "./notifications.service";
-import {TranslateService} from "@ngx-translate/core";
 import {StorageService} from "./storage.service";
+import {TranslateService} from "@ngx-translate/core";
 import {MmpService} from "./mmp.service";
 import {environment} from "../../environments/environment";
 import {remote} from "electron";
@@ -16,7 +15,6 @@ export class MenuService {
 
     constructor(private _ngZone: NgZone,
                 private ipfs: IPFSService,
-                private settings: SettingsService,
                 private storage: StorageService,
                 private mmp: MmpService,
                 private notifications: NotificationsService,
@@ -158,10 +156,10 @@ export class MenuService {
                 accelerator: "Ctrl+Alt+S",
                 click: () => {
                     this._ngZone.run(() => {
-                        if (this.settings.getStatus()) {
-                            this.settings.close();
+                        if (this.dialog.getSettingsStatus()) {
+                            this.dialog.closeSettings();
                         } else {
-                            this.settings.open();
+                            this.dialog.openSettings();
                         }
                     });
                 }
@@ -207,8 +205,8 @@ export class MenuService {
                 accelerator: "Esc",
                 click: () => {
                     this._ngZone.run(() => {
-                        if (this.settings.getStatus()) {
-                            this.settings.close();
+                        if (this.dialog.getSettingsStatus()) {
+                            this.dialog.closeSettings();
                         } else {
                             this.mmp.deselectNode();
                         }

@@ -2,9 +2,12 @@ import {Injectable, NgZone} from "@angular/core";
 import {UtilsService} from "./utils.service";
 import {IPFSService} from "./ipfs.service";
 import {environment} from "../../environments/environment";
+import {MmpService} from "./mmp.service";
+import {SettingsComponent} from "../components/settings/settings.component";
+import {MatDialog} from "@angular/material";
+import {MatDialogRef} from "@angular/material/dialog/typings/dialog-ref";
 import {remote} from "electron";
 import * as fs from "fs";
-import {MmpService} from "./mmp.service";
 
 @Injectable()
 export class DialogService {
@@ -12,8 +15,11 @@ export class DialogService {
     remote: typeof remote;
     fs: typeof fs;
 
+    private matDialogRef: MatDialogRef<any>;
+
     constructor(private _ngZone: NgZone,
                 private ipfs: IPFSService,
+                private matDialog: MatDialog,
                 private mmp: MmpService,
                 private utils: UtilsService) {
         this.remote = window.require("electron").remote;
@@ -186,6 +192,28 @@ export class DialogService {
                 }
             };
         }
+    }
+
+    /**
+     * Open the dialog of Mindmapp settings.
+     */
+    public openSettings() {
+        this.matDialogRef = this.matDialog.open(SettingsComponent);
+    }
+
+    /**
+     * Close the dialog of Mindmapp settings.
+     */
+    public closeSettings() {
+        this.matDialogRef.close();
+    }
+
+    /**
+     * Return true if the dialog of the settings is open.
+     * @returns {boolean}
+     */
+    public getSettingsStatus(): boolean {
+        return this.matDialogRef && !!this.matDialogRef.componentInstance;
     }
 
 }

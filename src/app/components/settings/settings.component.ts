@@ -1,6 +1,7 @@
-import {Component, OnInit} from "@angular/core";
-import {SettingsService} from "../../services/settings.service";
+import {Component, Inject, OnInit} from "@angular/core";
 import {Settings} from "../../models/settings";
+import {MAT_DIALOG_DATA} from "@angular/material";
+import {SettingsService} from "../../services/settings.service";
 
 @Component({
     selector: "app-settings",
@@ -9,35 +10,21 @@ import {Settings} from "../../models/settings";
 })
 export class SettingsComponent implements OnInit {
 
-    values: Settings;
+    settings: Settings;
 
-    actived: boolean = false;
+    titles: string[];
 
-    index: number = 0;
-    menuLabels: string[] = [];
-
-    constructor(public settings: SettingsService) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+                public settingsService: SettingsService) {
     }
 
     ngOnInit() {
-        this.settings.init().then((settings: Settings) => {
-            this.values = settings;
-            for (let menuLabel in settings) {
-                this.menuLabels.push(menuLabel.toUpperCase());
-            }
-        });
+        this.settings = this.settingsService.getSettings();
 
-        this.settings.onUpdate.subscribe((settings: Settings) => {
-            this.values = settings;
-        });
-
-        this.settings.onActive.subscribe((actived) => {
-            this.actived = actived;
-        });
-    }
-
-    selectOption(index: number) {
-        this.index = index;
+        this.titles = [];
+        for (let title in this.settings) {
+            this.titles.push(title.toUpperCase());
+        }
     }
 
 }
