@@ -97,7 +97,7 @@ export class MmpService {
     }
 
     /**
-     * Repeats a previously undoed change of the mind mmp.
+     * Repeat a previously undoed change of the mind mmp.
      */
     public redo() {
         this.currentMap.redo();

@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild} from "@angular/core";
+import {Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
 import {MmpService} from "../../services/mmp.service";
 
 @Component({
@@ -6,14 +6,22 @@ import {MmpService} from "../../services/mmp.service";
     templateUrl: "./colors-panel.component.html",
     styleUrls: ["./colors-panel.component.scss"]
 })
-export class ColorsPanelComponent {
+export class ColorsPanelComponent implements OnInit {
 
     @Input() node: any;
 
     @ViewChild("background") background: ElementRef;
 
+    tooltip: any;
+
     constructor(public mmp: MmpService) {
         this.fixColorPickerFlicker();
+    }
+
+    ngOnInit() {
+        this.tooltip = {
+            delay: 1000
+        };
     }
 
     colorPickerChange(property, value) {

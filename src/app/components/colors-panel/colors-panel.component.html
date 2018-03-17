@@ -6,18 +6,24 @@
                (colorPickerChange)="colorPickerChange('backgroundColor', node.colors.background)"
                [(colorPicker)]="node.colors.background"
                [style.background]="node.colors.background"
+               [matTooltip]="'TOOLTIPS.NODE_COLOR' | translate"
+               [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="left"
                cpPosition="left"/>
         <input id="text-color" class="colors"
                (cpToggleChange)="colorPickerToggleChange($event, 'nameColor', node.colors.name)"
                (colorPickerChange)="colorPickerChange('nameColor', node.colors.name)"
                [(colorPicker)]="node.colors.name"
                [style.background]="node.colors.name"
+               [matTooltip]="'TOOLTIPS.TEXT_COLOR' | translate"
+               [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="left"
                cpPosition="left"/>
         <input id="branch-color" class="colors" [ngClass]="{'disable': !node.colors.branch}"
                (cpToggleChange)="colorPickerToggleChange($event, 'branchColor', node.colors.branch)"
                (colorPickerChange)="colorPickerChange('branchColor', node.colors.branch)"
                [(colorPicker)]="node.colors.branch"
                [style.background]="node.colors.branch"
+               [matTooltip]="'TOOLTIPS.BRANCH_COLOR' | translate"
+               [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="left"
                cpPosition="left"/>
     </div>
 </div>
