@@ -71,7 +71,7 @@ Examples:
     git branch -b style/header
 
 ## License
-* See [LICENSE](https://github.com/mindmapp/mindmapp/blob/master/LICENSE.md) file
+* See [LICENSE](https://github.com/mindmapp/mindmapp/blob/master/LICENSE) file
 
 ## Contact
 #### Developer
