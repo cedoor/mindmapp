@@ -53,6 +53,16 @@
         "BOLD_TEXT": "Change the weight of the text",
         "ITALIC_TEXT": "Change the style of the text",
         "TEXT_SIZE": "Change the size of the text and the node",
-        "IMAGE_SIZE": "Change the size of the node image"
+        "IMAGE_SIZE": "Change the size of the node image",
+        "ADD_NODE": "Add a node",
+        "REMOVE_NODE": "Remove a node",
+        "ZOOM_IN_MAP": "Zoom in the map",
+        "ZOOM_OUT_MAP": "Zoom out the map",
+        "CENTER_MAP": "Center the map",
+        "UNDO_MAP": "Undo the last change",
+        "REDO_MAP": "Repeat a previously undoed change",
+        "NODE_COLOR": "Change the node color",
+        "BRANCH_COLOR": "Change the branch color",
+        "TEXT_COLOR": "Change the text color"
     }
 }
