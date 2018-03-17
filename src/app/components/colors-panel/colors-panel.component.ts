@@ -15,7 +15,6 @@ export class ColorsPanelComponent implements OnInit {
     tooltip: any;
 
     constructor(public mmp: MmpService) {
-        this.fixColorPickerFlicker();
     }
 
     ngOnInit() {
@@ -33,17 +32,6 @@ export class ColorsPanelComponent implements OnInit {
         if (!opening) {
             this.mmp.updateNode(property, value);
         }
-    }
-
-    fixColorPickerFlicker() {
-        window.onload = () => {
-            let colors: any = window.document.getElementById("panel").children;
-            for (let color of colors) {
-                color.onmousedown = (e) => {
-                    e.preventDefault();
-                };
-            }
-        };
     }
 
 }

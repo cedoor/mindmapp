@@ -14,10 +14,6 @@ body {
     font-size: 17px;
 }
 
-*:focus {
-    outline: none;
-}
-
 .loader {
     position: absolute;
     left: 50%;
@@ -43,5 +39,15 @@ body {
     100% {
         transform: scale(1.2);
         opacity: 0;
+    }
+}
+
+// Color picker override
+div.color-picker {
+    border-radius: 2px;
+    border: 1px solid #a8a8a8 !important;
+
+    div.box:last-child {
+        display: none !important;
     }
 }

@@ -1,7 +1,8 @@
 <div *ngIf="node.colors" id="colors-panel">
     <div #background id="background"></div>
+
     <div id="panel">
-        <input id="background-color" class="colors"
+        <input id="background-color"
                (cpToggleChange)="colorPickerToggleChange($event, 'backgroundColor', node.colors.background)"
                (colorPickerChange)="colorPickerChange('backgroundColor', node.colors.background)"
                [(colorPicker)]="node.colors.background"
@@ -9,7 +10,7 @@
                [matTooltip]="'TOOLTIPS.NODE_COLOR' | translate"
                [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="left"
                cpPosition="left"/>
-        <input id="text-color" class="colors"
+        <input id="text-color"
                (cpToggleChange)="colorPickerToggleChange($event, 'nameColor', node.colors.name)"
                (colorPickerChange)="colorPickerChange('nameColor', node.colors.name)"
                [(colorPicker)]="node.colors.name"
@@ -17,7 +18,7 @@
                [matTooltip]="'TOOLTIPS.TEXT_COLOR' | translate"
                [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="left"
                cpPosition="left"/>
-        <input id="branch-color" class="colors" [ngClass]="{'disable': !node.colors.branch}"
+        <input *ngIf="node.colors.branch" id="branch-color"
                (cpToggleChange)="colorPickerToggleChange($event, 'branchColor', node.colors.branch)"
                (colorPickerChange)="colorPickerChange('branchColor', node.colors.branch)"
                [(colorPicker)]="node.colors.branch"
