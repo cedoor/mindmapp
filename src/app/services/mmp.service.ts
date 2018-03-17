@@ -11,8 +11,6 @@ export class MmpService {
     private maps: Map<string, any>;
     private currentMap: any;
 
-    private historySize: number;
-
     constructor() {
         this.maps = new Map<string, any>();
     }

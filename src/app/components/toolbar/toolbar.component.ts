@@ -20,7 +20,7 @@ export class ToolbarComponent implements OnInit {
     ngOnInit() {
         this.tooltip = {
             delay: 1000
-        }
+        };
     }
 
     toogleNodeFontStyle() {

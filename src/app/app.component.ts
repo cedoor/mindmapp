@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
         this.settings.init().then((settings: Settings) => {
             // Set background services
             this.setBackgroundServices(settings);
+
             // Set translations
             this.setTranslations(settings.language).then(() => {
                 this.createMap();

@@ -32,8 +32,8 @@ export class ColorsPanelComponent {
             let colors: any = window.document.getElementById("panel").children;
             for (let color of colors) {
                 color.onmousedown = (e) => {
-                    e.preventDefault()
-                }
+                    e.preventDefault();
+                };
             }
         };
     }

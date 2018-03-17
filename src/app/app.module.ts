@@ -27,8 +27,10 @@ import {
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
-    MatSliderModule, MatSlideToggleModule,
-    MatSnackBarModule, MatTabsModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatTabsModule,
     MatToolbarModule,
     MatTooltipModule
 } from "@angular/material";
