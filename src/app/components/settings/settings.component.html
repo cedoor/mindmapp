@@ -1,40 +1,56 @@
 <div id="settings">
-    <h2 mat-dialog-title>{{ "SETTINGS" | translate }}</h2>
+    <h2 mat-dialog-title>{{ "SETTINGS_TITLE" | translate }}</h2>
 
     <mat-dialog-content>
         <mat-tab-group>
-            <mat-tab [label]="titles[2] | translate">
+            <mat-tab [label]="titles.language | translate">
                 <div class="content" id="languages">
-                    <mat-slide-toggle (change)="settingsService.setLanguage('en')"
+                    <mat-slide-toggle (change)="setLanguage('en')"
                                       [checked]="settings?.language === 'en'"
                                       color="primary">
                         {{ "LANGUAGES.EN" | translate }}
                     </mat-slide-toggle>
-                    <mat-slide-toggle (change)="settingsService.setLanguage('it')"
+                    <mat-slide-toggle (change)="setLanguage('it')"
                                       [checked]="settings?.language === 'it'"
                                       color="primary">
                         {{ "LANGUAGES.IT" | translate }}
                     </mat-slide-toggle>
                 </div>
             </mat-tab>
-            <mat-tab [label]="titles[0] | translate">
+            <mat-tab [label]="titles.mapOptions | translate">
+                <div class="content" id="map-options">
+                    <form (ngSubmit)="setMapOptions()">
+                        <mat-form-field>
+                            <input matInput [placeholder]="'ROOT_NODE_NAME' | translate" name="rootNodeName"
+                                   [(ngModel)]="settings.mapOptions.rootNode.name">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput [placeholder]="'DEFAULT_NODE_NAME' | translate" name="defaultNodeName"
+                                   [(ngModel)]="settings.mapOptions.defaultNode.name">
+                        </mat-form-field>
+                        <button type="submit" mat-raised-button>{{ "SAVE" | translate }}</button>
+                    </form>
+                </div>
+            </mat-tab>
+            <mat-tab [label]="titles.synchronization | translate">
                 <div class="content" id="synchronization">
-                    <mat-slide-toggle (change)="settingsService.setFileSync($event.source)"
+                    <mat-slide-toggle (change)="setFileSynchronization($event.source.checked)"
                                       [checked]="settings?.synchronization?.file"
                                       color="primary">
                         {{ "FILE" | translate }}
                     </mat-slide-toggle>
                 </div>
             </mat-tab>
-            <mat-tab [label]="titles[1] | translate">
-                <div class="content" id="sharing">
-                    <mat-slide-toggle (change)="settingsService.setIpfs($event.source)"
-                                      [checked]="settings?.sharing?.ipfs"
-                                      color="primary">
-                        {{ "IPFS" | translate }}
-                    </mat-slide-toggle>
-                </div>
-            </mat-tab>
+
+            <!--<mat-tab [label]="titles[1] | translate">-->
+                <!--<div class="content" id="sharing">-->
+                    <!--<mat-slide-toggle (change)="setIpfs($event.source.checked)"-->
+                                      <!--[checked]="settings?.sharing?.ipfs"-->
+                                      <!--color="primary">-->
+                        <!--{{ "IPFS" | translate }}-->
+                    <!--</mat-slide-toggle>-->
+                <!--</div>-->
+            <!--</mat-tab>-->
         </mat-tab-group>
     </mat-dialog-content>
 </div>

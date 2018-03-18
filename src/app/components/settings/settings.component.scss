@@ -1,4 +1,5 @@
 div#settings {
+    min-width: 500px;
 
     h2 {
         text-align: center;
@@ -6,11 +7,28 @@ div#settings {
 
     div.content {
         padding: 20px;
-        height: 200px;
+        min-height: 250px;
+        font-size: 14px;
 
         mat-slide-toggle.mat-slide-toggle {
             display: block;
             margin-bottom: 8px;
+        }
+    }
+
+    div#map-options {
+        form {
+            min-width: 150px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        mat-form-field {
+            width: 100%;
+        }
+
+        button[type="submit"] {
+            margin-top: 10px;
         }
     }
 

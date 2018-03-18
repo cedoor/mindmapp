@@ -4,73 +4,126 @@ import {UtilsService} from "./utils.service";
 import {IPFSService} from "./ipfs.service";
 import {Settings} from "../models/settings";
 import {TranslateService} from "@ngx-translate/core";
+import {HttpClient} from "@angular/common/http";
+import {MapOptions} from "../models/mmp";
+import {MmpService} from "./mmp.service";
 
 @Injectable()
 export class SettingsService {
 
-    private SETTINGS_KEY: string = "settings";
+    private readonly SETTINGS_KEY: string = "settings";
+    private readonly DEFAULT_SETTINGS_URL: string = "./assets/data/defaultSettings.json";
 
-    private defaultSettings: Settings = {
-        synchronization: {
-            file: false
-        },
-        sharing: {
-            ipfs: false
-        },
-        language: "en"
-    } as Settings;
-
-    private currentSettings: Settings = {} as Settings;
+    private settings: Settings;
 
     constructor(private storage: StorageService,
+                private http: HttpClient,
+                private mmp: MmpService,
                 private translate: TranslateService,
                 private ipfs: IPFSService,
                 private utils: UtilsService) {
     }
 
-    init(): Promise<Settings> {
-        return this.storage.exist(this.SETTINGS_KEY).then(exist => {
+    /**
+     * Initialize the settings with default or saved values and return them.
+     * @returns {Promise<Settings>}
+     */
+    public init(): Promise<Settings> {
+        return this.storage.exist(this.SETTINGS_KEY).then((exist: any) => {
             if (!exist) {
-                return this.storage.set(this.SETTINGS_KEY, this.defaultSettings);
+                return this.getDefaultSettings().then((defaultSettings: Settings) => {
+                    return this.storage.set(this.SETTINGS_KEY, defaultSettings);
+                });
             } else {
                 return this.storage.get(this.SETTINGS_KEY);
             }
         }).then((settings: Settings) => {
-            // Object assignment to fix reference problem
-            Object.assign(this.currentSettings, settings);
+            this.settings = settings;
 
             return settings;
         });
     }
 
-    setIpfs(flag: boolean) {
-        this.currentSettings.sharing.ipfs = flag;
+    /**
+     * Active or disable ipfs service and update the settings.
+     * @param {boolean} status
+     * @returns {Promise<Settings>}
+     */
+    public setIpfs(status: boolean): Promise<Settings> {
+        this.settings.sharing.ipfs = status;
 
-        this.update(this.currentSettings).then(() => {
-            flag ? this.ipfs.start() : this.ipfs.stop();
+        return this.update(this.settings).then((settings: Settings) => {
+            status ? this.ipfs.start() : this.ipfs.stop();
+            return settings;
         });
     }
 
-    setFileSync(flag: boolean) {
-        this.currentSettings.synchronization.file = flag;
+    /**
+     * Active or disable file synchronization and update the settings.
+     * @param {boolean} status
+     * @returns {Promise<Settings>}
+     */
+    public setFileSynchronization(status: boolean): Promise<Settings> {
+        this.settings.synchronization.file = status;
 
-        this.update(this.currentSettings).then(() => {
-            this.utils.setFileSync(flag);
+        return this.update(this.settings).then((settings: Settings) => {
+            this.utils.setFileSync(status);
+            return settings;
         });
     }
 
-    setLanguage(lang: string) {
-        this.currentSettings.language = lang;
+    /**
+     * Set the new language and update the settings.
+     * @param {string} language
+     * @returns {Promise<Settings>}
+     */
+    public setLanguage(language: string): Promise<Settings> {
+        this.settings.language = language;
 
-        this.update(this.currentSettings).then(() => {
-            this.translate.use(lang);
+        return this.update(this.settings).then((settings: Settings) => {
+            this.translate.use(language);
+            return settings;
         });
     }
 
-    public getSettings() {
-        return this.currentSettings;
+    /**
+     * Update the settings with the new map options.
+     * @param {MapOptions} mapOptions
+     * @returns {Promise<Settings>}
+     */
+    public setMapOptions(mapOptions: MapOptions): Promise<Settings> {
+        this.settings.mapOptions = mapOptions;
+
+        return this.update(this.settings).then((settings: Settings) => {
+            this.mmp.updateOptions("rootNode", settings.mapOptions.rootNode);
+            this.mmp.updateOptions("defaultNode", settings.mapOptions.defaultNode);
+            return settings;
+        });
     }
 
+    /**
+     * Return a copy of the current settings.
+     * @returns {Settings}
+     */
+    public getSettings(): Settings {
+        return JSON.parse(JSON.stringify(this.settings));
+    }
+
+    /**
+     * Return the default settings.
+     * @returns {Promise<Settings>}
+     */
+    private getDefaultSettings(): Promise<Settings> {
+        return this.http.get(this.DEFAULT_SETTINGS_URL).toPromise().then((settings: Settings) => {
+            return settings;
+        });
+    }
+
+    /**
+     * Overwrite the settings in the storage.
+     * @param {Settings} settings
+     * @returns {Promise<Settings>}
+     */
     private update(settings: Settings): Promise<Settings> {
         return this.storage.set(this.SETTINGS_KEY, settings).then((settings: Settings) => {
             return settings;

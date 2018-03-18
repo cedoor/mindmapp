@@ -13,9 +13,7 @@
     "VIEW": "View",
     "IMPORT": "Import",
     "EXPORT": "Export",
-    "SETTINGS": "Settings",
     "HELP": "Help",
-    "LANGUAGE": "Language",
     "TUTORIAL": "Tutorial",
     "INFORMATIONS": "Informations",
     "FULL_SCREEN": "Full screen",
@@ -38,8 +36,15 @@
     "ADD_NODE": "Add node",
     "REMOVE_NODE": "Remove node",
     "MAP": "Map",
-    "SHARING": "Sharing",
-    "SYNCHRONIZATION": "Synchronization",
+    "ROOT_NODE_NAME": "Root node name",
+    "DEFAULT_NODE_NAME": "Default node name",
+    "SETTINGS_TITLE": "Settings",
+    "SETTINGS_LABELS": {
+        "SHARING": "Sharing",
+        "LANGUAGE": "Language",
+        "SYNCHRONIZATION": "Synchronization",
+        "MAP_OPTIONS": "Map options"
+    },
     "LANGUAGES": {
         "EN": "English",
         "IT": "Italian"

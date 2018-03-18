@@ -65,7 +65,7 @@ export class MmpService {
      * @param value
      */
     public updateOptions(property: string, value: any) {
-        this.currentMap.zoomOut(property, value);
+        this.currentMap.updateOptions(property, value);
     }
 
     /**

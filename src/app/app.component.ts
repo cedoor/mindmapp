@@ -8,6 +8,7 @@ import {SettingsService} from "./services/settings.service";
 import {Settings} from "./models/settings";
 import {IPFSService} from "./services/ipfs.service";
 import {MmpService} from "./services/mmp.service";
+import {MapOptions} from "./models/mmp";
 
 @Component({
     selector: "app-root",
@@ -36,7 +37,7 @@ export class AppComponent implements OnInit {
 
             // Set translations
             this.setTranslations(settings.language).then(() => {
-                this.createMap();
+                this.createMap(settings.mapOptions);
                 this.setMapListeners();
 
                 this.menu.createMenu();
@@ -46,21 +47,8 @@ export class AppComponent implements OnInit {
         });
     }
 
-    createMap() {
-        this.mmp.create("map", {
-            defaultNode: {
-                name: "Nodo",
-                font: {
-                    size: 22
-                }
-            },
-            rootNode: {
-                name: "Nodo radice",
-                font: {
-                    size: 26
-                }
-            }
-        });
+    createMap(options: MapOptions) {
+        this.mmp.create("map", options);
 
         this.node = this.mmp.selectNode();
     }

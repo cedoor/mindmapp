@@ -26,7 +26,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
     MatButtonModule,
     MatDialogModule,
-    MatIconModule,
+    MatIconModule, MatInputModule,
     MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
@@ -67,6 +67,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatSnackBarModule,
         MatToolbarModule,
         MatTooltipModule,
+        MatInputModule,
         MatDialogModule,
         MatTabsModule,
         MatSlideToggleModule,

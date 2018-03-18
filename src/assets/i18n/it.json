@@ -13,9 +13,7 @@
     "VIEW": "Visualizza",
     "IMPORT": "Importa",
     "EXPORT": "Esporta",
-    "SETTINGS": "Impostazioni",
     "HELP": "Aiuto",
-    "LANGUAGE": "Lingua",
     "TUTORIAL": "Tutorial",
     "INFORMATIONS": "Informazioni",
     "FULL_SCREEN": "Schermo intero",
@@ -38,8 +36,15 @@
     "ADD_NODE": "Aggiungi nodo",
     "REMOVE_NODE": "Rimuovi nodo",
     "MAP": "Mappa",
-    "SHARING": "Condivisione",
-    "SYNCHRONIZATION": "Sincronizzazione",
+    "ROOT_NODE_NAME": "Nome nodo radice",
+    "DEFAULT_NODE_NAME": "Nome nodo",
+    "SETTINGS_TITLE": "Impostazioni",
+    "SETTINGS_LABELS": {
+        "SHARING": "Condivisione",
+        "LANGUAGE": "Lingua",
+        "SYNCHRONIZATION": "Sincronizzazione",
+        "MAP_OPTIONS": "Opzioni mappa"
+    },
     "LANGUAGES": {
         "EN": "Inglese",
         "IT": "Italiano"

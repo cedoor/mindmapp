@@ -152,7 +152,7 @@ export class MenuService {
             }, {
                 type: "separator"
             }, {
-                label: translations["SETTINGS"],
+                label: translations["SETTINGS_TITLE"],
                 accelerator: "Ctrl+Alt+S",
                 click: () => {
                     this._ngZone.run(() => {
