@@ -1,8 +1,8 @@
 import {Injectable, NgZone} from "@angular/core";
 import {DialogService} from "./dialog.service";
-import {UtilsService} from "./utils.service";
 import {MmpService} from "./mmp.service";
 import * as fs from "fs";
+import {FileService} from "./file.service";
 
 @Injectable()
 export class DragDropService {
@@ -10,9 +10,9 @@ export class DragDropService {
     fs: typeof fs;
 
     constructor(private _ngZone: NgZone,
-                private mmp: MmpService,
-                private utils: UtilsService,
-                private dialog: DialogService) {
+                private mmpService: MmpService,
+                private fileService: FileService,
+                private dialogService: DialogService) {
         this.fs = window.require("fs");
     }
 
@@ -35,26 +35,26 @@ export class DragDropService {
                         base64 = "data:image/" + ext + ";base64," + buffer;
 
                     this._ngZone.run(() => {
-                        this.mmp.updateNode("imageSrc", base64);
+                        this.mmpService.updateNode("imageSrc", base64);
                     });
                 }
 
                 if (ext === "mmp") {
                     let openMap = () => {
                         const data = this.fs.readFileSync(url).toString();
-                        this.utils.setFilePath(url);
-                        this.utils.setSavedStatus();
+                        this.fileService.setFilePath(url);
+                        this.fileService.setSavedStatus();
                         this._ngZone.run(() => {
-                            this.mmp.new(JSON.parse(data));
+                            this.mmpService.new(JSON.parse(data));
                         });
                     };
 
-                    if (!this.mmp.isInitialMap() && !this.utils.isSaved()) {
-                        this.dialog.showMessage(
+                    if (!this.fileService.isSaved()) {
+                        this.dialogService.showMessage(
                             "Salva mappa",
                             "Vuoi salvare la mappa corrente prima di aprirne un'altra?")
                             .then(response => {
-                                if (response === 0) this.dialog.saveMap().then(() => openMap());
+                                if (response === 0) this.dialogService.saveMap().then(() => openMap());
                                 else if (response === 1) openMap();
                             });
                     } else openMap();

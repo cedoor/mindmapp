@@ -7,7 +7,7 @@ export class IPFSService {
     private ipfs: any;
     private online: boolean;
 
-    constructor(private mmp: MmpService) {
+    constructor(private mmpService: MmpService) {
     }
 
     start() {

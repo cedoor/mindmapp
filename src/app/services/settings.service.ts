@@ -7,6 +7,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {HttpClient} from "@angular/common/http";
 import {MapOptions} from "../models/mmp";
 import {MmpService} from "./mmp.service";
+import {FileService} from "./file.service";
 
 @Injectable()
 export class SettingsService {
@@ -16,26 +17,26 @@ export class SettingsService {
 
     private settings: Settings;
 
-    constructor(private storage: StorageService,
+    constructor(private storageService: StorageService,
                 private http: HttpClient,
-                private mmp: MmpService,
-                private translate: TranslateService,
-                private ipfs: IPFSService,
-                private utils: UtilsService) {
+                private mmpService: MmpService,
+                private translateService: TranslateService,
+                private ipfsService: IPFSService,
+                private fileService: FileService) {
     }
 
     /**
-     * Initialize the settings with default or saved values and return them.
+     * Initialize the settingsService with default or saved values and return them.
      * @returns {Promise<Settings>}
      */
     public init(): Promise<Settings> {
-        return this.storage.exist(this.SETTINGS_KEY).then((exist: any) => {
+        return this.storageService.exist(this.SETTINGS_KEY).then((exist: any) => {
             if (!exist) {
                 return this.getDefaultSettings().then((defaultSettings: Settings) => {
-                    return this.storage.set(this.SETTINGS_KEY, defaultSettings);
+                    return this.storageService.set(this.SETTINGS_KEY, defaultSettings);
                 });
             } else {
-                return this.storage.get(this.SETTINGS_KEY);
+                return this.storageService.get(this.SETTINGS_KEY);
             }
         }).then((settings: Settings) => {
             this.settings = settings;
@@ -45,7 +46,7 @@ export class SettingsService {
     }
 
     /**
-     * Active or disable ipfs service and update the settings.
+     * Active or disable ipfs service and update the settingsService.
      * @param {boolean} status
      * @returns {Promise<Settings>}
      */
@@ -53,13 +54,13 @@ export class SettingsService {
         this.settings.sharing.ipfs = status;
 
         return this.update(this.settings).then((settings: Settings) => {
-            status ? this.ipfs.start() : this.ipfs.stop();
+            status ? this.ipfsService.start() : this.ipfsService.stop();
             return settings;
         });
     }
 
     /**
-     * Active or disable file synchronization and update the settings.
+     * Active or disable file synchronization and update the settingsService.
      * @param {boolean} status
      * @returns {Promise<Settings>}
      */
@@ -67,13 +68,13 @@ export class SettingsService {
         this.settings.synchronization.file = status;
 
         return this.update(this.settings).then((settings: Settings) => {
-            this.utils.setFileSync(status);
+            this.fileService.setFileSync(status);
             return settings;
         });
     }
 
     /**
-     * Set the new language and update the settings.
+     * Set the new language and update the settingsService.
      * @param {string} language
      * @returns {Promise<Settings>}
      */
@@ -81,13 +82,13 @@ export class SettingsService {
         this.settings.language = language;
 
         return this.update(this.settings).then((settings: Settings) => {
-            this.translate.use(language);
+            this.translateService.use(language);
             return settings;
         });
     }
 
     /**
-     * Update the settings with the new map options.
+     * Update the settingsService with the new map options.
      * @param {MapOptions} mapOptions
      * @returns {Promise<Settings>}
      */
@@ -95,14 +96,14 @@ export class SettingsService {
         this.settings.mapOptions = mapOptions;
 
         return this.update(this.settings).then((settings: Settings) => {
-            this.mmp.updateOptions("rootNode", settings.mapOptions.rootNode);
-            this.mmp.updateOptions("defaultNode", settings.mapOptions.defaultNode);
+            this.mmpService.updateOptions("rootNode", settings.mapOptions.rootNode);
+            this.mmpService.updateOptions("defaultNode", settings.mapOptions.defaultNode);
             return settings;
         });
     }
 
     /**
-     * Return a copy of the current settings.
+     * Return a copy of the current settingsService.
      * @returns {Settings}
      */
     public getSettings(): Settings {
@@ -110,7 +111,7 @@ export class SettingsService {
     }
 
     /**
-     * Return the default settings.
+     * Return the default settingsService.
      * @returns {Promise<Settings>}
      */
     private getDefaultSettings(): Promise<Settings> {
@@ -120,12 +121,12 @@ export class SettingsService {
     }
 
     /**
-     * Overwrite the settings in the storage.
+     * Overwrite the settingsService in the storage.
      * @param {Settings} settings
      * @returns {Promise<Settings>}
      */
     private update(settings: Settings): Promise<Settings> {
-        return this.storage.set(this.SETTINGS_KEY, settings).then((settings: Settings) => {
+        return this.storageService.set(this.SETTINGS_KEY, settings).then((settings: Settings) => {
             return settings;
         });
     }

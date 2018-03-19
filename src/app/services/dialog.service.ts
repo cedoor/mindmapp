@@ -1,5 +1,4 @@
 import {Injectable, NgZone} from "@angular/core";
-import {UtilsService} from "./utils.service";
 import {IPFSService} from "./ipfs.service";
 import {environment} from "../../environments/environment";
 import {MmpService} from "./mmp.service";
@@ -8,6 +7,7 @@ import {MatDialog} from "@angular/material";
 import {MatDialogRef} from "@angular/material/dialog/typings/dialog-ref";
 import {remote} from "electron";
 import * as fs from "fs";
+import {FileService} from "./file.service";
 
 @Injectable()
 export class DialogService {
@@ -18,19 +18,19 @@ export class DialogService {
     private matDialogRef: MatDialogRef<any>;
 
     constructor(private _ngZone: NgZone,
-                private ipfs: IPFSService,
+                private ipfsService: IPFSService,
                 private matDialog: MatDialog,
-                private mmp: MmpService,
-                private utils: UtilsService) {
+                private mmpService: MmpService,
+                private fileService: FileService) {
         this.remote = window.require("electron").remote;
         this.fs = window.require("fs");
     }
 
     saveMap(saveAs: boolean = false): Promise<any> {
         return new Promise(resolve => {
-            const data = JSON.stringify(this.mmp.exportAsJSON());
+            const data = JSON.stringify(this.mmpService.exportAsJSON());
 
-            if (saveAs || !this.utils.getFilePath()) {
+            if (saveAs || !this.fileService.getFilePath()) {
                 this.remote.dialog.showSaveDialog({
                     title: "Salva mappa",
                     filters: [
@@ -39,21 +39,21 @@ export class DialogService {
                 }, path => {
                     if (typeof path === "string") {
                         this.fs.writeFileSync(path, data);
-                        this.utils.setFilePath(path);
-                        this.utils.setSavedStatus();
+                        this.fileService.setFilePath(path);
+                        this.fileService.setSavedStatus();
                     }
                     resolve();
                 });
             } else {
-                this.fs.writeFileSync(this.utils.getFilePath(), data);
-                this.utils.setSavedStatus();
+                this.fs.writeFileSync(this.fileService.getFilePath(), data);
+                this.fileService.setSavedStatus();
                 resolve();
             }
         });
     }
 
     exportImage(ext: string = "png") {
-        this.mmp.exportAsImage(ext).then(url => {
+        this.mmpService.exportAsImage(ext).then(url => {
             const data = url.replace(/^data:image\/\w+;base64,/, ""),
                 buf = new Buffer(data, "base64");
             this.remote.dialog.showSaveDialog({
@@ -76,16 +76,16 @@ export class DialogService {
             }, files => {
                 if (files) {
                     const data = this.fs.readFileSync(files[0]).toString();
-                    this.utils.setFilePath(files[0]);
-                    this.utils.setSavedStatus();
+                    this.fileService.setFilePath(files[0]);
+                    this.fileService.setSavedStatus();
                     this._ngZone.run(() => {
-                        this.mmp.new(JSON.parse(data));
+                        this.mmpService.new(JSON.parse(data));
                     });
                 }
             });
         };
 
-        if (!this.mmp.isInitialMap() && !this.utils.isSaved()) {
+        if (!this.fileService.isSaved()) {
             this.showMessage(
                 "Salva mappa",
                 "Vuoi salvare la mappa corrente prima di aprirne un'altra?")
@@ -98,14 +98,14 @@ export class DialogService {
 
     newMap() {
         let newMap = () => {
-            this.utils.setFilePath("");
-            this.utils.setSavedStatus();
+            this.fileService.setFilePath("");
+            this.fileService.setSavedStatus();
             this._ngZone.run(() => {
-                this.mmp.new();
+                this.mmpService.new();
             });
         };
 
-        if (!this.mmp.isInitialMap() && !this.utils.isSaved()) {
+        if (!this.fileService.isSaved()) {
             this.showMessage(
                 "Salva mappa",
                 "Vuoi salvare la mappa corrente prima di crearne un'altra?")
@@ -117,7 +117,7 @@ export class DialogService {
     }
 
     addNodeImage() {
-        if (!this.mmp.selectNode().image.src) {
+        if (!this.mmpService.selectNode().image.src) {
             this.remote.dialog.showOpenDialog({
                 title: "Inserisci un'immagine",
                 properties: ["openFile"],
@@ -132,25 +132,25 @@ export class DialogService {
                         base64 = "data:image/" + ext + ";base64," + buffer;
 
                     this._ngZone.run(() => {
-                        this.mmp.updateNode("imageSrc", base64);
+                        this.mmpService.updateNode("imageSrc", base64);
                     });
                 }
             });
         } else {
-            this.mmp.updateNode("imageSrc", "");
+            this.mmpService.updateNode("imageSrc", "");
         }
     }
 
     importMap(data: any) {
         let importMap = () => {
             this._ngZone.run(() => {
-                this.mmp.new(JSON.parse(data));
+                this.mmpService.new(JSON.parse(data));
             });
-            this.utils.setFilePath("");
-            this.utils.setSavedStatus(false);
+            this.fileService.setFilePath("");
+            this.fileService.setSavedStatus(false);
         };
 
-        if (!this.mmp.isInitialMap() && !this.utils.isSaved()) {
+        if (!this.fileService.isSaved()) {
             this.showMessage(
                 "Salva mappa",
                 "Vuoi salvare la mappa corrente prima di importarne un'altra?")
@@ -177,7 +177,7 @@ export class DialogService {
             let win = this.remote.getCurrentWindow();
 
             window.onbeforeunload = e => {
-                if (!this.mmp.isInitialMap() && !this.utils.isSaved()) {
+                if (!this.fileService.isSaved()) {
                     this.remote.dialog.showMessageBox({
                         type: "question",
                         title: "Salva mappa",
@@ -195,21 +195,21 @@ export class DialogService {
     }
 
     /**
-     * Open the dialog of Mindmapp settings.
+     * Open the dialog of Mindmapp settingsService.
      */
     public openSettings() {
         this.matDialogRef = this.matDialog.open(SettingsComponent);
     }
 
     /**
-     * Close the dialog of Mindmapp settings.
+     * Close the dialog of Mindmapp settingsService.
      */
     public closeSettings() {
         this.matDialogRef.close();
     }
 
     /**
-     * Return true if the dialog of the settings is open.
+     * Return true if the dialog of the settingsService is open.
      * @returns {boolean}
      */
     public getSettingsStatus(): boolean {

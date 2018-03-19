@@ -14,7 +14,7 @@ export class ColorsPanelComponent implements OnInit {
 
     tooltip: any;
 
-    constructor(public mmp: MmpService) {
+    constructor(public mmpService: MmpService) {
     }
 
     ngOnInit() {
@@ -24,13 +24,13 @@ export class ColorsPanelComponent implements OnInit {
     }
 
     colorPickerChange(property, value) {
-        this.mmp.updateNode(property, value, true);
+        this.mmpService.updateNode(property, value, true);
     }
 
     colorPickerToggleChange(opening, property, value) {
         this.background.nativeElement.style.visibility = opening ? "visible" : "hidden";
         if (!opening) {
-            this.mmp.updateNode(property, value);
+            this.mmpService.updateNode(property, value);
         }
     }
 

@@ -12,7 +12,7 @@ export class SlidersPanelComponent implements OnInit {
 
     tooltip: any;
 
-    constructor(public mmp: MmpService) {
+    constructor(public mmpService: MmpService) {
     }
 
     ngOnInit() {
@@ -24,13 +24,13 @@ export class SlidersPanelComponent implements OnInit {
     updateNodeFontSize(event: any, graphic?: boolean) {
         let value = parseInt(event.source.value);
 
-        this.mmp.updateNode("fontSize", value, graphic);
+        this.mmpService.updateNode("fontSize", value, graphic);
     }
 
     updateNodeImageSize(event: any, graphic?: boolean) {
         let value = parseInt(event.source.value);
 
-        this.mmp.updateNode("imageSize", value, graphic);
+        this.mmpService.updateNode("imageSize", value, graphic);
     }
 
 }

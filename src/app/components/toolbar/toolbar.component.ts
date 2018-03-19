@@ -13,8 +13,8 @@ export class ToolbarComponent implements OnInit {
 
     tooltip: any;
 
-    constructor(public dialog: DialogService,
-                public mmp: MmpService) {
+    constructor(public dialogService: DialogService,
+                public mmpService: MmpService) {
     }
 
     ngOnInit() {
@@ -24,22 +24,22 @@ export class ToolbarComponent implements OnInit {
     }
 
     toogleNodeFontStyle() {
-        let currentStyle = this.mmp.selectNode().font.style;
+        let currentStyle = this.mmpService.selectNode().font.style;
 
         if (currentStyle === "italic") {
-            this.mmp.updateNode("fontStyle", "normal");
+            this.mmpService.updateNode("fontStyle", "normal");
         } else {
-            this.mmp.updateNode("fontStyle", "italic");
+            this.mmpService.updateNode("fontStyle", "italic");
         }
     }
 
     toogleNodeFontWeight() {
-        let currentWeight = this.mmp.selectNode().font.weight;
+        let currentWeight = this.mmpService.selectNode().font.weight;
 
         if (currentWeight === "bold") {
-            this.mmp.updateNode("fontWeight", "normal");
+            this.mmpService.updateNode("fontWeight", "normal");
         } else {
-            this.mmp.updateNode("fontWeight", "bold");
+            this.mmpService.updateNode("fontWeight", "bold");
         }
     }
 

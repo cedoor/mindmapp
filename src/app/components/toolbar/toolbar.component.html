@@ -1,19 +1,19 @@
 <div id="toolbar">
     <mat-toolbar>
 
-        <button (click)="dialog.newMap()" id="new-map"
+        <button (click)="dialogService.newMap()" id="new-map"
                 color="primary" [matTooltip]="'TOOLTIPS.NEW_MAP' | translate"
                 [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="right"
                 mat-icon-button>
             <mat-icon>note_add</mat-icon>
         </button>
-        <button (click)="dialog.openMap()" id="open-map"
+        <button (click)="dialogService.openMap()" id="open-map"
                 color="primary" [matTooltip]="'TOOLTIPS.OPEN_MAP' | translate"
                 [matTooltipShowDelay]="tooltip.delay"
                 mat-icon-button>
             <mat-icon>folder_open</mat-icon>
         </button>
-        <button (click)="dialog.saveMap()" id="save-map"
+        <button (click)="dialogService.saveMap()" id="save-map"
                 color="primary" [matTooltip]="'TOOLTIPS.SAVE_MAP' | translate"
                 [matTooltipShowDelay]="tooltip.delay"
                 mat-icon-button>
@@ -22,13 +22,13 @@
 
         <div class="vertical-line"></div>
 
-        <button (click)="mmp.updateNode('locked')" id="lock-node"
+        <button (click)="mmpService.updateNode('locked')" id="lock-node"
                 color="primary" [matTooltip]="'TOOLTIPS.LOCK_NODE' | translate"
                 [matTooltipShowDelay]="tooltip.delay"
                 mat-icon-button>
             <mat-icon>{{ node?.locked ? "lock_outline" : "lock_open" }}</mat-icon>
         </button>
-        <button (click)="dialog.addNodeImage()" id="image"
+        <button (click)="dialogService.addNodeImage()" id="image"
                 color="primary" [matTooltip]="'TOOLTIPS.NODE_IMAGE' | translate"
                 [matTooltipShowDelay]="tooltip.delay"
                 mat-icon-button>

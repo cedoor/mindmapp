@@ -204,14 +204,6 @@ export class MmpService {
     }
 
     /**
-     * Return true if the map has not been modified.
-     * @returns {boolean}
-     */
-    public isInitialMap(): boolean {
-        return this.currentMap.history().index === 0;
-    }
-
-    /**
      * Return the version of mmp.
      * @returns {string}
      */

@@ -10,7 +10,7 @@ export class FloatingButtonsComponent implements OnInit {
 
     tooltip: any;
 
-    constructor(public mmp: MmpService) {
+    constructor(public mmpService: MmpService) {
     }
 
     ngOnInit() {
