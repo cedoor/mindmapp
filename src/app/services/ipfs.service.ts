@@ -34,7 +34,7 @@ export class IPFSService {
     // share(): Promise<any> {
     //     if (this.online) {
     //         return new Promise(resolve => {
-    //             const data = JSON.stringify(this.mmp.exportAsJson());
+    //             const data = JSON.stringify(this.mmp.exportAsJSON());
     //             this.ipfs.files.add(new this.ipfs.types.Buffer(data), (err, files) => {
     //                 if (err) {
     //                     throw err;

@@ -21,7 +21,7 @@ export class UtilsService {
         this.fileWatcher = this.fs.watch(this.filePath, eventType => {
             if (eventType === "change" && this.fileSync) {
                 let fileData = this.fs.readFileSync(this.filePath, "utf8"),
-                    mapData = JSON.stringify(this.mmp.exportAsJson());
+                    mapData = JSON.stringify(this.mmp.exportAsJSON());
 
                 if (this.isJsonString(fileData) && fileData !== mapData) {
                     this.mmp.new(JSON.parse(fileData));
@@ -46,7 +46,7 @@ export class UtilsService {
     checkSavedFile() {
         if (this.filePath) {
             let fileData = this.fs.readFileSync(this.filePath),
-                mapData = JSON.stringify(this.mmp.exportAsJson());
+                mapData = JSON.stringify(this.mmp.exportAsJSON());
 
             if (fileData !== mapData) this.setSavedStatus(false);
             else this.setSavedStatus();

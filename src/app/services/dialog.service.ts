@@ -28,7 +28,7 @@ export class DialogService {
 
     saveMap(saveAs: boolean = false): Promise<any> {
         return new Promise(resolve => {
-            const data = JSON.stringify(this.mmp.exportAsJson());
+            const data = JSON.stringify(this.mmp.exportAsJSON());
 
             if (saveAs || !this.utils.getFilePath()) {
                 this.remote.dialog.showSaveDialog({

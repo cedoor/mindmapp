@@ -72,8 +72,8 @@ export class MmpService {
      * Return the json of the mind mmp.
      * @returns {any}
      */
-    public exportAsJson(): any {
-        return this.currentMap.exportAsJson();
+    public exportAsJSON(): any {
+        return this.currentMap.exportAsJSON();
     }
 
     /**
