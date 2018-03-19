@@ -9,12 +9,11 @@
                 color="primary"
                 vertical>
     </mat-slider>
-    <mat-slider *ngIf="node.image" id="image-size"
+    <mat-slider *ngIf="node.image && node.image.src" id="image-size"
                 min="50" max="150"
                 [value]="node.image.size"
                 (change)="updateNodeImageSize($event)"
                 (input)="updateNodeImageSize($event, true)"
-                [disabled]="!node.image.src"
                 [matTooltip]="'TOOLTIPS.IMAGE_SIZE' | translate"
                 [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="right"
                 color="primary"
