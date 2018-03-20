@@ -16,7 +16,7 @@ import {FileService} from "./services/file.service";
 })
 export class AppComponent implements OnInit {
 
-    node: any;
+    public node: any;
 
     constructor(public dialogService: DialogService,
                 public dragDropService: DragDropService,
@@ -47,14 +47,14 @@ export class AppComponent implements OnInit {
         });
     }
 
-    createMap(options: MapOptions) {
+    public createMap(options: MapOptions) {
         this.mmpService.create("map", options);
 
         this.node = this.mmpService.selectNode();
         this.fileService.checkMapFile();
     }
 
-    setMapListeners() {
+    public setMapListeners() {
         this.mmpService.on("nodeSelect").subscribe((node) => {
             Object.assign(this.node, node);
         });
@@ -91,12 +91,12 @@ export class AppComponent implements OnInit {
         });
     }
 
-    setTranslations(language: string): Promise<any> {
+    public setTranslations(language: string): Promise<any> {
         this.translateService.setDefaultLang(language);
         return this.translateService.use(language).toPromise();
     }
 
-    setBackgroundServices(settings: Settings) {
+    public setBackgroundServices(settings: Settings) {
         // IPFS for export/import maps
         if (settings.sharing.ipfs) {
             this.ipfsService.start();

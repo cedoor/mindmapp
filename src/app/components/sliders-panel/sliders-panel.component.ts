@@ -8,9 +8,9 @@ import {MmpService} from "../../services/mmp.service";
 })
 export class SlidersPanelComponent implements OnInit {
 
-    @Input() node: any;
+    @Input() public node: any;
 
-    tooltip: any;
+    public tooltip: any;
 
     constructor(public mmpService: MmpService) {
     }
@@ -21,13 +21,13 @@ export class SlidersPanelComponent implements OnInit {
         };
     }
 
-    updateNodeFontSize(event: any, graphic?: boolean) {
+    public updateNodeFontSize(event: any, graphic?: boolean) {
         let value = parseInt(event.source.value);
 
         this.mmpService.updateNode("fontSize", value, graphic);
     }
 
-    updateNodeImageSize(event: any, graphic?: boolean) {
+    public updateNodeImageSize(event: any, graphic?: boolean) {
         let value = parseInt(event.source.value);
 
         this.mmpService.updateNode("imageSize", value, graphic);

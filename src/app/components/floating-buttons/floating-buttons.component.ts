@@ -8,7 +8,7 @@ import {MmpService} from "../../services/mmp.service";
 })
 export class FloatingButtonsComponent implements OnInit {
 
-    tooltip: any;
+    public tooltip: any;
 
     constructor(public mmpService: MmpService) {
     }

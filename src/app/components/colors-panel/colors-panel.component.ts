@@ -8,9 +8,9 @@ import {MmpService} from "../../services/mmp.service";
 })
 export class ColorsPanelComponent implements OnInit {
 
-    @Input() node: any;
+    @Input() public node: any;
 
-    @ViewChild("background") background: ElementRef;
+    @ViewChild("background") public background: ElementRef;
 
     tooltip: any;
 
@@ -23,11 +23,11 @@ export class ColorsPanelComponent implements OnInit {
         };
     }
 
-    colorPickerChange(property, value) {
+    public colorPickerChange(property, value) {
         this.mmpService.updateNode(property, value, true);
     }
 
-    colorPickerToggleChange(opening, property, value) {
+    public colorPickerToggleChange(opening, property, value) {
         this.background.nativeElement.style.visibility = opening ? "visible" : "hidden";
         if (!opening) {
             this.mmpService.updateNode(property, value);

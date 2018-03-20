@@ -18,13 +18,14 @@ export class FileService {
     private savingStatusSource: BehaviorSubject<boolean>;
 
     private mapFileWatcher: FSWatcher;
-    private externalFileSynchronization: boolean = false;
+    private externalFileSynchronization: boolean;
 
     constructor(private mmpService: MmpService) {
         this.fs = window.require("fs");
         this.savingStatus = false;
 
         this.savingStatusSource = new BehaviorSubject<boolean>(this.savingStatus);
+        this.externalFileSynchronization = false;
     }
 
     /**
