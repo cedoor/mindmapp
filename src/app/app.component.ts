@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
         this.mmpService.create("map", options);
 
         this.node = this.mmpService.selectNode();
-        this.fileService.checkSavedFile();
+        this.fileService.checkMapFile();
     }
 
     setMapListeners() {
@@ -65,17 +65,17 @@ export class AppComponent implements OnInit {
 
         this.mmpService.on("nodeUpdate").subscribe((node) => {
             Object.assign(this.node, node);
-            this.fileService.checkSavedFile();
+            this.fileService.checkMapFile();
         });
 
         this.mmpService.on("undo").subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode());
-            this.fileService.checkSavedFile();
+            this.fileService.checkMapFile();
         });
 
         this.mmpService.on("redo").subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode());
-            this.fileService.checkSavedFile();
+            this.fileService.checkMapFile();
         });
 
         this.mmpService.on("create").subscribe(() => {
@@ -83,11 +83,11 @@ export class AppComponent implements OnInit {
         });
 
         this.mmpService.on("nodeCreate").subscribe(() => {
-            this.fileService.checkSavedFile();
+            this.fileService.checkMapFile();
         });
 
         this.mmpService.on("nodeRemove").subscribe(() => {
-            this.fileService.checkSavedFile();
+            this.fileService.checkMapFile();
         });
     }
 
@@ -103,7 +103,7 @@ export class AppComponent implements OnInit {
         }
         // Node fs file synchronization
         if (settings.synchronization.file) {
-            this.fileService.setFileSync(true);
+            this.fileService.setExternalFileSynchronization(true);
         }
     }
 

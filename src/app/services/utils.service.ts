@@ -6,9 +6,14 @@ export class UtilsService {
     constructor() {
     }
 
-    static isJsonString(string: string) {
+    /**
+     * Return true if the string is a JSON Object.
+     * @param {string} JSONString
+     * @returns {boolean}
+     */
+    public static isJSONString(JSONString: string) {
         try {
-            JSON.parse(string);
+            JSON.parse(JSONString);
         } catch (e) {
             return false;
         }

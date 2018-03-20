@@ -68,7 +68,7 @@ export class SettingsService {
         this.settings.synchronization.file = status;
 
         return this.update(this.settings).then((settings: Settings) => {
-            this.fileService.setFileSync(status);
+            this.fileService.setExternalFileSynchronization(status);
             return settings;
         });
     }

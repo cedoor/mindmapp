@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {DialogService} from "../../services/dialog.service";
 import {MmpService} from "../../services/mmp.service";
+import {FileService} from "../../services/file.service";
 
 @Component({
     selector: "app-toolbar",
@@ -9,21 +10,28 @@ import {MmpService} from "../../services/mmp.service";
 })
 export class ToolbarComponent implements OnInit {
 
-    @Input() node: any;
+    @Input() public node: any;
 
-    tooltip: any;
+    public tooltip: any;
+
+    public mapSaved: boolean;
 
     constructor(public dialogService: DialogService,
-                public mmpService: MmpService) {
+                public mmpService: MmpService,
+                public fileService: FileService) {
     }
 
     ngOnInit() {
         this.tooltip = {
             delay: 1000
         };
+
+        this.fileService.watchSavingStatus().subscribe((mapSaved: boolean) => {
+            this.mapSaved = mapSaved;
+        })
     }
 
-    toogleNodeFontStyle() {
+    public toogleNodeFontStyle() {
         let currentStyle = this.mmpService.selectNode().font.style;
 
         if (currentStyle === "italic") {
@@ -33,7 +41,7 @@ export class ToolbarComponent implements OnInit {
         }
     }
 
-    toogleNodeFontWeight() {
+    public toogleNodeFontWeight() {
         let currentWeight = this.mmpService.selectNode().font.weight;
 
         if (currentWeight === "bold") {

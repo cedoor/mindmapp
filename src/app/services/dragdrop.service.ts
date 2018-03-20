@@ -43,13 +43,13 @@ export class DragDropService {
                     let openMap = () => {
                         const data = this.fs.readFileSync(url).toString();
                         this.fileService.setFilePath(url);
-                        this.fileService.setSavedStatus();
+                        this.fileService.setSavingStatus(true);
                         this._ngZone.run(() => {
                             this.mmpService.new(JSON.parse(data));
                         });
                     };
 
-                    if (!this.fileService.isSaved()) {
+                    if (!this.fileService.mapIsSaved()) {
                         this.dialogService.showMessage(
                             "Salva mappa",
                             "Vuoi salvare la mappa corrente prima di aprirne un'altra?")

@@ -40,13 +40,13 @@ export class DialogService {
                     if (typeof path === "string") {
                         this.fs.writeFileSync(path, data);
                         this.fileService.setFilePath(path);
-                        this.fileService.setSavedStatus();
+                        this.fileService.setSavingStatus(true);
                     }
                     resolve();
                 });
             } else {
                 this.fs.writeFileSync(this.fileService.getFilePath(), data);
-                this.fileService.setSavedStatus();
+                this.fileService.setSavingStatus(true);
                 resolve();
             }
         });
@@ -75,17 +75,23 @@ export class DialogService {
                 ]
             }, files => {
                 if (files) {
-                    const data = this.fs.readFileSync(files[0]).toString();
-                    this.fileService.setFilePath(files[0]);
-                    this.fileService.setSavedStatus();
+                    let data = this.fs.readFileSync(files[0]).toString(),
+                        path = files[0];
+
+                    this.fileService.setFilePath(path);
+                    this.fileService.setSavingStatus(true);
                     this._ngZone.run(() => {
                         this.mmpService.new(JSON.parse(data));
+
+                        // Overwrite the old data format (mmp 0.1.7) with the new
+                        let newDataFormat = JSON.stringify(this.mmpService.exportAsJSON());
+                        this.fs.writeFileSync(path, newDataFormat);
                     });
                 }
             });
         };
 
-        if (!this.fileService.isSaved()) {
+        if (!this.fileService.mapIsSaved()) {
             this.showMessage(
                 "Salva mappa",
                 "Vuoi salvare la mappa corrente prima di aprirne un'altra?")
@@ -99,13 +105,13 @@ export class DialogService {
     newMap() {
         let newMap = () => {
             this.fileService.setFilePath("");
-            this.fileService.setSavedStatus();
+            this.fileService.setSavingStatus(true);
             this._ngZone.run(() => {
                 this.mmpService.new();
             });
         };
 
-        if (!this.fileService.isSaved()) {
+        if (!this.fileService.mapIsSaved()) {
             this.showMessage(
                 "Salva mappa",
                 "Vuoi salvare la mappa corrente prima di crearne un'altra?")
@@ -147,10 +153,10 @@ export class DialogService {
                 this.mmpService.new(JSON.parse(data));
             });
             this.fileService.setFilePath("");
-            this.fileService.setSavedStatus(false);
+            this.fileService.setSavingStatus(false);
         };
 
-        if (!this.fileService.isSaved()) {
+        if (!this.fileService.mapIsSaved()) {
             this.showMessage(
                 "Salva mappa",
                 "Vuoi salvare la mappa corrente prima di importarne un'altra?")
@@ -177,7 +183,7 @@ export class DialogService {
             let win = this.remote.getCurrentWindow();
 
             window.onbeforeunload = e => {
-                if (!this.fileService.isSaved()) {
+                if (!this.fileService.mapIsSaved()) {
                     this.remote.dialog.showMessageBox({
                         type: "question",
                         title: "Salva mappa",
