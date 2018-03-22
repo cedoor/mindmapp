@@ -1,30 +1,33 @@
 import {Injectable, NgZone} from "@angular/core";
 import {DialogService} from "./dialog.service";
 import {MmpService} from "./mmp.service";
-import * as fs from "fs";
 import {FileService} from "./file.service";
+import * as fs from "fs";
 
 @Injectable()
 export class DragDropService {
 
-    fs: typeof fs;
+    private fs: typeof fs;
 
-    constructor(private _ngZone: NgZone,
+    constructor(private ngZone: NgZone,
                 private mmpService: MmpService,
                 private fileService: FileService,
                 private dialogService: DialogService) {
         this.fs = window.require("fs");
     }
 
-    setDragAndDrop() {
+    /**
+     * Manage all the drag & drop events.
+     */
+    public createDragAndDropListener() {
         window.document.ondragover = window.document.ondrop = ev => {
             ev.preventDefault();
         };
 
-        window.document.body.ondrop = ev => {
-            ev.preventDefault();
+        window.document.body.ondrop = (event: DragEvent) => {
+            event.preventDefault();
 
-            let files = ev.dataTransfer.files;
+            let files = event.dataTransfer.files;
 
             if (files.length > 0) {
                 let url = files[0].path,
@@ -34,7 +37,7 @@ export class DragDropService {
                     let buffer = new Buffer(this.fs.readFileSync(url)).toString("base64"),
                         base64 = "data:image/" + ext + ";base64," + buffer;
 
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.updateNode("imageSrc", base64);
                     });
                 }
@@ -44,7 +47,7 @@ export class DragDropService {
                         const data = this.fs.readFileSync(url).toString();
                         this.fileService.setFilePath(url);
                         this.fileService.setSavingStatus(true);
-                        this._ngZone.run(() => {
+                        this.ngZone.run(() => {
                             this.mmpService.new(JSON.parse(data));
                         });
                     };
@@ -54,10 +57,17 @@ export class DragDropService {
                             "Salva mappa",
                             "Vuoi salvare la mappa corrente prima di aprirne un'altra?")
                             .then(response => {
-                                if (response === 0) this.dialogService.saveMap().then(() => openMap());
-                                else if (response === 1) openMap();
+                                if (response === 0) {
+                                    this.dialogService.saveMap().then(() => {
+                                        openMap()
+                                    });
+                                } else if (response === 1) {
+                                    openMap();
+                                }
                             });
-                    } else openMap();
+                    } else {
+                        openMap();
+                    }
                 }
             }
         };

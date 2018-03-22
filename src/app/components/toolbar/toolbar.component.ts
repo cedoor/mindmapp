@@ -12,8 +12,6 @@ export class ToolbarComponent implements OnInit {
 
     @Input() public node: any;
 
-    public tooltip: any;
-
     public mapSaved: boolean;
 
     constructor(public dialogService: DialogService,
@@ -22,10 +20,6 @@ export class ToolbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.tooltip = {
-            delay: 1000
-        };
-
         this.fileService.watchSavingStatus().subscribe((mapSaved: boolean) => {
             this.mapSaved = mapSaved;
         })

@@ -9,7 +9,12 @@ export class NotificationsService {
                 public translateService: TranslateService) {
     }
 
-    send(message: string, duration: number = 8000) {
+    /**
+     * Show a notification with the message.
+     * @param {string} message
+     * @param {number} duration
+     */
+    public send(message: string, duration: number = 8000) {
         this.translateService.get("DISMISS").toPromise().then((translation: string) => {
             this.matSnackBar.open(message, translation, {
                 duration: duration,

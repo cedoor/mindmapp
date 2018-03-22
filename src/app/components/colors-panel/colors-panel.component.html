@@ -7,24 +7,21 @@
                (colorPickerChange)="colorPickerChange('backgroundColor', node.colors.background)"
                [(colorPicker)]="node.colors.background"
                [style.background]="node.colors.background"
-               [matTooltip]="'TOOLTIPS.NODE_COLOR' | translate"
-               [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="left"
+               [title]="'TOOLTIPS.NODE_COLOR' | translate"
                cpPosition="left"/>
         <input id="text-color"
                (cpToggleChange)="colorPickerToggleChange($event, 'nameColor', node.colors.name)"
                (colorPickerChange)="colorPickerChange('nameColor', node.colors.name)"
                [(colorPicker)]="node.colors.name"
                [style.background]="node.colors.name"
-               [matTooltip]="'TOOLTIPS.TEXT_COLOR' | translate"
-               [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="left"
+               [title]="'TOOLTIPS.TEXT_COLOR' | translate"
                cpPosition="left"/>
         <input *ngIf="node.colors.branch" id="branch-color"
                (cpToggleChange)="colorPickerToggleChange($event, 'branchColor', node.colors.branch)"
                (colorPickerChange)="colorPickerChange('branchColor', node.colors.branch)"
                [(colorPicker)]="node.colors.branch"
                [style.background]="node.colors.branch"
-               [matTooltip]="'TOOLTIPS.BRANCH_COLOR' | translate"
-               [matTooltipShowDelay]="tooltip.delay" matTooltipPosition="left"
+               [title]="'TOOLTIPS.BRANCH_COLOR' | translate"
                cpPosition="left"/>
     </div>
 </div>

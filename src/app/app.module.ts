@@ -33,8 +33,7 @@ import {
     MatSlideToggleModule,
     MatSnackBarModule,
     MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule
+    MatToolbarModule
 } from "@angular/material";
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -68,7 +67,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatIconModule,
         MatSnackBarModule,
         MatToolbarModule,
-        MatTooltipModule,
         MatInputModule,
         MatDialogModule,
         MatTabsModule,

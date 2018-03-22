@@ -35,14 +35,17 @@ export class AppComponent implements OnInit {
             // Set background services
             this.setBackgroundServices(settings);
 
-            // Set translations
             this.setTranslations(settings.language).then(() => {
-                this.createMap(settings.mapOptions);
-                this.setMapListeners();
-
+                // Create the electron menu.
                 this.menuService.createMenu();
-                this.dialogService.setExitDialog();
-                this.dragDropService.setDragAndDrop();
+
+                // Create the mind map.
+                this.createMap(settings.mapOptions);
+
+                // Initialize all listeners
+                this.createMapListeners();
+                this.dialogService.createQuitListener();
+                this.dragDropService.createDragAndDropListener();
             });
         });
     }
@@ -54,7 +57,7 @@ export class AppComponent implements OnInit {
         this.fileService.checkMapFile();
     }
 
-    public setMapListeners() {
+    public createMapListeners() {
         this.mmpService.on("nodeSelect").subscribe((node) => {
             Object.assign(this.node, node);
         });
@@ -101,6 +104,7 @@ export class AppComponent implements OnInit {
         if (settings.sharing.ipfs) {
             this.ipfsService.start();
         }
+
         // Node fs file synchronization
         if (settings.synchronization.file) {
             this.fileService.setExternalFileSynchronization(true);

@@ -5,82 +5,115 @@ import {MmpService} from "./mmp.service";
 import {SettingsComponent} from "../components/settings/settings.component";
 import {MatDialog} from "@angular/material";
 import {MatDialogRef} from "@angular/material/dialog/typings/dialog-ref";
+import {LangChangeEvent} from "@ngx-translate/core/src/translate.service";
+import {TranslateService} from "@ngx-translate/core";
+import {FileService} from "./file.service";
 import {remote} from "electron";
 import * as fs from "fs";
-import {FileService} from "./file.service";
 
 @Injectable()
 export class DialogService {
 
-    remote: typeof remote;
-    fs: typeof fs;
+    private remote: typeof remote;
+    private fs: typeof fs;
 
     private matDialogRef: MatDialogRef<any>;
 
-    constructor(private _ngZone: NgZone,
+    private translations: any;
+
+    constructor(private ngZone: NgZone,
                 private ipfsService: IPFSService,
+                private translateService: TranslateService,
                 private matDialog: MatDialog,
                 private mmpService: MmpService,
                 private fileService: FileService) {
         this.remote = window.require("electron").remote;
         this.fs = window.require("fs");
+
+        this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
+            this.translations = event.translations;
+        });
     }
 
-    saveMap(saveAs: boolean = false): Promise<any> {
-        return new Promise(resolve => {
-            const data = JSON.stringify(this.mmpService.exportAsJSON());
+    /**
+     * Save the mind map in the file system.
+     * @param {boolean} saveAs
+     * @returns {Promise<any>}
+     */
+    public saveMap(saveAs: boolean = false): Promise<any> {
+        return new Promise((resolve: Function) => {
+            let data = JSON.stringify(this.mmpService.exportAsJSON());
 
             if (saveAs || !this.fileService.getFilePath()) {
                 this.remote.dialog.showSaveDialog({
-                    title: "Salva mappa",
+                    title: this.translations["SAVE"],
                     filters: [
-                        {name: "Mind map", extensions: ["mmp"]}
+                        {name: this.translations["MINDMAPP_FILES"] + " (*.mmp)", extensions: ["mmp"]}
                     ]
-                }, path => {
-                    if (typeof path === "string") {
-                        this.fs.writeFileSync(path, data);
-                        this.fileService.setFilePath(path);
-                        this.fileService.setSavingStatus(true);
-                    }
-                    resolve();
+                }, (path: string) => {
+                    this.ngZone.run(() => {
+                        if (typeof path === "string") {
+                            this.fs.writeFileSync(path, data);
+
+                            this.fileService.setFilePath(path);
+                            this.fileService.setSavingStatus(true);
+                        }
+
+                        resolve();
+                    });
                 });
             } else {
                 this.fs.writeFileSync(this.fileService.getFilePath(), data);
                 this.fileService.setSavingStatus(true);
+
                 resolve();
             }
         });
     }
 
-    exportImage(ext: string = "png") {
-        this.mmpService.exportAsImage(ext).then(url => {
-            const data = url.replace(/^data:image\/\w+;base64,/, ""),
-                buf = new Buffer(data, "base64");
+    /**
+     * Export the current mmp image.
+     * @param {string} extension
+     */
+    exportImage(extension: string = "png") {
+        this.mmpService.exportAsImage(extension).then((url: string) => {
+            let data = url.replace(/^data:image\/\w+;base64,/, ""),
+                buffer = new Buffer(data, "base64");
+
             this.remote.dialog.showSaveDialog({
-                title: "Esporta immagine"
+                title: this.translations["EXPORT_IMAGE"]
             }, path => {
-                path = path + "." + ext;
-                if (typeof path === "string") this.fs.writeFileSync(path, buf);
+                this.ngZone.run(() => {
+                    path = path + "." + extension;
+
+                    if (typeof path === "string") {
+                        this.fs.writeFileSync(path, buffer);
+                    }
+                });
             });
         });
     }
 
+    /**
+     * Open an existing map.
+     */
     openMap() {
-        let openMap = () => {
+        this.showMapPreSavingMessage().then(() => {
             this.remote.dialog.showOpenDialog({
-                title: "Apri mappa",
+                title: this.translations["OPEN"],
                 properties: ["openFile"],
                 filters: [
-                    {name: "Mind map", extensions: ["mmp"]}
+                    {name: this.translations["MINDMAPP_FILES"] + " (*.mmp)", extensions: ["mmp"]}
                 ]
-            }, files => {
+            }, (files: Array<string>) => {
                 if (files) {
-                    let data = this.fs.readFileSync(files[0]).toString(),
-                        path = files[0];
+                    this.ngZone.run(() => {
+                        let data = this.fs.readFileSync(files[0]).toString(),
+                            path = files[0];
 
-                    this.fileService.setFilePath(path);
-                    this.fileService.setSavingStatus(true);
-                    this._ngZone.run(() => {
+                        this.fileService.setFilePath(path);
+                        this.fileService.setSavingStatus(true);
+
                         this.mmpService.new(JSON.parse(data));
 
                         // Overwrite the old data format (mmp 0.1.7) with the new
@@ -89,55 +122,47 @@ export class DialogService {
                     });
                 }
             });
-        };
-
-        if (!this.fileService.mapIsSaved()) {
-            this.showMessage(
-                "Salva mappa",
-                "Vuoi salvare la mappa corrente prima di aprirne un'altra?")
-                .then(response => {
-                    if (response === 0) this.saveMap().then(() => openMap());
-                    else if (response === 1) openMap();
-                });
-        } else openMap();
+        });
     }
 
-    newMap() {
-        let newMap = () => {
-            this.fileService.setFilePath("");
-            this.fileService.setSavingStatus(true);
-            this._ngZone.run(() => {
-                this.mmpService.new();
+    /**
+     * Create a new empty map.
+     */
+    newMap(data?: any) {
+        if (data) {
+            data = JSON.parse(data);
+        }
+
+        this.showMapPreSavingMessage().then(() => {
+            this.ngZone.run(() => {
+                this.fileService.setFilePath("");
+                this.fileService.setSavingStatus(true);
+
+                this.mmpService.new(data);
             });
-        };
-
-        if (!this.fileService.mapIsSaved()) {
-            this.showMessage(
-                "Salva mappa",
-                "Vuoi salvare la mappa corrente prima di crearne un'altra?")
-                .then(response => {
-                    if (response === 0) this.saveMap().then(() => newMap());
-                    else if (response === 1) newMap();
-                });
-        } else newMap();
+        });
     }
 
+    /**
+     * Insert an image in the current selected node.
+     */
     addNodeImage() {
         if (!this.mmpService.selectNode().image.src) {
             this.remote.dialog.showOpenDialog({
-                title: "Inserisci un'immagine",
+                title: this.translations["INSERT_NODE_IMAGE"],
                 properties: ["openFile"],
-                filters: [
-                    {name: "Image", extensions: ["png", "gif", "jpg", "jpeg"]}
-                ]
-            }, files => {
+                filters: [{
+                    name: this.translations["IMAGE"],
+                    extensions: ["png", "gif", "jpg", "jpeg"]
+                }]
+            }, (files: Array<string>) => {
                 if (files) {
-                    let url = files[0],
-                        ext = url.split(".").pop(),
-                        buffer = new Buffer(this.fs.readFileSync(url)).toString("base64"),
-                        base64 = "data:image/" + ext + ";base64," + buffer;
+                    this.ngZone.run(() => {
+                        let url = files[0],
+                            extension = url.split(".").pop(),
+                            buffer = new Buffer(this.fs.readFileSync(url)).toString("base64"),
+                            base64 = "data:image/" + extension + ";base64," + buffer;
 
-                    this._ngZone.run(() => {
                         this.mmpService.updateNode("imageSrc", base64);
                     });
                 }
@@ -147,54 +172,54 @@ export class DialogService {
         }
     }
 
-    importMap(data: any) {
-        let importMap = () => {
-            this._ngZone.run(() => {
-                this.mmpService.new(JSON.parse(data));
-            });
-            this.fileService.setFilePath("");
-            this.fileService.setSavingStatus(false);
-        };
-
-        if (!this.fileService.mapIsSaved()) {
-            this.showMessage(
-                "Salva mappa",
-                "Vuoi salvare la mappa corrente prima di importarne un'altra?")
-                .then(response => {
-                    if (response === 0) this.saveMap().then(() => importMap());
-                    else if (response === 1) importMap();
-                });
-        } else importMap();
-    }
-
-    showMessage(title: string, message: string): Promise<number> {
-        return new Promise(resolve => {
+    /**
+     * Show a message dialog.
+     * @param {string} title
+     * @param {string} message
+     * @returns {Promise<number>}
+     */
+    public showMessage(title: string, message: string): Promise<number> {
+        return new Promise((resolve: Function) => {
             this.remote.dialog.showMessageBox({
                 type: "question",
                 title: title,
                 message: message,
-                buttons: ["Si", "No", "Annulla"]
-            }, index => resolve(index));
+                buttons: [
+                    this.translations["YES"],
+                    this.translations["NO"],
+                    this.translations["CANCEL"]
+                ]
+            }, index => {
+                resolve(index);
+            });
         });
     }
 
-    setExitDialog() {
+    /**
+     * Manage the exit from the program.
+     */
+    public createQuitListener() {
         if (environment.production) {
-            let win = this.remote.getCurrentWindow();
+            let currentWindow = this.remote.getCurrentWindow();
 
-            window.onbeforeunload = e => {
+            window.onbeforeunload = (event: Event) => {
                 if (!this.fileService.mapIsSaved()) {
                     this.remote.dialog.showMessageBox({
                         type: "question",
                         title: "Salva mappa",
                         message: "Vuoi salvare la mappa corrente prima di uscire?",
                         buttons: ["Si", "No", "Annulla"]
-                    }, index => {
-                        if (index === 0) this.saveMap().then(() => win.destroy());
-                        else if (index === 1) win.destroy();
+                    }, (index: number) => {
+                        if (index === 0) {
+                            this.saveMap().then(() => {
+                                currentWindow.destroy();
+                            });
+                        } else if (index === 1) {
+                            currentWindow.destroy();
+                        }
                     });
 
-                    e.returnValue = false;
+                    event.returnValue = false;
                 }
             };
         }
@@ -220,6 +245,31 @@ export class DialogService {
      */
     public getSettingsStatus(): boolean {
         return this.matDialogRef && !!this.matDialogRef.componentInstance;
+    }
+
+    /**
+     * Show the pre-saving message and if the user agrees save the map.
+     * @returns {Promise<any>}
+     */
+    private showMapPreSavingMessage(): Promise<any> {
+        return new Promise((resolve: Function) => {
+            if (!this.fileService.mapIsSaved()) {
+                this.showMessage(
+                    this.translations["SAVE"],
+                    this.translations["SAVE_MAP_MESSAGE"])
+                    .then((response: number) => {
+                        if (response === 0) {
+                            this.saveMap().then(() => {
+                                resolve();
+                            });
+                        } else if (response === 1) {
+                            resolve();
+                        }
+                    });
+            } else {
+                resolve();
+            }
+        });
     }
 
 }

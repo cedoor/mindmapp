@@ -121,7 +121,7 @@ export class FileService {
      */
     private watchMapFile(mapPath: string) {
         this.mapFileWatcher = this.fs.watch(mapPath, (eventType: string) => {
-            if (eventType === "change" && mapPath) {
+            if (eventType === "change" && mapPath && this.externalFileSynchronization) {
                 let fileData = this.fs.readFileSync(mapPath).toString(),
                     mapData = JSON.stringify(this.mmpService.exportAsJSON());
 

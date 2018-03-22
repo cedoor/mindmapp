@@ -10,15 +10,10 @@ export class SlidersPanelComponent implements OnInit {
 
     @Input() public node: any;
 
-    public tooltip: any;
-
     constructor(public mmpService: MmpService) {
     }
 
     ngOnInit() {
-        this.tooltip = {
-            delay: 1000
-        };
     }
 
     public updateNodeFontSize(event: any, graphic?: boolean) {

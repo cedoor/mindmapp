@@ -8,15 +8,10 @@ import {MmpService} from "../../services/mmp.service";
 })
 export class FloatingButtonsComponent implements OnInit {
 
-    public tooltip: any;
-
     constructor(public mmpService: MmpService) {
     }
 
     ngOnInit() {
-        this.tooltip = {
-            delay: 1000
-        };
     }
 
 }

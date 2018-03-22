@@ -12,15 +12,10 @@ export class ColorsPanelComponent implements OnInit {
 
     @ViewChild("background") public background: ElementRef;
 
-    tooltip: any;
-
     constructor(public mmpService: MmpService) {
     }
 
     ngOnInit() {
-        this.tooltip = {
-            delay: 1000
-        };
     }
 
     public colorPickerChange(property, value) {

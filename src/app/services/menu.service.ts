@@ -13,7 +13,7 @@ export class MenuService {
 
     remote: typeof remote;
 
-    constructor(private _ngZone: NgZone,
+    constructor(private ngZone: NgZone,
                 private ipfsService: IPFSService,
                 private storageService: StorageService,
                 private mmpService: MmpService,
@@ -46,13 +46,17 @@ export class MenuService {
                 label: translations["NEW"],
                 accelerator: "Ctrl+n",
                 click: () => {
-                    this.dialogService.newMap();
+                    this.ngZone.run(() => {
+                        this.dialogService.newMap();
+                    });
                 }
             }, {
                 label: translations["OPEN"],
                 accelerator: "Ctrl+o",
                 click: () => {
-                    this.dialogService.openMap();
+                    this.ngZone.run(() => {
+                        this.dialogService.openMap();
+                    });
                 }
             }, {
                 type: "separator"
@@ -60,18 +64,24 @@ export class MenuService {
                 label: translations["SAVE"],
                 accelerator: "Ctrl+s",
                 click: () => {
-                    this.dialogService.saveMap();
+                    this.ngZone.run(() => {
+                        this.dialogService.saveMap();
+                    });
                 }
             }, {
                 label: translations["SAVE_WITH_NAME"],
                 click: () => {
-                    this.dialogService.saveMap(true);
+                    this.ngZone.run(() => {
+                        this.dialogService.saveMap(true);
+                    });
                 }
             }, {
                 label: translations["EXPORT_IMAGE"],
                 accelerator: "Ctrl+e",
                 click: () => {
-                    this.dialogService.exportImage();
+                    this.ngZone.run(() => {
+                        this.dialogService.exportImage();
+                    });
                 }
             }, {
                 type: "separator"
@@ -85,7 +95,7 @@ export class MenuService {
                 label: translations["UNDO"],
                 accelerator: "Ctrl+z",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.undo();
                     });
                 }
@@ -93,7 +103,7 @@ export class MenuService {
                 label: translations["REPEAT"],
                 accelerator: "Ctrl+Shift+z",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.redo();
                     });
                 }
@@ -103,7 +113,7 @@ export class MenuService {
                 label: translations["ADD_NODE"],
                 accelerator: "Alt+=",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.addNode();
                     });
                 }
@@ -111,7 +121,7 @@ export class MenuService {
                 label: translations["REMOVE_NODE"],
                 accelerator: "Alt+-",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.removeNode();
                     });
                 }
@@ -121,7 +131,7 @@ export class MenuService {
                 label: translations["MOVE_ON_THE_LEFT"],
                 accelerator: "Alt+Shift+left",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.moveNodeTo("left");
                     });
                 }
@@ -129,7 +139,7 @@ export class MenuService {
                 label: translations["MOVE_ON_THE_RIGHT"],
                 accelerator: "Alt+Shift+right",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.moveNodeTo("right");
                     });
                 }
@@ -137,7 +147,7 @@ export class MenuService {
                 label: translations["MOVE_ABOVE"],
                 accelerator: "Alt+Shift+up",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.moveNodeTo("up");
                     });
                 }
@@ -145,7 +155,7 @@ export class MenuService {
                 label: translations["MOVE_BELOW"],
                 accelerator: "Alt+Shift+down",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.moveNodeTo("down");
                     });
                 }
@@ -155,7 +165,7 @@ export class MenuService {
                 label: translations["SETTINGS_TITLE"],
                 accelerator: "Ctrl+Alt+S",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         if (this.dialogService.getSettingsStatus()) {
                             this.dialogService.closeSettings();
                         } else {
@@ -170,7 +180,7 @@ export class MenuService {
                 label: translations["SELECT_ON_THE_LEFT"],
                 accelerator: "Alt+left",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.selectNode("left");
                     });
                 }
@@ -178,7 +188,7 @@ export class MenuService {
                 label: translations["SELECT_ON_THE_RIGHT"],
                 accelerator: "Alt+right",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.selectNode("right");
                     });
                 }
@@ -186,7 +196,7 @@ export class MenuService {
                 label: translations["SELECT_ABOVE"],
                 accelerator: "Alt+up",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.selectNode("up");
                     });
                 }
@@ -194,7 +204,7 @@ export class MenuService {
                 label: translations["SELECT_BELOW"],
                 accelerator: "Alt+down",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.selectNode("down");
                     });
                 }
@@ -204,7 +214,7 @@ export class MenuService {
                 label: translations["DESELECT"],
                 accelerator: "Esc",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         if (this.dialogService.getSettingsStatus()) {
                             this.dialogService.closeSettings();
                         } else {
@@ -219,7 +229,7 @@ export class MenuService {
                 label: translations["RESET_ZOOM"],
                 accelerator: "Alt+c",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.center();
                     });
                 }
@@ -227,7 +237,7 @@ export class MenuService {
                 label: translations["ZOOM_OUT"],
                 accelerator: "Ctrl+=",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.zoomIn();
                     });
                 }
@@ -235,7 +245,7 @@ export class MenuService {
                 label: translations["ZOOM_IN"],
                 accelerator: "Ctrl+-",
                 click: () => {
-                    this._ngZone.run(() => {
+                    this.ngZone.run(() => {
                         this.mmpService.zoomOut();
                     });
                 }
@@ -266,7 +276,9 @@ export class MenuService {
                 }, {
                     label: translations["CLEAN_CACHE"],
                     click: () => {
-                        this.storageService.clear();
+                        this.ngZone.run(() => {
+                            this.storageService.clear();
+                        });
                     }
                 }]
             });

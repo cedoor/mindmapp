@@ -156,7 +156,7 @@ export class MmpService {
      * @param value
      * @param {boolean} graphic
      */
-    public updateNode(property: string, value: any, graphic?: boolean) {
+    public updateNode(property: string, value?: any, graphic?: boolean) {
         this.currentMap.updateNode(property, value, graphic);
     }
 
