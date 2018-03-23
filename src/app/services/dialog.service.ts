@@ -14,8 +14,6 @@ import * as fs from "fs";
 @Injectable()
 export class DialogService {
 
-    private readonly MAP_FORMAT = "mmap";
-
     private remote: typeof remote;
     private fs: typeof fs;
 
@@ -50,13 +48,13 @@ export class DialogService {
                 this.remote.dialog.showSaveDialog({
                     title: this.translations["SAVE"],
                     filters: [{
-                        name: this.translations["MINDMAPP_FILES"] + ` (*.${this.MAP_FORMAT})`,
-                        extensions: [this.MAP_FORMAT]
+                        name: this.translations["MINDMAPP_FILES"] + ` (*.${MmpService.MAP_FORMAT})`,
+                        extensions: [MmpService.MAP_FORMAT]
                     }, {
                         name: this.translations["ALL_FILES"],
                         extensions: ["*"]
                     }],
-                    defaultPath: this.mmpService.selectNode("map_node_0").name + `.${this.MAP_FORMAT}`
+                    defaultPath: this.mmpService.selectNode("map_node_0").name + `.${MmpService.MAP_FORMAT}`
                 }, (path: string) => {
                     this.ngZone.run(() => {
                         if (typeof path === "string") {
@@ -113,8 +111,8 @@ export class DialogService {
                 title: this.translations["OPEN"],
                 properties: ["openFile"],
                 filters: [{
-                    name: this.translations["MINDMAPP_FILES"] + ` (*.${this.MAP_FORMAT})`,
-                    extensions: [this.MAP_FORMAT]
+                    name: this.translations["MINDMAPP_FILES"] + ` (*.${MmpService.MAP_FORMAT})`,
+                    extensions: [MmpService.MAP_FORMAT]
                 }, {
                     name: this.translations["ALL_FILES"],
                     extensions: ["*"]
@@ -210,6 +208,31 @@ export class DialogService {
     }
 
     /**
+     * Show the pre-saving message and if the user agrees save the map.
+     * @returns {Promise<any>}
+     */
+    public showMapPreSavingMessage(): Promise<any> {
+        return new Promise((resolve: Function) => {
+            if (!this.fileService.mapIsSaved()) {
+                this.showMessage(
+                    this.translations["SAVE"],
+                    this.translations["SAVE_MAP_MESSAGE"])
+                    .then((response: number) => {
+                        if (response === 0) {
+                            this.saveMap().then(() => {
+                                resolve();
+                            });
+                        } else if (response === 1) {
+                            resolve();
+                        }
+                    });
+            } else {
+                resolve();
+            }
+        });
+    }
+
+    /**
      * Manage the exit from the program.
      */
     public createQuitListener() {
@@ -259,31 +282,6 @@ export class DialogService {
      */
     public getSettingsStatus(): boolean {
         return this.matDialogRef && !!this.matDialogRef.componentInstance;
-    }
-
-    /**
-     * Show the pre-saving message and if the user agrees save the map.
-     * @returns {Promise<any>}
-     */
-    private showMapPreSavingMessage(): Promise<any> {
-        return new Promise((resolve: Function) => {
-            if (!this.fileService.mapIsSaved()) {
-                this.showMessage(
-                    this.translations["SAVE"],
-                    this.translations["SAVE_MAP_MESSAGE"])
-                    .then((response: number) => {
-                        if (response === 0) {
-                            this.saveMap().then(() => {
-                                resolve();
-                            });
-                        } else if (response === 1) {
-                            resolve();
-                        }
-                    });
-            } else {
-                resolve();
-            }
-        });
     }
 
 }

@@ -8,6 +8,8 @@ import {Observable} from "rxjs/Observable";
 @Injectable()
 export class MmpService {
 
+    public static readonly MAP_FORMAT = "mmap";
+
     private maps: Map<string, any>;
     private currentMap: any;
 
