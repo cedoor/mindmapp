@@ -15,6 +15,7 @@
     "IMPORT": "Import",
     "EXPORT": "Export",
     "HELP": "Help",
+    "LANGUAGE": "Language",
     "YES": "Yes",
     "NO": "No",
     "CANCEL": "Cancel",
@@ -44,12 +45,11 @@
     "REMOVE_NODE": "Remove node",
     "MAP": "Map",
     "ROOT_NODE_NAME": "Root node name",
-    "DEFAULT_NODE_NAME": "Default node name",
+    "NODE_NAME": "Node name",
     "SETTINGS_TITLE": "Settings",
     "SETTINGS_LABELS": {
         "SHARING": "Sharing",
-        "LANGUAGE": "Language",
-        "SYNCHRONIZATION": "Synchronization",
+        "GENERAL": "General",
         "MAP_OPTIONS": "Map options"
     },
     "LANGUAGES": {
@@ -75,6 +75,8 @@
         "REDO_MAP": "Repeat a previously undoed change",
         "NODE_COLOR": "Change the node color",
         "BRANCH_COLOR": "Change the branch color",
-        "TEXT_COLOR": "Change the text color"
+        "TEXT_COLOR": "Change the text color",
+        "ROOT_NODE_NAME_INPUT": "Change the default root node name",
+        "NODE_NAME_INPUT": "Change the default node name"
     }
 }

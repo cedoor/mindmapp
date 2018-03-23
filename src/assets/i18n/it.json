@@ -15,6 +15,7 @@
     "IMPORT": "Importa",
     "EXPORT": "Esporta",
     "HELP": "Aiuto",
+    "LANGUAGE": "Lingua",
     "YES": "Si",
     "NO": "No",
     "CANCEL": "Annulla",
@@ -44,12 +45,11 @@
     "REMOVE_NODE": "Rimuovi nodo",
     "MAP": "Mappa",
     "ROOT_NODE_NAME": "Nome nodo radice",
-    "DEFAULT_NODE_NAME": "Nome nodo",
+    "NODE_NAME": "Nome nodo",
     "SETTINGS_TITLE": "Impostazioni",
     "SETTINGS_LABELS": {
         "SHARING": "Condivisione",
-        "LANGUAGE": "Lingua",
-        "SYNCHRONIZATION": "Sincronizzazione",
+        "GENERAL": "Generali",
         "MAP_OPTIONS": "Opzioni mappa"
     },
     "LANGUAGES": {
@@ -75,6 +75,8 @@
         "REDO_MAP": "Rieffettua una modifica",
         "NODE_COLOR": "Cambia il colore del nodo",
         "BRANCH_COLOR": "Cambia il colore del ramo",
-        "TEXT_COLOR": "Cambia il colore del testo"
+        "TEXT_COLOR": "Cambia il colore del testo",
+        "ROOT_NODE_NAME_INPUT": "Cambia il nome predefinito del nodo radice",
+        "NODE_NAME_INPUT": "Cambia il nome predefinito dei nodi"
     }
 }
