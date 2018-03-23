@@ -17,6 +17,10 @@ div#toolbar {
             margin: 0 8px;
             background-color: #c2c2c2;
         }
+
+        span.toolbar-spacer {
+            flex: 1 1 auto;
+        }
     }
 
 }
