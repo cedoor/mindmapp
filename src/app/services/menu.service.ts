@@ -49,8 +49,12 @@ export class MenuService {
         this.remote.app.on("ready", () => {
             this.remote.globalShortcut.register("Esc", () => {
                 this.ngZone.run(() => {
-                    if (this.dialogService.getSettingsStatus()) {
-                        this.dialogService.closeSettings();
+                    if (this.dialogService.getMatDialogStatus("settings")) {
+                        this.dialogService.closeMatDialog("settings");
+                    }
+
+                    if (this.dialogService.getMatDialogStatus("about")) {
+                        this.dialogService.closeMatDialog("about");
                     }
                 });
             });
@@ -190,10 +194,10 @@ export class MenuService {
                 accelerator: "Ctrl+Alt+S",
                 click: () => {
                     this.ngZone.run(() => {
-                        if (this.dialogService.getSettingsStatus()) {
-                            this.dialogService.closeSettings();
+                        if (this.dialogService.getMatDialogStatus("settings")) {
+                            this.dialogService.closeMatDialog("settings");
                         } else {
-                            this.dialogService.openSettings();
+                            this.dialogService.openMatDialog("settings");
                         }
                     });
                 }
@@ -269,11 +273,16 @@ export class MenuService {
             label: translations["HELP"],
             role: "help",
             submenu: [{
-                label: translations["INFORMATIONS"],
-                enabled: false
-            }, {
-                label: translations["TUTORIAL"],
-                enabled: false
+                label: translations["ABOUT_TITLE"],
+                click: () => {
+                    this.ngZone.run(() => {
+                        if (this.dialogService.getMatDialogStatus("about")) {
+                            this.dialogService.closeMatDialog("about");
+                        } else {
+                            this.dialogService.openMatDialog("about");
+                        }
+                    });
+                }
             }]
         }];
 

@@ -10,6 +10,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {FileService} from "./file.service";
 import {remote} from "electron";
 import * as fs from "fs";
+import {AboutComponent} from "../components/about/about.component";
 
 @Injectable()
 export class DialogService {
@@ -17,7 +18,7 @@ export class DialogService {
     private remote: typeof remote;
     private fs: typeof fs;
 
-    private matDialogRef: MatDialogRef<any>;
+    private matDialogRefs: Map<string, MatDialogRef<any>>;
 
     private translations: any;
 
@@ -29,6 +30,8 @@ export class DialogService {
                 private fileService: FileService) {
         this.remote = window.require("electron").remote;
         this.fs = window.require("fs");
+
+        this.matDialogRefs = new Map();
 
         this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
             this.translations = event.translations;
@@ -263,25 +266,46 @@ export class DialogService {
     }
 
     /**
-     * Open the dialog of Mindmapp settingsService.
+     * Open a dialog of Mindmapp.
      */
-    public openSettings() {
-        this.matDialogRef = this.matDialog.open(SettingsComponent);
+    public openMatDialog(name: "settings" | "about") {
+        switch (name) {
+            case "settings":
+                this.matDialogRefs.set("settings", this.matDialog.open(SettingsComponent));
+                break;
+            case "about":
+                this.matDialogRefs.set("about", this.matDialog.open(AboutComponent));
+        }
     }
 
     /**
-     * Close the dialog of Mindmapp settingsService.
+     * Close a dialog of Mindmapp.
      */
-    public closeSettings() {
-        this.matDialogRef.close();
+    public closeMatDialog(name: "settings" | "about") {
+        switch (name) {
+            case "settings":
+                this.matDialogRefs.get("settings").close();
+                break;
+            case "about":
+                this.matDialogRefs.get("about").close();
+        }
     }
 
     /**
-     * Return true if the dialog of the settingsService is open.
+     * Return true if the corresponding dialog is open.
      * @returns {boolean}
      */
-    public getSettingsStatus(): boolean {
-        return this.matDialogRef && !!this.matDialogRef.componentInstance;
+    public getMatDialogStatus(name: "settings" | "about"): boolean {
+        let ref: MatDialogRef<any>;
+
+        switch (name) {
+            case "settings":
+                ref = this.matDialogRefs.get("settings");
+                return ref && !!ref.componentInstance;
+            case "about":
+                ref = this.matDialogRefs.get("about");
+                return ref && !!ref.componentInstance;
+        }
     }
 
 }

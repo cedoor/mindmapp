@@ -1,6 +1,5 @@
-import {Component, Inject, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Settings} from "../../models/settings";
-import {MAT_DIALOG_DATA} from "@angular/material";
 import {SettingsService} from "../../services/settings.service";
 
 @Component({
@@ -16,8 +15,7 @@ export class SettingsComponent implements OnInit {
 
     public languages: Array<string>;
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-                public settingsService: SettingsService) {
+    constructor(public settingsService: SettingsService) {
     }
 
     ngOnInit() {

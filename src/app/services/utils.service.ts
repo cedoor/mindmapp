@@ -1,9 +1,10 @@
 import {Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class UtilsService {
 
-    constructor() {
+    constructor(private http: HttpClient) {
     }
 
     /**
@@ -18,6 +19,14 @@ export class UtilsService {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Return the json of package.json.
+     * @returns {Promise<any>}
+     */
+    public getPackageInformations(): Promise<any> {
+        return this.http.get("./package.json").toPromise();
     }
 
 }

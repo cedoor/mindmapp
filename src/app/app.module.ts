@@ -28,13 +28,14 @@ import {
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
-    MatInputModule, MatSelectModule,
+    MatInputModule, MatListModule, MatSelectModule,
     MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
     MatTabsModule,
     MatToolbarModule
 } from "@angular/material";
+import {AboutComponent} from "./components/about/about.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/");
@@ -48,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         ColorsPanelComponent,
         FloatingButtonsComponent,
         SettingsComponent,
+        AboutComponent,
         MapComponent
     ],
     imports: [
@@ -69,6 +71,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatToolbarModule,
         MatInputModule,
         MatDialogModule,
+        MatListModule,
         MatTabsModule,
         MatSelectModule,
         MatSlideToggleModule,
@@ -87,7 +90,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         StorageService,
         NotificationsService
     ],
-    entryComponents: [SettingsComponent],
+    entryComponents: [
+        SettingsComponent,
+        AboutComponent
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
