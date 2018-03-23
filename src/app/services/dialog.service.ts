@@ -14,6 +14,8 @@ import * as fs from "fs";
 @Injectable()
 export class DialogService {
 
+    private readonly MAP_FORMAT = "mmap";
+
     private remote: typeof remote;
     private fs: typeof fs;
 
@@ -48,13 +50,13 @@ export class DialogService {
                 this.remote.dialog.showSaveDialog({
                     title: this.translations["SAVE"],
                     filters: [{
-                        name: this.translations["MINDMAPP_FILES"] + " (*.mmap)",
-                        extensions: ["mmap"]
+                        name: this.translations["MINDMAPP_FILES"] + ` (*.${this.MAP_FORMAT})`,
+                        extensions: [this.MAP_FORMAT]
                     }, {
                         name: this.translations["ALL_FILES"],
                         extensions: ["*"]
                     }],
-                    defaultPath: this.mmpService.selectNode("map_node_0").name + ".mmap"
+                    defaultPath: this.mmpService.selectNode("map_node_0").name + `.${this.MAP_FORMAT}`
                 }, (path: string) => {
                     this.ngZone.run(() => {
                         if (typeof path === "string") {
@@ -111,8 +113,8 @@ export class DialogService {
                 title: this.translations["OPEN"],
                 properties: ["openFile"],
                 filters: [{
-                    name: this.translations["MINDMAPP_FILES"] + " (*.mmap)",
-                    extensions: ["mmap"]
+                    name: this.translations["MINDMAPP_FILES"] + ` (*.${this.MAP_FORMAT})`,
+                    extensions: [this.MAP_FORMAT]
                 }, {
                     name: this.translations["ALL_FILES"],
                     extensions: ["*"]
