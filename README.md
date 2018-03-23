@@ -8,7 +8,7 @@
 
 Mindmapp is a desktop application to draw mind maps quickly and efficiently. It was born with the intention of making the creation of maps extremely simple, while maintaining the fundamental properties that make the mind maps so efficient.
 
-![Mind map](https://raw.githubusercontent.com/Mindmapp/mindmapp/master/src/assets/images/map.png)
+![Mind map](https://raw.githubusercontent.com/Mindmapp/mindmapp/master/src/assets/images/example.png)
 
 ## Development
 
