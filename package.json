@@ -2,7 +2,7 @@
     "name": "mindmapp",
     "version": "0.6.2",
     "description": "Electron application to draw mind maps",
-    "homepage": "https://github.com/Mindmapp/mindmapp",
+    "homepage": "https://mindmapp.org",
     "author": {
         "name": "Omar Desogus",
         "email": "omardesogus9@gmail.com"
