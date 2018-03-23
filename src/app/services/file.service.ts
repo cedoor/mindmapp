@@ -60,7 +60,7 @@ export class FileService {
      * @param {boolean} value
      */
     public setSavingStatus(value: boolean) {
-        this.savingStatus = false;
+        this.savingStatus = value;
 
         window.document.title = value === true
             ? this.WINDOW_TITLE
