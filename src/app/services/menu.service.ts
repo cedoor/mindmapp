@@ -11,7 +11,7 @@ import {remote} from "electron";
 @Injectable()
 export class MenuService {
 
-    remote: typeof remote;
+    private remote: typeof remote;
 
     constructor(private ngZone: NgZone,
                 private ipfsService: IPFSService,
@@ -23,8 +23,11 @@ export class MenuService {
         this.remote = window.require("electron").remote;
     }
 
-    createMenu() {
-        this.translateService.getTranslation(this.translateService.currentLang).subscribe(translations => {
+    /**
+     * Create the Electron menu with a preset template.
+     */
+    public createMenu() {
+        this.translateService.getTranslation(this.translateService.currentLang).subscribe((translations: any) => {
             let template = this.createTemplate(translations),
                 menu = this.remote.Menu.buildFromTemplate(template);
 
@@ -39,7 +42,27 @@ export class MenuService {
         });
     }
 
-    createTemplate(translations: string[]): Electron.MenuItemConstructorOptions[] {
+    /**
+     * Set some global shortcuts.
+     */
+    public createShortcuts() {
+        this.remote.app.on("ready", () => {
+            this.remote.globalShortcut.register("Esc", () => {
+                this.ngZone.run(() => {
+                    if (this.dialogService.getSettingsStatus()) {
+                        this.dialogService.closeSettings();
+                    }
+                });
+            });
+        });
+    }
+
+    /**
+     * Return an Electron template.
+     * @param translations
+     * @returns {Electron.MenuItemConstructorOptions[]}
+     */
+    private createTemplate(translations: any): Electron.MenuItemConstructorOptions[] {
         let template: Electron.MenuItemConstructorOptions[] = [{
             label: translations["FILE"],
             submenu: [{
@@ -70,6 +93,7 @@ export class MenuService {
                 }
             }, {
                 label: translations["SAVE_WITH_NAME"],
+                accelerator: "Ctrl+Shift+S",
                 click: () => {
                     this.ngZone.run(() => {
                         this.dialogService.saveMap(true);
@@ -206,20 +230,6 @@ export class MenuService {
                 click: () => {
                     this.ngZone.run(() => {
                         this.mmpService.selectNode("down");
-                    });
-                }
-            }, {
-                type: "separator"
-            }, {
-                label: translations["DESELECT"],
-                accelerator: "Esc",
-                click: () => {
-                    this.ngZone.run(() => {
-                        if (this.dialogService.getSettingsStatus()) {
-                            this.dialogService.closeSettings();
-                        } else {
-                            this.mmpService.deselectNode();
-                        }
                     });
                 }
             }]

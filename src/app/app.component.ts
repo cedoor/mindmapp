@@ -38,6 +38,7 @@ export class AppComponent implements OnInit {
             this.setTranslations(settings.general.language).then(() => {
                 // Create the electron menu.
                 this.menuService.createMenu();
+                this.menuService.createShortcuts();
 
                 // Create the mind map.
                 this.createMap(settings.mapOptions);
