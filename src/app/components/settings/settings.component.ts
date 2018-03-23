@@ -39,12 +39,6 @@ export class SettingsComponent implements OnInit {
         });
     }
 
-    public setFileSynchronization(status: boolean) {
-        this.settingsService.setFileSynchronization(status).then((settings: Settings) => {
-            this.settings = settings;
-        });
-    }
-
     public setIpfs(status: boolean) {
         this.settingsService.setIpfs(status).then((settings: Settings) => {
             this.settings = settings;

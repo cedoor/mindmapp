@@ -104,11 +104,6 @@ export class AppComponent implements OnInit {
         if (settings.sharing.ipfs) {
             this.ipfsService.start();
         }
-
-        // Node fs file synchronization
-        if (settings.synchronization.file) {
-            this.fileService.setExternalFileSynchronization(true);
-        }
     }
 
 }

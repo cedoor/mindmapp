@@ -18,22 +18,12 @@ export class FileService {
     private savingStatusSource: BehaviorSubject<boolean>;
 
     private mapFileWatcher: FSWatcher;
-    private externalFileSynchronization: boolean;
 
     constructor(private mmpService: MmpService) {
         this.fs = window.require("fs");
         this.savingStatus = false;
 
         this.savingStatusSource = new BehaviorSubject<boolean>(this.savingStatus);
-        this.externalFileSynchronization = false;
-    }
-
-    /**
-     * Set the external file synchronization status.
-     * @param {boolean} value
-     */
-    public setExternalFileSynchronization(value: boolean) {
-        this.externalFileSynchronization = value;
     }
 
     /**
@@ -121,15 +111,7 @@ export class FileService {
      */
     private watchMapFile(mapPath: string) {
         this.mapFileWatcher = this.fs.watch(mapPath, (eventType: string) => {
-            if (eventType === "change" && mapPath && this.externalFileSynchronization) {
-                let fileData = this.fs.readFileSync(mapPath).toString(),
-                    mapData = JSON.stringify(this.mmpService.exportAsJSON());
-
-                if (UtilsService.isJSONString(fileData) && fileData !== mapData) {
-                    // Update the current map with external changes
-                    this.mmpService.new(JSON.parse(fileData));
-                }
-            } else if (eventType === "rename") {
+            if (eventType === "rename") {
                 this.setFilePath("");
                 this.setSavingStatus(false);
             }

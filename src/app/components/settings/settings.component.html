@@ -32,15 +32,6 @@
                     </form>
                 </div>
             </mat-tab>
-            <mat-tab [label]="titles.synchronization | translate">
-                <div class="content" id="synchronization">
-                    <mat-slide-toggle (change)="setFileSynchronization($event.source.checked)"
-                                      [checked]="settings?.synchronization?.file"
-                                      color="primary">
-                        {{ "FILE" | translate }}
-                    </mat-slide-toggle>
-                </div>
-            </mat-tab>
 
             <!--<mat-tab [label]="titles[1] | translate">-->
                 <!--<div class="content" id="sharing">-->

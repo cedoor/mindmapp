@@ -60,20 +60,6 @@ export class SettingsService {
     }
 
     /**
-     * Active or disable file synchronization and update the settingsService.
-     * @param {boolean} status
-     * @returns {Promise<Settings>}
-     */
-    public setFileSynchronization(status: boolean): Promise<Settings> {
-        this.settings.synchronization.file = status;
-
-        return this.update(this.settings).then((settings: Settings) => {
-            this.fileService.setExternalFileSynchronization(status);
-            return settings;
-        });
-    }
-
-    /**
      * Set the new language and update the settingsService.
      * @param {string} language
      * @returns {Promise<Settings>}
