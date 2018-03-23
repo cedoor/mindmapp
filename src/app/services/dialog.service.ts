@@ -47,9 +47,14 @@ export class DialogService {
             if (saveAs || !this.fileService.getFilePath()) {
                 this.remote.dialog.showSaveDialog({
                     title: this.translations["SAVE"],
-                    filters: [
-                        {name: this.translations["MINDMAPP_FILES"] + " (*.mmp)", extensions: ["mmp"]}
-                    ]
+                    filters: [{
+                        name: this.translations["MINDMAPP_FILES"] + " (*.mmap)",
+                        extensions: ["mmap"]
+                    }, {
+                        name: this.translations["ALL_FILES"],
+                        extensions: ["*"]
+                    }],
+                    defaultPath: this.mmpService.selectNode("map_node_0").name + ".mmap"
                 }, (path: string) => {
                     this.ngZone.run(() => {
                         if (typeof path === "string") {
@@ -81,13 +86,16 @@ export class DialogService {
                 buffer = new Buffer(data, "base64");
 
             this.remote.dialog.showSaveDialog({
-                title: this.translations["EXPORT_IMAGE"]
-            }, path => {
+                title: this.translations["EXPORT_IMAGE"],
+                defaultPath: this.mmpService.selectNode("map_node_0").name + "." + extension
+            }, (path: string) => {
                 this.ngZone.run(() => {
-                    path = path + "." + extension;
-
                     if (typeof path === "string") {
-                        this.fs.writeFileSync(path, buffer);
+                        path = path + "." + extension;
+
+                        if (typeof path === "string") {
+                            this.fs.writeFileSync(path, buffer);
+                        }
                     }
                 });
             });
@@ -102,9 +110,13 @@ export class DialogService {
             this.remote.dialog.showOpenDialog({
                 title: this.translations["OPEN"],
                 properties: ["openFile"],
-                filters: [
-                    {name: this.translations["MINDMAPP_FILES"] + " (*.mmp)", extensions: ["mmp"]}
-                ]
+                filters: [{
+                    name: this.translations["MINDMAPP_FILES"] + " (*.mmap)",
+                    extensions: ["mmap"]
+                }, {
+                    name: this.translations["ALL_FILES"],
+                    extensions: ["*"]
+                }]
             }, (files: Array<string>) => {
                 if (files) {
                     this.ngZone.run(() => {
