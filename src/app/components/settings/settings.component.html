@@ -7,7 +7,8 @@
                 <div class="content" id="languages">
                     <mat-form-field>
                         <mat-select (selectionChange)="setLanguage()" [(value)]="settings.general.language"
-                                    [placeholder]="'LANGUAGE' | translate">
+                                    [placeholder]="'LANGUAGE' | translate"
+                                    [title]="'TOOLTIPS.LANGUAGE' | translate">
                             <mat-option *ngFor="let language of languages"
                                         [value]="language">
                                 {{ "LANGUAGES." + language.toUpperCase() | translate }}
