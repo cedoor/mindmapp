@@ -32,7 +32,7 @@
         margin-left: -150px;
     }
 
-    div#content > img#logo,
+    div#content > img#app-logo,
     div#content > span#app-name {
         vertical-align: middle;
     }
@@ -43,11 +43,9 @@
         margin-left: 10px;
     }
 
-    div#content > span#app-name > span#version {
-        position: absolute;
+    div#content > span#app-name > span#app-version {
         font-size: 15px;
-        bottom: -5px;
-        right: -35px;
+        margin-left: 5px;
     }
 
     div#footer {
@@ -119,11 +117,11 @@
     </svg>
 </div>
 <div id="content">
-    <img id="logo" src="./assets/icon/png/64x64.png">
-    <span id="app-name">Mindmapp<span id="version"></span></span>
+    <img id="app-logo" src="./assets/icon/png/64x64.png">
+    <span id="app-name">Mindmapp<span id="app-version"></span></span>
 </div>
 <div id="footer">
-    <span id="license"></span>
+    <span id="app-license"></span>
 </div>
 </body>
 <script>
@@ -142,8 +140,8 @@
         rawFile.send(null);
     }
 
-    let version = document.getElementById("version"),
-        license = document.getElementById("license");
+    let version = document.getElementById("app-version"),
+        license = document.getElementById("app-license");
 
     readTextFile("./package.json", function (text) {
         let data = JSON.parse(text),
