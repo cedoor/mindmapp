@@ -8,15 +8,17 @@ if (serve) require("electron-reload")(__dirname, {});
 
 let mainWindow, loadingScreen;
 
-function createLoadingScreen(size) {
-    const entryPath = path.join("file://", __dirname, "loading.html");
+function createLoadingScreen(screenSize) {
+    const entryPath = path.join("file://", __dirname, "loading.html"),
+        width = 500,
+        height = 300;
 
     loadingScreen = new BrowserWindow({
         icon: __dirname + "/assets/icon/png/64x64.png",
-        x: size.width / 2 - 400,
-        y: size.height / 2 - 300,
-        width: 800,
-        height: 600,
+        x: screenSize.width / 2 - width / 2,
+        y: screenSize.height / 2 - height / 2,
+        width: width,
+        height: height,
         frame: false
     });
 
@@ -27,14 +29,14 @@ function createLoadingScreen(size) {
     });
 }
 
-function createMainWindow(size) {
+function createMainWindow(screenSize) {
     const indexPath = path.join("file://", __dirname, "index.html");
 
     mainWindow = new BrowserWindow({
         icon: __dirname + "/assets/icon/png/64x64.png",
         x: 0, y: 0,
-        width: size.width, minWidth: 800,
-        height: size.height, minHeight: 700,
+        width: screenSize.width, minWidth: 800,
+        height: screenSize.height, minHeight: 700,
         show: false
     });
 
@@ -50,10 +52,10 @@ function createMainWindow(size) {
 }
 
 app.on("ready", () => {
-    let size = electron.screen.getPrimaryDisplay().workAreaSize;
+    let screenSize = electron.screen.getPrimaryDisplay().workAreaSize;
 
-    createLoadingScreen(size);
-    createMainWindow(size);
+    createLoadingScreen(screenSize);
+    createMainWindow(screenSize);
 
     setTimeout(() => {
         mainWindow.show();

@@ -2,85 +2,155 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <style>
-    .content {
+    @font-face {
+        font-family: "Source Sans Pro";
+        src: url("assets/font/source-sans-pro/SourceSansPro-Regular.ttf") format("truetype");
+    }
+
+    body, html {
+        position: absolute;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    body {
+        font-family: "Source Sans Pro", sans;
+        background-color: whitesmoke;
+        color: dimgray;
+    }
+
+    div#content {
         position: absolute;
         left: 50%;
         top: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
+        margin-top: -48px;
+        margin-left: -150px;
     }
 
-    .spinner {
-        width: 40px;
-        height: 40px;
-        margin: -40px -20px;
+    div#content > img#logo,
+    div#content > span#app-name {
+        vertical-align: middle;
+    }
+
+    div#content > span#app-name {
+        position: relative;
+        font-size: 35px;
+        margin-left: 10px;
+    }
+
+    div#content > span#app-name > span#version {
         position: absolute;
+        font-size: 15px;
+        bottom: -5px;
+        right: -35px;
     }
 
-    .cube1, .cube2 {
-        background-color: #b8b8b8;
-        width: 20px;
-        height: 20px;
+    div#footer {
         position: absolute;
-        top: 0;
-        left: 0;
-
-        -webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
-        animation: sk-cubemove 1.8s infinite ease-in-out;
+        bottom: 20px;
+        left: 10px;
     }
 
-    .cube2 {
-        -webkit-animation-delay: -0.9s;
-        animation-delay: -0.9s;
-    }
-
-    @-webkit-keyframes sk-cubemove {
-        25% {
-            -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5)
-        }
-        50% {
-            -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg)
-        }
-        75% {
-            -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5)
+    @-webkit-keyframes loader-spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
         }
         100% {
-            -webkit-transform: rotate(-360deg)
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
         }
     }
 
-    @keyframes sk-cubemove {
-        25% {
-            transform: translateX(42px) rotate(-90deg) scale(0.5);
-            -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
-        }
-        50% {
-            transform: translateX(42px) translateY(42px) rotate(-179deg);
-            -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
-        }
-        50.1% {
-            transform: translateX(42px) translateY(42px) rotate(-180deg);
-            -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
-        }
-        75% {
-            transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
-            -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    @keyframes loader-spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
         }
         100% {
-            transform: rotate(-360deg);
-            -webkit-transform: rotate(-360deg);
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
         }
+    }
+
+    #loader {
+        position: absolute;
+        border: 3.6px solid #a8a8a8;
+        box-sizing: border-box;
+        overflow: hidden;
+        width: 30px;
+        height: 30px;
+        left: 10px;
+        top: 10px;
+        animation: loader-spin 2s linear infinite reverse;
+        filter: url(#goo);
+        box-shadow: 0 0 0 1px #a8a8a8 inset;
+    }
+
+    #loader:before {
+        content: "";
+        position: absolute;
+        animation: loader-spin 2s cubic-bezier(0.59, 0.25, 0.4, 0.69) infinite;
+        background: #a8a8a8;
+        transform-origin: top center;
+        border-radius: 50%;
+        width: 150%;
+        height: 150%;
+        top: 50%;
+        left: -12.5%;
     }
 </style>
-<body style="background-color: #596d6f">
-<div class="content">
-    <div class="spinner">
-        <div class="cube1"></div>
-        <div class="cube2"></div>
-    </div>
+<body>
+<div id="loader">
+    <svg>
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 5 -2"
+                               result="gooey"/>
+                <feComposite in="SourceGraphic" in2="gooey" operator="atop"/>
+            </filter>
+        </defs>
+    </svg>
+</div>
+<div id="content">
+    <img id="logo" src="./assets/icon/png/64x64.png">
+    <span id="app-name">Mindmapp<span id="version"></span></span>
+</div>
+<div id="footer">
+    <span id="license"></span>
 </div>
 </body>
+<script>
+    function readTextFile(file, callback) {
+        let rawFile = new XMLHttpRequest();
+
+        rawFile.overrideMimeType("application/json");
+        rawFile.open("GET", file, true);
+
+        rawFile.onreadystatechange = function () {
+            if (rawFile.readyState === 4 && rawFile.status === 200) {
+                callback(rawFile.responseText);
+            }
+        };
+
+        rawFile.send(null);
+    }
+
+    let version = document.getElementById("version"),
+        license = document.getElementById("license");
+
+    readTextFile("./package.json", function (text) {
+        let data = JSON.parse(text),
+            currentYear = new Date().getFullYear();
+
+        version.innerText = data.version;
+        license.innerText = `Copyright (c) ${currentYear} ${data.author.name}`;
+    });
+</script>
 </html>
