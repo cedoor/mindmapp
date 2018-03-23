@@ -65,7 +65,7 @@ export class SettingsService {
      * @returns {Promise<Settings>}
      */
     public setLanguage(language: string): Promise<Settings> {
-        this.settings.language = language;
+        this.settings.general.language = language;
 
         return this.update(this.settings).then((settings: Settings) => {
             this.translateService.use(language);

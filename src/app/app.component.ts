@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
             // Set background services
             this.setBackgroundServices(settings);
 
-            this.setTranslations(settings.language).then(() => {
+            this.setTranslations(settings.general.language).then(() => {
                 // Create the electron menu.
                 this.menuService.createMenu();
 

@@ -3,44 +3,45 @@
 
     <mat-dialog-content>
         <mat-tab-group>
-            <mat-tab [label]="titles.language | translate">
+            <mat-tab [label]="titles.general | translate">
                 <div class="content" id="languages">
-                    <mat-slide-toggle (change)="setLanguage('en')"
-                                      [checked]="settings?.language === 'en'"
-                                      color="primary">
-                        {{ "LANGUAGES.EN" | translate }}
-                    </mat-slide-toggle>
-                    <mat-slide-toggle (change)="setLanguage('it')"
-                                      [checked]="settings?.language === 'it'"
-                                      color="primary">
-                        {{ "LANGUAGES.IT" | translate }}
-                    </mat-slide-toggle>
+                    <mat-form-field>
+                        <mat-select (selectionChange)="setLanguage()" [(value)]="settings.general.language"
+                                    [placeholder]="'LANGUAGE' | translate">
+                            <mat-option *ngFor="let language of languages"
+                                        [value]="language">
+                                {{ "LANGUAGES." + language.toUpperCase() | translate }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
             </mat-tab>
+
             <mat-tab [label]="titles.mapOptions | translate">
                 <div class="content" id="map-options">
-                    <form (ngSubmit)="setMapOptions()">
-                        <mat-form-field>
-                            <input matInput [placeholder]="'ROOT_NODE_NAME' | translate" name="rootNodeName"
-                                   [(ngModel)]="settings.mapOptions.rootNode.name">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <input matInput [placeholder]="'DEFAULT_NODE_NAME' | translate" name="defaultNodeName"
-                                   [(ngModel)]="settings.mapOptions.defaultNode.name">
-                        </mat-form-field>
-                        <button type="submit" mat-raised-button>{{ "SAVE" | translate }}</button>
-                    </form>
+                    <mat-form-field>
+                        <input matInput (change)="setMapOptions()"
+                               [placeholder]="'ROOT_NODE_NAME' | translate" name="rootNodeName"
+                               [title]="'TOOLTIPS.ROOT_NODE_NAME_INPUT' | translate"
+                               [(ngModel)]="settings.mapOptions.rootNode.name">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput (change)="setMapOptions()"
+                               [placeholder]="'NODE_NAME' | translate" name="defaultNodeName"
+                               [title]="'TOOLTIPS.NODE_NAME_INPUT' | translate"
+                               [(ngModel)]="settings.mapOptions.defaultNode.name">
+                    </mat-form-field>
                 </div>
             </mat-tab>
 
             <!--<mat-tab [label]="titles[1] | translate">-->
-                <!--<div class="content" id="sharing">-->
-                    <!--<mat-slide-toggle (change)="setIpfs($event.source.checked)"-->
-                                      <!--[checked]="settingsService?.sharing?.ipfs"-->
-                                      <!--color="primary">-->
-                        <!--{{ "IPFS" | translate }}-->
-                    <!--</mat-slide-toggle>-->
-                <!--</div>-->
+            <!--<div class="content" id="sharing">-->
+            <!--<mat-slide-toggle (change)="setIpfs($event.source.checked)"-->
+            <!--[checked]="settingsService?.sharing?.ipfs"-->
+            <!--color="primary">-->
+            <!--{{ "IPFS" | translate }}-->
+            <!--</mat-slide-toggle>-->
+            <!--</div>-->
             <!--</mat-tab>-->
         </mat-tab-group>
     </mat-dialog-content>

@@ -1,7 +1,6 @@
 {
-    "language": "en",
-    "synchronization": {
-        "file": false
+    "general": {
+        "language": "en"
     },
     "sharing": {
         "ipfs": false

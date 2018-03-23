@@ -28,7 +28,7 @@ import {
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
-    MatInputModule,
+    MatInputModule, MatSelectModule,
     MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
@@ -70,6 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatInputModule,
         MatDialogModule,
         MatTabsModule,
+        MatSelectModule,
         MatSlideToggleModule,
         MatSliderModule,
         ColorPickerModule

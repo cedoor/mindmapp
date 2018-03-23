@@ -14,6 +14,8 @@ export class SettingsComponent implements OnInit {
 
     public titles: any;
 
+    public languages: Array<string>;
+
     constructor(@Inject(MAT_DIALOG_DATA) public data: any,
                 public settingsService: SettingsService) {
     }
@@ -25,16 +27,19 @@ export class SettingsComponent implements OnInit {
         for (let title in this.settings) {
             this.titles[title] = "SETTINGS_LABELS." + title.split(/(?=[A-Z])/).join("_").toUpperCase();
         }
+
+        this.languages = ["en", "it"];
     }
 
     public setMapOptions() {
+        console.log("updated");
         this.settingsService.setMapOptions(this.settings.mapOptions).then((settings: Settings) => {
             this.settings = settings;
         });
     }
 
-    public setLanguage(language: string) {
-        this.settingsService.setLanguage(language).then((settings: Settings) => {
+    public setLanguage() {
+        this.settingsService.setLanguage(this.settings.general.language).then((settings: Settings) => {
             this.settings = settings;
         });
     }
