@@ -1,4 +1,4 @@
-# Mindmapp<sup>alpha</sup>
+# Mindmapp<sup>beta</sup>
 
 [![](https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square)](https://github.com/Mindmapp)
 [![](https://img.shields.io/github/license/mindmapp/mindmapp.svg?style=flat-square)](https://github.com/Mindmapp/mindmapp/blob/dev/LICENSE.md)
@@ -65,7 +65,7 @@ and `body` must be should include the motivation for the change and contrast thi
 
 Examples:
     
-    git branch -b doc/README
+    git branch -b docs/README
     git branch -b test/one-function
     git branch -b feat/side-bar
     git branch -b style/header
