@@ -1,0 +1,25 @@
+<div id="about">
+    <div id="about-header">
+        <img id="logo" src="./assets/icon/png/64x64.png">
+        <span id="app-name">
+            Mindmapp
+            <span id="app-version">{{ packageInformations?.version }}</span>
+        </span>
+    </div>
+
+    <div id="about-content">
+        <div id="about-description">{{ "ABOUT_DESCRIPTION" | translate }}</div>
+        <mat-list role="list">
+            <mat-list-item role="listitem">
+                Github: <span class="link">https://github/Mindmapp</span>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                {{ "WEBSITE" | translate }}: <span class="link">https://mindmapp.org</span>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
+    <div id="about-footer">
+        <span>{{ "Copyright (c) " +  currentYear + " " + packageInformations?.author?.name }}</span>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+div#about {
+    width: 460px;
+    color: dimgray;
+
+    div#about-header {
+        text-align: center;
+
+        img#logo, span#app-name {
+            vertical-align: middle;
+        }
+
+        span#app-name {
+            font-size: 35px;
+            margin-left: 10px;
+
+            span#app-version {
+                font-size: 15px;
+            }
+        }
+    }
+
+    div#about-content {
+        padding: 24px 0;
+
+        mat-list {
+            padding-top: 15px;
+
+            mat-list-item {
+                height: 38px;
+                color: dimgray;
+
+                span.link {
+                    margin-left: 10px;
+                    text-underline: none;
+                    color: #546e7a;
+                }
+            }
+        }
+    }
+
+    div#about-footer {
+        text-align: center;
+    }
+}
