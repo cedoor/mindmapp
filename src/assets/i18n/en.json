@@ -78,6 +78,7 @@
         "TEXT_COLOR": "Changes the text color",
         "ROOT_NODE_NAME_INPUT": "Changes the default root node name",
         "NODE_NAME_INPUT": "Changes the default node name",
-        "LANGUAGE": "Changes the language"
+        "LANGUAGE": "Changes the language",
+        "SETTINGS": "Opens the settings"
     }
 }

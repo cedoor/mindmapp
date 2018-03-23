@@ -78,6 +78,7 @@
         "TEXT_COLOR": "Cambia il colore del testo",
         "ROOT_NODE_NAME_INPUT": "Cambia il nome predefinito del nodo radice",
         "NODE_NAME_INPUT": "Cambia il nome predefinito dei nodi",
-        "LANGUAGE": "Cambia la lingua"
+        "LANGUAGE": "Cambia la lingua",
+        "SETTINGS": "Apre le impostazioni"
     }
 }
