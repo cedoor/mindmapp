@@ -1,6 +1,6 @@
 {
     "name": "mindmapp",
-    "version": "0.6.2",
+    "version": "0.7.0",
     "description": "Electron application to draw mind maps",
     "homepage": "https://mindmapp.org",
     "author": {
