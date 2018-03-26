@@ -1,4 +1,4 @@
-# Mindmapp<sup>beta</sup>
+# ![](https://raw.githubusercontent.com/Mindmapp/mindmapp/master/src/assets/icon/png/32x32.png) Mindmapp<sup>beta</sup>
 
 [![](https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square)](https://github.com/Mindmapp)
 [![](https://img.shields.io/github/license/mindmapp/mindmapp.svg?style=flat-square)](https://github.com/Mindmapp/mindmapp/blob/dev/LICENSE.md)
