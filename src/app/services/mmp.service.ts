@@ -129,9 +129,19 @@ export class MmpService {
 
     /**
      * Add a node in the mind mmp.
-     * @param properties
      */
-    public addNode(properties?: any) {
+    public addNode() {
+        let selected = this.selectNode(),
+            properties;
+
+        if (selected.colors.branch) {
+            properties = {
+                colors: {
+                    branch: selected.colors.branch
+                }
+            }
+        }
+
         this.currentMap.addNode(properties);
     }
 
