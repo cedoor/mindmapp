@@ -1,10 +1,8 @@
 import {Injectable} from "@angular/core";
 import {MmpService} from "./mmp.service";
-import {UtilsService} from "./utils.service";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Observable} from "rxjs/Observable";
-import {FSWatcher} from "fs";
+import {BehaviorSubject, Observable} from "rxjs";
 import * as fs from "fs";
+import {FSWatcher} from "fs";
 
 @Injectable()
 export class FileService {

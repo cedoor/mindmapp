@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import * as mmp from "mmp";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs";
 
 /**
  * Mmp wrapper service with mmp and other functions.
