@@ -11,10 +11,10 @@
         <div id="about-description">{{ "ABOUT_DESCRIPTION" | translate }}</div>
         <mat-list role="list">
             <mat-list-item role="listitem">
-                Github: <span class="link">https://github/Mindmapp</span>
+                Github: <span (click)="openLink($event)" class="link">https://github.com/Mindmapp</span>
             </mat-list-item>
             <mat-list-item role="listitem">
-                {{ "WEBSITE" | translate }}: <span class="link">https://mindmapp.org</span>
+                {{ "WEBSITE" | translate }}: <span (click)="openLink($event)" class="link">https://mindmapp.org</span>
             </mat-list-item>
         </mat-list>
     </div>
