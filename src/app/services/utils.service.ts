@@ -29,7 +29,7 @@ export class UtilsService {
      * @returns {Promise<any>}
      */
     public getPackageInformations(): Promise<any> {
-        return this.http.get("./package.json").toPromise();
+        return this.http.get("../package.json").toPromise();
     }
 
     /**
