@@ -1,10 +1,13 @@
 const electron = require("electron"),
     {app, BrowserWindow} = electron,
-    path = require("path"),
-    args = process.argv.slice(1),
+    path = require("path");
+
+const args = process.argv.slice(1),
     serve = args.some(val => val === "--dev");
 
-if (serve) require("electron-reload")(__dirname, {});
+if (serve) {
+    require("electron-reload")(__dirname, {});
+}
 
 let mainWindow, loadingScreen;
 
@@ -14,7 +17,7 @@ function createLoadingScreen(screenSize) {
         height = 300;
 
     loadingScreen = new BrowserWindow({
-        icon: __dirname + "/assets/icon/png/64x64.png",
+        icon: __dirname + "/assets/icon/png/128x128.png",
         x: screenSize.width / 2 - width / 2,
         y: screenSize.height / 2 - height / 2,
         width: width,
@@ -33,10 +36,13 @@ function createMainWindow(screenSize) {
     const indexPath = path.join("file://", __dirname, "index.html");
 
     mainWindow = new BrowserWindow({
-        icon: __dirname + "/assets/icon/png/64x64.png",
-        x: 0, y: 0,
-        width: screenSize.width, minWidth: 800,
-        height: screenSize.height, minHeight: 700,
+        icon: __dirname + "/assets/icon/png/128x128.png",
+        x: 0,
+        y: 0,
+        width: screenSize.width,
+        height: screenSize.height,
+        minWidth: 800,
+        minHeight: 700,
         show: false
     });
 
@@ -52,7 +58,7 @@ function createMainWindow(screenSize) {
 }
 
 app.on("ready", () => {
-    let screenSize = electron.screen.getPrimaryDisplay().workAreaSize;
+    let screenSize = electron.screen.getPrimaryDisplay().bounds;
 
     createLoadingScreen(screenSize);
     createMainWindow(screenSize);
