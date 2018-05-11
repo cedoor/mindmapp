@@ -5,6 +5,8 @@
 [![](https://img.shields.io/david/mindmapp/mindmapp.svg?style=flat-square)](https://david-dm.org/mindmapp/mindmapp)
 [![](https://img.shields.io/david/dev/mindmapp/mindmapp.svg?style=flat-square)](https://david-dm.org/mindmapp/mindmapp?type=dev)
 [![](https://img.shields.io/github/downloads/mindmapp/mindmapp/total.svg?style=flat-square)](https://github.com/Mindmapp/mindmapp/releases)
+[![](https://img.shields.io/travis/Mindmapp/mindmapp.svg?style=flat-square)](https://travis-ci.org/Mindmapp/mindmapp)
+
 
 Mindmapp is a desktop application to draw mind maps quickly and efficiently. It was born with the intention of making the creation of maps extremely simple, while maintaining the fundamental properties that make the mind maps so efficient.
 
