@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import * as mmp from "mmp";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs";
 
 /**
  * Mmp wrapper service with mmp and other functions.
@@ -129,9 +129,19 @@ export class MmpService {
 
     /**
      * Add a node in the mind mmp.
-     * @param properties
      */
-    public addNode(properties?: any) {
+    public addNode() {
+        let selected = this.selectNode(),
+            properties;
+
+        if (selected.colors.branch) {
+            properties = {
+                colors: {
+                    branch: selected.colors.branch
+                }
+            }
+        }
+
         this.currentMap.addNode(properties);
     }
 

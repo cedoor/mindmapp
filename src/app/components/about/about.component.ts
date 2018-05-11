@@ -22,4 +22,10 @@ export class AboutComponent implements OnInit {
         this.currentYear = new Date().getFullYear().toString();
     }
 
+    openLink(event: MouseEvent) {
+        event.preventDefault();
+
+        this.utilsService.openExternalLink(event.srcElement.innerHTML);
+    }
+
 }

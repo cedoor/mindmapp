@@ -4,7 +4,10 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class UtilsService {
 
+    shell: Electron.Shell;
+
     constructor(private http: HttpClient) {
+        this.shell = window.require("electron").remote.shell;
     }
 
     /**
@@ -26,7 +29,15 @@ export class UtilsService {
      * @returns {Promise<any>}
      */
     public getPackageInformations(): Promise<any> {
-        return this.http.get("./package.json").toPromise();
+        return this.http.get("../package.json").toPromise();
+    }
+
+    /**
+     * Open a link with the default browser.
+     * @param {string} href
+     */
+    public openExternalLink(href: string) {
+        this.shell.openExternal(href);
     }
 
 }

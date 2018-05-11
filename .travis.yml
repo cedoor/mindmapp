@@ -1,0 +1,48 @@
+language: node_js
+node_js: "8"
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+sudo: required
+
+branches:
+  only:
+    - master
+
+services:
+  - docker
+
+matrix:
+  include:
+    # Linux
+    - os: linux
+      dist: trusty
+      before_install:
+        - docker pull electronuserland/electron-builder:wine
+
+    # Mac
+    - os: osx
+      osx_image: xcode8.3
+      before_install:
+        - npm install -g yarn
+
+  fast_finish: true
+
+install:
+  - yarn --frozen-lockfile
+
+script:
+  # Linux builds
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run --rm -ti -e GH_TOKEN=$GH_TOKEN --env-file <(env | grep TRAVIS) -v ${PWD}:/project -v ${PWD##*/}-node-modules:/project/node_modules -v ~/.electron:/root/.electron electronuserland/electron-builder:wine /bin/bash -c "yarn --pure-lockfile && yarn release -- --linux"; fi
+  # Windows builds
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run --rm -ti -e GH_TOKEN=$GH_TOKEN --env-file <(env | grep TRAVIS) -v ${PWD}:/project -v ${PWD##*/}-node-modules:/project/node_modules -v ~/.electron:/root/.electron electronuserland/electron-builder:wine /bin/bash -c "yarn --pure-lockfile && yarn release -- --win"; fi
+  # Mac builds
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn release -- --mac; fi
+
+before_cache:
+  - rm -rf $HOME/.cache/electron-builder/wine
+
+notifications:
+  email: false
