@@ -31,7 +31,7 @@ matrix:
   fast_finish: true
 
 install:
-  - yarn --frozen-lockfile
+  - yarn --ignore-engines --frozen-lockfile
 
 script:
   # Linux builds
