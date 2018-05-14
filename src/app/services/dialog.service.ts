@@ -83,7 +83,7 @@ export class DialogService {
      * Export the current mmp image.
      * @param {string} extension
      */
-    exportImage(extension: string = "iconsa") {
+    exportImage(extension: string = "png") {
         this.mmpService.exportAsImage(extension).then((url: string) => {
             let data = url.replace(/^data:image\/\w+;base64,/, ""),
                 buffer = new Buffer(data, "base64");
@@ -168,7 +168,7 @@ export class DialogService {
                 properties: ["openFile"],
                 filters: [{
                     name: this.translations["IMAGE"],
-                    extensions: ["iconsa", "gif", "jpg", "jpeg"]
+                    extensions: ["png", "gif", "jpg", "jpeg"]
                 }]
             }, (files: Array<string>) => {
                 if (files) {

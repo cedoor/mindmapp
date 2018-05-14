@@ -7,7 +7,7 @@ import * as fs from "fs";
 @Injectable()
 export class DragDropService {
 
-    private readonly IMAGE_EXTENSIONS: Array<string> = ["iconsa", "jpeg", "jpg", "gif", "svg"];
+    private readonly IMAGE_EXTENSIONS: Array<string> = ["png", "jpeg", "jpg", "gif", "svg"];
 
     private fs: typeof fs;
 
