@@ -1,13 +1,18 @@
-const electron = require("electron"),
-    {app, BrowserWindow} = electron,
-    path = require("path");
+const electron = require("electron");
+const {app, BrowserWindow} = electron;
+const path = require("path");
+const {autoUpdater} = require("electron-updater");
+const log = require("electron-log");
 
-const args = process.argv.slice(1),
-    serve = args.some(val => val === "--dev");
+const args = process.argv.slice(1);
+const dev = args.some(val => val === "--dev");
 
-if (serve) {
+if (dev) {
     require("electron-reload")(__dirname, {});
 }
+
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = "info";
 
 let mainWindow, loadingScreen;
 
@@ -48,7 +53,7 @@ function createMainWindow(screenSize) {
 
     mainWindow.loadURL(indexPath);
 
-    if (serve) {
+    if (dev) {
         mainWindow.webContents.openDevTools();
     }
 
@@ -58,6 +63,8 @@ function createMainWindow(screenSize) {
 }
 
 app.on("ready", () => {
+    autoUpdater.checkForUpdatesAndNotify();
+
     let screenSize = electron.screen.getPrimaryDisplay().bounds;
 
     createLoadingScreen(screenSize);
