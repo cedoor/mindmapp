@@ -41,7 +41,7 @@
         "@ngx-translate/core": "10.0.1",
         "@ngx-translate/http-loader": "3.0.1",
         "core-js": "2.5.3",
-        "electron-log": "^.2.14",
+        "electron-log": "2.2.14",
         "electron-updater": "2.21.10",
         "hammerjs": "2.0.8",
         "material-design-icons": "3.0.1",
