@@ -104,16 +104,16 @@ export class MenuService {
                     });
                 }
             }, {
-                label: translations["EXPORT_IMAGE"],
+                label: translations["EXPORT_AS"],
                 submenu: [{
-                    label: translations["AS_PNG"],
+                    label: translations["PNG"],
                     click: () => {
                         this.ngZone.run(() => {
                             this.dialogService.exportImage();
                         });
                     }
                 }, {
-                    label: translations["AS_JPG"],
+                    label: translations["JPG"],
                     click: () => {
                         this.ngZone.run(() => {
                             this.dialogService.exportImage("jpeg");
