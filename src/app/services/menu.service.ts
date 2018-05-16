@@ -104,13 +104,22 @@ export class MenuService {
                     });
                 }
             }, {
-                label: translations["EXPORT_IMAGE"],
-                accelerator: "Ctrl+e",
-                click: () => {
-                    this.ngZone.run(() => {
-                        this.dialogService.exportImage();
-                    });
-                }
+                label: translations["EXPORT_AS"],
+                submenu: [{
+                    label: translations["PNG"],
+                    click: () => {
+                        this.ngZone.run(() => {
+                            this.dialogService.exportImage();
+                        });
+                    }
+                }, {
+                    label: translations["JPG"],
+                    click: () => {
+                        this.ngZone.run(() => {
+                            this.dialogService.exportImage("jpeg");
+                        });
+                    }
+                }]
             }, {
                 type: "separator"
             }, {
