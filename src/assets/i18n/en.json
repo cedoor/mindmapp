@@ -7,6 +7,8 @@
     "SAVE": "Save",
     "SAVE_WITH_NAME": "Save with name",
     "EXPORT_IMAGE": "Export image",
+    "AS_PNG": "As png",
+    "AS_JPG": "As jpg",
     "QUIT": "Quit",
     "IMAGE": "Image",
     "EDIT": "Edit",
