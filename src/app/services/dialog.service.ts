@@ -90,10 +90,14 @@ export class DialogService {
 
             this.remote.dialog.showSaveDialog({
                 title: this.translations["EXPORT_IMAGE"],
-                defaultPath: this.mmpService.selectNode("map_node_0").name + "." + extension
+                defaultPath: this.mmpService.selectNode("map_node_0").name
             }, (path: string) => {
                 this.ngZone.run(() => {
                     if (typeof path === "string") {
+                        if (extension === "jpeg") {
+                            extension = "jpg";
+                        }
+
                         path = path + "." + extension;
 
                         if (typeof path === "string") {
