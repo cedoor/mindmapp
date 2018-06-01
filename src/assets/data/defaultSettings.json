@@ -16,9 +16,9 @@
                 "size": 60
             },
             "colors": {
-                "name": "#787878",
-                "background": "#f9f9f9",
-                "branch": "#577a96"
+                "name": "#666666",
+                "background": "#f5f5f5",
+                "branch": "#546e7a"
             },
             "font": {
                 "size": 22,
@@ -34,8 +34,8 @@
                 "size": 70
             },
             "colors": {
-                "name": "#787878",
-                "background": "#f0f6f5"
+                "name": "#666666",
+                "background": "#f5f5f5"
             },
             "font": {
                 "size": 26,
