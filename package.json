@@ -46,7 +46,7 @@
         "hammerjs": "2.0.8",
         "material-design-icons": "3.0.1",
         "mmp": "0.2.7",
-        "ngx-color-picker": "4.5.3",
+        "ngx-color-picker": "6.3.3",
         "rxjs": "6.1.0",
         "zone.js": "0.8.26"
     },
