@@ -47,6 +47,7 @@ Mindmapp is a desktop application to draw mind maps quickly and efficiently. It 
     - refactor: A code change that neither fixes a bug nor adds a feature
     - test: Adding missing or correcting existing tests
     - chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+    - update: Update of the library version or of the dependencies
 
 and `body` must be should include the motivation for the change and contrast this with previous behavior (do not add body if the commit is trivial). 
 
