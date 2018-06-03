@@ -1,15 +1,17 @@
 div#toolbar {
 
+    -webkit-app-region: drag;
     z-index: 2;
     position: absolute;
     top: 0;
     width: 100%;
     background-color: #f5f5f5;
     border-bottom: 1px solid lightgray;
-    border-top: 1px solid lightgray;
+
 
     mat-toolbar.mat-toolbar {
         height: 45px;
+        padding: 0 8px;
 
         div.vertical-line {
             width: 1px;
@@ -20,6 +22,10 @@ div#toolbar {
 
         span.toolbar-spacer {
             flex: 1 1 auto;
+        }
+
+        button {
+            -webkit-app-region: no-drag;
         }
     }
 

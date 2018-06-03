@@ -49,7 +49,27 @@
         <button (click)="dialogService.openMatDialog('settings')" id="settings"
                 color="primary" [title]="'TOOLTIPS.SETTINGS' | translate"
                 mat-icon-button>
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <button (click)="dialogService.openMatDialog('settings')" id="settings"
+                color="primary" [title]="'TOOLTIPS.SETTINGS' | translate"
+                mat-icon-button>
             <mat-icon>settings</mat-icon>
+        </button>
+
+        <div class="vertical-line"></div>
+
+        <button (click)="dialogService.openMatDialog('settings')" id="close"
+                color="primary" [title]="'TOOLTIPS.SETTINGS' | translate"
+                mat-icon-button>
+            <mat-icon>remove</mat-icon>
+        </button>
+
+        <button (click)="dialogService.openMatDialog('settings')" id="close"
+                color="primary" [title]="'TOOLTIPS.SETTINGS' | translate"
+                mat-icon-button>
+            <mat-icon>close</mat-icon>
         </button>
     </mat-toolbar>
 </div>
