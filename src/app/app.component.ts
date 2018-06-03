@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {DialogService} from "./services/dialog.service";
 import {DragDropService} from "./services/dragdrop.service";
-import {MenuService} from "./services/menu.service";
+import {ShortcutsService} from "./services/shortcuts.service";
 import {TranslateService} from "@ngx-translate/core";
 import {SettingsService} from "./services/settings.service";
 import {Settings} from "./models/settings";
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
                 public ipfsService: IPFSService,
                 public mmpService: MmpService,
                 public settingsService: SettingsService,
-                public menuService: MenuService,
+                public shortcutsService: ShortcutsService,
                 public fileService: FileService) {
         this.node = {};
     }
@@ -37,8 +37,7 @@ export class AppComponent implements OnInit {
 
             this.setTranslations(settings.general.language).then(() => {
                 // Create the electron menu.
-                this.menuService.createMenu();
-                this.menuService.createShortcuts();
+                this.shortcutsService.createShortcuts();
 
                 // Create the mind map.
                 this.createMap(settings.mapOptions);

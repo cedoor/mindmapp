@@ -9,7 +9,7 @@ import {FloatingButtonsComponent} from "./components/floating-buttons/floating-b
 import {ColorPickerModule} from "ngx-color-picker";
 import {DragDropService} from "./services/dragdrop.service";
 import {UtilsService} from "./services/utils.service";
-import {MenuService} from "./services/menu.service";
+import {ShortcutsService} from "./services/shortcuts.service";
 import {DialogService} from "./services/dialog.service";
 import {IPFSService} from "./services/ipfs.service";
 import {SettingsComponent} from "./components/settings/settings.component";
@@ -81,7 +81,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     providers: [
         DialogService,
         DragDropService,
-        MenuService,
+        ShortcutsService,
         UtilsService,
         FileService,
         MmpService,
