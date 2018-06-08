@@ -57,7 +57,7 @@ export class UtilsService {
     /**
      * Maximize the application.
      */
-    public maximizeApplication(flag: boolean) {
+    public maximizeApplication() {
         this.remote.getCurrentWindow().maximize();
     }
 
