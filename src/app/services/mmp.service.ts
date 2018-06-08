@@ -182,6 +182,33 @@ export class MmpService {
     }
 
     /**
+     * Copy a node with his children in the mmp clipboard.
+     * If id is not specified, copy the selected node.
+     * @param {string} nodeId
+     */
+    public copyNode(nodeId?: string) {
+        this.currentMap.copyNode(nodeId);
+    }
+
+    /**
+     * Remove and copy a node with his children in the mmp clipboard.
+     * If id is not specified, copy the selected node.
+     * @param {string} nodeId
+     */
+    public cutNode(nodeId?: string) {
+        this.currentMap.cutNode(nodeId);
+    }
+
+    /**
+     * Paste the node of the mmp clipboard in the map. If id is not specified,
+     * paste the nodes of the mmp clipboard in the selected node.
+     * @param {string} nodeId
+     */
+    public pasteNode(nodeId?: string) {
+        this.currentMap.pasteNode(nodeId);
+    }
+
+    /**
      *
      * @param {"left" | "right" | "up" | "down"} direction
      * @param {number} range

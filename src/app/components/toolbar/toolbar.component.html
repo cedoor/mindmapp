@@ -1,21 +1,39 @@
 <div class="toolbar">
     <mat-toolbar>
 
-        <button (click)="dialogService.newMap()" id="new-map"
+        <button (click)="dialogService.newMap()" class="new-map"
                 color="primary" [title]="'TOOLTIPS.NEW_MAP' | translate"
                 mat-icon-button>
             <mat-icon>note_add</mat-icon>
         </button>
-        <button (click)="dialogService.openMap()" id="open-map"
+        <button (click)="dialogService.openMap()" class="open-map"
                 color="primary" [title]="'TOOLTIPS.OPEN_MAP' | translate"
                 mat-icon-button>
             <mat-icon>folder_open</mat-icon>
         </button>
-        <button (click)="dialogService.saveMap()" id="save-map"
+        <button (click)="dialogService.saveMap()" class="save-map"
                 [disabled]="mapSaved"
                 color="primary" [title]="'TOOLTIPS.SAVE_MAP' | translate"
                 mat-icon-button>
             <mat-icon>save</mat-icon>
+        </button>
+
+        <div class="vertical-line"></div>
+
+        <button (click)="mmpService.copyNode()" class="copy-node"
+                color="primary" [title]="'TOOLTIPS.COPY_NODE' | translate"
+                mat-icon-button>
+            <mat-icon>content_copy</mat-icon>
+        </button>
+        <button (click)="mmpService.cutNode()" class="cut-node"
+                color="primary" [title]="'TOOLTIPS.CUT_NODE' | translate"
+                mat-icon-button>
+            <mat-icon>content_cut</mat-icon>
+        </button>
+        <button (click)="mmpService.pasteNode()" class="paste-node"
+                color="primary" [title]="'TOOLTIPS.PASTE_NODE' | translate"
+                mat-icon-button>
+            <mat-icon>content_paste</mat-icon>
         </button>
 
         <div class="vertical-line"></div>
