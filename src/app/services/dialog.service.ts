@@ -57,7 +57,7 @@ export class DialogService {
                         name: this.translations["ALL_FILES"],
                         extensions: ["*"]
                     }],
-                    defaultPath: this.mmpService.selectNode("map_node_0").name + `.${MmpService.MAP_FORMAT}`
+                    defaultPath: this.mmpService.selectNode("map_1_node_0").name + `.${MmpService.MAP_FORMAT}`
                 }, (path: string) => {
                     this.ngZone.run(() => {
                         if (typeof path === "string") {
@@ -90,7 +90,7 @@ export class DialogService {
 
             this.remote.dialog.showSaveDialog({
                 title: this.translations["EXPORT_IMAGE"],
-                defaultPath: this.mmpService.selectNode("map_node_0").name
+                defaultPath: this.mmpService.selectNode("map_1_node_0").name
             }, (path: string) => {
                 this.ngZone.run(() => {
                     if (typeof path === "string") {

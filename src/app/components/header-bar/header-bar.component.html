@@ -1,0 +1,70 @@
+<div class="header-bar">
+    <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="toolbar-block" fxFlex="20">
+            <button [matMenuTriggerFor]="menu" class="menu"
+                    [title]="'TOOLTIPS.MENU' | translate"
+                    mat-icon-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <mat-menu #menu="matMenu">
+                <button [matMenuTriggerFor]="export" mat-menu-item
+                        style="-webkit-app-region: no-drag">
+                    <mat-icon>archive</mat-icon>
+                    <span>{{ "EXPORT_AS" | translate }}</span>
+                </button>
+                <button mat-menu-item style="-webkit-app-region: no-drag"
+                        (click)="dialogService.saveMap(true)">
+                    <mat-icon>save</mat-icon>
+                    <span>{{ "SAVE_WITH_NAME" | translate }}</span>
+                </button>
+                <button mat-menu-item style="-webkit-app-region: no-drag"
+                        (click)="utilsService.maximizeApplication()">
+                    <mat-icon>fullscreen</mat-icon>
+                    <span>{{ "FULL_SCREEN" | translate }}</span>
+                </button>
+                <button mat-menu-item style="-webkit-app-region: no-drag"
+                        (click)="dialogService.openMatDialog('settings')">
+                    <mat-icon>settings</mat-icon>
+                    <span>{{ "SETTINGS_TITLE" | translate }}</span>
+                </button>
+                <button mat-menu-item style="-webkit-app-region: no-drag"
+                        (click)="dialogService.openMatDialog('about')">
+                    <mat-icon>info</mat-icon>
+                    <span>{{ "ABOUT_TITLE" | translate }}</span>
+                </button>
+            </mat-menu>
+
+            <mat-menu #export="matMenu">
+                <button mat-menu-item style="-webkit-app-region: no-drag"
+                        (click)="dialogService.exportImage('png')">
+                    <mat-icon>image</mat-icon>
+                    <span>{{ "PNG" | translate }}</span>
+                </button>
+                <button mat-menu-item style="-webkit-app-region: no-drag"
+                        (click)="dialogService.exportImage('jpeg')">
+                    <mat-icon>image</mat-icon>
+                    <span>{{ "JPG" | translate }}</span>
+                </button>
+            </mat-menu>
+        </div>
+
+        <div class="toolbar-block" fxFlex="60" fxLayoutAlign="center">
+            <span class="title">{{ window.document.title }}</span>
+        </div>
+
+        <div class="toolbar-block" fxFlex="20" fxLayoutAlign="end">
+            <button (click)="utilsService.minimizeApplication()" class="minimize"
+                    [title]="'TOOLTIPS.MINIMIZE' | translate"
+                    mat-icon-button>
+                <mat-icon>remove</mat-icon>
+            </button>
+
+            <button (click)="utilsService.closeApplication()" class="close"
+                    [title]="'TOOLTIPS.CLOSE' | translate"
+                    mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
+</div>

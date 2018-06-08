@@ -4,10 +4,10 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class UtilsService {
 
-    shell: Electron.Shell;
+    remote: Electron.Remote;
 
     constructor(private http: HttpClient) {
-        this.shell = window.require("electron").remote.shell;
+        this.remote = window.require("electron").remote;
     }
 
     /**
@@ -37,7 +37,35 @@ export class UtilsService {
      * @param {string} href
      */
     public openExternalLink(href: string) {
-        this.shell.openExternal(href);
+        this.remote.shell.openExternal(href);
+    }
+
+    /**
+     * Close the application.
+     */
+    public closeApplication() {
+        this.remote.getCurrentWindow().close();
+    }
+
+    /**
+     * Minimize the application.
+     */
+    public minimizeApplication() {
+        this.remote.getCurrentWindow().minimize();
+    }
+
+    /**
+     * Minimize the application.
+     */
+    public minimizeApplication() {
+        this.remote.getCurrentWindow().minimize();
+    }
+
+    /**
+     * Maximize the application.
+     */
+    public maximizeApplication(flag: boolean) {
+        this.remote.getCurrentWindow().maximize();
     }
 
 }

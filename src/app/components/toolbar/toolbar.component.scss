@@ -1,9 +1,8 @@
 div.toolbar {
 
-    -webkit-app-region: drag;
     z-index: 2;
     position: absolute;
-    top: 0;
+    top: 45px;
     width: 100%;
     background-color: #f5f5f5;
     border-bottom: 1px solid lightgray;
@@ -22,10 +21,6 @@ div.toolbar {
 
         span.toolbar-spacer {
             flex: 1 1 auto;
-        }
-
-        button {
-            -webkit-app-region: no-drag;
         }
     }
 
