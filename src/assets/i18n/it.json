@@ -62,6 +62,9 @@
         "IT": "Italiano"
     },
     "TOOLTIPS": {
+        "MENU": "Apre il menù",
+        "MINIMIZE": "Minimizza la finestra",
+        "CLOSE": "Chiude l'applicazione",
         "NEW_MAP": "Pulisce la mappa",
         "OPEN_MAP": "Carica una mappa esistente",
         "SAVE_MAP": "Salva la mappa",

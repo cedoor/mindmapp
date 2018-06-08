@@ -62,6 +62,9 @@
         "IT": "Italian"
     },
     "TOOLTIPS": {
+        "MENU": "Opens the menu",
+        "MINIMIZE": "Minimize the window",
+        "CLOSE": "Close the application",
         "NEW_MAP": "Cleans the map",
         "OPEN_MAP": "Loads an existing map",
         "SAVE_MAP": "Saves the map",
