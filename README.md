@@ -8,7 +8,7 @@
 [![](https://img.shields.io/travis/Mindmapp/mindmapp.svg?style=flat-square)](https://travis-ci.org/Mindmapp/mindmapp)
 
 
-Mindmapp is a desktop application to draw mind maps quickly and efficiently. It was born with the intention of making the creation of maps extremely simple, while maintaining the fundamental properties that make the mind maps so efficient.
+Mindmapp is a desktop application to draw mind maps quickly and efficiently. It was born with the intention to make the creation of mind maps extremely simple, while maintaining the fundamental properties that make the mind maps so efficient.
 
 ![Mind map](https://raw.githubusercontent.com/Mindmapp/mindmapp/master/src/assets/images/example.png)
 
