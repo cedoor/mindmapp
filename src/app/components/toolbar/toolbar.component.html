@@ -1,4 +1,4 @@
-<div id="toolbar">
+<div class="toolbar">
     <mat-toolbar>
 
         <button (click)="dialogService.newMap()" id="new-map"
@@ -20,12 +20,12 @@
 
         <div class="vertical-line"></div>
 
-        <button (click)="mmpService.updateNode('locked')" id="lock-node"
+        <button (click)="mmpService.updateNode('locked')" class="lock-node"
                 color="primary" [title]="'TOOLTIPS.LOCK_NODE' | translate"
                 mat-icon-button>
             <mat-icon>{{ node?.locked ? "lock_outline" : "lock_open" }}</mat-icon>
         </button>
-        <button (click)="dialogService.addNodeImage()" id="image"
+        <button (click)="dialogService.addNodeImage()" class="image"
                 color="primary" [title]="'TOOLTIPS.NODE_IMAGE' | translate"
                 mat-icon-button>
             <mat-icon>{{ node?.image?.src ? "broken_image" : "image" }}</mat-icon>
@@ -33,12 +33,12 @@
 
         <div class="vertical-line"></div>
 
-        <button (click)="toogleNodeFontWeight()" id="bold"
+        <button (click)="toogleNodeFontWeight()" class="bold"
                 color="primary" [title]="'TOOLTIPS.BOLD_TEXT' | translate"
                 mat-icon-button>
             <mat-icon>format_bold</mat-icon>
         </button>
-        <button (click)="toogleNodeFontStyle()" id="italic"
+        <button (click)="toogleNodeFontStyle()" class="italic"
                 color="primary" [title]="'TOOLTIPS.ITALIC_TEXT' | translate"
                 mat-icon-button>
             <mat-icon>format_italic</mat-icon>
@@ -46,13 +46,13 @@
 
         <span class="toolbar-spacer"></span>
 
-        <button (click)="dialogService.openMatDialog('settings')" id="settings"
+        <button (click)="dialogService.openMatDialog('settings')" class="settings"
                 color="primary" [title]="'TOOLTIPS.SETTINGS' | translate"
                 mat-icon-button>
             <mat-icon>menu</mat-icon>
         </button>
 
-        <button (click)="dialogService.openMatDialog('settings')" id="settings"
+        <button (click)="dialogService.openMatDialog('settings')" class="settings"
                 color="primary" [title]="'TOOLTIPS.SETTINGS' | translate"
                 mat-icon-button>
             <mat-icon>settings</mat-icon>
@@ -60,13 +60,13 @@
 
         <div class="vertical-line"></div>
 
-        <button (click)="dialogService.openMatDialog('settings')" id="close"
+        <button (click)="dialogService.openMatDialog('settings')" class="close"
                 color="primary" [title]="'TOOLTIPS.SETTINGS' | translate"
                 mat-icon-button>
             <mat-icon>remove</mat-icon>
         </button>
 
-        <button (click)="dialogService.openMatDialog('settings')" id="close"
+        <button (click)="dialogService.openMatDialog('settings')" class="close"
                 color="primary" [title]="'TOOLTIPS.SETTINGS' | translate"
                 mat-icon-button>
             <mat-icon>close</mat-icon>

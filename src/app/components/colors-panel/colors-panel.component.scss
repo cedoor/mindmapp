@@ -1,6 +1,6 @@
-div#colors-panel {
+div.colors-panel {
 
-    div#background {
+    div.background {
         z-index: 2;
         position: fixed;
         visibility: hidden;
@@ -10,7 +10,7 @@ div#colors-panel {
         width: 100%;
     }
 
-    div#panel {
+    div.panel {
         z-index: 3;
         position: fixed;
         right: 20px;

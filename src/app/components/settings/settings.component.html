@@ -1,10 +1,10 @@
-<div id="settings">
+<div class="settings">
     <h2 mat-dialog-title>{{ "SETTINGS_TITLE" | translate }}</h2>
 
     <mat-dialog-content>
         <mat-tab-group>
             <mat-tab [label]="titles.general | translate">
-                <div class="content" id="languages">
+                <div class="content languages">
                     <mat-form-field>
                         <mat-select (selectionChange)="setLanguage()" [(value)]="settings.general.language"
                                     [placeholder]="'LANGUAGE' | translate"
@@ -19,7 +19,7 @@
             </mat-tab>
 
             <mat-tab [label]="titles.mapOptions | translate">
-                <div class="content" id="map-options">
+                <div class="content map-options">
                     <mat-form-field>
                         <input matInput (change)="setMapOptions()"
                                [placeholder]="'ROOT_NODE_NAME' | translate" name="rootNodeName"
@@ -36,7 +36,7 @@
             </mat-tab>
 
             <!--<mat-tab [label]="titles[1] | translate">-->
-            <!--<div class="content" id="sharing">-->
+            <!--<div class="content sharing">-->
             <!--<mat-slide-toggle (change)="setIpfs($event.source.checked)"-->
             <!--[checked]="settingsService?.sharing?.ipfs"-->
             <!--color="primary">-->

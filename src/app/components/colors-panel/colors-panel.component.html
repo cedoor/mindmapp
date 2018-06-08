@@ -1,8 +1,8 @@
-<div *ngIf="node.colors" id="colors-panel">
-    <div #background id="background"></div>
+<div *ngIf="node.colors" class="colors-panel">
+    <div #background class="background"></div>
 
-    <div id="panel">
-        <input id="background-color"
+    <div class="panel">
+        <input class="background-color"
                (cpToggleChange)="colorPickerToggleChange($event, 'backgroundColor', node.colors.background)"
                (colorPickerChange)="colorPickerChange('backgroundColor', $event)"
                [(colorPicker)]="node.colors.background"
@@ -12,7 +12,7 @@
                [style.background]="node.colors.background"
                [title]="'TOOLTIPS.NODE_COLOR' | translate"
                cpPosition="left"/>
-        <input id="text-color"
+        <input class="text-color"
                (cpToggleChange)="colorPickerToggleChange($event, 'nameColor', node.colors.name)"
                (colorPickerChange)="colorPickerChange('nameColor', $event)"
                [(colorPicker)]="node.colors.name"
@@ -22,7 +22,7 @@
                [style.background]="node.colors.name"
                [title]="'TOOLTIPS.TEXT_COLOR' | translate"
                cpPosition="left"/>
-        <input *ngIf="node.colors.branch" id="branch-color"
+        <input *ngIf="node.colors.branch" class="branch-color"
                (cpToggleChange)="colorPickerToggleChange($event, 'branchColor', node.colors.branch)"
                (colorPickerChange)="colorPickerChange('branchColor', $event)"
                [(colorPicker)]="node.colors.branch"

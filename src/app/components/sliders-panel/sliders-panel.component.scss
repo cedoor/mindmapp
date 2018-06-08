@@ -1,4 +1,4 @@
-div#sliders-panel {
+div.sliders-panel {
 
     .mat-slider-vertical {
         z-index: 2;
@@ -7,11 +7,11 @@ div#sliders-panel {
         top: 40%;
     }
 
-    #font-size {
+    .font-size {
         left: 5px;
     }
 
-    #image-size {
+    .image-size {
         left: 35px;
     }
 

@@ -1,4 +1,4 @@
-div#floating-buttons {
+div.floating-buttons {
 
     // Material design override
     .mat-mini-fab:not([class*=mat-elevation-z]) {
@@ -13,40 +13,40 @@ div#floating-buttons {
         background-color: #f6f6f6;
     }
 
-    #add-node, #remove-node,
-    #undo, #redo {
+    .add-node, .remove-node,
+    .undo, .redo {
         top: 60px;
     }
 
-    #add-node {
+    .add-node {
         left: 15px;
     }
 
-    #remove-node {
+    .remove-node {
         left: 65px;
     }
 
-    #undo {
+    .undo {
         right: 65px;
     }
 
-    #redo {
+    .redo {
         right: 15px;
     }
 
-    #zoom-in, #zoom-out, #center {
+    .zoom-in, .zoom-out, .center {
         right: 15px;
     }
 
-    #zoom-out {
+    .zoom-out {
         bottom: 70px;
     }
 
-    #zoom-in {
+    .zoom-in {
         bottom: 120px;
     }
 
-    #center {
+    .center {
         bottom: 15px;
     }
 

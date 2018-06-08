@@ -1,25 +1,25 @@
-div#about {
+div.about {
     width: 460px;
     color: dimgray;
 
-    div#about-header {
+    div.about-header {
         text-align: center;
 
-        img#logo, span#app-name {
+        img.logo, span.app-name {
             vertical-align: middle;
         }
 
-        span#app-name {
+        span.app-name {
             font-size: 35px;
             margin-left: 10px;
 
-            span#app-version {
+            span.app-version {
                 font-size: 15px;
             }
         }
     }
 
-    div#about-content {
+    div.about-content {
         padding: 24px 0;
 
         mat-list {
@@ -39,7 +39,7 @@ div#about {
         }
     }
 
-    div#about-footer {
+    div.about-footer {
         text-align: center;
     }
 }

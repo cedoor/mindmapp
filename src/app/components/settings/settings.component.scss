@@ -1,4 +1,4 @@
-div#settings {
+div.settings {
     min-width: 500px;
 
     h2 {
@@ -16,7 +16,7 @@ div#settings {
         }
     }
 
-    div#map-options {
+    div.map-options {
         form {
             min-width: 150px;
             max-width: 500px;

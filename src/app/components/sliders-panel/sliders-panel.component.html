@@ -1,5 +1,5 @@
-<div id="sliders-panel">
-    <mat-slider *ngIf="node.font" id="font-size"
+<div class="sliders-panel">
+    <mat-slider *ngIf="node.font" class="font-size"
                 min="15" max="70"
                 [value]="node.font.size"
                 (change)="updateNodeFontSize($event)"
@@ -8,7 +8,7 @@
                 color="primary"
                 vertical>
     </mat-slider>
-    <mat-slider *ngIf="node.image && node.image.src" id="image-size"
+    <mat-slider *ngIf="node.image && node.image.src" class="image-size"
                 min="50" max="150"
                 [value]="node.image.size"
                 (change)="updateNodeImageSize($event)"

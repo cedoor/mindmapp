@@ -1,14 +1,14 @@
-<div id="about">
-    <div id="about-header">
-        <img id="logo" src="../resources/icons/64x64.png">
-        <span id="app-name">
+<div class="about">
+    <div class="about-header">
+        <img class="logo" src="../resources/icons/64x64.png">
+        <span class="app-name">
             Mindmapp
-            <span id="app-version">{{ packageInformations?.version }}</span>
+            <span class="app-version">{{ packageInformations?.version }}</span>
         </span>
     </div>
 
-    <div id="about-content">
-        <div id="about-description">{{ "ABOUT_DESCRIPTION" | translate }}</div>
+    <div class="about-content">
+        <div class="about-description">{{ "ABOUT_DESCRIPTION" | translate }}</div>
         <mat-list role="list">
             <mat-list-item role="listitem">
                 Github: <span (click)="openLink($event)" class="link">https://github.com/Mindmapp</span>
@@ -19,7 +19,7 @@
         </mat-list>
     </div>
 
-    <div id="about-footer">
+    <div class="about-footer">
         <span>{{ "Copyright (c) " +  currentYear + " " + packageInformations?.author?.name }}</span>
     </div>
 </div>
