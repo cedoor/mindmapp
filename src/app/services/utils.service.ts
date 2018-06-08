@@ -55,13 +55,6 @@ export class UtilsService {
     }
 
     /**
-     * Minimize the application.
-     */
-    public minimizeApplication() {
-        this.remote.getCurrentWindow().minimize();
-    }
-
-    /**
      * Maximize the application.
      */
     public maximizeApplication(flag: boolean) {
