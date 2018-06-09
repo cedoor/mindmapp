@@ -1,20 +1,13 @@
 import {Injectable, NgZone} from "@angular/core";
 import {DialogService} from "./dialog.service";
-import {NotificationsService} from "./notifications.service";
-import {StorageService} from "./storage.service";
-import {TranslateService} from "@ngx-translate/core";
 import {MmpService} from "./mmp.service";
-import {environment} from "../../environments/environment";
 import * as mousetrap from "mousetrap";
 
 @Injectable()
 export class ShortcutsService {
 
     constructor(private ngZone: NgZone,
-                private storageService: StorageService,
                 private mmpService: MmpService,
-                private notificationsService: NotificationsService,
-                private translateService: TranslateService,
                 private dialogService: DialogService) {
     }
 
@@ -33,19 +26,27 @@ export class ShortcutsService {
         });
 
         mousetrap.bind("ctrl+n", () => {
-            this.dialogService.newMap();
+            this.ngZone.run(() => {
+                this.dialogService.newMap();
+            });
         });
 
         mousetrap.bind("ctrl+o", () => {
-            this.dialogService.openMap();
+            this.ngZone.run(() => {
+                this.dialogService.openMap();
+            });
         });
 
         mousetrap.bind("ctrl+s", () => {
-            this.dialogService.saveMap();
+            this.ngZone.run(() => {
+                this.dialogService.saveMap();
+            });
         });
 
         mousetrap.bind("ctrl+shift+s", () => {
-            this.dialogService.saveMap(true);
+            this.ngZone.run(() => {
+                this.dialogService.saveMap(true);
+            });
         });
 
         mousetrap.bind("ctrl+z", () => {
@@ -121,77 +122,6 @@ export class ShortcutsService {
         mousetrap.bind("ctrl+-", () => {
             this.mmpService.zoomOut();
         });
-    }
-
-    /**
-     * Return an Electron template.
-     * @param translations
-     * @returns {Electron.MenuItemConstructorOptions[]}
-     */
-    private createTemplate(translations: any): any {
-        let template: Electron.MenuItemConstructorOptions[] = [{
-            label: translations["FILE"],
-            submenu: [{
-                label: translations["EXPORT_AS"],
-                submenu: [{
-                    label: translations["PNG"],
-                    click: () => {
-
-                        this.dialogService.exportImage();
-                    }
-                }, {
-                    label: translations["JPG"],
-                    click: () => {
-                        this.ngZone.run(() => {
-                            this.dialogService.exportImage("jpeg");
-                        });
-                    }
-                }]
-            }, {
-                type: "separator"
-            }, {
-                label: translations["QUIT"],
-                role: "quit"
-            }]
-        }, {
-            label: translations["VIEW"],
-            submenu: [{
-                label: translations["FULL_SCREEN"],
-                role: "togglefullscreen"
-            }]
-        }, {
-            label: translations["HELP"],
-            role: "help",
-            submenu: [{
-                label: translations["ABOUT_TITLE"],
-                click: () => {
-                    this.ngZone.run(() => {
-                        if (this.dialogService.getMatDialogStatus("about")) {
-                            this.dialogService.closeMatDialog("about");
-                        } else {
-                            this.dialogService.openMatDialog("about");
-                        }
-                    });
-                }
-            }]
-        }];
-
-        if (!environment.production) {
-            template.push({
-                label: "Dev",
-                submenu: [{
-                    label: translations["RELOAD"],
-                    role: "reload"
-                }, {
-                    label: translations["CLEAN_CACHE"],
-                    click: () => {
-                        this.ngZone.run(() => {
-                            this.storageService.clear();
-                        });
-                    }
-                }]
-            });
-        }
     }
 
 }
