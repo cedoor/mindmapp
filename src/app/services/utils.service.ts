@@ -44,21 +44,41 @@ export class UtilsService {
      * Close the application.
      */
     public closeApplication() {
-        this.remote.getCurrentWindow().close();
+        let currentWindow = this.remote.getCurrentWindow();
+
+        currentWindow.close();
     }
 
     /**
      * Minimize the application.
      */
     public minimizeApplication() {
-        this.remote.getCurrentWindow().minimize();
+        let currentWindow = this.remote.getCurrentWindow();
+
+        currentWindow.minimize();
     }
 
     /**
-     * Maximize the application.
+     * Invert the full screen setting of the application.
      */
-    public maximizeApplication() {
-        this.remote.getCurrentWindow().maximize();
+    public toggleFullScreen() {
+        let currentWindow = this.remote.getCurrentWindow();
+
+        if (this.isFullScreen()) {
+            currentWindow.setFullScreen(false);
+        } else {
+            currentWindow.setFullScreen(true);
+        }
+    }
+
+    /**
+     * Return the status of the fullScreen setting.
+     * @returns {boolean}
+     */
+    public isFullScreen(): boolean {
+        let currentWindow = this.remote.getCurrentWindow();
+
+        return currentWindow.isFullScreen();
     }
 
 }

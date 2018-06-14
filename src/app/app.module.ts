@@ -28,7 +28,10 @@ import {
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
-    MatInputModule, MatListModule, MatMenuModule, MatSelectModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatSelectModule,
     MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
@@ -36,7 +39,6 @@ import {
     MatToolbarModule
 } from "@angular/material";
 import {AboutComponent} from "./components/about/about.component";
-import {HeaderBarComponent} from "./components/header-bar/header-bar.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/");
@@ -45,7 +47,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
     declarations: [
         AppComponent,
-        HeaderBarComponent,
         ToolbarComponent,
         SlidersPanelComponent,
         ColorsPanelComponent,

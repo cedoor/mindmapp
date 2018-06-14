@@ -61,5 +61,54 @@
                 mat-icon-button>
             <mat-icon>format_italic</mat-icon>
         </button>
+
+        <span class="toolbar-spacer"></span>
+
+        <button [matMenuTriggerFor]="menu" class="menu"
+                color="primary" [title]="'TOOLTIPS.MENU' | translate"
+                mat-icon-button>
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+            <button [matMenuTriggerFor]="export" mat-menu-item
+                    style="-webkit-app-region: no-drag">
+                <mat-icon>archive</mat-icon>
+                <span>{{ "EXPORT_AS" | translate }}</span>
+            </button>
+            <button mat-menu-item style="-webkit-app-region: no-drag"
+                    (click)="dialogService.saveMap(true)">
+                <mat-icon>save</mat-icon>
+                <span>{{ "SAVE_WITH_NAME" | translate }}</span>
+            </button>
+            <button mat-menu-item style="-webkit-app-region: no-drag"
+                    (click)="utilsService.toggleFullScreen()">
+                <mat-icon>fullscreen</mat-icon>
+                <span>{{ "FULL_SCREEN" | translate }}</span>
+            </button>
+            <button mat-menu-item style="-webkit-app-region: no-drag"
+                    (click)="dialogService.openMatDialog('settings')">
+                <mat-icon>settings</mat-icon>
+                <span>{{ "SETTINGS_TITLE" | translate }}</span>
+            </button>
+            <button mat-menu-item style="-webkit-app-region: no-drag"
+                    (click)="dialogService.openMatDialog('about')">
+                <mat-icon>info</mat-icon>
+                <span>{{ "ABOUT_TITLE" | translate }}</span>
+            </button>
+        </mat-menu>
+
+        <mat-menu #export="matMenu">
+            <button mat-menu-item style="-webkit-app-region: no-drag"
+                    (click)="dialogService.exportImage('png')">
+                <mat-icon>image</mat-icon>
+                <span>{{ "PNG" | translate }}</span>
+            </button>
+            <button mat-menu-item style="-webkit-app-region: no-drag"
+                    (click)="dialogService.exportImage('jpeg')">
+                <mat-icon>image</mat-icon>
+                <span>{{ "JPG" | translate }}</span>
+            </button>
+        </mat-menu>
     </mat-toolbar>
 </div>

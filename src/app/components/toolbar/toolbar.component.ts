@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from "@angular/core";
 import {DialogService} from "../../services/dialog.service";
 import {MmpService} from "../../services/mmp.service";
 import {FileService} from "../../services/file.service";
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
     selector: "app-toolbar",
@@ -15,6 +16,7 @@ export class ToolbarComponent implements OnInit {
     public mapSaved: boolean;
 
     constructor(public dialogService: DialogService,
+                public utilsService: UtilsService,
                 public mmpService: MmpService,
                 public fileService: FileService) {
     }
