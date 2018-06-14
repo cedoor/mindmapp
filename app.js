@@ -48,9 +48,10 @@ function createMainWindow(screenSize) {
         height: screenSize.height,
         minWidth: 800,
         minHeight: 700,
-        show: false,
-        frame: false
+        show: false
     });
+
+    mainWindow.setMenu(null);
 
     mainWindow.loadURL(indexPath);
 
