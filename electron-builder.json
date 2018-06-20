@@ -10,6 +10,7 @@
         "package.json",
         "resources",
         "dist",
+        "main",
         "app.js"
     ],
     "publish": {
