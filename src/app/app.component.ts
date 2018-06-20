@@ -9,6 +9,7 @@ import {IPFSService} from "./services/ipfs.service";
 import {MmpService} from "./services/mmp.service";
 import {MapOptions} from "./models/mmp";
 import {FileService} from "./services/file.service";
+import {UpdateService} from "./services/update.service";
 
 @Component({
     selector: "app-root",
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
 
     constructor(public dialogService: DialogService,
                 public dragDropService: DragDropService,
+                public updateService: UpdateService,
                 public translateService: TranslateService,
                 public ipfsService: IPFSService,
                 public mmpService: MmpService,
@@ -46,6 +48,7 @@ export class AppComponent implements OnInit {
                 this.createMapListeners();
                 this.dialogService.createQuitListener();
                 this.dragDropService.createDragAndDropListener();
+                this.updateService.createUpdateListener();
             });
         });
     }
