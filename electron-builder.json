@@ -1,0 +1,50 @@
+{
+    "productName": "Mindmapp",
+    "appId": "com.cedoor.mindmapp",
+    "artifactName": "${productName}-${version}.${ext}",
+    "directories": {
+        "output": "builds",
+        "buildResources": "resources"
+    },
+    "files": [
+        "package.json",
+        "resources",
+        "dist",
+        "app.js"
+    ],
+    "publish": {
+        "provider": "github",
+        "owner": "Mindmapp",
+        "repo": "mindmapp"
+    },
+    "mac": {
+        "category": "public.app-category.productivity"
+    },
+    "nsis": {
+        "oneClick": false,
+        "allowToChangeInstallationDirectory": true,
+        "createDesktopShortcut": true
+    },
+    "dmg": {
+        "contents": [
+            {
+                "x": 110,
+                "y": 150
+            },
+            {
+                "x": 240,
+                "y": 150,
+                "type": "link",
+                "path": "/Applications"
+            }
+        ]
+    },
+    "linux": {
+        "category": "Graphics",
+        "target": [
+            "deb",
+            "tar.gz",
+            "AppImage"
+        ]
+    }
+}
