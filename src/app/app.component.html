@@ -1,7 +1,9 @@
-<app-toolbar [node]="node"></app-toolbar>
+<div [@fadeInOut] style="height: 100%">
+    <app-toolbar [node]="node"></app-toolbar>
 
-<app-colors-panel [node]="node"></app-colors-panel>
-<app-sliders-panel [node]="node"></app-sliders-panel>
-<app-floating-buttons></app-floating-buttons>
+    <app-colors-panel [node]="node"></app-colors-panel>
+    <app-sliders-panel [node]="node"></app-sliders-panel>
+    <app-floating-buttons></app-floating-buttons>
 
-<app-map></app-map>
+    <app-map></app-map>
+</div>

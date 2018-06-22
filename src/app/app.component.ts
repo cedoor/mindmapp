@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit} from "@angular/core";
 import {DialogService} from "./services/dialog.service";
 import {DragDropService} from "./services/dragdrop.service";
 import {ShortcutsService} from "./services/shortcuts.service";
@@ -10,16 +10,29 @@ import {MmpService} from "./services/mmp.service";
 import {MapOptions} from "./models/mmp";
 import {FileService} from "./services/file.service";
 import {UpdateService} from "./services/update.service";
+import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
     selector: "app-root",
-    templateUrl: "app.component.html"
+    templateUrl: "app.component.html",
+    animations: [
+        trigger("fadeInOut", [
+            transition(":enter", [
+                style({opacity: 0}),
+                animate(600, style({opacity: 1}))
+            ]),
+            transition(":leave", [
+                animate(600, style({opacity: 0}))
+            ])
+        ])
+    ]
 })
 export class AppComponent implements OnInit {
 
     public node: any;
 
-    constructor(public dialogService: DialogService,
+    constructor(public myElement: ElementRef,
+                public dialogService: DialogService,
                 public dragDropService: DragDropService,
                 public updateService: UpdateService,
                 public translateService: TranslateService,
@@ -51,6 +64,14 @@ export class AppComponent implements OnInit {
                 this.updateService.createUpdateListener();
             });
         });
+    }
+
+    ngAfterViewInit() {
+        const appRootRef = this.myElement;
+
+        setTimeout(() => {
+            appRootRef.nativeElement.previousElementSibling.remove();
+        }, 800);
     }
 
     public createMap(options: MapOptions) {
