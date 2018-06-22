@@ -1,6 +1,5 @@
 import {Injectable, NgZone} from "@angular/core";
 import {IPFSService} from "./ipfs.service";
-import {environment} from "../../environments/environment";
 import {MmpService} from "./mmp.service";
 import {SettingsComponent} from "../components/settings/settings.component";
 import {MatDialog} from "@angular/material";
@@ -221,9 +220,7 @@ export class DialogService {
     public showMapPreSavingMessage(): Promise<any> {
         return new Promise((resolve: Function) => {
             if (!this.fileService.mapIsSaved()) {
-                this.showMessage(
-                    this.translations["SAVE"],
-                    this.translations["SAVE_MAP_MESSAGE"])
+                this.showMessage(this.translations["SAVE"], this.translations["SAVE_MAP_MESSAGE"])
                     .then((response: number) => {
                         if (response === 0) {
                             this.saveMap().then(() => {
@@ -243,17 +240,13 @@ export class DialogService {
      * Manage the exit from the program.
      */
     public createQuitListener() {
-        if (environment.production) {
-            let currentWindow = this.remote.getCurrentWindow();
+        let currentWindow = this.remote.getCurrentWindow();
 
-            window.onbeforeunload = (event: Event) => {
-                if (!this.fileService.mapIsSaved()) {
-                    this.remote.dialog.showMessageBox({
-                        type: "question",
-                        title: "Salva mappa",
-                        message: "Vuoi salvare la mappa corrente prima di uscire?",
-                        buttons: ["Si", "No", "Annulla"]
-                    }, (index: number) => {
+        window.onbeforeunload = (event: Event) => {
+            if (!this.fileService.mapIsSaved()) {
+
+                this.showMessage(this.translations["SAVE"], this.translations["SAVE_MAP_MESSAGE"])
+                    .then((index: number) => {
                         if (index === 0) {
                             this.saveMap().then(() => {
                                 currentWindow.destroy();
@@ -263,10 +256,9 @@ export class DialogService {
                         }
                     });
 
-                    event.returnValue = false;
-                }
-            };
-        }
+                event.returnValue = false;
+            }
+        };
     }
 
     /**
