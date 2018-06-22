@@ -29,17 +29,21 @@ export class FileService {
      * if the current map and the file data are the same.
      */
     public checkMapFile() {
-        if (this.filePath) {
-            let fileData = this.fs.readFileSync(this.filePath).toString(),
-                mapData = JSON.stringify(this.mmpService.exportAsJSON());
-
-            if (fileData !== mapData) {
-                this.setSavingStatus(false);
-            } else {
-                this.setSavingStatus(true);
-            }
+        if (this.mmpService.history().index === 0) {
+            this.setSavingStatus(true);
         } else {
-            this.setSavingStatus(false);
+            if (this.filePath) {
+                let fileData = this.fs.readFileSync(this.filePath).toString(),
+                    mapData = JSON.stringify(this.mmpService.exportAsJSON());
+
+                if (fileData !== mapData) {
+                    this.setSavingStatus(false);
+                } else {
+                    this.setSavingStatus(true);
+                }
+            } else {
+                this.setSavingStatus(false);
+            }
         }
     }
 

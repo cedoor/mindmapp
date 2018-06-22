@@ -10,6 +10,7 @@ import {FileService} from "./file.service";
 import {remote} from "electron";
 import * as fs from "fs";
 import {AboutComponent} from "../components/about/about.component";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class DialogService {
@@ -240,25 +241,27 @@ export class DialogService {
      * Manage the exit from the program.
      */
     public createQuitListener() {
-        let currentWindow = this.remote.getCurrentWindow();
+        if (environment.production) {
+            let currentWindow = this.remote.getCurrentWindow();
 
-        window.onbeforeunload = (event: Event) => {
-            if (!this.fileService.mapIsSaved()) {
+            window.onbeforeunload = (event: Event) => {
+                if (!this.fileService.mapIsSaved()) {
 
-                this.showMessage(this.translations["SAVE"], this.translations["SAVE_MAP_MESSAGE"])
-                    .then((index: number) => {
-                        if (index === 0) {
-                            this.saveMap().then(() => {
+                    this.showMessage(this.translations["SAVE"], this.translations["SAVE_MAP_MESSAGE"])
+                        .then((index: number) => {
+                            if (index === 0) {
+                                this.saveMap().then(() => {
+                                    currentWindow.destroy();
+                                });
+                            } else if (index === 1) {
                                 currentWindow.destroy();
-                            });
-                        } else if (index === 1) {
-                            currentWindow.destroy();
-                        }
-                    });
+                            }
+                        });
 
-                event.returnValue = false;
-            }
-        };
+                    event.returnValue = false;
+                }
+            };
+        }
     }
 
     /**

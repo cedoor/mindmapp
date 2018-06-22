@@ -107,6 +107,7 @@ export class AppComponent implements OnInit {
 
         this.mmpService.on("create").subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode());
+            this.fileService.checkMapFile();
         });
 
         this.mmpService.on("nodeCreate").subscribe(() => {
