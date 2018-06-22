@@ -22,6 +22,8 @@ export class DialogService {
 
     private translations: any;
 
+    private forceQuit: boolean;
+
     constructor(private ngZone: NgZone,
                 private ipfsService: IPFSService,
                 private translateService: TranslateService,
@@ -36,6 +38,8 @@ export class DialogService {
         this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
             this.translations = event.translations;
         });
+
+        this.forceQuit = false;
     }
 
     /**
@@ -245,7 +249,7 @@ export class DialogService {
             let currentWindow = this.remote.getCurrentWindow();
 
             window.onbeforeunload = (event: Event) => {
-                if (!this.fileService.mapIsSaved()) {
+                if (!this.fileService.mapIsSaved() && !this.forceQuit) {
 
                     this.showMessage(this.translations["SAVE"], this.translations["SAVE_MAP_MESSAGE"])
                         .then((index: number) => {
@@ -262,6 +266,13 @@ export class DialogService {
                 }
             };
         }
+    }
+
+    /**
+     * Set forcing exit from the app without saving.
+     */
+    public setForceQuit() {
+       this.forceQuit = true;
     }
 
     /**

@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {ipcRenderer} from "electron";
 import {TranslateService} from "@ngx-translate/core";
 import {LangChangeEvent} from "@ngx-translate/core/src/translate.service";
+import {DialogService} from "./dialog.service";
 
 @Injectable()
 export class UpdateService {
@@ -10,7 +11,8 @@ export class UpdateService {
 
     private translations: any;
 
-    constructor(private translateService: TranslateService) {
+    constructor(private translateService: TranslateService,
+                private dialogService: DialogService) {
         this.ipcRenderer = window.require("electron").ipcRenderer;
 
         this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -31,11 +33,15 @@ export class UpdateService {
         });
 
         this.ipcRenderer.on("update-downloaded", () => {
-            this.ipcRenderer.send("show-update-downloaded-dialog", {
-                type: "info",
-                title: this.translations["INSTALL_UPDATES_TITLE"],
-                message: this.translations["INSTALL_UPDATES_MESSAGE"],
-                buttons: [this.translations["OK"], this.translations["LATER"]]
+            this.dialogService.showMapPreSavingMessage().then(() => {
+                this.dialogService.setForceQuit();
+
+                this.ipcRenderer.send("show-update-downloaded-dialog", {
+                    type: "info",
+                    title: this.translations["INSTALL_UPDATES_TITLE"],
+                    message: this.translations["INSTALL_UPDATES_MESSAGE"],
+                    buttons: [this.translations["OK"], this.translations["LATER"]]
+                });
             });
         });
     }
