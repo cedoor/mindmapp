@@ -1,7 +1,7 @@
 {
     "name": "mindmapp",
     "version": "0.7.7",
-    "description": "Electron application to draw mind maps",
+    "description": "Desktop application to draw mind maps.",
     "homepage": "https://mindmapp.org",
     "author": {
         "name": "Omar Desogus",
