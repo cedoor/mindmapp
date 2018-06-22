@@ -106,6 +106,13 @@ export class MmpService {
     }
 
     /**
+     * Return the array of snapshots of the mind map.
+     */
+    public history(): any {
+        return this.currentMap.history();
+    }
+
+    /**
      * Center the mind mmp.
      * @param {"position" | "zoom"} type
      * @param {number} duration
