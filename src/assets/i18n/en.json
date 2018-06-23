@@ -57,7 +57,7 @@
     "ROOT_NODE_NAME": "Root node name",
     "NODE_NAME": "Node name",
     "ABOUT_TITLE": "About",
-    "ABOUT_DESCRIPTION": "Mindmapp is an open source project that allows the creation of mind maps. All the code is available on Github and any contribution is welcome.",
+    "ABOUT_DESCRIPTION": "Mindmapp is an open source project that allows you to create mind maps. If you are a developer and you want to contribute to the application, below you will find the link of the project.",
     "SETTINGS_TITLE": "Settings",
     "SETTINGS_LABELS": {
         "SHARING": "Sharing",
