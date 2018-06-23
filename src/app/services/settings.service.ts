@@ -6,6 +6,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {HttpClient} from "@angular/common/http";
 import {MapOptions} from "../models/mmp";
 import {MmpService} from "./mmp.service";
+import {UtilsService} from "./utils.service";
 
 @Injectable()
 export class SettingsService {
@@ -17,6 +18,7 @@ export class SettingsService {
 
     constructor(private storageService: StorageService,
                 private http: HttpClient,
+                private utilsService: UtilsService,
                 private mmpService: MmpService,
                 private translateService: TranslateService,
                 private ipfsService: IPFSService) {
@@ -36,9 +38,17 @@ export class SettingsService {
                 return this.storageService.get(this.SETTINGS_KEY);
             }
         }).then((settings: Settings) => {
-            this.settings = settings;
+            return this.getDefaultSettings().then((defaultSettings: Settings) => {
+                if (!this.utilsService.haveSameStructure(defaultSettings, settings)) {
+                    this.settings = defaultSettings;
 
-            return settings;
+                    return this.update(defaultSettings);
+                } else {
+                    this.settings = settings;
+
+                    return settings;
+                }
+            });
         });
     }
 
@@ -116,14 +126,12 @@ export class SettingsService {
     }
 
     /**
-     * Overwrite the settingsService in the storage.
+     * Overwrite the settings in the storage.
      * @param {Settings} settings
      * @returns {Promise<Settings>}
      */
     private update(settings: Settings): Promise<Settings> {
-        return this.storageService.set(this.SETTINGS_KEY, settings).then((settings: Settings) => {
-            return settings;
-        });
+        return this.storageService.set(this.SETTINGS_KEY, settings);
     }
 
 }

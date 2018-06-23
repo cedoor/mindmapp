@@ -81,4 +81,30 @@ export class UtilsService {
         return currentWindow.isFullScreen();
     }
 
+    /**
+     * Return true if the two objects have the same structure (same keys).
+     * @param {object} JSONObject1
+     * @param {object} JSONObject2
+     * @returns {boolean}
+     */
+    public haveSameStructure(JSONObject1: object, JSONObject2: object): boolean {
+        const fun = (JSONObject1: object, JSONObject2: object) => {
+            for (const key in JSONObject1) {
+                if (!JSONObject1.hasOwnProperty(key) || !JSONObject2.hasOwnProperty(key)) {
+                    return false;
+                }
+
+                if (typeof JSONObject1[key] === "object") {
+                    if (!fun(JSONObject1[key], JSONObject2[key])) {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        };
+
+        return fun(JSONObject1, JSONObject2) && fun(JSONObject2, JSONObject1);
+    }
+
 }
