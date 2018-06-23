@@ -4,8 +4,7 @@ import {MmpService} from "./mmp.service";
 import {SettingsComponent} from "../components/settings/settings.component";
 import {MatDialog} from "@angular/material";
 import {MatDialogRef} from "@angular/material/dialog/typings/dialog-ref";
-import {LangChangeEvent} from "@ngx-translate/core/src/translate.service";
-import {TranslateService} from "@ngx-translate/core";
+import {LangChangeEvent, TranslateService} from "@ngx-translate/core";
 import {FileService} from "./file.service";
 import {remote} from "electron";
 import * as fs from "fs";
@@ -272,7 +271,7 @@ export class DialogService {
      * Set forcing exit from the app without saving.
      */
     public setForceQuit() {
-       this.forceQuit = true;
+        this.forceQuit = true;
     }
 
     /**
@@ -281,7 +280,12 @@ export class DialogService {
     public openMatDialog(name: "settings" | "about") {
         switch (name) {
             case "settings":
-                this.matDialogRefs.set("settings", this.matDialog.open(SettingsComponent));
+                this.matDialogRefs.set("settings", this.matDialog.open(SettingsComponent, {
+                    maxWidth: "100vw",
+                    maxHeight: "100vh",
+                    height: "100%",
+                    width: "100%"
+                }));
                 break;
             case "about":
                 this.matDialogRefs.set("about", this.matDialog.open(AboutComponent));

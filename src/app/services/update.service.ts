@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {ipcRenderer} from "electron";
-import {TranslateService} from "@ngx-translate/core";
-import {LangChangeEvent} from "@ngx-translate/core/src/translate.service";
+import {TranslateService, LangChangeEvent} from "@ngx-translate/core";
 import {DialogService} from "./dialog.service";
 
 @Injectable()
