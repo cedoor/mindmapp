@@ -8,8 +8,8 @@ export class NotificationsService {
 
     private infoSource: BehaviorSubject<string>;
 
-    constructor(public matSnackBar: MatSnackBar,
-                public translateService: TranslateService) {
+    constructor(private matSnackBar: MatSnackBar,
+                private translateService: TranslateService) {
         this.infoSource = new BehaviorSubject<string>("");
     }
 
@@ -22,6 +22,7 @@ export class NotificationsService {
         this.translateService.get("DISMISS").toPromise().then((translation: string) => {
             this.matSnackBar.open(message, translation, {
                 duration: duration,
+                panelClass: "snackbar"
             });
         });
     }

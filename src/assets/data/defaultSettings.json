@@ -1,6 +1,7 @@
 {
     "general": {
-        "language": "en"
+        "language": "en",
+        "firstTime": true
     },
     "sharing": {
         "ipfs": false

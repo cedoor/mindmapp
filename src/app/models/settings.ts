@@ -2,7 +2,6 @@ import {MapOptions} from "./mmp";
 
 export interface Settings {
     general: General;
-    language: string;
     mapOptions: MapOptions;
     sharing: Sharing;
 }
@@ -13,4 +12,5 @@ interface Sharing {
 
 interface General {
     language: string;
+    firstTime: boolean;
 }

@@ -71,6 +71,18 @@ export class SettingsService {
     }
 
     /**
+     * Set the first time (of the app start) to false.
+     * @returns {Promise<Settings>}
+     */
+    public setFirstTime(): Promise<Settings> {
+        this.settings.general.firstTime = false;
+
+        return this.update(this.settings).then((settings: Settings) => {
+            return settings;
+        });
+    }
+
+    /**
      * Update the settingsService with the new map options.
      * @param {MapOptions} mapOptions
      * @returns {Promise<Settings>}

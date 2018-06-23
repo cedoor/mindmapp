@@ -11,6 +11,7 @@ import {MapOptions} from "./models/mmp";
 import {FileService} from "./services/file.service";
 import {UpdateService} from "./services/update.service";
 import {animate, style, transition, trigger} from "@angular/animations";
+import {NotificationsService} from "./services/notifications.service";
 
 @Component({
     selector: "app-root",
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
                 public dialogService: DialogService,
                 public dragDropService: DragDropService,
                 public updateService: UpdateService,
+                public notificationService: NotificationsService,
                 public translateService: TranslateService,
                 public ipfsService: IPFSService,
                 public mmpService: MmpService,
@@ -50,7 +52,7 @@ export class AppComponent implements OnInit {
             // Set background services
             this.setBackgroundServices(settings);
 
-            this.setTranslations(settings.general.language).then(() => {
+            this.setTranslations(settings.general.language).then((translations) => {
                 // Create the electron menu.
                 this.shortcutsService.createShortcuts();
 
@@ -62,6 +64,11 @@ export class AppComponent implements OnInit {
                 this.dialogService.createQuitListener();
                 this.dragDropService.createDragAndDropListener();
                 this.updateService.createUpdateListener();
+
+                if (settings.general.firstTime === true) {
+                    this.settingsService.setFirstTime();
+                    this.notificationService.send(translations["WELCOME_MESSAGE"]);
+                }
             });
         });
     }
