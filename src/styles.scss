@@ -29,4 +29,20 @@ div.color-picker {
     }
 }
 
+// Snackbar
+snack-bar-container.snackbar {
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    border-bottom: 0;
+    color: #555555;
+
+    simple-snack-bar.mat-simple-snackbar {
+        font-size: 15px;
+
+        button {
+            color: #555555;
+        }
+    }
+}
+
 
