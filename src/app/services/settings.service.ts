@@ -1,13 +1,11 @@
 import {Injectable} from "@angular/core";
 import {StorageService} from "./storage.service";
-import {UtilsService} from "./utils.service";
 import {IPFSService} from "./ipfs.service";
 import {Settings} from "../models/settings";
 import {TranslateService} from "@ngx-translate/core";
 import {HttpClient} from "@angular/common/http";
 import {MapOptions} from "../models/mmp";
 import {MmpService} from "./mmp.service";
-import {FileService} from "./file.service";
 
 @Injectable()
 export class SettingsService {
@@ -21,8 +19,7 @@ export class SettingsService {
                 private http: HttpClient,
                 private mmpService: MmpService,
                 private translateService: TranslateService,
-                private ipfsService: IPFSService,
-                private fileService: FileService) {
+                private ipfsService: IPFSService) {
     }
 
     /**

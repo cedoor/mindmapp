@@ -40,6 +40,7 @@ import {
     MatToolbarModule
 } from "@angular/material";
 import {AboutComponent} from "./components/about/about.component";
+import {FooterComponent} from "./components/footer/footer.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/");
@@ -54,7 +55,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         FloatingButtonsComponent,
         SettingsComponent,
         AboutComponent,
-        MapComponent
+        MapComponent,
+        FooterComponent
     ],
     imports: [
         BrowserModule,

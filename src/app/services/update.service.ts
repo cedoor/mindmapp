@@ -23,7 +23,7 @@ export class UpdateService {
     public createUpdateListener() {
         this.ipcRenderer.send("check-updates");
 
-        this.ipcRenderer.on("update-available", () => {
+        this.ipcRenderer.once("update-available", () => {
             this.ipcRenderer.send("show-update-available-dialog", {
                 type: "question",
                 title: this.translations["UPDATES_FOUND_TITLE"],
@@ -32,7 +32,7 @@ export class UpdateService {
             });
         });
 
-        this.ipcRenderer.on("update-downloaded", () => {
+        this.ipcRenderer.once("update-downloaded", () => {
             this.dialogService.showMapPreSavingMessage().then(() => {
                 this.dialogService.setForceQuit();
 

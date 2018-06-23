@@ -1,12 +1,16 @@
 import {Injectable} from "@angular/core";
 import {MatSnackBar} from "@angular/material";
 import {TranslateService} from "@ngx-translate/core";
+import {BehaviorSubject, Observable} from "rxjs/index";
 
 @Injectable()
 export class NotificationsService {
 
+    private infoSource: BehaviorSubject<string>;
+
     constructor(public matSnackBar: MatSnackBar,
                 public translateService: TranslateService) {
+        this.infoSource = new BehaviorSubject<string>("");
     }
 
     /**
@@ -20,6 +24,22 @@ export class NotificationsService {
                 duration: duration,
             });
         });
+    }
+
+    /**
+     * Return an observable for info status.
+     * @returns {Observable<string>}
+     */
+    public watchInfoStatus(): Observable<string> {
+        return this.infoSource.asObservable();
+    }
+
+    /**
+     * Set an information.
+     * @param {string} info
+     */
+    public setInfo(info: string) {
+        this.infoSource.next(info);
     }
 
 }
