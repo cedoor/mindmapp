@@ -18,8 +18,8 @@ function createMainWindow(screenSize) {
         y: 0,
         width: screenSize.width,
         height: screenSize.height,
-        minWidth: 800,
-        minHeight: 700
+        minWidth: 900,
+        minHeight: 720
     });
 
     mainWindow.setMenu(null);
