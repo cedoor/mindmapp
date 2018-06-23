@@ -1,5 +1,9 @@
 div.settings {
-    min-width: 500px;
+    button.close-dialog {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
 
     h2 {
         text-align: center;

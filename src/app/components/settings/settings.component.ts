@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Settings} from "../../models/settings";
 import {SettingsService} from "../../services/settings.service";
+import {DialogService} from "../../services/dialog.service";
 
 @Component({
     selector: "app-settings",
@@ -30,7 +31,6 @@ export class SettingsComponent implements OnInit {
     }
 
     public setMapOptions() {
-        console.log("updated");
         this.settingsService.setMapOptions(this.settings.mapOptions).then((settings: Settings) => {
             this.settings = settings;
         });
