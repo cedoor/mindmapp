@@ -25,8 +25,8 @@ Mindmapp is a desktop application to draw mind maps quickly and efficiently. It 
 ### Run angular & electron
 
 ```sh
+> npm run ng:build
 > npm start
-> npm run electron
 ```
 ### Rules
 
