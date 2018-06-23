@@ -9,14 +9,10 @@
 
     <div class="about-content">
         <div class="about-description">{{ "ABOUT_DESCRIPTION" | translate }}</div>
-        <mat-list role="list">
-            <mat-list-item role="listitem">
-                Github: <span (click)="openLink($event)" class="link">https://github.com/Mindmapp</span>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-                {{ "WEBSITE" | translate }}: <span (click)="openLink($event)" class="link">https://mindmapp.org</span>
-            </mat-list-item>
-        </mat-list>
+        <div class="about-links">
+            <p>Github: <span (click)="openLink($event)">https://github.com/Mindmapp</span></p>
+            <p>{{ "WEBSITE" | translate }}: <span (click)="openLink($event)">https://mindmapp.org</span></p>
+        </div>
     </div>
 
     <div class="about-footer">

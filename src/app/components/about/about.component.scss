@@ -1,10 +1,9 @@
 div.about {
-    width: 460px;
+    width: 520px;
     color: dimgray;
+    text-align: center;
 
     div.about-header {
-        text-align: center;
-
         img.logo, span.app-name {
             vertical-align: middle;
         }
@@ -22,14 +21,15 @@ div.about {
     div.about-content {
         padding: 24px 0;
 
-        mat-list {
-            padding-top: 15px;
+        div.about-links {
+            padding-top: 10px;
 
-            mat-list-item {
-                height: 38px;
+            p {
+                margin: 0;
+                padding-top: 15px;
                 color: dimgray;
 
-                span.link {
+                span {
                     margin-left: 10px;
                     text-underline: none;
                     color: #546e7a;
