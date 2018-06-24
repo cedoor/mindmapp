@@ -34,6 +34,7 @@
     "MINDMAPP_FILES": "Mindmapp files",
     "ALL_FILES": "All files",
     "TUTORIAL": "Tutorial",
+    "MAIN": "Main",
     "FULL_SCREEN": "Full screen",
     "CLEAN_CACHE": "Clean cache",
     "RELOAD": "Reload",
@@ -53,11 +54,15 @@
     "REPEAT": "Repeat",
     "ADD_NODE": "Add node",
     "REMOVE_NODE": "Remove node",
+    "CENTER_ON_RESIZING": "Center on resizing",
+    "NODE_DRAGGING": "Node dragging",
+    "MAP_ZOOM": "Map zoom",
     "MAP": "Map",
+    "NODES": "Nodes",
     "ROOT_NODE_NAME": "Root node name",
     "NODE_NAME": "Node name",
     "ABOUT_TITLE": "About",
-    "ABOUT_DESCRIPTION": "Mindmapp is an open source project that allows you to create mind maps. If you are a developer and you want to contribute to the application, below you will find the link of the project.",
+    "ABOUT_DESCRIPTION": "Mindmapp is an open source project that allows you to create mind maps. If you are a developer and you want to contribute to the application, below you will find the links of the project.",
     "SETTINGS_TITLE": "Settings",
     "SETTINGS_LABELS": {
         "SHARING": "Sharing",
@@ -97,6 +102,9 @@
         "ROOT_NODE_NAME_INPUT": "Changes the default root node name",
         "NODE_NAME_INPUT": "Changes the default node name",
         "LANGUAGE": "Changes the language",
-        "SETTINGS": "Opens the settings"
+        "SETTINGS": "Opens the settings",
+        "CENTER_ON_RESIZING": "Centers the map on window resizing",
+        "NODE_DRAGGING": "Allows to drag the nodes in the map",
+        "MAP_ZOOM": "Allows to zoom the map"
     }
 }

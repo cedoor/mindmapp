@@ -34,6 +34,7 @@
     "MINDMAPP_FILES": "File Mindmapp",
     "ALL_FILES": "Tutti i file",
     "TUTORIAL": "Tutorial",
+    "MAIN": "Principali",
     "FULL_SCREEN": "Schermo intero",
     "CLEAN_CACHE": "Pulisci cache",
     "RELOAD": "Ricarica",
@@ -53,11 +54,15 @@
     "REPEAT": "Ripeti",
     "ADD_NODE": "Aggiungi nodo",
     "REMOVE_NODE": "Rimuovi nodo",
+    "CENTER_ON_RESIZING": "Centra al ridimensionamento",
+    "NODE_DRAGGING": "Trascinamento dei nodi",
+    "MAP_ZOOM": "Zoom della mappa",
     "MAP": "Mappa",
+    "NODES": "Nodi",
     "ROOT_NODE_NAME": "Nome nodo radice",
     "NODE_NAME": "Nome nodo",
     "ABOUT_TITLE": "Informazioni",
-    "ABOUT_DESCRIPTION": "Mindmapp è un progetto open source che permette la creazione di mappe mentali. Se sei uno sviluppatore e vuoi contribuire all'applicazione, di seguito trovi il link del progetto.",
+    "ABOUT_DESCRIPTION": "Mindmapp è un progetto open source che permette di creare mappe mentali. Se sei uno sviluppatore e vuoi contribuire all'applicazione, di seguito trovi i link del progetto.",
     "SETTINGS_TITLE": "Impostazioni",
     "SETTINGS_LABELS": {
         "SHARING": "Condivisione",
@@ -97,6 +102,9 @@
         "ROOT_NODE_NAME_INPUT": "Cambia il nome predefinito del nodo radice",
         "NODE_NAME_INPUT": "Cambia il nome predefinito dei nodi",
         "LANGUAGE": "Cambia la lingua",
-        "SETTINGS": "Apre le impostazioni"
+        "SETTINGS": "Apre le impostazioni",
+        "CENTER_ON_RESIZING": "Centra la mappa quando viene ridimensionata la finestra",
+        "NODE_DRAGGING": "Permette di trascinare i nodi nella mappa",
+        "MAP_ZOOM": "Permette di effettuare lo zoom sulla mappa"
     }
 }
