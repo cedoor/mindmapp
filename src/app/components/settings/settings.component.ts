@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Settings} from "../../models/settings";
 import {SettingsService} from "../../services/settings.service";
-import {DialogService} from "../../services/dialog.service";
 
 @Component({
     selector: "app-settings",

@@ -8,34 +8,79 @@
     <mat-dialog-content>
         <mat-tab-group>
             <mat-tab [label]="titles.general | translate">
-                <div class="content languages">
-                    <mat-form-field>
-                        <mat-select (selectionChange)="setLanguage()" [(value)]="settings.general.language"
-                                    [placeholder]="'LANGUAGE' | translate"
-                                    [title]="'TOOLTIPS.LANGUAGE' | translate">
-                            <mat-option *ngFor="let language of languages"
-                                        [value]="language">
-                                {{ "LANGUAGES." + language.toUpperCase() | translate }}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <div class="content general-options">
+                    <mat-card class="general-options-main">
+                        <mat-card-header>
+                            <mat-card-title>{{ "MAIN" | translate }}</mat-card-title>
+                        </mat-card-header>
+                        <hr>
+                        <mat-card-content>
+                            <mat-form-field>
+                                <mat-select (selectionChange)="setLanguage()" [(value)]="settings.general.language"
+                                            [placeholder]="'LANGUAGE' | translate"
+                                            [title]="'TOOLTIPS.LANGUAGE' | translate">
+                                    <mat-option *ngFor="let language of languages"
+                                                [value]="language">
+                                        {{ "LANGUAGES." + language.toUpperCase() | translate }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-card-content>
+                    </mat-card>
                 </div>
             </mat-tab>
 
             <mat-tab [label]="titles.mapOptions | translate">
                 <div class="content map-options">
-                    <mat-form-field>
-                        <input matInput (change)="setMapOptions()"
-                               [placeholder]="'ROOT_NODE_NAME' | translate" name="rootNodeName"
-                               [title]="'TOOLTIPS.ROOT_NODE_NAME_INPUT' | translate"
-                               [(ngModel)]="settings.mapOptions.rootNode.name">
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput (change)="setMapOptions()"
-                               [placeholder]="'NODE_NAME' | translate" name="defaultNodeName"
-                               [title]="'TOOLTIPS.NODE_NAME_INPUT' | translate"
-                               [(ngModel)]="settings.mapOptions.defaultNode.name">
-                    </mat-form-field>
+                    <mat-card class="map-options-map">
+                        <mat-card-header>
+                            <mat-card-title>{{ "MAP" | translate }}</mat-card-title>
+                        </mat-card-header>
+                        <hr>
+                        <mat-card-content>
+                            <mat-slide-toggle
+                                color="primary"
+                                (change)="setMapOptions()"
+                                [title]="'TOOLTIPS.CENTER_ON_RESIZING' | translate"
+                                [(ngModel)]="settings.mapOptions.centerOnResize">
+                                {{ "CENTER_ON_RESIZING" | translate }}
+                            </mat-slide-toggle>
+                            <mat-slide-toggle
+                                color="primary"
+                                (change)="setMapOptions()"
+                                [title]="'TOOLTIPS.NODE_DRAGGING' | translate"
+                                [(ngModel)]="settings.mapOptions.drag">
+                                {{ "NODE_DRAGGING" | translate }}
+                            </mat-slide-toggle>
+                            <mat-slide-toggle
+                                color="primary"
+                                (change)="setMapOptions()"
+                                [title]="'TOOLTIPS.MAP_ZOOM' | translate"
+                                [(ngModel)]="settings.mapOptions.zoom">
+                                {{ "MAP_ZOOM" | translate }}
+                            </mat-slide-toggle>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card class="map-options-nodes">
+                        <mat-card-header>
+                            <mat-card-title>{{ "NODES" | translate }}</mat-card-title>
+                        </mat-card-header>
+                        <hr>
+                        <mat-card-content>
+                            <mat-form-field>
+                                <input matInput (change)="setMapOptions()"
+                                       [placeholder]="'ROOT_NODE_NAME' | translate" name="rootNodeName"
+                                       [title]="'TOOLTIPS.ROOT_NODE_NAME_INPUT' | translate"
+                                       [(ngModel)]="settings.mapOptions.rootNode.name">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput (change)="setMapOptions()"
+                                       [placeholder]="'NODE_NAME' | translate" name="defaultNodeName"
+                                       [title]="'TOOLTIPS.NODE_NAME_INPUT' | translate"
+                                       [(ngModel)]="settings.mapOptions.defaultNode.name">
+                            </mat-form-field>
+                        </mat-card-content>
+                    </mat-card>
                 </div>
             </mat-tab>
 

@@ -103,6 +103,9 @@ export class SettingsService {
         return this.update(this.settings).then((settings: Settings) => {
             this.mmpService.updateOptions("rootNode", settings.mapOptions.rootNode);
             this.mmpService.updateOptions("defaultNode", settings.mapOptions.defaultNode);
+            this.mmpService.updateOptions("centerOnResize", settings.mapOptions.centerOnResize);
+            this.mmpService.updateOptions("drag", settings.mapOptions.drag);
+            this.mmpService.updateOptions("zoom", settings.mapOptions.zoom);
             return settings;
         });
     }

@@ -26,7 +26,7 @@ import {MapComponent} from "./components/map/map.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FileService} from "./services/file.service";
 import {
-    MatButtonModule,
+    MatButtonModule, MatCardModule,
     MatDialogModule,
     MatIconModule,
     MatInputModule,
@@ -76,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatSnackBarModule,
         MatMenuModule,
         MatToolbarModule,
+        MatCardModule,
         MatInputModule,
         MatDialogModule,
         MatListModule,

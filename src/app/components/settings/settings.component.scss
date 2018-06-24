@@ -11,28 +11,49 @@ div.settings {
 
     div.content {
         padding: 20px;
-        min-height: 250px;
         font-size: 14px;
 
-        mat-slide-toggle.mat-slide-toggle {
-            display: block;
-            margin-bottom: 8px;
+        mat-card {
+            margin-bottom: 20px;
+
+            hr {
+                margin-top: 0;
+                margin-bottom: 20px;
+                border: 0;
+                height: 1px;
+                background-color: lightgray;
+            }
+        }
+
+        mat-card:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    div.general-options {
+        mat-card.general-options-main {
+            padding-bottom: 15px;
         }
     }
 
     div.map-options {
-        form {
-            min-width: 150px;
-            max-width: 500px;
-            width: 100%;
+        mat-card.map-options-map {
+            mat-slide-toggle {
+                display: block;
+                margin-bottom: 20px;
+            }
+
+            mat-slide-toggle:last-child {
+                margin-bottom: 0;
+            }
         }
 
-        mat-form-field {
-            width: 100%;
-        }
+        mat-card.map-options-nodes {
+            padding-bottom: 15px;
 
-        button[type="submit"] {
-            margin-top: 10px;
+            mat-form-field {
+                margin-right: 20px;
+            }
         }
     }
 
