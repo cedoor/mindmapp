@@ -19,6 +19,11 @@ body {
     outline: none;
 }
 
+// Material override
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: lightgray !important;
+}
+
 // Color picker override
 div.color-picker {
     border-radius: 2px;
