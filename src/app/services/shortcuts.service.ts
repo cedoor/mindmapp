@@ -145,6 +145,24 @@ export class ShortcutsService {
             });
         });
 
+        mousetrap.bind("ctrl+c", () => {
+            this.ngZone.run(() => {
+                this.mmpService.copyNode();
+            });
+        });
+
+        mousetrap.bind("ctrl+x", () => {
+            this.ngZone.run(() => {
+                this.mmpService.cutNode();
+            });
+        });
+
+        mousetrap.bind("ctrl+v", () => {
+            this.ngZone.run(() => {
+                this.mmpService.pasteNode();
+            });
+        });
+
         mousetrap.bind("ctrl+=", () => {
             this.ngZone.run(() => {
                 this.mmpService.zoomIn();
