@@ -26,7 +26,8 @@ import {MapComponent} from "./components/map/map.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FileService} from "./services/file.service";
 import {
-    MatButtonModule, MatCardModule,
+    MatButtonModule,
+    MatCardModule,
     MatDialogModule,
     MatIconModule,
     MatInputModule,

@@ -4,10 +4,19 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class UtilsService {
 
-    remote: Electron.Remote;
+    private remote: Electron.Remote;
+
+    private serviceCache: {
+        packageInformations
+    };
 
     constructor(private http: HttpClient) {
         this.remote = window.require("electron").remote;
+        this.serviceCache = {};
+
+        this.getPackageInformations().then((packageInformations: any) => {
+            this.serviceCache.packageInformations = packageInformations;
+        });
     }
 
     /**
@@ -29,7 +38,15 @@ export class UtilsService {
      * @returns {Promise<any>}
      */
     public getPackageInformations(): Promise<any> {
-        return this.http.get("../package.json").toPromise();
+        if (this.serviceCache.packageInformations) {
+            return Promise.resolve(this.serviceCache.packageInformations)
+        } else {
+            return this.http.get("../package.json").toPromise().then((packageInformations: any) => {
+                this.serviceCache.packageInformations = packageInformations;
+
+                return packageInformations;
+            });
+        }
     }
 
     /**
