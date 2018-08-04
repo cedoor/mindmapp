@@ -71,7 +71,8 @@
     },
     "LANGUAGES": {
         "EN": "English",
-        "IT": "Italian"
+        "IT": "Italian",
+        "ZH-TW": "Traditional Chinese"
     },
     "TOOLTIPS": {
         "MENU": "Opens the menu",
