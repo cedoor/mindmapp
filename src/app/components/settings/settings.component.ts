@@ -26,7 +26,7 @@ export class SettingsComponent implements OnInit {
             this.titles[title] = "SETTINGS_LABELS." + title.split(/(?=[A-Z])/).join("_").toUpperCase();
         }
 
-        this.languages = ["en", "it"];
+        this.languages = ["en", "it", "zh-tw"];
     }
 
     public setMapOptions() {

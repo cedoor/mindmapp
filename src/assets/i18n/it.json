@@ -71,7 +71,8 @@
     },
     "LANGUAGES": {
         "EN": "Inglese",
-        "IT": "Italiano"
+        "IT": "Italiano",
+        "ZH-TW": "Cinesi Tradizionali"
     },
     "TOOLTIPS": {
         "MENU": "Apre il menù",
