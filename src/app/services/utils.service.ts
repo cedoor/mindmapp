@@ -12,7 +12,10 @@ export class UtilsService {
 
     constructor(private http: HttpClient) {
         this.remote = window.require("electron").remote;
-        this.serviceCache = {};
+
+        this.serviceCache = {
+            packageInformations: false
+        };
 
         this.getPackageInformations().then((packageInformations: any) => {
             this.serviceCache.packageInformations = packageInformations;
