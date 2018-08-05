@@ -41,6 +41,7 @@ import {
 } from "@angular/material";
 import {AboutComponent} from "./components/about/about.component";
 import {FooterComponent} from "./components/footer/footer.component";
+import {ShortcutsComponent} from "./components/shortcuts/shortcuts.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/");
@@ -54,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         ColorsPanelComponent,
         FloatingButtonsComponent,
         SettingsComponent,
+        ShortcutsComponent,
         AboutComponent,
         MapComponent,
         FooterComponent
@@ -99,6 +101,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         NotificationsService
     ],
     entryComponents: [
+        ShortcutsComponent,
         SettingsComponent,
         AboutComponent
     ],

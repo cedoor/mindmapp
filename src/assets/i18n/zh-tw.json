@@ -64,6 +64,7 @@
     "ABOUT_TITLE": "關於",
     "ABOUT_DESCRIPTION": "Mindmapp 是一個可以讓您繪製心智圖的開源專案。如果您是一位開發人員並且想貢獻於應用程式，那麼將可以於下方找到專案連結。",
     "SETTINGS_TITLE": "設定",
+    "SHORTCUTS_TITLE": "快捷鍵",
     "SETTINGS_LABELS": {
         "SHARING": "分享",
         "GENERAL": "一般",

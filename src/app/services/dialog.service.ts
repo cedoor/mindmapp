@@ -10,6 +10,7 @@ import {remote} from "electron";
 import * as fs from "fs";
 import {AboutComponent} from "../components/about/about.component";
 import {environment} from "../../environments/environment";
+import {ShortcutsComponent} from "../components/shortcuts/shortcuts.component";
 
 @Injectable()
 export class DialogService {
@@ -277,10 +278,18 @@ export class DialogService {
     /**
      * Open a dialog of Mindmapp.
      */
-    public openMatDialog(name: "settings" | "about") {
+    public openMatDialog(name: "settings" | "about" | "shortcuts") {
         switch (name) {
             case "settings":
                 this.matDialogRefs.set("settings", this.matDialog.open(SettingsComponent, {
+                    maxWidth: "100vw",
+                    maxHeight: "100vh",
+                    height: "100%",
+                    width: "100%"
+                }));
+                break;
+            case "shortcuts":
+                this.matDialogRefs.set("shortcuts", this.matDialog.open(ShortcutsComponent, {
                     maxWidth: "100vw",
                     maxHeight: "100vh",
                     height: "100%",
@@ -295,10 +304,13 @@ export class DialogService {
     /**
      * Close a dialog of Mindmapp.
      */
-    public closeMatDialog(name: "settings" | "about") {
+    public closeMatDialog(name: "settings" | "about" | "shortcuts") {
         switch (name) {
             case "settings":
                 this.matDialogRefs.get("settings").close();
+                break;
+            case "shortcuts":
+                this.matDialogRefs.get("shortcuts").close();
                 break;
             case "about":
                 this.matDialogRefs.get("about").close();

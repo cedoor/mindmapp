@@ -64,6 +64,7 @@
     "ABOUT_TITLE": "Informazioni",
     "ABOUT_DESCRIPTION": "Mindmapp è un progetto open source che permette di creare mappe mentali. Se sei uno sviluppatore e vuoi contribuire all'applicazione, di seguito trovi i link del progetto.",
     "SETTINGS_TITLE": "Impostazioni",
+    "SHORTCUTS_TITLE": "Scorciatoie",
     "SETTINGS_LABELS": {
         "SHARING": "Condivisione",
         "GENERAL": "Generali",

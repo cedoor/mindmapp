@@ -92,6 +92,11 @@
                 <span>{{ "SETTINGS_TITLE" | translate }}</span>
             </button>
             <button mat-menu-item style="-webkit-app-region: no-drag"
+                    (click)="dialogService.openMatDialog('shortcuts')">
+                <mat-icon>timeline</mat-icon>
+                <span>{{ "SHORTCUTS_TITLE" | translate }}</span>
+            </button>
+            <button mat-menu-item style="-webkit-app-region: no-drag"
                     (click)="dialogService.openMatDialog('about')">
                 <mat-icon>info</mat-icon>
                 <span>{{ "ABOUT_TITLE" | translate }}</span>
