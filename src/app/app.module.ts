@@ -19,7 +19,6 @@ import {StorageService} from "./services/storage.service";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import {FlexLayoutModule} from "@angular/flex-layout";
 import {MmpService} from "./services/mmp.service";
 import {UpdateService} from "./services/update.service";
 import {MapComponent} from "./components/map/map.component";
@@ -63,7 +62,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
-        FlexLayoutModule,
         HttpClientModule,
         TranslateModule.forRoot({
             loader: {
