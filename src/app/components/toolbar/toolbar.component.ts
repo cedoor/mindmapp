@@ -15,16 +15,19 @@ export class ToolbarComponent implements OnInit {
 
     public mapSaved: boolean;
 
+    public platform: string;
+
     constructor(public dialogService: DialogService,
                 public utilsService: UtilsService,
                 public mmpService: MmpService,
                 public fileService: FileService) {
+        this.platform = window.process.platform;
     }
 
     ngOnInit() {
         this.fileService.watchSavingStatus().subscribe((mapSaved: boolean) => {
             this.mapSaved = mapSaved;
-        })
+        });
     }
 
     public toogleNodeFontStyle() {
