@@ -321,12 +321,15 @@ export class DialogService {
      * Return true if the corresponding dialog is open.
      * @returns {boolean}
      */
-    public getMatDialogStatus(name: "settings" | "about"): boolean {
+    public getMatDialogStatus(name: "settings" | "about" | "shortcuts"): boolean {
         let ref: MatDialogRef<any>;
 
         switch (name) {
             case "settings":
                 ref = this.matDialogRefs.get("settings");
+                return ref && !!ref.componentInstance;
+            case "shortcuts":
+                ref = this.matDialogRefs.get("shortcuts");
                 return ref && !!ref.componentInstance;
             case "about":
                 ref = this.matDialogRefs.get("about");

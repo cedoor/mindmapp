@@ -99,6 +99,16 @@ export class ShortcutsService {
             });
         });
 
+        mousetrap.bind("?", () => {
+            this.ngZone.run(() => {
+                if (this.dialogService.getMatDialogStatus("shortcuts")) {
+                    this.dialogService.closeMatDialog("shortcuts");
+                } else {
+                    this.dialogService.openMatDialog("shortcuts");
+                }
+            });
+        });
+
         mousetrap.bind("ctrl+alt+s", () => {
             this.ngZone.run(() => {
                 if (this.dialogService.getMatDialogStatus("settings")) {
@@ -130,12 +140,6 @@ export class ShortcutsService {
         mousetrap.bind("alt+down", () => {
             this.ngZone.run(() => {
                 this.mmpService.selectNode("down");
-            });
-        });
-
-        mousetrap.bind("alt+shift+down", () => {
-            this.ngZone.run(() => {
-                this.mmpService.moveNodeTo("down");
             });
         });
 
