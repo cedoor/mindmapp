@@ -282,6 +282,7 @@ export class DialogService {
         switch (name) {
             case "settings":
                 this.matDialogRefs.set("settings", this.matDialog.open(SettingsComponent, {
+                    hasBackdrop: false,
                     maxWidth: "100vw",
                     maxHeight: "100vh",
                     height: "100%",
@@ -290,6 +291,7 @@ export class DialogService {
                 break;
             case "shortcuts":
                 this.matDialogRefs.set("shortcuts", this.matDialog.open(ShortcutsComponent, {
+                    hasBackdrop: false,
                     maxWidth: "100vw",
                     maxHeight: "100vh",
                     height: "100%",
