@@ -15,7 +15,7 @@ export class ToolbarComponent implements OnInit {
     @Input() public node: any;
     @Input() public sidenav: MatSidenav;
 
-    public mapSaved: boolean;
+    public savingStatus: any;
 
     constructor(public utilsService: UtilsService,
                 public dialogService: DialogService,
@@ -24,8 +24,8 @@ export class ToolbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.fileService.watchSavingStatus().subscribe((mapSaved: boolean) => {
-            this.mapSaved = mapSaved;
+        this.fileService.watchSavingStatus().subscribe((savingStatus: any) => {
+            this.savingStatus = savingStatus;
         });
     }
 

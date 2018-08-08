@@ -11,7 +11,7 @@
             <mat-icon>folder_open</mat-icon>
         </button>
         <button (click)="dialogService.saveMap()" class="save-map"
-                [disabled]="mapSaved"
+                [disabled]="savingStatus.saved || savingStatus.initial"
                 color="primary" [title]="'TOOLTIPS.SAVE_MAP' | translate"
                 mat-icon-button>
             <mat-icon>save</mat-icon>

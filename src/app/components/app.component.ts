@@ -70,6 +70,8 @@ export class AppComponent implements OnInit {
                     this.settingsService.setFirstTime();
                     this.notificationService.send(translations["WELCOME_MESSAGE"]);
                 }
+
+                this.notificationService.setInformations(translations["INITIAL_INFORMATION"], 4000);
             });
         });
     }

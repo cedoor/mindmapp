@@ -12,16 +12,20 @@ export class FileService {
     private fs: typeof fs;
     private filePath: string;
 
-    private savingStatus: boolean;
-    private savingStatusSource: BehaviorSubject<boolean>;
+    private savingStatus: any;
+    private savingStatusSource: BehaviorSubject<any>;
 
     private mapFileWatcher: FSWatcher;
 
     constructor(private mmpService: MmpService) {
         this.fs = window.require("fs");
-        this.savingStatus = false;
+        this.savingStatus = {
+            saved: false,
+            initial: true,
+            filePath: ""
+        };
 
-        this.savingStatusSource = new BehaviorSubject<boolean>(this.savingStatus);
+        this.savingStatusSource = new BehaviorSubject<any>(this.savingStatus);
     }
 
     /**
@@ -30,7 +34,7 @@ export class FileService {
      */
     public checkMapFile() {
         if (this.mmpService.history().index === 0) {
-            this.setSavingStatus(true);
+            this.setSavingStatus(false, true);
         } else {
             if (this.filePath) {
                 let fileData = this.fs.readFileSync(this.filePath).toString(),
@@ -49,16 +53,20 @@ export class FileService {
 
     /**
      * Set the status of the map saving.
-     * @param {boolean} value
+     * @param {boolean} saved
+     * @param {boolean} initial
      */
-    public setSavingStatus(value: boolean) {
-        this.savingStatus = value;
+    public setSavingStatus(saved: boolean, initial: boolean = false) {
+        this.savingStatus = {
+            saved, initial,
+            filePath: this.filePath
+        };
 
-        window.document.title = value === true
+        window.document.title = saved === true || initial === true
             ? this.WINDOW_TITLE
             : this.WINDOW_TITLE + "*";
 
-        this.savingStatusSource.next(value);
+        this.savingStatusSource.next(this.savingStatus);
     }
 
     /**
@@ -66,14 +74,22 @@ export class FileService {
      * @returns {boolean}
      */
     public mapIsSaved(): boolean {
-        return this.savingStatus;
+        return this.savingStatus.saved;
+    }
+
+    /**
+     * Return true if the map is the the initial map.
+     * @returns {boolean}
+     */
+    public mapIsinitial(): boolean {
+        return this.savingStatus.initial;
     }
 
     /**
      * Return an observable for mapSaved status.
      * @returns {Observable<boolean>}
      */
-    public watchSavingStatus(): Observable<boolean> {
+    public watchSavingStatus(): Observable<any> {
         return this.savingStatusSource.asObservable();
     }
 

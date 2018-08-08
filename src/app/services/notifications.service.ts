@@ -6,11 +6,11 @@ import {BehaviorSubject, Observable} from "rxjs/index";
 @Injectable()
 export class NotificationsService {
 
-    private infoSource: BehaviorSubject<string>;
+    private informationsSource: BehaviorSubject<string>;
 
     constructor(private matSnackBar: MatSnackBar,
                 private translateService: TranslateService) {
-        this.infoSource = new BehaviorSubject<string>("");
+        this.informationsSource = new BehaviorSubject<string>("");
     }
 
     /**
@@ -32,15 +32,22 @@ export class NotificationsService {
      * @returns {Observable<string>}
      */
     public watchInfoStatus(): Observable<string> {
-        return this.infoSource.asObservable();
+        return this.informationsSource.asObservable();
     }
 
     /**
      * Set an information.
      * @param {string} info
+     * @param {number} duration
      */
-    public setInfo(info: string) {
-        this.infoSource.next(info);
+    public setInformations(info: string, duration?: number) {
+        this.informationsSource.next(info);
+
+        if (duration) {
+            setTimeout(() => {
+                this.informationsSource.next("");
+            }, duration);
+        }
     }
 
 }

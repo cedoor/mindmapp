@@ -224,7 +224,7 @@ export class DialogService {
      */
     public showMapPreSavingMessage(): Promise<any> {
         return new Promise((resolve: Function) => {
-            if (!this.fileService.mapIsSaved()) {
+            if (!this.fileService.mapIsSaved() && !this.fileService.mapIsinitial()) {
                 this.showMessage(this.translations["SAVE"], this.translations["SAVE_MAP_MESSAGE"])
                     .then((response: number) => {
                         if (response === 0) {
@@ -249,7 +249,7 @@ export class DialogService {
             let currentWindow = this.remote.getCurrentWindow();
 
             window.onbeforeunload = (event: Event) => {
-                if (!this.fileService.mapIsSaved() && !this.forceQuit) {
+                if (!this.fileService.mapIsSaved() && !this.fileService.mapIsinitial() && !this.forceQuit) {
 
                     this.showMessage(this.translations["SAVE"], this.translations["SAVE_MAP_MESSAGE"])
                         .then((index: number) => {
