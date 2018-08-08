@@ -2,7 +2,7 @@ div.colors-panel {
 
     div.background {
         z-index: 2;
-        position: fixed;
+        position: absolute;
         visibility: hidden;
         top: 0;
         left: 0;
@@ -12,7 +12,7 @@ div.colors-panel {
 
     div.panel {
         z-index: 3;
-        position: fixed;
+        position: absolute;
         right: 20px;
         top: 44%;
 
