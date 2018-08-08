@@ -15,6 +15,11 @@ body {
     font-size: 17px;
 }
 
+::selection {
+    color: whitesmoke;
+    background: #546e7a;
+}
+
 *:focus {
     outline: none;
 }
