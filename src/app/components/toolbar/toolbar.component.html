@@ -63,48 +63,18 @@
 
         <span class="toolbar-spacer"></span>
 
-        <button [matMenuTriggerFor]="menu" class="menu"
-                color="primary" [title]="'TOOLTIPS.MENU' | translate"
+        <button (click)="utilsService.toggleFullScreen()" class="fullscreen"
+                color="primary" [title]="'TOOLTIPS.FULLSCREEN' | translate"
+                mat-icon-button>
+            <mat-icon>fullscreen</mat-icon>
+        </button>
+
+        <div class="vertical-line"></div>
+
+        <button (click)="sidenav.open()" class="open-menu"
+                color="primary" [title]="'TOOLTIPS.OPEN_MENU' | translate"
                 mat-icon-button>
             <mat-icon>menu</mat-icon>
         </button>
-
-        <mat-menu #menu="matMenu">
-            <button [matMenuTriggerFor]="export" mat-menu-item>
-                <mat-icon>archive</mat-icon>
-                <span>{{ "EXPORT_AS" | translate }}</span>
-            </button>
-            <button mat-menu-item (click)="dialogService.saveMap(true)">
-                <mat-icon>save</mat-icon>
-                <span>{{ "SAVE_WITH_NAME" | translate }}</span>
-            </button>
-            <button mat-menu-item (click)="utilsService.toggleFullScreen()">
-                <mat-icon>fullscreen</mat-icon>
-                <span>{{ "FULL_SCREEN" | translate }}</span>
-            </button>
-            <button mat-menu-item (click)="dialogService.openMatDialog('settings')">
-                <mat-icon>settings</mat-icon>
-                <span>{{ "SETTINGS_TITLE" | translate }}</span>
-            </button>
-            <button *ngIf="platform !== 'darwin'" mat-menu-item (click)="dialogService.openMatDialog('shortcuts')">
-                <mat-icon>timeline</mat-icon>
-                <span>{{ "SHORTCUTS_TITLE" | translate }}</span>
-            </button>
-            <button mat-menu-item (click)="dialogService.openMatDialog('about')">
-                <mat-icon>info</mat-icon>
-                <span>{{ "ABOUT_TITLE" | translate }}</span>
-            </button>
-        </mat-menu>
-
-        <mat-menu #export="matMenu">
-            <button mat-menu-item (click)="dialogService.exportImage('png')">
-                <mat-icon>image</mat-icon>
-                <span>{{ "PNG" | translate }}</span>
-            </button>
-            <button mat-menu-item (click)="dialogService.exportImage('jpeg')">
-                <mat-icon>image</mat-icon>
-                <span>{{ "JPG" | translate }}</span>
-            </button>
-        </mat-menu>
     </mat-toolbar>
 </div>

@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {DialogService} from "../../services/dialog.service";
 import {MmpService} from "../../services/mmp.service";
 import {FileService} from "../../services/file.service";
 import {UtilsService} from "../../services/utils.service";
+import {MatSidenav} from "@angular/material";
+import {DialogService} from "../../services/dialog.service";
 
 @Component({
     selector: "app-toolbar",
@@ -12,16 +13,14 @@ import {UtilsService} from "../../services/utils.service";
 export class ToolbarComponent implements OnInit {
 
     @Input() public node: any;
+    @Input() public sidenav: MatSidenav;
 
     public mapSaved: boolean;
 
-    public platform: string;
-
-    constructor(public dialogService: DialogService,
-                public utilsService: UtilsService,
+    constructor(public utilsService: UtilsService,
+                public dialogService: DialogService,
                 public mmpService: MmpService,
                 public fileService: FileService) {
-        this.platform = window.process.platform;
     }
 
     ngOnInit() {
