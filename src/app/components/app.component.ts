@@ -1,21 +1,22 @@
 import {Component, ElementRef, OnInit} from "@angular/core";
-import {DialogService} from "./services/dialog.service";
-import {DragDropService} from "./services/dragdrop.service";
-import {ShortcutsService} from "./services/shortcuts.service";
+import {DialogService} from "../services/dialog.service";
+import {DragDropService} from "../services/dragdrop.service";
+import {ShortcutsService} from "../services/shortcuts.service";
 import {TranslateService} from "@ngx-translate/core";
-import {SettingsService} from "./services/settings.service";
-import {Settings} from "./models/settings";
-import {IPFSService} from "./services/ipfs.service";
-import {MmpService} from "./services/mmp.service";
-import {MapOptions} from "./models/mmp";
-import {FileService} from "./services/file.service";
-import {UpdateService} from "./services/update.service";
+import {SettingsService} from "../services/settings.service";
+import {Settings} from "../models/settings";
+import {IPFSService} from "../services/ipfs.service";
+import {MmpService} from "../services/mmp.service";
+import {MapOptions} from "../models/mmp";
+import {FileService} from "../services/file.service";
+import {UpdateService} from "../services/update.service";
 import {animate, style, transition, trigger} from "@angular/animations";
-import {NotificationsService} from "./services/notifications.service";
+import {NotificationsService} from "../services/notifications.service";
 
 @Component({
     selector: "app-root",
     templateUrl: "app.component.html",
+    styleUrls: ["./app.component.scss"],
     animations: [
         trigger("fadeInOut", [
             transition(":enter", [

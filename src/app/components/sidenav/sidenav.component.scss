@@ -1,0 +1,19 @@
+div.sidenav {
+    border-top: 1px solid lightgray;
+
+    mat-toolbar.mat-toolbar {
+        height: 46px;
+        padding: 0 8px;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid lightgray;
+    }
+
+    div.sidenav-content {
+        padding: 0 10px;
+
+        mat-divider.mat-divider {
+            padding-bottom: 5px;
+            margin-top: 5px;
+        }
+    }
+}

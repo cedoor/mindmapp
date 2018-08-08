@@ -1,7 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
-import {AppComponent} from "./app.component";
 import {ToolbarComponent} from "./components/toolbar/toolbar.component";
 import {SlidersPanelComponent} from "./components/sliders-panel/sliders-panel.component";
 import {ColorsPanelComponent} from "./components/colors-panel/colors-panel.component";
@@ -32,7 +31,7 @@ import {
     MatInputModule,
     MatListModule,
     MatMenuModule,
-    MatSelectModule,
+    MatSelectModule, MatSidenavModule,
     MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
@@ -42,6 +41,8 @@ import {
 import {AboutComponent} from "./components/about/about.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {ShortcutsComponent} from "./components/shortcuts/shortcuts.component";
+import {SidenavComponent} from "./components/sidenav/sidenav.component";
+import {AppComponent} from "./components/app.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/");
@@ -58,7 +59,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         ShortcutsComponent,
         AboutComponent,
         MapComponent,
-        FooterComponent
+        FooterComponent,
+        SidenavComponent
     ],
     imports: [
         BrowserModule,
@@ -78,6 +80,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatMenuModule,
         MatToolbarModule,
         MatCardModule,
+        MatSidenavModule,
         MatInputModule,
         MatDialogModule,
         MatListModule,

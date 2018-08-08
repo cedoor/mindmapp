@@ -1,0 +1,67 @@
+<div class="sidenav">
+    <mat-toolbar>
+        <button (click)="sidenav.close()" class="close-menu"
+                color="primary" [title]="'TOOLTIPS.CLOSE_MENU' | translate"
+                mat-icon-button>
+            <mat-icon>arrow_forward</mat-icon>
+        </button>
+    </mat-toolbar>
+    <div class="sidenav-content">
+        <mat-nav-list>
+            <mat-list-item (click)="dialogService.saveMap(true)" class="save-map-with-name">
+                <span matLine>{{ "SAVE_WITH_NAME" | translate }}</span>
+                <button color="primary" mat-icon-button>
+                    <mat-icon>save</mat-icon>
+                </button>
+            </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="export" class="export-as">
+                <span matLine>{{ "EXPORT_AS" | translate }}</span>
+                <button color="primary" mat-icon-button>
+                    <mat-icon>archive</mat-icon>
+                </button>
+
+                <mat-menu #export="matMenu">
+                    <button mat-menu-item (click)="dialogService.exportImage('png')">
+                        <mat-icon>image</mat-icon>
+                        <span>{{ "PNG" | translate }}</span>
+                    </button>
+                    <button mat-menu-item (click)="dialogService.exportImage('jpeg')">
+                        <mat-icon>image</mat-icon>
+                        <span>{{ "JPG" | translate }}</span>
+                    </button>
+                </mat-menu>
+            </mat-list-item>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item *ngIf="platform !== 'darwin'"
+                           (click)="dialogService.openMatDialog('shortcuts')" class="open-shortcuts">
+                <span matLine>{{ "SHORTCUTS_TITLE" | translate }}</span>
+                <button color="primary" mat-icon-button>
+                    <mat-icon>timeline</mat-icon>
+                </button>
+            </mat-list-item>
+            <mat-list-item (click)="dialogService.openMatDialog('settings')" class="open-settings">
+                <span matLine>{{ "SETTINGS_TITLE" | translate }}</span>
+                <button color="primary" mat-icon-button>
+                    <mat-icon>settings</mat-icon>
+                </button>
+            </mat-list-item>
+            <mat-list-item (click)="dialogService.openMatDialog('about')" class="open-about">
+                <span matLine>{{ "ABOUT_TITLE" | translate }}</span>
+                <button color="primary" mat-icon-button>
+                    <mat-icon>info</mat-icon>
+                </button>
+            </mat-list-item>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item (click)="utilsService.closeApplication()" class="quit">
+                <span matLine>{{ "QUIT" | translate }}</span>
+                <button color="primary" mat-icon-button>
+                    <mat-icon>exit_to_app</mat-icon>
+                </button>
+            </mat-list-item>
+        </mat-nav-list>
+    </div>
+</div>
