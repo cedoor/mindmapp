@@ -47,5 +47,12 @@
             "tar.gz",
             "AppImage"
         ]
-    }
+    },
+    "fileAssociations": [
+        {
+            "ext": "mmap",
+            "name": "Mindmapp",
+            "role": "Viewer"
+        }
+    ]
 }
