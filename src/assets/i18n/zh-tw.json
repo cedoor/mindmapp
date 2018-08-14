@@ -28,6 +28,7 @@
     "CENTER_ON_RESIZING": "視窗縮放後置中",
     "NODE_DRAGGING": "拖曳節點",
     "MAP_ZOOM": "地圖縮放",
+    "AUTO_BRANCH_COLORS": "Automatic branch colors",
     "MAP": "地圖",
     "NODES": "節點",
     "SAVED": "已儲存",
@@ -93,6 +94,7 @@
         "SETTINGS": "開啟設定",
         "CENTER_ON_RESIZING": "當視窗縮放後地圖將會被置中",
         "NODE_DRAGGING": "允許拖曳地圖中的節點",
-        "MAP_ZOOM": "允許縮放地圖"
+        "MAP_ZOOM": "允許縮放地圖",
+        "AUTO_BRANCH_COLORS": "Allows to choose automatically the colors of the branches"
     }
 }

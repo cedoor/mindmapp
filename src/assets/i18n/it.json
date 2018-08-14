@@ -28,6 +28,7 @@
     "CENTER_ON_RESIZING": "Centra al ridimensionamento",
     "NODE_DRAGGING": "Trascinamento dei nodi",
     "MAP_ZOOM": "Zoom della mappa",
+    "AUTO_BRANCH_COLORS": "Colori automatici per i rami",
     "MAP": "Mappa",
     "NODES": "Nodi",
     "SAVED": "Salvato",
@@ -93,6 +94,7 @@
         "SETTINGS": "Apre le impostazioni",
         "CENTER_ON_RESIZING": "Centra la mappa quando viene ridimensionata la finestra",
         "NODE_DRAGGING": "Permette di trascinare i nodi nella mappa",
-        "MAP_ZOOM": "Permette di effettuare lo zoom sulla mappa"
+        "MAP_ZOOM": "Permette di effettuare lo zoom sulla mappa",
+        "AUTO_BRANCH_COLORS": "Permette di scegliere in modo automatico i colori dei rami"
     }
 }

@@ -28,6 +28,7 @@
     "CENTER_ON_RESIZING": "Centrer sur le redimensionnement",
     "NODE_DRAGGING": "Noeud faisant glisser",
     "MAP_ZOOM": "Map zoom",
+    "AUTO_BRANCH_COLORS": "Automatic branch colors",
     "MAP": "Carte",
     "NODES": "Noeuds",
     "SAVED": "Enregistré",
@@ -93,6 +94,7 @@
         "SETTINGS": "Ouvre les paramètres",
         "CENTER_ON_RESIZING": "Centre la carte sur le redimensionnement de la fenêtre",
         "NODE_DRAGGING": "Permet de faire glisser les nœuds dans la carte",
-        "MAP_ZOOM": "Permet de zoomer sur la carte"
+        "MAP_ZOOM": "Permet de zoomer sur la carte",
+        "AUTO_BRANCH_COLORS": "Allows to choose automatically the colors of the branches"
     }
 }

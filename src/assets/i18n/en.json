@@ -28,6 +28,7 @@
     "CENTER_ON_RESIZING": "Center on resizing",
     "NODE_DRAGGING": "Node dragging",
     "MAP_ZOOM": "Map zoom",
+    "AUTO_BRANCH_COLORS": "Automatic branch colors",
     "MAP": "Map",
     "NODES": "Nodes",
     "SAVED": "Saved",
@@ -93,6 +94,7 @@
         "SETTINGS": "Opens the settings",
         "CENTER_ON_RESIZING": "Centers the map on window resizing",
         "NODE_DRAGGING": "Allows to drag the nodes in the map",
-        "MAP_ZOOM": "Allows to zoom the map"
+        "MAP_ZOOM": "Allows to zoom the map",
+        "AUTO_BRANCH_COLORS": "Allows to choose automatically the colors of the branches"
     }
 }
