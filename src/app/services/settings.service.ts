@@ -18,10 +18,7 @@ export class SettingsService {
 
     constructor(private storageService: StorageService,
                 private http: HttpClient,
-                private utilsService: UtilsService,
-                private mmpService: MmpService,
-                private translateService: TranslateService,
-                private ipfsService: IPFSService) {
+                private utilsService: UtilsService) {
     }
 
     /**
@@ -42,7 +39,7 @@ export class SettingsService {
                 if (!this.utilsService.haveSameStructure(defaultSettings, settings)) {
                     this.settings = defaultSettings;
 
-                    return this.update(defaultSettings);
+                    return this.update();
                 } else {
                     this.settings = settings;
 
@@ -53,43 +50,13 @@ export class SettingsService {
     }
 
     /**
-     * Active or disable ipfs service and update the settingsService.
-     * @param {boolean} status
-     * @returns {Promise<Settings>}
-     */
-    public setIpfs(status: boolean): Promise<Settings> {
-        this.settings.sharing.ipfs = status;
-
-        return this.update(this.settings).then((settings: Settings) => {
-            status ? this.ipfsService.start() : this.ipfsService.stop();
-            return settings;
-        });
-    }
-
-    /**
-     * Set the new language and update the settingsService.
-     * @param {string} language
-     * @returns {Promise<Settings>}
-     */
-    public setLanguage(language: string): Promise<Settings> {
-        this.settings.general.language = language;
-
-        return this.update(this.settings).then((settings: Settings) => {
-            this.translateService.use(language);
-            return settings;
-        });
-    }
-
-    /**
      * Set the first time (of the app start) to false.
      * @returns {Promise<Settings>}
      */
     public setFirstTime(): Promise<Settings> {
         this.settings.general.firstTime = false;
 
-        return this.update(this.settings).then((settings: Settings) => {
-            return settings;
-        });
+        return this.update();
     }
 
     /**
@@ -100,14 +67,29 @@ export class SettingsService {
     public setMapOptions(mapOptions: MapOptions): Promise<Settings> {
         this.settings.mapOptions = mapOptions;
 
-        return this.update(this.settings).then((settings: Settings) => {
-            this.mmpService.updateOptions("rootNode", settings.mapOptions.rootNode);
-            this.mmpService.updateOptions("defaultNode", settings.mapOptions.defaultNode);
-            this.mmpService.updateOptions("centerOnResize", settings.mapOptions.centerOnResize);
-            this.mmpService.updateOptions("drag", settings.mapOptions.drag);
-            this.mmpService.updateOptions("zoom", settings.mapOptions.zoom);
-            return settings;
-        });
+        return this.update();
+    }
+
+    /**
+     * Set the new language and update the settingsService.
+     * @param {string} language
+     * @returns {Promise<Settings>}
+     */
+    public setLanguage(language: string): Promise<Settings> {
+        this.settings.general.language = language;
+
+        return this.update();
+    }
+
+    /**
+     * Active or disable ipfs service and update the settingsService.
+     * @param {boolean} status
+     * @returns {Promise<Settings>}
+     */
+    public setIpfs(status: boolean): Promise<Settings> {
+        this.settings.sharing.ipfs = status;
+
+        return this.update();
     }
 
     /**
@@ -130,11 +112,10 @@ export class SettingsService {
 
     /**
      * Overwrite the settings in the storage.
-     * @param {Settings} settings
      * @returns {Promise<Settings>}
      */
-    private update(settings: Settings): Promise<Settings> {
-        return this.storageService.set(this.SETTINGS_KEY, settings);
+    private update(): Promise<Settings> {
+        return this.storageService.set(this.SETTINGS_KEY, this.settings);
     }
 
 }

@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import * as mmp from "mmp";
 import {Observable} from "rxjs";
+import {SettingsService} from "./settings.service";
 
 /**
  * Mmp wrapper service with mmp and other functions.
@@ -13,8 +14,31 @@ export class MmpService {
     private maps: Map<string, any>;
     private currentMap: any;
 
-    constructor() {
+    private branchColors: Array<string>;
+
+    constructor(public settingsService: SettingsService) {
         this.maps = new Map<string, any>();
+
+        this.branchColors = [
+            "#FFC107",
+            "#2196F3",
+            "#9C27B0",
+            "#f44336",
+            "#4CAF50",
+            "#3F51B5",
+            "#FF9800",
+            "#CDDC39",
+            "#795548",
+            "#673AB7",
+            "#009688",
+            "#E91E63",
+            "#03A9F4",
+            "#8BC34A",
+            "#00BCD4",
+            "#607D8B",
+            "#FFEB3B",
+            "#FF5722"
+        ];
     }
 
     /**
@@ -138,15 +162,25 @@ export class MmpService {
      * Add a node in the mind mmp.
      */
     public addNode() {
-        let selected = this.selectNode(),
-            properties;
+        const selected = this.selectNode();
+        const settings = this.settingsService.getSettings();
+
+        let properties;
 
         if (selected.colors.branch) {
             properties = {
                 colors: {
                     branch: selected.colors.branch
                 }
-            }
+            };
+        } else if (settings.mapOptions.autoBranchColors === true) {
+            const children = this.currentMap.nodeChildren().length;
+
+            properties = {
+                colors: {
+                    branch: this.branchColors[children % this.branchColors.length]
+                }
+            };
         }
 
         this.currentMap.addNode(properties);

@@ -10,6 +10,7 @@
         "centerOnResize": true,
         "drag": true,
         "zoom": true,
+        "autoBranchColors": false,
         "defaultNode": {
             "name": "Node",
             "image": {

@@ -59,6 +59,13 @@
                                 [(ngModel)]="settings.mapOptions.zoom">
                                 {{ "MAP_ZOOM" | translate }}
                             </mat-slide-toggle>
+                            <mat-slide-toggle
+                                color="primary"
+                                (change)="setMapOptions()"
+                                [title]="'TOOLTIPS.AUTO_BRANCH_COLORS' | translate"
+                                [(ngModel)]="settings.mapOptions.autoBranchColors">
+                                {{ "AUTO_BRANCH_COLORS" | translate }}
+                            </mat-slide-toggle>
                         </mat-card-content>
                     </mat-card>
                     <mat-card class="map-options-nodes">
