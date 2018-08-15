@@ -12,6 +12,7 @@ import {FileService} from "../services/file.service";
 import {UpdateService} from "../services/update.service";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {NotificationsService} from "../services/notifications.service";
+import * as fs from "fs";
 
 @Component({
     selector: "app-root",
@@ -31,6 +32,10 @@ import {NotificationsService} from "../services/notifications.service";
 })
 export class AppComponent implements OnInit {
 
+    public fs: typeof fs;
+
+    public arguments: Array<string>;
+
     public node: any;
 
     constructor(public myElement: ElementRef,
@@ -44,6 +49,10 @@ export class AppComponent implements OnInit {
                 public settingsService: SettingsService,
                 public shortcutsService: ShortcutsService,
                 public fileService: FileService) {
+        this.fs = window.require("fs");
+
+        this.arguments = window.require("electron").remote.getGlobal("arguments");
+
         this.node = {};
     }
 
@@ -69,6 +78,21 @@ export class AppComponent implements OnInit {
                 if (settings.general.firstTime === true) {
                     this.settingsService.setFirstTime();
                     this.notificationService.send(translations["WELCOME_MESSAGE"]);
+                }
+
+                // If there are arguments with the path of a mind map load it.
+                if (this.arguments[1]) {
+                    const path = this.arguments[1];
+                    const data = this.fs.readFileSync(path).toString();
+
+                    this.fileService.setFilePath(path);
+                    this.fileService.setSavingStatus(true);
+
+                    this.mmpService.new(JSON.parse(data));
+
+                    // Overwrite the old data format (mmp 0.1.7) with the new.
+                    let newDataFormat = JSON.stringify(this.mmpService.exportAsJSON());
+                    this.fs.writeFileSync(path, newDataFormat);
                 }
 
                 this.notificationService.setInformations(translations["INITIAL_INFORMATION"], 4000);

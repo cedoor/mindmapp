@@ -47,5 +47,8 @@ app.on("window-all-closed", () => {
     }
 });
 
+// Share process arguments
+global.arguments = process.argv;
+
 require("./main/update");
 
