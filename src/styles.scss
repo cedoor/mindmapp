@@ -29,6 +29,10 @@ body {
     background-color: lightgray !important;
 }
 
+mat-dialog-content.mat-dialog-content {
+    max-height: none;
+}
+
 // Color picker override
 div.color-picker {
     border-radius: 2px;
