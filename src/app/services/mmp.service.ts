@@ -174,7 +174,7 @@ export class MmpService {
                 }
             };
         } else if (settings.mapOptions.autoBranchColors === true) {
-            const children = this.currentMap.nodeChildren().length;
+            const children = this.nodeChildren().length;
 
             properties = {
                 colors: {
@@ -250,7 +250,15 @@ export class MmpService {
     }
 
     /**
-     *
+     * Return the children of the current node.
+     * @returns {Array<any>}
+     */
+    public nodeChildren(): Array<any> {
+       return this.currentMap.nodeChildren()
+    }
+
+    /**
+     * Move the node in a direction.
      * @param {"left" | "right" | "up" | "down"} direction
      * @param {number} range
      */
