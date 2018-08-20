@@ -11,6 +11,7 @@
 Mindmapp is a desktop application to draw mind maps quickly and efficiently. It was born with the intention to make the creation of mind maps extremely simple, while maintaining the fundamental properties that make the mind maps so efficient.
 
 ![Mind map](https://raw.githubusercontent.com/Mindmapp/mindmapp/master/src/assets/images/example.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMindmapp%2Fmindmapp.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FMindmapp%2Fmindmapp?ref=badge_shield)
 
 ## Development
 
@@ -75,6 +76,9 @@ Examples:
 
 ## License
 * See [LICENSE](https://github.com/mindmapp/mindmapp/blob/master/LICENSE) file
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMindmapp%2Fmindmapp.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FMindmapp%2Fmindmapp?ref=badge_large)
 
 ## Contact
 #### Developer
