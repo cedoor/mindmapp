@@ -12,6 +12,7 @@ import {FileService} from "../services/file.service";
 import {UpdateService} from "../services/update.service";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {NotificationsService} from "../services/notifications.service";
+import {environment} from "../../environments/environment";
 import * as fs from "fs";
 
 @Component({
@@ -81,7 +82,7 @@ export class AppComponent implements OnInit {
                 }
 
                 // If there are arguments with the path of a mind map load it.
-                if (this.arguments[1]) {
+                if (this.arguments[1] && environment.production) {
                     const path = this.arguments[1];
                     const data = this.fs.readFileSync(path).toString();
 
