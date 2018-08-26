@@ -27,6 +27,12 @@ export class ShortcutsService {
             });
         });
 
+        mousetrap.bind("f2", () => {
+            this.ngZone.run(() => {
+                this.mmpService.editNode();
+            });
+        });
+
         mousetrap.bind("ctrl+n", () => {
             this.ngZone.run(() => {
                 this.dialogService.newMap();
