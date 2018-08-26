@@ -1,6 +1,7 @@
 # ![](https://raw.githubusercontent.com/Mindmapp/mindmapp/master/resources/icons/32x32.png) Mindmapp<sup>beta</sup>
 
 [![](https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square)](https://github.com/Mindmapp)
+[![](https://img.shields.io/badge/chat-Slack-orange.svg?style=flat-square)](https://join.slack.com/t/mindmapp-org/shared_invite/enQtNDE4OTUwOTQ4OTc3LWRkZDExM2E5MTJlNzZhZDBjZTFhMzVjMDhjMDFhOTY0NjBkMzMwYjRiY2FmNWNiNjRiYzdhZmNjZDE4YzkwYjk)
 [![](https://img.shields.io/github/license/mindmapp/mindmapp.svg?style=flat-square)](https://github.com/Mindmapp/mindmapp/blob/dev/LICENSE.md)
 [![](https://img.shields.io/david/mindmapp/mindmapp.svg?style=flat-square)](https://david-dm.org/mindmapp/mindmapp)
 [![](https://img.shields.io/david/dev/mindmapp/mindmapp.svg?style=flat-square)](https://david-dm.org/mindmapp/mindmapp?type=dev)
