@@ -13,6 +13,7 @@ export class MmpService {
 
     private maps: Map<string, any>;
     private currentMap: any;
+    private currentId: string;
 
     private branchColors: Array<string>;
 
@@ -51,7 +52,9 @@ export class MmpService {
         let map = mmp.create(id, options);
 
         this.maps.set(id, map);
+
         this.currentMap = map;
+        this.currentId = id;
     }
 
     /**
@@ -160,26 +163,21 @@ export class MmpService {
 
     /**
      * Add a node in the mind mmp.
+     * @param properties
      */
-    public addNode() {
+    public addNode(properties: any = {}) {
         const selected = this.selectNode();
         const settings = this.settingsService.getSettings();
 
-        let properties;
-
         if (selected.colors.branch) {
-            properties = {
-                colors: {
-                    branch: selected.colors.branch
-                }
+            properties.colors = {
+                branch: selected.colors.branch
             };
         } else if (settings.mapOptions.autoBranchColors === true) {
             const children = this.nodeChildren().length;
 
-            properties = {
-                colors: {
-                    branch: this.branchColors[children % this.branchColors.length]
-                }
+            properties.colors = {
+                branch: this.branchColors[children % this.branchColors.length]
             };
         }
 
@@ -194,6 +192,13 @@ export class MmpService {
      */
     public selectNode(nodeId?: string | "left" | "right" | "up" | "down"): any {
         return this.currentMap.selectNode(nodeId);
+    }
+
+    /**
+     * Focus the text of the selected node to edit it.
+     */
+    public editNode() {
+        this.currentMap.editNode();
     }
 
     /**
@@ -254,7 +259,7 @@ export class MmpService {
      * @returns {Array<any>}
      */
     public nodeChildren(): Array<any> {
-       return this.currentMap.nodeChildren()
+        return this.currentMap.nodeChildren();
     }
 
     /**
@@ -284,11 +289,28 @@ export class MmpService {
     }
 
     /**
+     * Create a listener to add a node on right click event.
+     */
+    public addNodesOnRightClick() {
+        const svg: HTMLElement = window.document.querySelector("#" + this.currentId + "> svg");
+
+        svg.oncontextmenu = (event: MouseEvent) => {
+            const x = event.offsetX;
+            const y = event.offsetY;
+
+            this.addNode({
+                coordinates: {x, y}
+            });
+        };
+    }
+
+    /**
      * Set the current mind mmp.
      * @param {string} id
      */
     public setCurrentMap(id: string) {
         this.currentMap = this.maps.get(id);
+        this.currentId = id;
     }
 
     /**

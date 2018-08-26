@@ -113,6 +113,8 @@ export class AppComponent implements OnInit {
         this.mmpService.create("map_1", options);
 
         this.node = this.mmpService.selectNode();
+
+        this.mmpService.addNodesOnRightClick();
         this.fileService.checkMapFile();
     }
 
