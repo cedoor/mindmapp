@@ -72,6 +72,7 @@
         "SELECT_NODE_ON_THE_RIGHT": "Seleziona il nodo a destra",
         "SELECT_NODE_BELOW": "Seleziona il nodo in alto",
         "SELECT_NODE_ABOVE": "Seleziona il nodo in basso",
+        "EDIT_NODE": "Permette di modificare il testo del nodo",
         "LOCK_NODE": "Blocca o sblocca il nodo",
         "NODE_IMAGE": "Aggiunge un'immagine al nodo",
         "BOLD_TEXT": "Cambia la larghezza del testo",

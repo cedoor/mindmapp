@@ -72,6 +72,7 @@
         "SELECT_NODE_ON_THE_RIGHT": "Selects the node on the right",
         "SELECT_NODE_BELOW": "Selects the node below",
         "SELECT_NODE_ABOVE": "Selects the node above",
+        "EDIT_NODE": "Allows to edit the text of the node",
         "LOCK_NODE": "Locks or unlocks the node",
         "NODE_IMAGE": "Adds an image to the node",
         "BOLD_TEXT": "Changes the weight of the text",

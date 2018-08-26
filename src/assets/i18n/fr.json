@@ -72,6 +72,7 @@
         "SELECT_NODE_ON_THE_RIGHT": "Sélectionne le noeud à droite",
         "SELECT_NODE_BELOW": "Sélectionne le nœud ci-dessous",
         "SELECT_NODE_ABOVE": "Sélectionne le nœud ci-dessus",
+        "EDIT_NODE": "Allows to edit the text of the node",
         "LOCK_NODE": "Verrouille ou déverrouille le nœud",
         "NODE_IMAGE": "Ajoute une image au noeud",
         "BOLD_TEXT": "Change la taille du texte",

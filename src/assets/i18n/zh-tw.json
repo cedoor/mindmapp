@@ -72,6 +72,7 @@
         "SELECT_NODE_ON_THE_RIGHT": "選擇右側的節點",
         "SELECT_NODE_BELOW": "選擇下方的節點",
         "SELECT_NODE_ABOVE": "選擇上方的節點",
+        "EDIT_NODE": "Allows to edit the text of the node",
         "LOCK_NODE": "鎖定選取的節點",
         "NODE_IMAGE": "新增圖片於當前節點",
         "BOLD_TEXT": "將文字變成粗體",
