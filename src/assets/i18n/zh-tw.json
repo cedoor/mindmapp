@@ -5,12 +5,17 @@
     "EXPORT_AS": "匯出檔案",
     "PNG": "圖片 (.png)",
     "JPG": "圖片 (.jpg)",
+    "PDF": "Document (.pdf)",
     "QUIT": "關閉",
     "IMAGE": "圖片",
     "LANGUAGE": "語系",
     "YES": "是",
     "NO": "否",
     "OK": "確定",
+    "SAVE": "Save",
+    "OPEN": "Open",
+    "EXPORT_IMAGE": "Export image",
+    "EXPORT_PDF": "Export PDF",
     "LATER": "延後",
     "INITIAL_INFORMATION": "Mindmapp 已準備好了 ☺",
     "WELCOME_MESSAGE": "歡迎使用 Mindmapp app ☺",
@@ -28,7 +33,7 @@
     "CENTER_ON_RESIZING": "視窗縮放後置中",
     "NODE_DRAGGING": "拖曳節點",
     "MAP_ZOOM": "地圖縮放",
-    "AUTO_BRANCH_COLORS": "Automatic branch colors",
+    "AUTO_BRANCH_COLORS": "自動分配分支顏色",
     "MAP": "地圖",
     "NODES": "節點",
     "SAVED": "已儲存",
@@ -46,7 +51,7 @@
     },
     "LANGUAGES": {
         "EN": "英文",
-        "FR": "法國",
+        "FR": "法文",
         "IT": "義大利文",
         "ZH-TW": "繁體中文"
     },
@@ -72,7 +77,7 @@
         "SELECT_NODE_ON_THE_RIGHT": "選擇右側的節點",
         "SELECT_NODE_BELOW": "選擇下方的節點",
         "SELECT_NODE_ABOVE": "選擇上方的節點",
-        "EDIT_NODE": "Allows to edit the text of the node",
+        "EDIT_NODE": "編輯選取的節點文字",
         "LOCK_NODE": "鎖定選取的節點",
         "NODE_IMAGE": "新增圖片於當前節點",
         "BOLD_TEXT": "將文字變成粗體",
@@ -96,6 +101,6 @@
         "CENTER_ON_RESIZING": "當視窗縮放後地圖將會被置中",
         "NODE_DRAGGING": "允許拖曳地圖中的節點",
         "MAP_ZOOM": "允許縮放地圖",
-        "AUTO_BRANCH_COLORS": "Allows to choose automatically the colors of the branches"
+        "AUTO_BRANCH_COLORS": "允許自動分配分支的顏色"
     }
 }
