@@ -5,12 +5,13 @@ import {SettingsComponent} from "../components/settings/settings.component";
 import {MatDialog} from "@angular/material";
 import {MatDialogRef} from "@angular/material/dialog/typings/dialog-ref";
 import {LangChangeEvent, TranslateService} from "@ngx-translate/core";
-import {FileService} from "./file.service";
-import {remote} from "electron";
-import * as fs from "fs";
 import {AboutComponent} from "../components/about/about.component";
 import {environment} from "../../environments/environment";
 import {ShortcutsComponent} from "../components/shortcuts/shortcuts.component";
+import {FileService} from "./file.service";
+import {remote} from "electron";
+import * as fs from "fs";
+import * as JsPDF from "jspdf";
 
 @Injectable()
 export class DialogService {
@@ -87,7 +88,7 @@ export class DialogService {
      * Export the current mmp image.
      * @param {string} extension
      */
-    exportImage(extension: string = "png") {
+    public exportImage(extension: string = "png") {
         this.mmpService.exportAsImage(extension).then((url: string) => {
             let data = url.replace(/^data:image\/\w+;base64,/, ""),
                 buffer = new Buffer(data, "base64");
@@ -104,9 +105,7 @@ export class DialogService {
 
                         path = path + "." + extension;
 
-                        if (typeof path === "string") {
-                            this.fs.writeFileSync(path, buffer);
-                        }
+                        this.fs.writeFileSync(path, buffer);
                     }
                 });
             });
@@ -114,9 +113,42 @@ export class DialogService {
     }
 
     /**
+     * Export the current mmp image as PDF.
+     */
+    public exportPDF() {
+        this.mmpService.exportAsImage("jpeg").then((url: string) => {
+            const img = new Image();
+
+            img.onload = () => {
+                const orientation = img.width > img.height ? "l" : "p";
+                const dimentions = [img.width / 3.7795275591, img.height / 3.7795275591];
+                const pdf = new JsPDF(orientation, "mm", dimentions);
+
+                pdf.addImage(url, "JPEG", 0, 0);
+
+                this.remote.dialog.showSaveDialog({
+                    title: this.translations["EXPORT_PDF"],
+                    defaultPath: this.mmpService.selectNode("map_1_node_0").name
+                }, (path: string) => {
+                    this.ngZone.run(() => {
+                        if (typeof path === "string") {
+
+                            path = path + ".pdf";
+
+                            this.fs.writeFileSync(path, Buffer.from(pdf.output("arraybuffer")));
+                        }
+                    });
+                });
+            };
+
+            img.src = url;
+        });
+    }
+
+    /**
      * Open an existing map.
      */
-    openMap() {
+    public openMap() {
         this.showMapPreSavingMessage().then(() => {
             this.remote.dialog.showOpenDialog({
                 title: this.translations["OPEN"],
@@ -151,7 +183,7 @@ export class DialogService {
     /**
      * Create a new empty map.
      */
-    newMap(data?: any) {
+    public newMap(data?: any) {
         if (data) {
             data = JSON.parse(data);
         }
@@ -169,7 +201,7 @@ export class DialogService {
     /**
      * Insert an image in the current selected node.
      */
-    addNodeImage() {
+    public addNodeImage() {
         if (!this.mmpService.selectNode().image.src) {
             this.remote.dialog.showOpenDialog({
                 title: this.translations["INSERT_NODE_IMAGE"],

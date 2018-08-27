@@ -29,6 +29,10 @@
                         <mat-icon>image</mat-icon>
                         <span>{{ "JPG" | translate }}</span>
                     </button>
+                    <button mat-menu-item (click)="dialogService.exportPDF()">
+                        <mat-icon>picture_as_pdf</mat-icon>
+                        <span>{{ "PDF" | translate }}</span>
+                    </button>
                 </mat-menu>
             </mat-list-item>
 
