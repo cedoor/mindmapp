@@ -1,7 +1,7 @@
 {
     "IPFS": "IPFS",
     "DISMISS": "Dismiss",
-    "SAVE_WITH_NAME": "Save with name",
+    "SAVE_WITH_NAME": "Save as",
     "EXPORT_AS": "Export as",
     "PNG": "Image (.png)",
     "JPG": "Image (.jpg)",
@@ -53,7 +53,8 @@
         "EN": "English",
         "FR": "French",
         "IT": "Italian",
-        "ZH-TW": "Traditional Chinese"
+        "ZH-TW": "Traditional Chinese",
+        "PT-BR": "Portuguese Brazil"
     },
     "TOOLTIPS": {
         "ESC": "Closes the dialog window",
