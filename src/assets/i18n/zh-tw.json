@@ -53,7 +53,8 @@
         "EN": "英文",
         "FR": "法文",
         "IT": "義大利文",
-        "ZH-TW": "繁體中文"
+        "ZH-TW": "繁體中文",
+        "PT-BR": "Portuguese Brazil"
     },
     "TOOLTIPS": {
         "ESC": "關閉對話窗口",
