@@ -50,10 +50,10 @@
         "MAP_OPTIONS": "Opções de mapa"
     },
     "LANGUAGES": {
-        "EN": "English",
-        "FR": "French",
-        "IT": "Italian",
-        "ZH-TW": "Traditional Chinese",
+        "EN": "Inglês",
+        "FR": "Francês",
+        "IT": "Italiano",
+        "ZH-TW": "Chinês Tradicional",
         "PT-BR": "Português do Brasil"
     },
     "TOOLTIPS": {
