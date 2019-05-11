@@ -1,12 +1,12 @@
-declare var module: NodeModule;
+declare var module: NodeModule
 
 interface NodeModule {
-    id: string;
+    id: string
 }
 
-declare var window: Window;
+declare var window: Window
 
 interface Window {
-    process: any;
-    require: any;
+    process: any
+    require: any
 }

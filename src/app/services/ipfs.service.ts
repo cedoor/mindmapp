@@ -1,33 +1,33 @@
-import {Injectable} from "@angular/core";
-import {MmpService} from "./mmp.service";
+import {Injectable} from '@angular/core'
+import {MmpService} from './mmp.service'
 
 @Injectable()
 export class IPFSService {
 
-    private ipfs: any;
-    private online: boolean;
+    private ipfs: any
+    private online: boolean
 
-    constructor(private mmpService: MmpService) {
+    constructor (private mmpService: MmpService) {
     }
 
-    start() {
-        let Ipfs = window["Ipfs"];
+    start () {
+        let Ipfs = window['Ipfs']
 
         if (Ipfs) {
             this.ipfs = new Ipfs({
-                repo: "ipfs-" + Math.random(),
+                repo: 'ipfs-' + Math.random(),
                 config: {
                     Addresses: {
                         Swarm: [
-                            "/dns4/wrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star"
+                            '/dns4/wrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star'
                         ]
                     }
                 }
-            });
+            })
 
-            this.ipfs.on("ready", () => {
-                this.online = this.ipfs.isOnline();
-            });
+            this.ipfs.on('ready', () => {
+                this.online = this.ipfs.isOnline()
+            })
         }
     }
 
@@ -69,17 +69,17 @@ export class IPFSService {
     //     }
     // }
 
-    stop(): Promise<any> {
+    stop (): Promise<any> {
         return new Promise(resolve => {
             if (this.online) {
                 this.ipfs.stop(() => {
-                    this.online = false;
-                    resolve();
-                });
+                    this.online = false
+                    resolve()
+                })
             } else {
-                resolve();
+                resolve()
             }
-        });
+        })
     }
 
 }

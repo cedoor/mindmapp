@@ -1,16 +1,16 @@
-import {Injectable} from "@angular/core";
-import {MatSnackBar} from "@angular/material";
-import {TranslateService} from "@ngx-translate/core";
-import {BehaviorSubject, Observable} from "rxjs/index";
+import {Injectable} from '@angular/core'
+import {MatSnackBar} from '@angular/material'
+import {TranslateService} from '@ngx-translate/core'
+import {BehaviorSubject, Observable} from 'rxjs/index'
 
 @Injectable()
 export class NotificationsService {
 
-    private informationsSource: BehaviorSubject<string>;
+    private informationsSource: BehaviorSubject<string>
 
-    constructor(private matSnackBar: MatSnackBar,
-                private translateService: TranslateService) {
-        this.informationsSource = new BehaviorSubject<string>("");
+    constructor (private matSnackBar: MatSnackBar,
+                 private translateService: TranslateService) {
+        this.informationsSource = new BehaviorSubject<string>('')
     }
 
     /**
@@ -18,21 +18,21 @@ export class NotificationsService {
      * @param {string} message
      * @param {number} duration
      */
-    public send(message: string, duration: number = 8000) {
-        this.translateService.get("DISMISS").toPromise().then((translation: string) => {
+    public send (message: string, duration: number = 8000) {
+        this.translateService.get('DISMISS').toPromise().then((translation: string) => {
             this.matSnackBar.open(message, translation, {
                 duration: duration,
-                panelClass: "snackbar"
-            });
-        });
+                panelClass: 'snackbar'
+            })
+        })
     }
 
     /**
      * Return an observable for info status.
      * @returns {Observable<string>}
      */
-    public watchInfoStatus(): Observable<string> {
-        return this.informationsSource.asObservable();
+    public watchInfoStatus (): Observable<string> {
+        return this.informationsSource.asObservable()
     }
 
     /**
@@ -40,13 +40,13 @@ export class NotificationsService {
      * @param {string} info
      * @param {number} duration
      */
-    public setInformations(info: string, duration?: number) {
-        this.informationsSource.next(info);
+    public setInformations (info: string, duration?: number) {
+        this.informationsSource.next(info)
 
         if (duration) {
             setTimeout(() => {
-                this.informationsSource.next("");
-            }, duration);
+                this.informationsSource.next('')
+            }, duration)
         }
     }
 

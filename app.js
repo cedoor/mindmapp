@@ -9,17 +9,20 @@ if (dev) {
     require("electron-reload")(__dirname, {});
 }
 
-function createMainWindow(screenSize) {
+function createMainWindow({width, height}) {
     const indexPath = path.join("file://", __dirname, "dist/index.html");
 
     let mainWindow = new BrowserWindow({
         icon: __dirname + "/resources/icons/128x128.png",
         x: 0,
         y: 0,
-        width: screenSize.width,
-        height: screenSize.height,
+        width,
+        height,
         minWidth: 900,
-        minHeight: 720
+        minHeight: 720,
+        webPreferences: {
+            nodeIntegration: true,
+        }
     });
 
     mainWindow.setMenu(null);
