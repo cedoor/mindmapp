@@ -2,7 +2,7 @@
     "name": "mindmapp",
     "version": "0.7.16",
     "description": "Desktop application to draw mind maps.",
-    "homepage": "https://mindmapp.github.io",
+    "homepage": "https://mindmapp.cedoor.org",
     "repository": {
         "type": "git",
         "url": "https://github.com/Mindmapp/mindmapp.git"
@@ -30,8 +30,8 @@
         "release": "ng build --prod && electron-builder"
     },
     "dependencies": {
-        "electron-log": "2.2.17",
-        "electron-updater": "3.1.6"
+        "electron-log": "3.0.5",
+        "electron-updater": "4.0.6"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "0.10.4",
@@ -53,15 +53,15 @@
         "@types/mousetrap": "1.6.0",
         "@types/node": "10.12.2",
         "core-js": "2.5.7",
-        "electron": "2.0.13",
-        "electron-builder": "20.31.2",
-        "electron-reload": "1.2.5",
+        "electron": "5.0.1",
+        "electron-builder": "20.40.2",
+        "electron-reload": "1.4.0",
         "hammerjs": "2.0.8",
-        "jspdf": "1.4.1",
+        "jspdf": "1.5.3",
         "material-design-icons": "3.0.1",
         "minimist": "1.2.0",
         "mmp": "0.2.15",
-        "mousetrap": "1.6.2",
+        "mousetrap": "1.6.3",
         "ngx-color-picker": "7.0.1",
         "rxjs": "6.3.3",
         "ts-node": "7.0.1",
