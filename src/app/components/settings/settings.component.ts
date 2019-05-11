@@ -32,7 +32,7 @@ export class SettingsComponent implements OnInit {
             this.titles[title] = 'SETTINGS_LABELS.' + title.split(/(?=[A-Z])/).join('_').toUpperCase()
         }
 
-        this.languages = ['en', 'fr', 'it', 'zh-tw', 'pt-br']
+        this.languages = ['en', 'fr', 'it', 'zh-tw', 'zh-cn', 'es', 'pt-br']
     }
 
     public setMapOptions () {

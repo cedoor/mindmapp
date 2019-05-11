@@ -53,10 +53,10 @@
         "EN": "Inglese",
         "FR": "Francese",
         "IT": "Italiano",
-        "ZH-TW": "Cinese Tradizionale",
+        "ZH-TW": "Cinese tradizionale",
         "ZH-CN": "Cinese semplificato",
-        "PT-BR": "Portoghese Brasiliano",
-        "SP": "Spagnolo"
+        "PT-BR": "Portoghese Brasile",
+        "ES": "Spagnolo"
     },
     "TOOLTIPS": {
         "ESC": "Chiude la finestra di dialogo",

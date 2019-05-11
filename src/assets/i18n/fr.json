@@ -50,13 +50,13 @@
         "MAP_OPTIONS": "Options de carte"
     },
     "LANGUAGES": {
-        "EN": "English",
-        "FR": "French",
-        "IT": "Italian",
+        "EN": "Anglais",
+        "FR": "Français",
+        "IT": "Italien",
         "ZH-TW": "Chinois traditionnel",
         "ZH-CN": "Chinois simplifié",
         "PT-BR": "Portuguese Brazil",
-        "SP": "Espanol"
+        "ES": "Espagnol"
     },
     "TOOLTIPS": {
         "ESC": "Ferme la fenêtre de dialogue",
