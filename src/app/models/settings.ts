@@ -1,4 +1,4 @@
-import {MapOptions} from "./mmp";
+import {MapOptions} from './mmp'
 
 export interface Settings {
     general: General;

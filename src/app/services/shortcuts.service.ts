@@ -1,189 +1,189 @@
-import {Injectable, NgZone} from "@angular/core";
-import {DialogService} from "./dialog.service";
-import {MmpService} from "./mmp.service";
-import * as mousetrap from "mousetrap";
+import {Injectable, NgZone} from '@angular/core'
+import {DialogService} from './dialog.service'
+import {MmpService} from './mmp.service'
+import * as mousetrap from 'mousetrap'
 
 @Injectable()
 export class ShortcutsService {
 
-    constructor(private ngZone: NgZone,
-                private mmpService: MmpService,
-                private dialogService: DialogService) {
+    constructor (private ngZone: NgZone,
+                 private mmpService: MmpService,
+                 private dialogService: DialogService) {
     }
 
     /**
      * Set some global shortcuts.
      */
-    public createShortcuts() {
-        mousetrap.bind("esc", () => {
+    public createShortcuts () {
+        mousetrap.bind('esc', () => {
             this.ngZone.run(() => {
-                if (this.dialogService.getMatDialogStatus("settings")) {
-                    this.dialogService.closeMatDialog("settings");
+                if (this.dialogService.getMatDialogStatus('settings')) {
+                    this.dialogService.closeMatDialog('settings')
                 }
 
-                if (this.dialogService.getMatDialogStatus("about")) {
-                    this.dialogService.closeMatDialog("about");
+                if (this.dialogService.getMatDialogStatus('about')) {
+                    this.dialogService.closeMatDialog('about')
                 }
-            });
-        });
+            })
+        })
 
-        mousetrap.bind("f2", () => {
+        mousetrap.bind('f2', () => {
             this.ngZone.run(() => {
-                this.mmpService.editNode();
-            });
-        });
+                this.mmpService.editNode()
+            })
+        })
 
-        mousetrap.bind("ctrl+n", () => {
+        mousetrap.bind('ctrl+n', () => {
             this.ngZone.run(() => {
-                this.dialogService.newMap();
-            });
-        });
+                this.dialogService.newMap()
+            })
+        })
 
-        mousetrap.bind("ctrl+o", () => {
+        mousetrap.bind('ctrl+o', () => {
             this.ngZone.run(() => {
-                this.dialogService.openMap();
-            });
-        });
+                this.dialogService.openMap()
+            })
+        })
 
-        mousetrap.bind("ctrl+s", () => {
+        mousetrap.bind('ctrl+s', () => {
             this.ngZone.run(() => {
-                this.dialogService.saveMap();
-            });
-        });
+                this.dialogService.saveMap()
+            })
+        })
 
-        mousetrap.bind("ctrl+shift+s", () => {
+        mousetrap.bind('ctrl+shift+s', () => {
             this.ngZone.run(() => {
-                this.dialogService.saveMap(true);
-            });
-        });
+                this.dialogService.saveMap(true)
+            })
+        })
 
-        mousetrap.bind("ctrl+z", () => {
+        mousetrap.bind('ctrl+z', () => {
             this.ngZone.run(() => {
-                this.mmpService.undo();
-            });
-        });
+                this.mmpService.undo()
+            })
+        })
 
-        mousetrap.bind("ctrl+shift+z", () => {
+        mousetrap.bind('ctrl+shift+z', () => {
             this.ngZone.run(() => {
-                this.mmpService.redo();
-            });
-        });
+                this.mmpService.redo()
+            })
+        })
 
-        mousetrap.bind("alt+=", () => {
+        mousetrap.bind('alt+=', () => {
             this.ngZone.run(() => {
-                this.mmpService.addNode();
-            });
-        });
+                this.mmpService.addNode()
+            })
+        })
 
-        mousetrap.bind("alt+-", () => {
+        mousetrap.bind('alt+-', () => {
             this.ngZone.run(() => {
-                this.mmpService.removeNode();
-            });
-        });
+                this.mmpService.removeNode()
+            })
+        })
 
-        mousetrap.bind("alt+shift+left", () => {
+        mousetrap.bind('alt+shift+left', () => {
             this.ngZone.run(() => {
-                this.mmpService.moveNodeTo("left");
-            });
-        });
+                this.mmpService.moveNodeTo('left')
+            })
+        })
 
-        mousetrap.bind("alt+shift+right", () => {
+        mousetrap.bind('alt+shift+right', () => {
             this.ngZone.run(() => {
-                this.mmpService.moveNodeTo("right");
-            });
-        });
+                this.mmpService.moveNodeTo('right')
+            })
+        })
 
-        mousetrap.bind("alt+shift+up", () => {
+        mousetrap.bind('alt+shift+up', () => {
             this.ngZone.run(() => {
-                this.mmpService.moveNodeTo("up");
-            });
-        });
+                this.mmpService.moveNodeTo('up')
+            })
+        })
 
-        mousetrap.bind("alt+shift+down", () => {
+        mousetrap.bind('alt+shift+down', () => {
             this.ngZone.run(() => {
-                this.mmpService.moveNodeTo("down");
-            });
-        });
+                this.mmpService.moveNodeTo('down')
+            })
+        })
 
-        mousetrap.bind("?", () => {
+        mousetrap.bind('?', () => {
             this.ngZone.run(() => {
-                if (this.dialogService.getMatDialogStatus("shortcuts")) {
-                    this.dialogService.closeMatDialog("shortcuts");
+                if (this.dialogService.getMatDialogStatus('shortcuts')) {
+                    this.dialogService.closeMatDialog('shortcuts')
                 } else {
-                    this.dialogService.openMatDialog("shortcuts");
+                    this.dialogService.openMatDialog('shortcuts')
                 }
-            });
-        });
+            })
+        })
 
-        mousetrap.bind("ctrl+alt+s", () => {
+        mousetrap.bind('ctrl+alt+s', () => {
             this.ngZone.run(() => {
-                if (this.dialogService.getMatDialogStatus("settings")) {
-                    this.dialogService.closeMatDialog("settings");
+                if (this.dialogService.getMatDialogStatus('settings')) {
+                    this.dialogService.closeMatDialog('settings')
                 } else {
-                    this.dialogService.openMatDialog("settings");
+                    this.dialogService.openMatDialog('settings')
                 }
-            });
-        });
+            })
+        })
 
-        mousetrap.bind("alt+left", () => {
+        mousetrap.bind('alt+left', () => {
             this.ngZone.run(() => {
-                this.mmpService.selectNode("left");
-            });
-        });
+                this.mmpService.selectNode('left')
+            })
+        })
 
-        mousetrap.bind("alt+right", () => {
+        mousetrap.bind('alt+right', () => {
             this.ngZone.run(() => {
-                this.mmpService.selectNode("right");
-            });
-        });
+                this.mmpService.selectNode('right')
+            })
+        })
 
-        mousetrap.bind("alt+up", () => {
+        mousetrap.bind('alt+up', () => {
             this.ngZone.run(() => {
-                this.mmpService.selectNode("up");
-            });
-        });
+                this.mmpService.selectNode('up')
+            })
+        })
 
-        mousetrap.bind("alt+down", () => {
+        mousetrap.bind('alt+down', () => {
             this.ngZone.run(() => {
-                this.mmpService.selectNode("down");
-            });
-        });
+                this.mmpService.selectNode('down')
+            })
+        })
 
-        mousetrap.bind("alt+c", () => {
+        mousetrap.bind('alt+c', () => {
             this.ngZone.run(() => {
-                this.mmpService.center();
-            });
-        });
+                this.mmpService.center()
+            })
+        })
 
-        mousetrap.bind("ctrl+c", () => {
+        mousetrap.bind('ctrl+c', () => {
             this.ngZone.run(() => {
-                this.mmpService.copyNode();
-            });
-        });
+                this.mmpService.copyNode()
+            })
+        })
 
-        mousetrap.bind("ctrl+x", () => {
+        mousetrap.bind('ctrl+x', () => {
             this.ngZone.run(() => {
-                this.mmpService.cutNode();
-            });
-        });
+                this.mmpService.cutNode()
+            })
+        })
 
-        mousetrap.bind("ctrl+v", () => {
+        mousetrap.bind('ctrl+v', () => {
             this.ngZone.run(() => {
-                this.mmpService.pasteNode();
-            });
-        });
+                this.mmpService.pasteNode()
+            })
+        })
 
-        mousetrap.bind("ctrl+=", () => {
+        mousetrap.bind('ctrl+=', () => {
             this.ngZone.run(() => {
-                this.mmpService.zoomIn();
-            });
-        });
+                this.mmpService.zoomIn()
+            })
+        })
 
-        mousetrap.bind("ctrl+-", () => {
+        mousetrap.bind('ctrl+-', () => {
             this.ngZone.run(() => {
-                this.mmpService.zoomOut();
-            });
-        });
+                this.mmpService.zoomOut()
+            })
+        })
     }
 
 }

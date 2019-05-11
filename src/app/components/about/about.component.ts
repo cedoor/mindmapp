@@ -1,31 +1,31 @@
-import {Component, OnInit} from "@angular/core";
-import {UtilsService} from "../../services/utils.service";
+import {Component, OnInit} from '@angular/core'
+import {UtilsService} from '../../services/utils.service'
 
 @Component({
-    selector: "app-about",
-    templateUrl: "./about.component.html",
-    styleUrls: ["./about.component.scss"]
+    selector: 'app-about',
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
 
-    public packageInformations: any;
-    public currentYear: string;
+    public packageInformations: any
+    public currentYear: string
 
-    constructor(public utilsService: UtilsService) {
+    constructor (public utilsService: UtilsService) {
     }
 
-    ngOnInit() {
+    ngOnInit () {
         this.utilsService.getPackageInformations().then((packageInformations: any) => {
-            this.packageInformations = packageInformations;
-        });
+            this.packageInformations = packageInformations
+        })
 
-        this.currentYear = new Date().getFullYear().toString();
+        this.currentYear = new Date().getFullYear().toString()
     }
 
-    openLink(event: MouseEvent) {
-        event.preventDefault();
+    openLink (event: MouseEvent) {
+        event.preventDefault()
 
-        this.utilsService.openExternalLink(event.srcElement.innerHTML);
+        this.utilsService.openExternalLink(event.srcElement.innerHTML)
     }
 
 }
