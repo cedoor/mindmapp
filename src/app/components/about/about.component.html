@@ -11,7 +11,9 @@
         <div class="about-description">{{ "ABOUT_DESCRIPTION" | translate }}</div>
         <div class="about-links">
             <p>Github: <span (click)="openLink($event)">https://github.com/Mindmapp</span></p>
-            <p>{{ "WEBSITE" | translate }}: <span (click)="openLink($event)">https://mindmapp.org</span></p>
+            <p>{{ "WEBSITE" | translate }}: <span (click)="openLink($event)">
+                {{ packageInformations?.homepage }}
+            </span></p>
         </div>
     </div>
 
