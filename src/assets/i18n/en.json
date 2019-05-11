@@ -54,7 +54,9 @@
         "FR": "French",
         "IT": "Italian",
         "ZH-TW": "Traditional Chinese",
-        "PT-BR": "Portuguese Brazil"
+        "ZH-CN": "Simplified Chinese",
+        "PT-BR": "Portuguese Brazil",
+        "SP": "Spanish"
     },
     "TOOLTIPS": {
         "ESC": "Closes the dialog window",

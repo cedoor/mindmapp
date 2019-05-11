@@ -54,9 +54,9 @@
         "FR": "French",
         "IT": "Italian",
         "ZH-TW": "Traditional Chinese",
+        "ZH-CN": "Simple Chinese",
         "PT-BR": "Portuguese Brazil",
-        "SP": "Spanish"
-        
+        "SP": "Español"
     },
     "TOOLTIPS": {
         "ESC": "Cerrar el cuadro de diálogo",

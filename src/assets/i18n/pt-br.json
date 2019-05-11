@@ -53,8 +53,10 @@
         "EN": "Inglês",
         "FR": "Francês",
         "IT": "Italiano",
-        "ZH-TW": "Chinês Tradicional",
-        "PT-BR": "Português do Brasil"
+        "ZH-TW": "Chinês tradicional",
+        "ZH-CN": "Chinês simplificado",
+        "PT-BR": "Português do Brasil",
+        "SP": "Espanhola"
     },
     "TOOLTIPS": {
         "ESC": "Fechar a janela de diálogo",
