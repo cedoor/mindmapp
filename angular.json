@@ -7,7 +7,7 @@
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
-            "prefix": "app",
+            "prefix": "mindmapp",
             "schematics": {
                 "@schematics/angular:component": {
                     "style": "scss"
