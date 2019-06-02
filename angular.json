@@ -33,11 +33,35 @@
                         "scripts": []
                     },
                     "configurations": {
-                        "production": {
+                        "browser": {
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.prod.ts"
+                                    "with": "src/environments/environment.browser.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ]
+                        },
+                        "electron": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.electron.ts"
                                 }
                             ],
                             "optimization": true,
@@ -65,8 +89,11 @@
                         "browserTarget": "mindmapp:build"
                     },
                     "configurations": {
-                        "production": {
-                            "browserTarget": "mindmapp:build:production"
+                        "browser": {
+                            "browserTarget": "mindmapp:build:browser"
+                        },
+                        "electron": {
+                            "browserTarget": "mindmapp:build:electron"
                         }
                     }
                 },
@@ -114,8 +141,11 @@
                         "devServerTarget": "mindmapp:serve"
                     },
                     "configurations": {
-                        "production": {
-                            "devServerTarget": "mindmapp:serve:production"
+                        "browser": {
+                            "devServerTarget": "mindmapp:serve:browser"
+                        },
+                        "electron": {
+                            "devServerTarget": "mindmapp:serve:electron"
                         }
                     }
                 }

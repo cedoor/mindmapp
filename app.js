@@ -1,18 +1,16 @@
 const electron = require("electron");
 const {app, BrowserWindow} = electron;
 const path = require("path");
+const arguments = process.argv.slice(1);
+const serve = arguments.some(val => val === "--serve");
 
-const args = process.argv.slice(1);
-const dev = args.some(val => val === "--dev");
+let mainWindow;
 
-if (dev) {
-    require("electron-reload")(__dirname, {});
-}
+function createMainWindow() {
+    const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize;
 
-function createMainWindow({width, height}) {
-    const indexPath = path.join("file://", __dirname, "dist/index.html");
-
-    let mainWindow = new BrowserWindow({
+    // Create the browser window.
+    mainWindow = new BrowserWindow({
         icon: __dirname + "/resources/icons/128x128.png",
         x: 0,
         y: 0,
@@ -26,33 +24,59 @@ function createMainWindow({width, height}) {
         }
     });
 
-    mainWindow.setMenu(null);
+    if (serve) {
+        require('electron-reload')(__dirname, {
+            electron: require(`${__dirname}/node_modules/electron`)
+        });
+        mainWindow.loadURL('http://localhost:4200');
+    } else {
+        mainWindow.loadURL(url.format({
+            pathname: path.join(__dirname, 'dist/index.html'),
+            protocol: 'file:',
+            slashes: true
+        }));
+    }
 
-    mainWindow.loadURL(indexPath);
-
-    if (dev) {
+    if (serve) {
         mainWindow.webContents.openDevTools();
     }
 
+    mainWindow.setMenu(null);
+
+    // Emitted when the window is closed.
     mainWindow.on("closed", () => {
+        // Dereference the window object, usually you would store window
+        // in an array if your app supports multi windows, this is the time
+        // when you should delete the corresponding element.
         mainWindow = null;
     });
 }
 
-app.on("ready", () => {
-    let screenSize = electron.screen.getPrimaryDisplay().bounds;
+try {
+    // This method will be called when Electron has finished
+    // initialization and is ready to create browser windows.
+    // Some APIs can only be used after this event occurs.
+    app.on('ready', createMainWindow);
 
-    createMainWindow(screenSize);
-});
+    // Quit when all windows are closed.
+    app.on('window-all-closed', () => {
+        // On OS X it is common for applications and their menu bar
+        // to stay active until the user quits explicitly with Cmd + Q
+        if (process.platform !== 'darwin') {
+            app.quit();
+        }
+    });
 
-app.on("window-all-closed", () => {
-    if (process.platform !== "darwin") {
-        app.quit();
-    }
-});
+    app.on('activate', () => {
+        // On OS X it's common to re-create a window in the app when the
+        // dock icon is clicked and there are no other windows open.
+        if (mainWindow === null) {
+            createMainWindow();
+        }
+    });
 
-// Share process arguments
-global.arguments = process.argv;
-
-require("./main/update");
+} catch (error) {
+    // Catch Error
+    throw error;
+}
 
