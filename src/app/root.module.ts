@@ -37,7 +37,7 @@ import {MapComponent} from './modules/application/components/map/map.component'
 import {SidenavComponent} from './modules/application/components/sidenav/sidenav.component'
 import {FooterComponent} from './modules/application/components/footer/footer.component'
 
-export function HttpLoaderFactory (http: HttpClient) {
+export function createTranslateLoader (http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json')
 }
 
@@ -67,14 +67,13 @@ export function HttpLoaderFactory (http: HttpClient) {
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
+                useFactory: (createTranslateLoader),
                 deps: [HttpClient]
             }
-        })
+        }),
     ],
     declarations: [
         RootComponent,
-        ApplicationComponent,
         ApplicationComponent,
         ToolbarComponent,
         SlidersPanelComponent,

@@ -1,20 +1,20 @@
 <div class="sliders-panel">
-    <mat-slider *ngIf="node.font" class="font-size"
-                min="15" max="70"
+    <mat-slider (change)="updateNodeFontSize($event)" (input)="updateNodeFontSize($event, true)"
+                *ngIf="node.font" [title]="'TOOLTIPS.TEXT_SIZE' | translate"
                 [value]="node.font.size"
-                (change)="updateNodeFontSize($event)"
-                (input)="updateNodeFontSize($event, true)"
-                [title]="'TOOLTIPS.TEXT_SIZE' | translate"
+                class="font-size"
                 color="primary"
+                max="70"
+                min="15"
                 vertical>
     </mat-slider>
-    <mat-slider *ngIf="node.image && node.image.src" class="image-size"
-                min="50" max="150"
+    <mat-slider (change)="updateNodeImageSize($event)" (input)="updateNodeImageSize($event, true)"
+                *ngIf="node.image && node.image.src" [title]="'TOOLTIPS.IMAGE_SIZE' | translate"
                 [value]="node.image.size"
-                (change)="updateNodeImageSize($event)"
-                (input)="updateNodeImageSize($event, true)"
-                [title]="'TOOLTIPS.IMAGE_SIZE' | translate"
+                class="image-size"
                 color="primary"
+                max="150"
+                min="50"
                 vertical>
     </mat-slider>
 </div>

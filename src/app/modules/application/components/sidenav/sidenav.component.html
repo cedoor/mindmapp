@@ -1,7 +1,7 @@
 <div class="sidenav">
     <mat-toolbar>
-        <button (click)="sidenav.close()" class="close-menu"
-                color="primary" [title]="'TOOLTIPS.CLOSE_MENU' | translate"
+        <button (click)="sidenav.close()" [title]="'TOOLTIPS.CLOSE_MENU' | translate"
+                class="close-menu" color="primary"
                 mat-icon-button>
             <mat-icon>arrow_forward</mat-icon>
         </button>
@@ -21,15 +21,15 @@
                 </button>
 
                 <mat-menu #export="matMenu">
-                    <button mat-menu-item (click)="dialogService.exportImage('png')">
+                    <button (click)="dialogService.exportImage('png')" mat-menu-item>
                         <mat-icon>image</mat-icon>
                         <span>{{ "PNG" | translate }}</span>
                     </button>
-                    <button mat-menu-item (click)="dialogService.exportImage('jpeg')">
+                    <button (click)="dialogService.exportImage('jpeg')" mat-menu-item>
                         <mat-icon>image</mat-icon>
                         <span>{{ "JPG" | translate }}</span>
                     </button>
-                    <button mat-menu-item (click)="dialogService.exportPDF()">
+                    <button (click)="dialogService.exportPDF()" mat-menu-item>
                         <mat-icon>picture_as_pdf</mat-icon>
                         <span>{{ "PDF" | translate }}</span>
                     </button>
@@ -38,8 +38,8 @@
 
             <mat-divider></mat-divider>
 
-            <mat-list-item *ngIf="platform !== 'darwin'"
-                           (click)="dialogService.openMatDialog('shortcuts')" class="open-shortcuts">
+            <mat-list-item (click)="dialogService.openMatDialog('shortcuts')"
+                           *ngIf="platform !== 'darwin'" class="open-shortcuts">
                 <span matLine>{{ "SHORTCUTS_TITLE" | translate }}</span>
                 <button color="primary" mat-icon-button>
                     <mat-icon>timeline</mat-icon>

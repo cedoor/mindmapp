@@ -1,78 +1,78 @@
 <div class="toolbar">
     <mat-toolbar>
-        <button (click)="dialogService.newMap()" class="new-map"
-                color="primary" [title]="'TOOLTIPS.NEW_MAP' | translate"
+        <button (click)="dialogService.newMap()" [title]="'TOOLTIPS.NEW_MAP' | translate"
+                class="new-map" color="primary"
                 mat-icon-button>
             <mat-icon>note_add</mat-icon>
         </button>
-        <button (click)="dialogService.openMap()" class="open-map"
-                color="primary" [title]="'TOOLTIPS.OPEN_MAP' | translate"
+        <button (click)="dialogService.openMap()" [title]="'TOOLTIPS.OPEN_MAP' | translate"
+                class="open-map" color="primary"
                 mat-icon-button>
             <mat-icon>folder_open</mat-icon>
         </button>
-        <button (click)="dialogService.saveMap()" class="save-map"
-                [disabled]="savingStatus.saved || savingStatus.initial"
-                color="primary" [title]="'TOOLTIPS.SAVE_MAP' | translate"
+        <button (click)="dialogService.saveMap()" [disabled]="savingStatus.saved || savingStatus.initial"
+                [title]="'TOOLTIPS.SAVE_MAP' | translate"
+                class="save-map" color="primary"
                 mat-icon-button>
             <mat-icon>save</mat-icon>
         </button>
 
         <div class="vertical-line"></div>
 
-        <button (click)="mmpService.copyNode()" class="copy-node"
-                color="primary" [title]="'TOOLTIPS.COPY_NODE' | translate"
+        <button (click)="mmpService.copyNode()" [title]="'TOOLTIPS.COPY_NODE' | translate"
+                class="copy-node" color="primary"
                 mat-icon-button>
             <mat-icon>content_copy</mat-icon>
         </button>
-        <button (click)="mmpService.cutNode()" class="cut-node"
-                color="primary" [title]="'TOOLTIPS.CUT_NODE' | translate"
+        <button (click)="mmpService.cutNode()" [title]="'TOOLTIPS.CUT_NODE' | translate"
+                class="cut-node" color="primary"
                 mat-icon-button>
             <mat-icon>content_cut</mat-icon>
         </button>
-        <button (click)="mmpService.pasteNode()" class="paste-node"
-                color="primary" [title]="'TOOLTIPS.PASTE_NODE' | translate"
+        <button (click)="mmpService.pasteNode()" [title]="'TOOLTIPS.PASTE_NODE' | translate"
+                class="paste-node" color="primary"
                 mat-icon-button>
             <mat-icon>content_paste</mat-icon>
         </button>
 
         <div class="vertical-line"></div>
 
-        <button (click)="mmpService.updateNode('locked')" class="lock-node"
-                color="primary" [title]="'TOOLTIPS.LOCK_NODE' | translate"
+        <button (click)="mmpService.updateNode('locked')" [title]="'TOOLTIPS.LOCK_NODE' | translate"
+                class="lock-node" color="primary"
                 mat-icon-button>
             <mat-icon>{{ node?.locked ? "lock_outline" : "lock_open" }}</mat-icon>
         </button>
-        <button (click)="dialogService.addNodeImage()" class="image"
-                color="primary" [title]="'TOOLTIPS.NODE_IMAGE' | translate"
+        <button (click)="dialogService.addNodeImage()" [title]="'TOOLTIPS.NODE_IMAGE' | translate"
+                class="image" color="primary"
                 mat-icon-button>
             <mat-icon>{{ node?.image?.src ? "broken_image" : "image" }}</mat-icon>
         </button>
 
         <div class="vertical-line"></div>
 
-        <button (click)="toogleNodeFontWeight()" class="bold"
-                color="primary" [title]="'TOOLTIPS.BOLD_TEXT' | translate"
+        <button (click)="toogleNodeFontWeight()" [title]="'TOOLTIPS.BOLD_TEXT' | translate"
+                class="bold" color="primary"
                 mat-icon-button>
             <mat-icon>format_bold</mat-icon>
         </button>
-        <button (click)="toogleNodeFontStyle()" class="italic"
-                color="primary" [title]="'TOOLTIPS.ITALIC_TEXT' | translate"
+        <button (click)="toogleNodeFontStyle()" [title]="'TOOLTIPS.ITALIC_TEXT' | translate"
+                class="italic" color="primary"
                 mat-icon-button>
             <mat-icon>format_italic</mat-icon>
         </button>
 
         <span class="toolbar-spacer"></span>
 
-        <button (click)="utilsService.toggleFullScreen()" class="fullscreen"
-                color="primary" [title]="'TOOLTIPS.FULLSCREEN' | translate"
+        <button (click)="utilsService.toggleFullScreen()" [title]="'TOOLTIPS.FULLSCREEN' | translate"
+                class="fullscreen" color="primary"
                 mat-icon-button>
             <mat-icon>fullscreen</mat-icon>
         </button>
 
         <div class="vertical-line"></div>
 
-        <button (click)="sidenav.open()" class="open-menu"
-                color="primary" [title]="'TOOLTIPS.OPEN_MENU' | translate"
+        <button (click)="sidenav.open()" [title]="'TOOLTIPS.OPEN_MENU' | translate"
+                class="open-menu" color="primary"
                 mat-icon-button>
             <mat-icon>menu</mat-icon>
         </button>

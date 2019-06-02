@@ -2,38 +2,38 @@
     <div #background class="background"></div>
 
     <div class="panel">
-        <input class="background-color"
+        <input (colorPickerChange)="colorPickerChange('backgroundColor', $event)"
                (cpToggleChange)="colorPickerToggleChange($event, 'backgroundColor', node.colors.background)"
-               (colorPickerChange)="colorPickerChange('backgroundColor', $event)"
                [(colorPicker)]="node.colors.background"
-               [cpPresetLabel]="''"
                [cpPositionOffset]="'-500%'"
                [cpPresetColors]="options.presetColors"
+               [cpPresetLabel]="''"
                [cpWidth]="options.width"
                [style.background]="node.colors.background"
                [title]="'TOOLTIPS.NODE_COLOR' | translate"
+               class="background-color"
                cpPosition="left"/>
-        <input class="text-color"
+        <input (colorPickerChange)="colorPickerChange('nameColor', $event)"
                (cpToggleChange)="colorPickerToggleChange($event, 'nameColor', node.colors.name)"
-               (colorPickerChange)="colorPickerChange('nameColor', $event)"
                [(colorPicker)]="node.colors.name"
-               [cpPresetLabel]="''"
                [cpPositionOffset]="'-500%'"
                [cpPresetColors]="options.presetColors"
+               [cpPresetLabel]="''"
                [cpWidth]="options.width"
                [style.background]="node.colors.name"
                [title]="'TOOLTIPS.TEXT_COLOR' | translate"
+               class="text-color"
                cpPosition="left"/>
-        <input *ngIf="node.colors.branch" class="branch-color"
-               (cpToggleChange)="colorPickerToggleChange($event, 'branchColor', node.colors.branch)"
-               (colorPickerChange)="colorPickerChange('branchColor', $event)"
+        <input (colorPickerChange)="colorPickerChange('branchColor', $event)" (cpToggleChange)="colorPickerToggleChange($event, 'branchColor', node.colors.branch)"
+               *ngIf="node.colors.branch"
                [(colorPicker)]="node.colors.branch"
-               [cpPresetLabel]="''"
                [cpPositionOffset]="'-500%'"
                [cpPresetColors]="options.presetColors"
+               [cpPresetLabel]="''"
                [cpWidth]="options.width"
                [style.background]="node.colors.branch"
                [title]="'TOOLTIPS.BRANCH_COLOR' | translate"
+               class="branch-color"
                cpPosition="left"/>
     </div>
 </div>

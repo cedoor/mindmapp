@@ -1,40 +1,40 @@
 <div class="floating-buttons">
-    <button (click)="mmpService.addNode()" class="add-node"
-            [title]="'TOOLTIPS.ADD_NODE' | translate"
+    <button (click)="mmpService.addNode()" [title]="'TOOLTIPS.ADD_NODE' | translate"
+            class="add-node"
             mat-mini-fab>
-        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">add</mat-icon>
+        <mat-icon aria-label="Example icon-button with a heart icon" color="primary">add</mat-icon>
     </button>
-    <button (click)="mmpService.removeNode()" class="remove-node"
-            [title]="'TOOLTIPS.REMOVE_NODE' | translate"
+    <button (click)="mmpService.removeNode()" [title]="'TOOLTIPS.REMOVE_NODE' | translate"
+            class="remove-node"
             mat-mini-fab>
-        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">remove</mat-icon>
-    </button>
-
-    <button (click)="mmpService.zoomIn()" class="zoom-in"
-            [title]="'TOOLTIPS.ZOOM_IN_MAP' | translate"
-            mat-mini-fab>
-        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">zoom_in</mat-icon>
-    </button>
-    <button (click)="mmpService.zoomOut()" class="zoom-out"
-            [title]="'TOOLTIPS.ZOOM_OUT_MAP' | translate"
-            mat-mini-fab>
-        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">zoom_out</mat-icon>
+        <mat-icon aria-label="Example icon-button with a heart icon" color="primary">remove</mat-icon>
     </button>
 
-    <button (click)="mmpService.center()" class="center"
-            [title]="'TOOLTIPS.CENTER_MAP' | translate"
+    <button (click)="mmpService.zoomIn()" [title]="'TOOLTIPS.ZOOM_IN_MAP' | translate"
+            class="zoom-in"
             mat-mini-fab>
-        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">center_focus_weak</mat-icon>
+        <mat-icon aria-label="Example icon-button with a heart icon" color="primary">zoom_in</mat-icon>
+    </button>
+    <button (click)="mmpService.zoomOut()" [title]="'TOOLTIPS.ZOOM_OUT_MAP' | translate"
+            class="zoom-out"
+            mat-mini-fab>
+        <mat-icon aria-label="Example icon-button with a heart icon" color="primary">zoom_out</mat-icon>
     </button>
 
-    <button (click)="mmpService.undo()" class="undo"
-            [title]="'TOOLTIPS.UNDO_MAP' | translate"
+    <button (click)="mmpService.center()" [title]="'TOOLTIPS.CENTER_MAP' | translate"
+            class="center"
             mat-mini-fab>
-        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">undo</mat-icon>
+        <mat-icon aria-label="Example icon-button with a heart icon" color="primary">center_focus_weak</mat-icon>
     </button>
-    <button (click)="mmpService.redo()" class="redo"
-            [title]="'TOOLTIPS.REDO_MAP' | translate"
+
+    <button (click)="mmpService.undo()" [title]="'TOOLTIPS.UNDO_MAP' | translate"
+            class="undo"
             mat-mini-fab>
-        <mat-icon color="primary" aria-label="Example icon-button with a heart icon">redo</mat-icon>
+        <mat-icon aria-label="Example icon-button with a heart icon" color="primary">undo</mat-icon>
+    </button>
+    <button (click)="mmpService.redo()" [title]="'TOOLTIPS.REDO_MAP' | translate"
+            class="redo"
+            mat-mini-fab>
+        <mat-icon aria-label="Example icon-button with a heart icon" color="primary">redo</mat-icon>
     </button>
 </div>

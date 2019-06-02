@@ -39,31 +39,31 @@
                         <hr>
                         <mat-card-content>
                             <mat-slide-toggle
-                                color="primary"
                                 (change)="setMapOptions()"
+                                [(ngModel)]="settings.mapOptions.centerOnResize"
                                 [title]="'TOOLTIPS.CENTER_ON_RESIZING' | translate"
-                                [(ngModel)]="settings.mapOptions.centerOnResize">
+                                color="primary">
                                 {{ "CENTER_ON_RESIZING" | translate }}
                             </mat-slide-toggle>
                             <mat-slide-toggle
-                                color="primary"
                                 (change)="setMapOptions()"
+                                [(ngModel)]="settings.mapOptions.drag"
                                 [title]="'TOOLTIPS.NODE_DRAGGING' | translate"
-                                [(ngModel)]="settings.mapOptions.drag">
+                                color="primary">
                                 {{ "NODE_DRAGGING" | translate }}
                             </mat-slide-toggle>
                             <mat-slide-toggle
-                                color="primary"
                                 (change)="setMapOptions()"
+                                [(ngModel)]="settings.mapOptions.zoom"
                                 [title]="'TOOLTIPS.MAP_ZOOM' | translate"
-                                [(ngModel)]="settings.mapOptions.zoom">
+                                color="primary">
                                 {{ "MAP_ZOOM" | translate }}
                             </mat-slide-toggle>
                             <mat-slide-toggle
-                                color="primary"
                                 (change)="setMapOptions()"
+                                [(ngModel)]="settings.mapOptions.autoBranchColors"
                                 [title]="'TOOLTIPS.AUTO_BRANCH_COLORS' | translate"
-                                [(ngModel)]="settings.mapOptions.autoBranchColors">
+                                color="primary">
                                 {{ "AUTO_BRANCH_COLORS" | translate }}
                             </mat-slide-toggle>
                         </mat-card-content>
@@ -75,16 +75,16 @@
                         <hr>
                         <mat-card-content>
                             <mat-form-field>
-                                <input matInput (change)="setMapOptions()"
-                                       [placeholder]="'ROOT_NODE_NAME' | translate" name="rootNodeName"
-                                       [title]="'TOOLTIPS.ROOT_NODE_NAME_INPUT' | translate"
-                                       [(ngModel)]="settings.mapOptions.rootNode.name">
+                                <input (change)="setMapOptions()" [(ngModel)]="settings.mapOptions.rootNode.name"
+                                       [placeholder]="'ROOT_NODE_NAME' | translate" [title]="'TOOLTIPS.ROOT_NODE_NAME_INPUT' | translate"
+                                       matInput
+                                       name="rootNodeName">
                             </mat-form-field>
                             <mat-form-field>
-                                <input matInput (change)="setMapOptions()"
-                                       [placeholder]="'NODE_NAME' | translate" name="defaultNodeName"
-                                       [title]="'TOOLTIPS.NODE_NAME_INPUT' | translate"
-                                       [(ngModel)]="settings.mapOptions.defaultNode.name">
+                                <input (change)="setMapOptions()" [(ngModel)]="settings.mapOptions.defaultNode.name"
+                                       [placeholder]="'NODE_NAME' | translate" [title]="'TOOLTIPS.NODE_NAME_INPUT' | translate"
+                                       matInput
+                                       name="defaultNodeName">
                             </mat-form-field>
                         </mat-card-content>
                     </mat-card>
