@@ -38,8 +38,7 @@
 
             <mat-divider></mat-divider>
 
-            <mat-list-item (click)="dialogService.openMatDialog('shortcuts')"
-                           *ngIf="platform !== 'darwin'" class="open-shortcuts">
+            <mat-list-item (click)="dialogService.openMatDialog('shortcuts')" class="open-shortcuts">
                 <span matLine>{{ "SHORTCUTS_TITLE" | translate }}</span>
                 <button color="primary" mat-icon-button>
                     <mat-icon>timeline</mat-icon>

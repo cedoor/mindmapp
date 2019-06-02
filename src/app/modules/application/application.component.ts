@@ -38,8 +38,11 @@ export class ApplicationComponent implements OnInit {
                  private updateService: UpdateService,
                  private settingsService: SettingsService,
                  private fileService: FileService) {
-        this.arguments = window.require('electron').remote.getGlobal('arguments')
-        this.fs = window.require('fs')
+        if (window.require) {
+            this.arguments = window.require('electron').remote.getGlobal('arguments')
+            this.fs = window.require('fs')
+        }
+
         this.node = {}
     }
 
@@ -56,7 +59,7 @@ export class ApplicationComponent implements OnInit {
         this.updateService.createUpdateListener()
 
         // If there are arguments with the path of a mind map load it.
-        if (this.arguments[1] && environment.production) {
+        if (this.arguments && this.arguments[1] && environment.production) {
             const path = this.arguments[1]
             const data = this.fs.readFileSync(path).toString()
 

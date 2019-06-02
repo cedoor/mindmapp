@@ -20,14 +20,6 @@ export class RootComponent {
         this.init()
     }
 
-    ngAfterViewInit () {
-        const appRootRef = this.myElement
-
-        setTimeout(() => {
-            appRootRef.nativeElement.previousElementSibling.remove()
-        }, 800)
-    }
-
     private async init () {
         const settings = await this.settingsService.init()
         const translations = await this.initTranslations(settings.general.language)

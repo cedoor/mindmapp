@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
+import * as packageInformations from '../../../../package.json'
 
 @Injectable({
     providedIn: 'root'
@@ -13,15 +14,15 @@ export class UtilsService {
     }
 
     constructor (private http: HttpClient) {
-        this.remote = window.require('electron').remote
+        if (window.require) {
+            this.remote = window.require('electron').remote
+        }
 
         this.serviceCache = {
             packageInformations: false
         }
 
-        this.getPackageInformations().then((packageInformations: any) => {
-            this.serviceCache.packageInformations = packageInformations
-        })
+        this.serviceCache.packageInformations = packageInformations
     }
 
     /**
@@ -36,22 +37,6 @@ export class UtilsService {
             return false
         }
         return true
-    }
-
-    /**
-     * Return the json of package.json.
-     * @returns {Promise<any>}
-     */
-    public getPackageInformations (): Promise<any> {
-        if (this.serviceCache.packageInformations) {
-            return Promise.resolve(this.serviceCache.packageInformations)
-        } else {
-            return this.http.get('../package.json').toPromise().then((packageInformations: any) => {
-                this.serviceCache.packageInformations = packageInformations
-
-                return packageInformations
-            })
-        }
     }
 
     /**

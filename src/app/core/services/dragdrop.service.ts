@@ -17,7 +17,9 @@ export class DragDropService {
                  private mmpService: MmpService,
                  private fileService: FileService,
                  private dialogService: DialogService) {
-        this.fs = window.require('fs')
+        if (window.require) {
+            this.fs = window.require('fs')
+        }
     }
 
     /**

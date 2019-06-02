@@ -14,7 +14,9 @@ export class UpdateService {
 
     constructor (private translateService: TranslateService,
                  private dialogService: DialogService) {
-        this.ipcRenderer = window.require('electron').ipcRenderer
+        if (window.require) {
+            this.ipcRenderer = window.require('electron').ipcRenderer
+        }
 
         this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
             this.translations = event.translations
@@ -22,29 +24,31 @@ export class UpdateService {
     }
 
     public createUpdateListener () {
-        this.ipcRenderer.send('check-updates')
+        if (window.require) {
+            this.ipcRenderer.send('check-updates')
 
-        this.ipcRenderer.once('update-available', () => {
-            this.ipcRenderer.send('show-update-available-dialog', {
-                type: 'question',
-                title: this.translations['UPDATES_FOUND_TITLE'],
-                message: this.translations['UPDATES_FOUND_MESSAGE'],
-                buttons: [this.translations['YES'], this.translations['NO']]
-            })
-        })
-
-        this.ipcRenderer.once('update-downloaded', () => {
-            this.dialogService.showMapPreSavingMessage().then(() => {
-                this.dialogService.setForceQuit()
-
-                this.ipcRenderer.send('show-update-downloaded-dialog', {
-                    type: 'info',
-                    title: this.translations['INSTALL_UPDATES_TITLE'],
-                    message: this.translations['INSTALL_UPDATES_MESSAGE'],
-                    buttons: [this.translations['OK'], this.translations['LATER']]
+            this.ipcRenderer.once('update-available', () => {
+                this.ipcRenderer.send('show-update-available-dialog', {
+                    type: 'question',
+                    title: this.translations['UPDATES_FOUND_TITLE'],
+                    message: this.translations['UPDATES_FOUND_MESSAGE'],
+                    buttons: [this.translations['YES'], this.translations['NO']]
                 })
             })
-        })
+
+            this.ipcRenderer.once('update-downloaded', () => {
+                this.dialogService.showMapPreSavingMessage().then(() => {
+                    this.dialogService.setForceQuit()
+
+                    this.ipcRenderer.send('show-update-downloaded-dialog', {
+                        type: 'info',
+                        title: this.translations['INSTALL_UPDATES_TITLE'],
+                        message: this.translations['INSTALL_UPDATES_MESSAGE'],
+                        buttons: [this.translations['OK'], this.translations['LATER']]
+                    })
+                })
+            })
+        }
     }
 
 }

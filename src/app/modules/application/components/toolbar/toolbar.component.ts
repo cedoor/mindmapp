@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core'
 import {MmpService} from '../../../../core/services/mmp.service'
 import {FileService} from '../../../../core/services/file.service'
 import {UtilsService} from '../../../../core/services/utils.service'
-import {MatSidenav} from '@angular/material'
+import {MatSidenav} from '@angular/material/sidenav'
 import {DialogService} from '../../../../core/services/dialog.service'
 
 @Component({

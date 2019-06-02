@@ -3,22 +3,20 @@ import {NgModule} from '@angular/core'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {RootComponent} from './root.component'
 import {AppRoutingModule} from './app-routing.module'
-import {
-    MatButtonModule,
-    MatCardModule,
-    MatDialogModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatTabsModule,
-    MatToolbarModule
-} from '@angular/material'
+import {MatButtonModule} from '@angular/material/button'
+import {MatCardModule} from '@angular/material/card'
+import {MatDialogModule} from '@angular/material/dialog'
+import {MatIconModule} from '@angular/material/icon'
+import {MatInputModule} from '@angular/material/input'
+import {MatListModule} from '@angular/material/list'
+import {MatMenuModule} from '@angular/material/menu'
+import {MatSelectModule} from '@angular/material/select'
+import {MatSidenavModule} from '@angular/material/sidenav'
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'
+import {MatSliderModule} from '@angular/material/slider'
+import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {MatTabsModule} from '@angular/material/tabs'
+import {MatToolbarModule} from '@angular/material/toolbar'
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core'
 import {HttpClient, HttpClientModule} from '@angular/common/http'
 import {TranslateHttpLoader} from '@ngx-translate/http-loader'

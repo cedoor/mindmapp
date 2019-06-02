@@ -3,86 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Mindmapp</title>
     <base href="./">
     <meta content="width=device-width, initial-scale=1" name="viewport">
 </head>
-<style>
-    div#preview {
-        color: dimgray;
-        position: absolute;
-        text-align: center;
-        width: 400px;
-        left: 50%;
-        top: 50%;
-        margin-top: -53px;
-        margin-left: -200px;
-    }
-
-    div#preview > img#app-logo,
-    div#preview > span#app-name {
-        vertical-align: middle;
-    }
-
-    div#preview > span#app-name {
-        position: relative;
-        font-size: 35px;
-        margin-left: 10px;
-    }
-
-    div#preview > span#app-version {
-        position: relative;
-        top: 10px;
-        font-size: 15px;
-        margin-left: 5px;
-    }
-
-    div#preview > div#footer {
-        margin-top: 20px;
-    }
-</style>
-<div id="preview" style="">
-    <img id="app-logo">
-    <span id="app-name"></span>
-    <span id="app-version"></span>
-    <div id="footer">
-        <span id="app-license"></span>
-    </div>
-</div>
 <body>
 <mindmapp-root></mindmapp-root>
 </body>
-<script>
-    function readTextFile(file, callback) {
-        let rawFile = new XMLHttpRequest();
-
-        rawFile.overrideMimeType("application/json");
-        rawFile.open("GET", file, true);
-
-        rawFile.onreadystatechange = function () {
-            if (rawFile.readyState === 4 && rawFile.status === 200) {
-                callback(rawFile.responseText);
-            }
-        };
-
-        rawFile.send(null);
-    }
-
-    const title = document.getElementsByTagName("title")[0];
-    const name = document.getElementById("app-name");
-    const version = document.getElementById("app-version");
-    const logo = document.getElementById("app-logo");
-    const license = document.getElementById("app-license");
-
-    readTextFile("../package.json", function (text) {
-        let data = JSON.parse(text),
-            currentYear = new Date().getFullYear();
-
-        title.innerText = data.name;
-        name.innerText = data.name;
-        version.innerText = data.version;
-        logo.src = "../resources/icons/64x64.png";
-        license.innerText = `Copyright (c) ${currentYear} ${data.author.name}`;
-    });
-</script>
 </html>

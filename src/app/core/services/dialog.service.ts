@@ -2,7 +2,7 @@ import {Injectable, NgZone} from '@angular/core'
 import {IPFSService} from './ipfs.service'
 import {MmpService} from './mmp.service'
 import {SettingsComponent} from '../../shared/components/settings/settings.component'
-import {MatDialog} from '@angular/material'
+import {MatDialog} from '@angular/material/dialog'
 import {MatDialogRef} from '@angular/material/dialog/typings/dialog-ref'
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core'
 import {AboutComponent} from '../../shared/components/about/about.component'
@@ -33,8 +33,10 @@ export class DialogService {
                  private matDialog: MatDialog,
                  private mmpService: MmpService,
                  private fileService: FileService) {
-        this.remote = window.require('electron').remote
-        this.fs = window.require('fs')
+        if (window.require) {
+            this.remote = window.require('electron').remote
+            this.fs = window.require('fs')
+        }
 
         this.matDialogRefs = new Map()
 

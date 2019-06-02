@@ -20,7 +20,10 @@ export class FileService {
     private mapFileWatcher: FSWatcher
 
     constructor (private mmpService: MmpService) {
-        this.fs = window.require('fs')
+        if (window.require) {
+            this.fs = window.require('fs')
+        }
+
         this.savingStatus = {
             saved: false,
             initial: true,
