@@ -35,10 +35,6 @@
         "lint": "ng lint",
         "e2e": "ng e2e"
     },
-    "dependencies": {
-        "electron-log": "^3.0.6",
-        "electron-updater": "^4.0.6"
-    },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.800.0",
         "@angular-devkit/schematics": "^7.3.9",

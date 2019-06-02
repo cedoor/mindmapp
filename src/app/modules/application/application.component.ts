@@ -35,7 +35,6 @@ export class ApplicationComponent implements OnInit {
     constructor (private dialogService: DialogService,
                  private dragDropService: DragDropService,
                  private mmpService: MmpService,
-                 private updateService: UpdateService,
                  private settingsService: SettingsService,
                  private fileService: FileService) {
         if (window.require) {
@@ -56,7 +55,6 @@ export class ApplicationComponent implements OnInit {
         this.createMapListeners()
         this.dialogService.createQuitListener()
         this.dragDropService.createDragAndDropListener()
-        this.updateService.createUpdateListener()
 
         // If there are arguments with the path of a mind map load it.
         if (this.arguments && this.arguments[1] && environment.production) {
