@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core'
-import {UtilsService} from '../../../core/services/utils.service'
-import * as packageInformations from '../../../../../package.json'
+import {UtilsService} from '../../../../core/services/utils.service'
+import * as packageInformations from '../../../../../../package.json'
 
 @Component({
     selector: 'mindmapp-about',

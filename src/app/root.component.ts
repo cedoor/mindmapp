@@ -1,15 +1,19 @@
-import {Component, ElementRef} from '@angular/core'
+import {Component, ElementRef, ViewChild} from '@angular/core'
 import {ShortcutsService} from './core/services/shortcuts.service'
 import {TranslateService} from '@ngx-translate/core'
 import {SettingsService} from './core/services/settings.service'
 import {NotificationsService} from './core/services/notifications.service'
+import {RouterOutlet} from '@angular/router'
+import {slideInAnimation} from './shared/animations/slide-in.animation'
 
 @Component({
     selector: 'mindmapp-root',
-    template: '<router-outlet *ngIf="initialized"></router-outlet>'
+    templateUrl: 'root.component.html',
+    animations: [slideInAnimation]
 })
 export class RootComponent {
 
+    @ViewChild('outlet', {static: false}) public outlet: RouterOutlet
     public initialized: boolean
 
     constructor (private myElement: ElementRef,

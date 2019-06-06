@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core'
-import {Settings} from '../../models/settings'
-import {SettingsService} from '../../../core/services/settings.service'
-import {MmpService} from '../../../core/services/mmp.service'
+import {Settings} from '../../../../shared/models/settings'
+import {SettingsService} from '../../../../core/services/settings.service'
+import {MmpService} from '../../../../core/services/mmp.service'
 import {TranslateService} from '@ngx-translate/core'
-import {IPFSService} from '../../../core/services/ipfs.service'
+import {IPFSService} from '../../../../core/services/ipfs.service'
 
 @Component({
     selector: 'mindmapp-settings',

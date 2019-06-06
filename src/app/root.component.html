@@ -1,0 +1,5 @@
+<main *ngIf="initialized"
+      style="height: 100%"
+      [@routeAnimations]="outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation">
+    <router-outlet #outlet="outlet"></router-outlet>
+</main>
