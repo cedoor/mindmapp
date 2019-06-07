@@ -1,16 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core'
-import {MmpService} from '../../../../core/services/mmp.service'
-import {FileService} from '../../../../core/services/file.service'
-import {UtilsService} from '../../../../core/services/utils.service'
+import {MmpService} from '../services/mmp.service'
+import {FileService} from '../services/file.service'
+import {UtilsService} from '../services/utils.service'
 import {MatSidenav} from '@angular/material/sidenav'
-import {DialogService} from '../../../../core/services/dialog.service'
+import {DialogService} from '../services/dialog.service'
 
 @Component({
-    selector: 'mindmapp-toolbar',
-    templateUrl: './toolbar.component.html',
-    styleUrls: ['./toolbar.component.scss']
+    selector: 'mindmapp-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
     @Input() public node: any
     @Input() public sidenav: MatSidenav

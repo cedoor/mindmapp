@@ -1,16 +1,7 @@
-<mat-sidenav-container>
-    <mat-sidenav #sidenav mode="side" position="end">
-        <mindmapp-sidenav [sidenav]="sidenav"></mindmapp-sidenav>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <mindmapp-toolbar [node]="node" [sidenav]="sidenav"></mindmapp-toolbar>
+<mindmapp-colors-panel [node]="node"></mindmapp-colors-panel>
+<mindmapp-sliders-panel [node]="node"></mindmapp-sliders-panel>
+<mindmapp-floating-buttons></mindmapp-floating-buttons>
 
-        <mindmapp-colors-panel [node]="node"></mindmapp-colors-panel>
-        <mindmapp-sliders-panel [node]="node"></mindmapp-sliders-panel>
-        <mindmapp-floating-buttons></mindmapp-floating-buttons>
+<mindmapp-map></mindmapp-map>
 
-        <mindmapp-map></mindmapp-map>
-
-        <mindmapp-footer></mindmapp-footer>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<mindmapp-footer></mindmapp-footer>

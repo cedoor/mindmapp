@@ -9,6 +9,7 @@ import {routeAnimation} from './shared/animations/route.animation'
 @Component({
     selector: 'mindmapp-root',
     templateUrl: 'root.component.html',
+    styleUrls: ['./root.component.scss'],
     animations: [routeAnimation]
 })
 export class RootComponent {

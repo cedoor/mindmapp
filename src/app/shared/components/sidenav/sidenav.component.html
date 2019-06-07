@@ -1,11 +1,4 @@
 <div class="sidenav">
-    <mat-toolbar>
-        <button (click)="sidenav.close()" [title]="'TOOLTIPS.CLOSE_MENU' | translate"
-                class="close-menu" color="primary"
-                mat-icon-button>
-            <mat-icon>arrow_forward</mat-icon>
-        </button>
-    </mat-toolbar>
     <div class="sidenav-content">
         <mat-nav-list>
             <mat-list-item (click)="dialogService.saveMap(true)" class="save-map-with-name">
@@ -38,19 +31,19 @@
 
             <mat-divider></mat-divider>
 
-            <mat-list-item routerLink="/shortcuts" class="open-shortcuts">
+            <mat-list-item (click)="sidenav.close()" routerLink="/shortcuts" class="open-shortcuts">
                 <span matLine>{{ "SHORTCUTS_TITLE" | translate }}</span>
                 <button color="primary" mat-icon-button>
                     <mat-icon>timeline</mat-icon>
                 </button>
             </mat-list-item>
-            <mat-list-item routerLink="/settings" class="open-settings">
+            <mat-list-item (click)="sidenav.close()" routerLink="/settings" class="open-settings">
                 <span matLine>{{ "SETTINGS_TITLE" | translate }}</span>
                 <button color="primary" mat-icon-button>
                     <mat-icon>settings</mat-icon>
                 </button>
             </mat-list-item>
-            <mat-list-item routerLink="/about" class="open-about">
+            <mat-list-item (click)="sidenav.close()" routerLink="/about" class="open-about">
                 <span matLine>{{ "ABOUT_TITLE" | translate }}</span>
                 <button color="primary" mat-icon-button>
                     <mat-icon>info</mat-icon>

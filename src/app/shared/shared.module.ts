@@ -19,9 +19,15 @@ import {
     MatToolbarModule
 } from '@angular/material'
 import {ColorPickerModule} from 'ngx-color-picker'
+import {SidenavComponent} from './components/sidenav/sidenav.component'
+import {RouterModule} from '@angular/router'
 
 @NgModule({
+    declarations: [
+        SidenavComponent
+    ],
     imports: [
+        RouterModule,
         CommonModule,
         FormsModule,
         TranslateModule,
@@ -59,7 +65,8 @@ import {ColorPickerModule} from 'ngx-color-picker'
         MatSliderModule,
         MatSlideToggleModule,
         MatTabsModule,
-        MatToolbarModule
+        MatToolbarModule,
+        SidenavComponent
     ]
 })
 export class SharedModule {
