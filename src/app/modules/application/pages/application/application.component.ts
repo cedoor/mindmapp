@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core'
-import {animate, style, transition, trigger} from '@angular/animations'
 import {environment} from '../../../../../environments/environment'
 import {DialogService} from '../../../../core/services/dialog.service'
 import {DragDropService} from '../../../../core/services/dragdrop.service'
@@ -12,18 +11,7 @@ import * as fs from 'fs'
 @Component({
     selector: 'mindmapp-application',
     templateUrl: './application.component.html',
-    styleUrls: ['./application.component.scss'],
-    animations: [
-        trigger('fadeInOut', [
-            transition(':enter', [
-                style({opacity: 0}),
-                animate(600, style({opacity: 1}))
-            ]),
-            transition(':leave', [
-                animate(600, style({opacity: 0}))
-            ])
-        ])
-    ]
+    styleUrls: ['./application.component.scss']
 })
 export class ApplicationComponent implements OnInit {
 

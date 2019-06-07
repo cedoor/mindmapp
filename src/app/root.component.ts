@@ -4,12 +4,12 @@ import {TranslateService} from '@ngx-translate/core'
 import {SettingsService} from './core/services/settings.service'
 import {NotificationsService} from './core/services/notifications.service'
 import {RouterOutlet} from '@angular/router'
-import {slideInAnimation} from './shared/animations/slide-in.animation'
+import {routeAnimation} from './shared/animations/route.animation'
 
 @Component({
     selector: 'mindmapp-root',
     templateUrl: 'root.component.html',
-    animations: [slideInAnimation]
+    animations: [routeAnimation]
 })
 export class RootComponent {
 
