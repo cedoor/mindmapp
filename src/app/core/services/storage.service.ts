@@ -5,69 +5,85 @@ import {Injectable} from '@angular/core'
 })
 export class StorageService {
 
-    private storage: Storage
+    // The storage used in the service.
+    private readonly storage: Storage
 
+    /**
+     * Initialize the storage service setting the default storage.
+     */
     constructor () {
-        this.storage = localStorage
+        // Use the window local storage.
+        this.storage = window.localStorage
     }
 
-    get (keys: string | string[]): Promise<any | any[]> {
-        return new Promise<any>((resolve) => {
-            if (typeof keys === 'string') {
-                resolve(JSON.parse(this.storage.getItem(keys)))
-            } else {
-                let items = []
-                for (let i = 0, len = this.storage.length; i < len; ++i) {
-                    let key = this.storage.key(i)
-                    if (keys.indexOf(key) !== -1) {
-                        items.push(JSON.parse(this.storage.getItem(this.storage.getItem(key))))
-                    }
-                }
-                resolve(items)
+    /**
+     * Return the value or the values based on the keys passed as parameters.
+     */
+    public async get (keys: string | string[]): Promise<any | any[] | null> {
+        if (typeof keys === 'string') {
+            return JSON.parse(this.storage.getItem(keys))
+        }
+
+        const items: any[] = []
+
+        for (const key of Object.keys(this.storage)) {
+            if (keys.includes(key)) {
+                items.push(await this.get(key))
             }
-        })
+        }
+
+        return items && items.length > 0 ? items : null
     }
 
-    getAll (): Promise<any> {
-        return new Promise<any>((resolve) => {
-            let items = []
-            for (let i = 0, len = this.storage.length; i < len; ++i) {
-                let key = this.storage.key(i)
-                items.push(JSON.parse(this.storage.getItem(this.storage.getItem(key))))
-            }
-            resolve(items)
-        })
+    /**
+     * Return all the saved values of the storage.
+     */
+    public async getAll (): Promise<any[] | null> {
+        const items: any[] = []
+
+        for (const key of Object.keys(this.storage)) {
+            items.push(await this.get(key))
+        }
+
+        return items && items.length > 0 ? items : null
     }
 
-    set (key: string, data: any): Promise<any> {
-        return new Promise<any>((resolve) => {
-            this.storage.setItem(key, JSON.stringify(data))
-            resolve(data)
-        })
+    /**
+     * Save an item in the storage.
+     */
+    public async set (key: string, item: any): Promise<void> {
+        this.storage.setItem(key, JSON.stringify(item))
     }
 
-    remove (key: string): Promise<any> {
-        return new Promise<any>((resolve) => {
-            resolve(this.storage.removeItem(key))
-        })
+    /**
+     * Remove an item from the storage.
+     */
+    public async remove (key: string): Promise<void> {
+        this.storage.removeItem(key)
     }
 
-    exist (key: string): Promise<any> {
-        return new Promise<any>((resolve) => {
-            resolve(!!this.storage.getItem(key))
-        })
+    /**
+     * Check if an item exist in the storage. Return true if it exist, false otherwise.
+     */
+    public async exist (key: string): Promise<boolean> {
+        return !!this.storage.getItem(key)
     }
 
-    clear (): Promise<any> {
-        return new Promise<any>((resolve) => {
-            resolve(this.storage.clear())
-        })
+
+    /**
+     * Remove all the items from the storage.
+     */
+    public async clear (): Promise<void> {
+        this.storage.clear()
     }
 
-    empty (): Promise<any> {
-        return this.getAll().then(data => {
-            return data.length !== 0
-        })
+    /**
+     * Check if there are items in the storage. Return true if there are items, false otherwise.
+     */
+    public async isEmpty (): Promise<boolean> {
+        const items: any[] = await this.getAll()
+
+        return items && items.length > 0
     }
 
 }
