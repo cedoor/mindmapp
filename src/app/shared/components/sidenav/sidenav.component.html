@@ -31,19 +31,19 @@
 
             <mat-divider></mat-divider>
 
-            <mat-list-item (click)="sidenav.close()" routerLink="/shortcuts" class="open-shortcuts">
+            <mat-list-item (click)="sidenav.close()" class="open-shortcuts" routerLink="/shortcuts">
                 <span matLine>{{ "SHORTCUTS_TITLE" | translate }}</span>
                 <button color="primary" mat-icon-button>
                     <mat-icon>timeline</mat-icon>
                 </button>
             </mat-list-item>
-            <mat-list-item (click)="sidenav.close()" routerLink="/settings" class="open-settings">
+            <mat-list-item (click)="sidenav.close()" class="open-settings" routerLink="/settings">
                 <span matLine>{{ "SETTINGS_TITLE" | translate }}</span>
                 <button color="primary" mat-icon-button>
                     <mat-icon>settings</mat-icon>
                 </button>
             </mat-list-item>
-            <mat-list-item (click)="sidenav.close()" routerLink="/about" class="open-about">
+            <mat-list-item (click)="sidenav.close()" class="open-about" routerLink="/about">
                 <span matLine>{{ "ABOUT_TITLE" | translate }}</span>
                 <button color="primary" mat-icon-button>
                     <mat-icon>info</mat-icon>

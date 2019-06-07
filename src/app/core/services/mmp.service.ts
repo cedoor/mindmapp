@@ -59,7 +59,7 @@ export class MmpService {
      * @param options
      */
     public create (id: string, options?: any) {
-        let map = mmp.create(id, options)
+        const map = mmp.create(id, options)
 
         this.maps.set(id, map)
 
@@ -278,7 +278,7 @@ export class MmpService {
      * @param {number} range
      */
     public moveNodeTo (direction: 'left' | 'right' | 'up' | 'down', range: number = 10) {
-        let coordinates = this.currentMap.selectNode().coordinates
+        const coordinates = this.currentMap.selectNode().coordinates
 
         switch (direction) {
             case 'left':

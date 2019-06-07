@@ -1,5 +1,5 @@
 <div class="settings">
-    <button routerLink="/application" class="close-dialog" color="primary" mat-icon-button>
+    <button class="close-dialog" color="primary" mat-icon-button routerLink="/application">
         <mat-icon aria-label="Example icon-button with a heart icon">close</mat-icon>
     </button>
 
@@ -76,13 +76,15 @@
                         <mat-card-content>
                             <mat-form-field>
                                 <input (change)="setMapOptions()" [(ngModel)]="settings.mapOptions.rootNode.name"
-                                       [placeholder]="'ROOT_NODE_NAME' | translate" [title]="'TOOLTIPS.ROOT_NODE_NAME_INPUT' | translate"
+                                       [placeholder]="'ROOT_NODE_NAME' | translate"
+                                       [title]="'TOOLTIPS.ROOT_NODE_NAME_INPUT' | translate"
                                        matInput
                                        name="rootNodeName">
                             </mat-form-field>
                             <mat-form-field>
                                 <input (change)="setMapOptions()" [(ngModel)]="settings.mapOptions.defaultNode.name"
-                                       [placeholder]="'NODE_NAME' | translate" [title]="'TOOLTIPS.NODE_NAME_INPUT' | translate"
+                                       [placeholder]="'NODE_NAME' | translate"
+                                       [title]="'TOOLTIPS.NODE_NAME_INPUT' | translate"
                                        matInput
                                        name="defaultNodeName">
                             </mat-form-field>

@@ -24,7 +24,8 @@
                [title]="'TOOLTIPS.TEXT_COLOR' | translate"
                class="text-color"
                cpPosition="left"/>
-        <input (colorPickerChange)="colorPickerChange('branchColor', $event)" (cpToggleChange)="colorPickerToggleChange($event, 'branchColor', node.colors.branch)"
+        <input (colorPickerChange)="colorPickerChange('branchColor', $event)"
+               (cpToggleChange)="colorPickerToggleChange($event, 'branchColor', node.colors.branch)"
                *ngIf="node.colors.branch"
                [(colorPicker)]="node.colors.branch"
                [cpPositionOffset]="'-500%'"

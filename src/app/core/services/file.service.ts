@@ -42,7 +42,7 @@ export class FileService {
             this.setSavingStatus(false, true)
         } else {
             if (this.filePath) {
-                let fileData = this.fs.readFileSync(this.filePath).toString(),
+                const fileData = this.fs.readFileSync(this.filePath).toString(),
                     mapData = JSON.stringify(this.mmpService.exportAsJSON())
 
                 if (fileData !== mapData) {

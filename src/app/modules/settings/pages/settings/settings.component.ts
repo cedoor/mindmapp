@@ -28,7 +28,7 @@ export class SettingsComponent implements OnInit {
         this.settings = this.settingsService.getSettings()
 
         this.titles = {}
-        for (let title in this.settings) {
+        for (const title in this.settings) {
             this.titles[title] = 'SETTINGS_LABELS.' + title.split(/(?=[A-Z])/).join('_').toUpperCase()
         }
 

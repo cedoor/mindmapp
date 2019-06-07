@@ -54,16 +54,16 @@ export class DialogService {
      */
     public saveMap (saveAs: boolean = false): Promise<any> {
         return new Promise((resolve: Function) => {
-            let data = JSON.stringify(this.mmpService.exportAsJSON())
+            const data = JSON.stringify(this.mmpService.exportAsJSON())
 
             if (saveAs || !this.fileService.getFilePath()) {
                 this.remote.dialog.showSaveDialog({
-                    title: this.translations['SAVE'],
+                    title: this.translations.SAVE,
                     filters: [{
-                        name: this.translations['MINDMAPP_FILES'] + ` (*.${MmpService.MAP_FORMAT})`,
+                        name: this.translations.MINDMAPP_FILES + ` (*.${MmpService.MAP_FORMAT})`,
                         extensions: [MmpService.MAP_FORMAT]
                     }, {
-                        name: this.translations['ALL_FILES'],
+                        name: this.translations.ALL_FILES,
                         extensions: ['*']
                     }],
                     defaultPath: this.mmpService.selectNode('map_1_node_0').name + `.${MmpService.MAP_FORMAT}`
@@ -94,11 +94,11 @@ export class DialogService {
      */
     public exportImage (extension: string = 'png') {
         this.mmpService.exportAsImage(extension).then((url: string) => {
-            let data = url.replace(/^data:image\/\w+;base64,/, ''),
+            const data = url.replace(/^data:image\/\w+;base64,/, ''),
                 buffer = new Buffer(data, 'base64')
 
             this.remote.dialog.showSaveDialog({
-                title: this.translations['EXPORT_IMAGE'],
+                title: this.translations.EXPORT_IMAGE,
                 defaultPath: this.mmpService.selectNode('map_1_node_0').name
             }, (path: string) => {
                 this.ngZone.run(() => {
@@ -131,7 +131,7 @@ export class DialogService {
                 pdf.addImage(url, 'JPEG', 0, 0)
 
                 this.remote.dialog.showSaveDialog({
-                    title: this.translations['EXPORT_PDF'],
+                    title: this.translations.EXPORT_PDF,
                     defaultPath: this.mmpService.selectNode('map_1_node_0').name
                 }, (path: string) => {
                     this.ngZone.run(() => {
@@ -155,19 +155,19 @@ export class DialogService {
     public openMap () {
         this.showMapPreSavingMessage().then(() => {
             this.remote.dialog.showOpenDialog({
-                title: this.translations['OPEN'],
+                title: this.translations.OPEN,
                 properties: ['openFile'],
                 filters: [{
-                    name: this.translations['MINDMAPP_FILES'] + ` (*.${MmpService.MAP_FORMAT})`,
+                    name: this.translations.MINDMAPP_FILES + ` (*.${MmpService.MAP_FORMAT})`,
                     extensions: [MmpService.MAP_FORMAT]
                 }, {
-                    name: this.translations['ALL_FILES'],
+                    name: this.translations.ALL_FILES,
                     extensions: ['*']
                 }]
             }, (files: Array<string>) => {
                 if (files) {
                     this.ngZone.run(() => {
-                        let data = this.fs.readFileSync(files[0]).toString(),
+                        const data = this.fs.readFileSync(files[0]).toString(),
                             path = files[0]
 
                         this.fileService.setFilePath(path)
@@ -176,7 +176,7 @@ export class DialogService {
                         this.mmpService.new(JSON.parse(data))
 
                         // Overwrite the old data format (mmp 0.1.7) with the new
-                        let newDataFormat = JSON.stringify(this.mmpService.exportAsJSON())
+                        const newDataFormat = JSON.stringify(this.mmpService.exportAsJSON())
                         this.fs.writeFileSync(path, newDataFormat)
                     })
                 }
@@ -208,16 +208,16 @@ export class DialogService {
     public addNodeImage () {
         if (!this.mmpService.selectNode().image.src) {
             this.remote.dialog.showOpenDialog({
-                title: this.translations['INSERT_NODE_IMAGE'],
+                title: this.translations.INSERT_NODE_IMAGE,
                 properties: ['openFile'],
                 filters: [{
-                    name: this.translations['IMAGE'],
+                    name: this.translations.IMAGE,
                     extensions: ['png', 'gif', 'jpg', 'jpeg']
                 }]
             }, (files: Array<string>) => {
                 if (files) {
                     this.ngZone.run(() => {
-                        let url = files[0],
+                        const url = files[0],
                             extension = url.split('.').pop(),
                             buffer = new Buffer(this.fs.readFileSync(url)).toString('base64'),
                             base64 = 'data:image/' + extension + ';base64,' + buffer
@@ -241,12 +241,12 @@ export class DialogService {
         return new Promise((resolve: Function) => {
             this.remote.dialog.showMessageBox({
                 type: 'question',
-                title: title,
-                message: message,
+                title,
+                message,
                 buttons: [
-                    this.translations['YES'],
-                    this.translations['NO'],
-                    this.translations['CANCEL']
+                    this.translations.YES,
+                    this.translations.NO,
+                    this.translations.CANCEL
                 ]
             }, index => {
                 resolve(index)
@@ -261,7 +261,7 @@ export class DialogService {
     public showMapPreSavingMessage (): Promise<any> {
         return new Promise((resolve: Function) => {
             if (!this.fileService.mapIsSaved() && !this.fileService.mapIsinitial()) {
-                this.showMessage(this.translations['SAVE'], this.translations['SAVE_MAP_MESSAGE'])
+                this.showMessage(this.translations.SAVE, this.translations.SAVE_MAP_MESSAGE)
                     .then((response: number) => {
                         if (response === 0) {
                             this.saveMap().then(() => {
@@ -282,12 +282,12 @@ export class DialogService {
      */
     public createQuitListener () {
         if (environment.production) {
-            let currentWindow = this.remote.getCurrentWindow()
+            const currentWindow = this.remote.getCurrentWindow()
 
             window.onbeforeunload = (event: Event) => {
                 if (!this.fileService.mapIsSaved() && !this.fileService.mapIsinitial() && !this.forceQuit) {
 
-                    this.showMessage(this.translations['SAVE'], this.translations['SAVE_MAP_MESSAGE'])
+                    this.showMessage(this.translations.SAVE, this.translations.SAVE_MAP_MESSAGE)
                         .then((index: number) => {
                             if (index === 0) {
                                 this.saveMap().then(() => {

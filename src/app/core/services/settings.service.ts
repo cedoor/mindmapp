@@ -22,13 +22,14 @@ export class SettingsService {
 
     /**
      * Initialize the settingsService with default or saved values and return them.
-     * @returns {Promise<Settings>}
      */
     public init (): Promise<Settings> {
         return this.storageService.exist(this.SETTINGS_KEY).then((exist: any) => {
             if (!exist) {
                 return this.getDefaultSettings().then((defaultSettings: Settings) => {
-                    return this.storageService.set(this.SETTINGS_KEY, defaultSettings)
+                    this.storageService.set(this.SETTINGS_KEY, defaultSettings)
+
+                    return defaultSettings
                 })
             } else {
                 return this.storageService.get(this.SETTINGS_KEY)
@@ -50,7 +51,6 @@ export class SettingsService {
 
     /**
      * Set the first time (of the app start) to false.
-     * @returns {Promise<Settings>}
      */
     public setFirstTime (): Promise<Settings> {
         this.settings.general.firstTime = false
@@ -60,8 +60,6 @@ export class SettingsService {
 
     /**
      * Update the settingsService with the new map options.
-     * @param {MapOptions} mapOptions
-     * @returns {Promise<Settings>}
      */
     public setMapOptions (mapOptions: MapOptions): Promise<Settings> {
         this.settings.mapOptions = mapOptions
@@ -71,8 +69,6 @@ export class SettingsService {
 
     /**
      * Set the new language and update the settingsService.
-     * @param {string} language
-     * @returns {Promise<Settings>}
      */
     public setLanguage (language: string): Promise<Settings> {
         this.settings.general.language = language
@@ -82,8 +78,6 @@ export class SettingsService {
 
     /**
      * Active or disable ipfs service and update the settingsService.
-     * @param {boolean} status
-     * @returns {Promise<Settings>}
      */
     public setIpfs (status: boolean): Promise<Settings> {
         this.settings.sharing.ipfs = status
@@ -93,7 +87,6 @@ export class SettingsService {
 
     /**
      * Return a copy of the current settingsService.
-     * @returns {Settings}
      */
     public getSettings (): Settings {
         return JSON.parse(JSON.stringify(this.settings))
@@ -101,7 +94,6 @@ export class SettingsService {
 
     /**
      * Return the default settingsService.
-     * @returns {Promise<Settings>}
      */
     private getDefaultSettings (): Promise<Settings> {
         return this.http.get(this.DEFAULT_SETTINGS_URL).toPromise().then((settings: Settings) => {
@@ -111,10 +103,11 @@ export class SettingsService {
 
     /**
      * Overwrite the settings in the storage.
-     * @returns {Promise<Settings>}
      */
-    private update (): Promise<Settings> {
-        return this.storageService.set(this.SETTINGS_KEY, this.settings)
+    private async update (): Promise<Settings> {
+        await this.storageService.set(this.SETTINGS_KEY, this.settings)
+
+        return this.settings
     }
 
 }

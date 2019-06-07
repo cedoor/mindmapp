@@ -33,7 +33,7 @@ export class DragDropService {
         window.document.body.ondrop = (event: DragEvent) => {
             event.preventDefault()
 
-            let files = event.dataTransfer.files
+            const files = event.dataTransfer.files
 
             if (files.length > 0) {
                 let url = files[0].path,
@@ -45,7 +45,7 @@ export class DragDropService {
                         extension += '+xml'
                     }
 
-                    let buffer = new Buffer(this.fs.readFileSync(url)).toString('base64'),
+                    const buffer = new Buffer(this.fs.readFileSync(url)).toString('base64'),
                         base64 = 'data:image/' + extension + ';base64,' + buffer
 
                     this.mmpService.updateNode('imageSrc', base64)
@@ -55,7 +55,7 @@ export class DragDropService {
                 if (extension === MmpService.MAP_FORMAT) {
                     this.dialogService.showMapPreSavingMessage().then(() => {
                         this.ngZone.run(() => {
-                            let data = this.fs.readFileSync(url).toString()
+                            const data = this.fs.readFileSync(url).toString()
 
                             this.fileService.setFilePath(url)
                             this.fileService.setSavingStatus(true)

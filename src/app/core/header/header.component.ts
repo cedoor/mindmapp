@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
     }
 
     public toogleNodeFontStyle () {
-        let currentStyle = this.mmpService.selectNode().font.style
+        const currentStyle = this.mmpService.selectNode().font.style
 
         if (currentStyle === 'italic') {
             this.mmpService.updateNode('fontStyle', 'normal')
@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
     }
 
     public toogleNodeFontWeight () {
-        let currentWeight = this.mmpService.selectNode().font.weight
+        const currentWeight = this.mmpService.selectNode().font.weight
 
         if (currentWeight === 'bold') {
             this.mmpService.updateNode('fontWeight', 'normal')

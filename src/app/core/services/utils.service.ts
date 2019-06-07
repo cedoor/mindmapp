@@ -51,7 +51,7 @@ export class UtilsService {
      * Close the application.
      */
     public closeApplication () {
-        let currentWindow = this.remote.getCurrentWindow()
+        const currentWindow = this.remote.getCurrentWindow()
 
         currentWindow.close()
     }
@@ -60,7 +60,7 @@ export class UtilsService {
      * Minimize the application.
      */
     public minimizeApplication () {
-        let currentWindow = this.remote.getCurrentWindow()
+        const currentWindow = this.remote.getCurrentWindow()
 
         currentWindow.minimize()
     }
@@ -69,7 +69,7 @@ export class UtilsService {
      * Invert the full screen setting of the application.
      */
     public toggleFullScreen () {
-        let currentWindow = this.remote.getCurrentWindow()
+        const currentWindow = this.remote.getCurrentWindow()
 
         if (this.isFullScreen()) {
             currentWindow.setFullScreen(false)
@@ -83,7 +83,7 @@ export class UtilsService {
      * @returns {boolean}
      */
     public isFullScreen (): boolean {
-        let currentWindow = this.remote.getCurrentWindow()
+        const currentWindow = this.remote.getCurrentWindow()
 
         return currentWindow.isFullScreen()
     }

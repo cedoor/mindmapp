@@ -13,7 +13,7 @@ export class IPFSService {
     }
 
     start () {
-        let Ipfs = window['Ipfs']
+        const Ipfs = window.Ipfs
 
         if (Ipfs) {
             this.ipfs = new Ipfs({

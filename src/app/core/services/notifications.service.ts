@@ -23,7 +23,7 @@ export class NotificationsService {
     public send (message: string, duration: number = 8000) {
         this.translateService.get('DISMISS').toPromise().then((translation: string) => {
             this.matSnackBar.open(message, translation, {
-                duration: duration,
+                duration,
                 panelClass: 'snackbar'
             })
         })
