@@ -1,66 +1,41 @@
-import {Component, OnInit} from '@angular/core'
-import {Settings} from '../../../../shared/models/settings'
+import {Component} from '@angular/core'
+import {Settings} from '../../../../shared/models/settings.model'
 import {SettingsService} from '../../../../core/services/settings.service'
 import {MmpService} from '../../../../core/services/mmp.service'
 import {TranslateService} from '@ngx-translate/core'
-import {IPFSService} from '../../../../core/services/ipfs.service'
 
 @Component({
     selector: 'mindmapp-settings',
     templateUrl: './settings.component.html',
     styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent {
 
+    public readonly languages: Array<string>
     public settings: Settings
 
-    public titles: any
-
-    public languages: Array<string>
-
-    constructor (public settingsService: SettingsService,
-                 public mmpService: MmpService,
-                 public translateService: TranslateService,
-                 public ipfsService: IPFSService) {
-    }
-
-    ngOnInit () {
-        this.settings = this.settingsService.getSettings()
-
-        this.titles = {}
-        for (const title in this.settings) {
-            this.titles[title] = 'SETTINGS_LABELS.' + title.split(/(?=[A-Z])/).join('_').toUpperCase()
-        }
-
+    constructor (private settingsService: SettingsService,
+                 private mmpService: MmpService,
+                 private translateService: TranslateService) {
         this.languages = ['en', 'fr', 'it', 'zh-tw', 'zh-cn', 'es', 'pt-br']
+        this.settings = this.settingsService.getCachedSettings()
     }
 
-    public setMapOptions () {
-        this.settingsService.setMapOptions(this.settings.mapOptions).then((settings: Settings) => {
-            this.mmpService.updateOptions('rootNode', settings.mapOptions.rootNode)
-            this.mmpService.updateOptions('defaultNode', settings.mapOptions.defaultNode)
-            this.mmpService.updateOptions('centerOnResize', settings.mapOptions.centerOnResize)
-            this.mmpService.updateOptions('drag', settings.mapOptions.drag)
-            this.mmpService.updateOptions('zoom', settings.mapOptions.zoom)
+    public async updateMapOptions () {
+        await this.settingsService.updateCachedSettings(this.settings)
 
-            this.settings = settings
-        })
+        this.mmpService.updateOptions('rootNode', this.settings.mapOptions.rootNode)
+        this.mmpService.updateOptions('defaultNode', this.settings.mapOptions.defaultNode)
+        this.mmpService.updateOptions('centerOnResize', this.settings.mapOptions.centerOnResize)
+        this.mmpService.updateOptions('drag', this.settings.mapOptions.drag)
+        this.mmpService.updateOptions('zoom', this.settings.mapOptions.zoom)
+
     }
 
-    public setLanguage () {
-        this.settingsService.setLanguage(this.settings.general.language).then((settings: Settings) => {
-            this.translateService.use(settings.general.language)
+    public async updateLanguage () {
+        await this.settingsService.updateCachedSettings(this.settings)
 
-            this.settings = settings
-        })
-    }
-
-    public setIpfs (status: boolean) {
-        this.settingsService.setIpfs(status).then((settings: Settings) => {
-            settings.sharing.ipfs ? this.ipfsService.start() : this.ipfsService.stop()
-
-            this.settings = settings
-        })
+        this.translateService.use(this.settings.general.language)
     }
 
 }

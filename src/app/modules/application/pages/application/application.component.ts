@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core'
 import {environment} from '../../../../../environments/environment'
 import {DialogService} from '../../../../core/services/dialog.service'
 import {DragDropService} from '../../../../core/services/dragdrop.service'
-import {MapOptions} from '../../../../shared/models/mmp'
+import {MapOptions} from '../../../../shared/models/mmp.model'
 import {FileService} from '../../../../core/services/file.service'
 import {MmpService} from '../../../../core/services/mmp.service'
 import {SettingsService} from '../../../../core/services/settings.service'
@@ -33,7 +33,7 @@ export class ApplicationComponent implements OnInit {
     }
 
     public async ngOnInit () {
-        const settings = this.settingsService.getSettings()
+        const settings = this.settingsService.getCachedSettings()
 
         // Create the mind map.
         this.createMap(settings.mapOptions)

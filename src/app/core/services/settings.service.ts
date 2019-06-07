@@ -1,113 +1,76 @@
 import {Injectable} from '@angular/core'
-import {StorageService} from './storage.service'
-import {Settings} from '../../shared/models/settings'
-import {HttpClient} from '@angular/common/http'
-import {MapOptions} from '../../shared/models/mmp'
+import {STORAGE_KEYS, StorageService} from './storage.service'
+import {Settings} from '../../shared/models/settings.model'
 import {UtilsService} from './utils.service'
+import {API_URL, HttpService} from '../http/http.service'
+import {NotificationsService} from './notifications.service'
+import {BehaviorSubject, Observable} from 'rxjs'
 
 @Injectable({
     providedIn: 'root'
 })
 export class SettingsService {
 
-    private readonly SETTINGS_KEY: string = 'settings'
-    private readonly DEFAULT_SETTINGS_URL: string = './assets/data/defaultSettings.json'
-
-    private settings: Settings
+    public settings: Observable<Settings | null>
+    private settingsSubject: BehaviorSubject<Settings | null>
 
     constructor (private storageService: StorageService,
-                 private http: HttpClient,
+                 private notificationService: NotificationsService,
+                 private httpService: HttpService,
                  private utilsService: UtilsService) {
+        // Initialization of the behavior subjects.
+        this.settingsSubject = new BehaviorSubject(null)
+        this.settings = this.settingsSubject.asObservable()
     }
 
     /**
-     * Initialize the settingsService with default or saved values and return them.
+     * Initialize settings with the default or cached values and return them.
      */
-    public init (): Promise<Settings> {
-        return this.storageService.exist(this.SETTINGS_KEY).then((exist: any) => {
-            if (!exist) {
-                return this.getDefaultSettings().then((defaultSettings: Settings) => {
-                    this.storageService.set(this.SETTINGS_KEY, defaultSettings)
+    public async init (): Promise<{ settings: Settings, isFirstTime: boolean }> {
+        const defaultSettings: Settings = await this.getDefaultSettings()
+        const settings: Settings = await this.storageService.get(STORAGE_KEYS.SETTINGS)
 
-                    return defaultSettings
-                })
-            } else {
-                return this.storageService.get(this.SETTINGS_KEY)
+        // Check if there are settings in the storage and if these settings have an old structure.
+        if (settings !== null && this.utilsService.haveSameStructure(defaultSettings, settings)) {
+            this.settingsSubject.next(settings)
+
+            return {
+                settings,
+                isFirstTime: false
             }
-        }).then((settings: Settings) => {
-            return this.getDefaultSettings().then((defaultSettings: Settings) => {
-                if (!this.utilsService.haveSameStructure(defaultSettings, settings)) {
-                    this.settings = defaultSettings
+        }
 
-                    return this.update()
-                } else {
-                    this.settings = settings
+        // Save the default settings.
+        await this.storageService.set(STORAGE_KEYS.SETTINGS, defaultSettings)
+        this.settingsSubject.next(defaultSettings)
 
-                    return settings
-                }
-            })
-        })
+        return {
+            settings: defaultSettings,
+            isFirstTime: true
+        }
     }
 
     /**
-     * Set the first time (of the app start) to false.
+     * Update the settings in the storage.
      */
-    public setFirstTime (): Promise<Settings> {
-        this.settings.general.firstTime = false
+    public async updateCachedSettings (settings: Settings): Promise<void> {
+        await this.storageService.set(STORAGE_KEYS.SETTINGS, settings)
 
-        return this.update()
+        this.settingsSubject.next(settings)
     }
 
     /**
-     * Update the settingsService with the new map options.
+     * Return the current settings.
      */
-    public setMapOptions (mapOptions: MapOptions): Promise<Settings> {
-        this.settings.mapOptions = mapOptions
-
-        return this.update()
+    public getCachedSettings (): Settings | null {
+        return this.settingsSubject.getValue()
     }
 
     /**
-     * Set the new language and update the settingsService.
-     */
-    public setLanguage (language: string): Promise<Settings> {
-        this.settings.general.language = language
-
-        return this.update()
-    }
-
-    /**
-     * Active or disable ipfs service and update the settingsService.
-     */
-    public setIpfs (status: boolean): Promise<Settings> {
-        this.settings.sharing.ipfs = status
-
-        return this.update()
-    }
-
-    /**
-     * Return a copy of the current settingsService.
-     */
-    public getSettings (): Settings {
-        return JSON.parse(JSON.stringify(this.settings))
-    }
-
-    /**
-     * Return the default settingsService.
+     * Return the default settings.
      */
     private getDefaultSettings (): Promise<Settings> {
-        return this.http.get(this.DEFAULT_SETTINGS_URL).toPromise().then((settings: Settings) => {
-            return settings
-        })
-    }
-
-    /**
-     * Overwrite the settings in the storage.
-     */
-    private async update (): Promise<Settings> {
-        await this.storageService.set(this.SETTINGS_KEY, this.settings)
-
-        return this.settings
+        return this.httpService.get(API_URL.LOCAL_ASSETS, 'defaultSettings.json')
     }
 
 }

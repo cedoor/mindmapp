@@ -17,15 +17,14 @@ export class NotificationsService {
 
     /**
      * Show a notification with the message.
-     * @param {string} message
-     * @param {number} duration
      */
-    public send (message: string, duration: number = 8000) {
-        this.translateService.get('DISMISS').toPromise().then((translation: string) => {
-            this.matSnackBar.open(message, translation, {
-                duration,
-                panelClass: 'snackbar'
-            })
+    public async send (message: string, values?: any, duration: number = 5000) {
+        const action = await this.translate('DISMISS')
+        message = await this.translate(message, values)
+
+        this.matSnackBar.open(message, action, {
+            duration,
+            panelClass: 'snackbar'
         })
     }
 
@@ -50,6 +49,13 @@ export class NotificationsService {
                 this.informationsSource.next('')
             }, duration)
         }
+    }
+
+    /**
+     * Return a translated string with given message and values.
+     */
+    private translate (message: string, values?: any): Promise<string> {
+        return this.translateService.get(message, values).toPromise()
     }
 
 }

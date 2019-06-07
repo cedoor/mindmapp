@@ -177,7 +177,7 @@ export class MmpService {
      */
     public addNode (properties: any = {}) {
         const selected = this.selectNode()
-        const settings = this.settingsService.getSettings()
+        const settings = this.settingsService.getCachedSettings()
 
         if (selected.colors.branch) {
             properties.colors = {

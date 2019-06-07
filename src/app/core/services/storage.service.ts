@@ -1,5 +1,12 @@
 import {Injectable} from '@angular/core'
 
+/**
+ * Enumerative of the possible keys present in the storage
+ */
+export enum STORAGE_KEYS {
+    SETTINGS = 'settings'
+}
+
 @Injectable({
     providedIn: 'root'
 })

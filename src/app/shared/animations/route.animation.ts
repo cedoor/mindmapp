@@ -11,12 +11,16 @@ export const routeAnimation = trigger('routeAnimation', [
                 height: '100%',
                 opacity: 0
             }),
-        ]),
+        ], {
+            optional: true
+        }),
         // Animate the new page in
         query(':enter', [
             animate('800ms ease', style({
                 opacity: 1
             })),
-        ])
+        ], {
+            optional: true
+        })
     ]),
 ])

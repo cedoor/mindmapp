@@ -1,4 +1,4 @@
-import {MapOptions} from './mmp'
+import {MapOptions} from './mmp.model'
 
 export interface Settings {
     general: General
@@ -12,5 +12,4 @@ interface Sharing {
 
 interface General {
     language: string
-    firstTime: boolean
 }
