@@ -1,16 +1,14 @@
 import {Injectable, NgZone} from '@angular/core'
 import {MmpService} from './mmp.service'
-import {SettingsComponent} from '../../modules/settings/pages/settings/settings.component'
 import {MatDialog} from '@angular/material/dialog'
 import {MatDialogRef} from '@angular/material/dialog/typings/dialog-ref'
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core'
-import {AboutComponent} from '../../modules/about/pages/about/about.component'
 import {environment} from '../../../environments/environment'
-import {ShortcutsComponent} from '../../modules/shortcuts/pages/shortcuts/shortcuts.component'
 import {FileService} from './file.service'
 import {remote} from 'electron'
 import * as fs from 'fs'
 import * as JsPDF from 'jspdf'
+import {UtilsService} from './utils.service'
 
 @Injectable({
     providedIn: 'root'
@@ -87,64 +85,27 @@ export class DialogService {
     }
 
     /**
-     * Export the current mmp image.
-     * @param {string} extension
+     * Export the current mind map with the format passed as parameter.
      */
-    public exportImage (extension: string = 'png') {
-        this.mmpService.exportAsImage(extension).then((url: string) => {
-            const data = url.replace(/^data:image\/\w+;base64,/, ''),
-                buffer = new Buffer(data, 'base64')
+    public async exportAs (format: 'png' | 'jpeg' | 'pdf' = 'png') {
+        const name = this.mmpService.selectNode('map_1_node_0').name
+        const extension = format === 'jpeg' ? 'jpg' : format
 
-            this.remote.dialog.showSaveDialog({
-                title: this.translations.EXPORT_IMAGE,
-                defaultPath: this.mmpService.selectNode('map_1_node_0').name
-            }, (path: string) => {
-                this.ngZone.run(() => {
-                    if (typeof path === 'string') {
-                        if (extension === 'jpeg') {
-                            extension = 'jpg'
-                        }
-
-                        path = path + '.' + extension
-
-                        this.fs.writeFileSync(path, buffer)
-                    }
-                })
+        if (format === 'pdf') {
+            const imageUri = await this.mmpService.exportAsImage('jpeg')
+            const htmlImageElement = await UtilsService.imageFromUri(imageUri)
+            const pdf = new JsPDF({
+                orientation: htmlImageElement.width > htmlImageElement.height ? 'l' : 'p',
+                format: [htmlImageElement.width * 0.75, htmlImageElement.height * 0.75]
             })
-        })
-    }
 
-    /**
-     * Export the current mmp image as PDF.
-     */
-    public exportPDF () {
-        this.mmpService.exportAsImage('jpeg').then((url: string) => {
-            const img = new Image()
+            pdf.addImage(imageUri, 'JPEG', 0, 0)
 
-            img.onload = () => {
-                const orientation = img.width > img.height ? 'l' : 'p'
-                const dimentions = [img.width / 3.7795275591, img.height / 3.7795275591]
-                const pdf = new JsPDF(orientation, 'mm', dimentions)
-
-                pdf.addImage(url, 'JPEG', 0, 0)
-
-                this.remote.dialog.showSaveDialog({
-                    title: this.translations.EXPORT_PDF,
-                    defaultPath: this.mmpService.selectNode('map_1_node_0').name
-                }, (path: string) => {
-                    this.ngZone.run(() => {
-                        if (typeof path === 'string') {
-
-                            path = path + '.pdf'
-
-                            this.fs.writeFileSync(path, Buffer.from(pdf.output('arraybuffer')))
-                        }
-                    })
-                })
-            }
-
-            img.src = url
-        })
+            pdf.save(`${name}.${extension}`)
+        } else {
+            const image = await this.mmpService.exportAsImage(format)
+            UtilsService.downloadFile(`${name}.${extension}`, image)
+        }
     }
 
     /**
@@ -299,77 +260,6 @@ export class DialogService {
                     event.returnValue = false
                 }
             }
-        }
-    }
-
-    /**
-     * Set forcing exit from the app without saving.
-     */
-    public setForceQuit () {
-        this.forceQuit = true
-    }
-
-    /**
-     * Open a dialog of Mindmapp.
-     */
-    public openMatDialog (name: 'settings' | 'about' | 'shortcuts') {
-        switch (name) {
-            case 'settings':
-                this.matDialogRefs.set('settings', this.matDialog.open(SettingsComponent, {
-                    hasBackdrop: false,
-                    maxWidth: '100vw',
-                    maxHeight: '100vh',
-                    height: '100%',
-                    width: '100%'
-                }))
-                break
-            case 'shortcuts':
-                this.matDialogRefs.set('shortcuts', this.matDialog.open(ShortcutsComponent, {
-                    hasBackdrop: false,
-                    maxWidth: '100vw',
-                    maxHeight: '100vh',
-                    height: '100%',
-                    width: '100%'
-                }))
-                break
-            case 'about':
-                this.matDialogRefs.set('about', this.matDialog.open(AboutComponent))
-        }
-    }
-
-    /**
-     * Close a dialog of Mindmapp.
-     */
-    public closeMatDialog (name: 'settings' | 'about' | 'shortcuts') {
-        switch (name) {
-            case 'settings':
-                this.matDialogRefs.get('settings').close()
-                break
-            case 'shortcuts':
-                this.matDialogRefs.get('shortcuts').close()
-                break
-            case 'about':
-                this.matDialogRefs.get('about').close()
-        }
-    }
-
-    /**
-     * Return true if the corresponding dialog is open.
-     * @returns {boolean}
-     */
-    public getMatDialogStatus (name: 'settings' | 'about' | 'shortcuts'): boolean {
-        let ref: MatDialogRef<any>
-
-        switch (name) {
-            case 'settings':
-                ref = this.matDialogRefs.get('settings')
-                return ref && !!ref.componentInstance
-            case 'shortcuts':
-                ref = this.matDialogRefs.get('shortcuts')
-                return ref && !!ref.componentInstance
-            case 'about':
-                ref = this.matDialogRefs.get('about')
-                return ref && !!ref.componentInstance
         }
     }
 

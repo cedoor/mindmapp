@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>
+    {{ data.title | translate }}
+</h2>
+
+<mat-dialog-content>
+    <p *ngIf="data.message" translate>{{ data.message }}</p>
+    <form *ngIf="data.input">
+        <mat-form-field>
+            <input [name]="data.input.label | lowercase" [(ngModel)]="data.input.value"
+                   [placeholder]="data.input.label | translate" matInput>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions *ngIf="data.buttons">
+    <button *ngFor="let button of data.buttons"
+            [mat-dialog-close]="button.result === 'input' ? data.input.value : button.result"
+            mat-stroked-button>
+        {{ button.text | translate }}
+    </button>
+</mat-dialog-actions>

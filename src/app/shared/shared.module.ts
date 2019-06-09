@@ -21,10 +21,15 @@ import {
 import {ColorPickerModule} from 'ngx-color-picker'
 import {SidenavComponent} from './components/sidenav/sidenav.component'
 import {RouterModule} from '@angular/router'
+import {DialogComponent} from './components/dialog/dialog.component'
 
 @NgModule({
     declarations: [
-        SidenavComponent
+        SidenavComponent,
+        DialogComponent
+    ],
+    entryComponents: [
+        DialogComponent
     ],
     imports: [
         RouterModule,

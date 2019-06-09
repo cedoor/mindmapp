@@ -14,15 +14,15 @@
                 </button>
 
                 <mat-menu #export="matMenu">
-                    <button (click)="dialogService.exportImage('png')" mat-menu-item>
+                    <button (click)="exportAs('png')" mat-menu-item>
                         <mat-icon>image</mat-icon>
                         <span>{{ "PNG" | translate }}</span>
                     </button>
-                    <button (click)="dialogService.exportImage('jpeg')" mat-menu-item>
+                    <button (click)="exportAs('jpeg')" mat-menu-item>
                         <mat-icon>image</mat-icon>
                         <span>{{ "JPG" | translate }}</span>
                     </button>
-                    <button (click)="dialogService.exportPDF()" mat-menu-item>
+                    <button (click)="exportAs('pdf')" mat-menu-item>
                         <mat-icon>picture_as_pdf</mat-icon>
                         <span>{{ "PDF" | translate }}</span>
                     </button>

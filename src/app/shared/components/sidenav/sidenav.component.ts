@@ -16,4 +16,20 @@ export class SidenavComponent {
                  public utilsService: UtilsService) {
     }
 
+    public exportAs (extension: string) {
+        switch (extension) {
+            case 'png':
+                this.dialogService.exportAs('png')
+                break
+            case 'jpeg':
+                this.dialogService.exportAs('jpeg')
+                break
+            case 'pdf':
+                this.dialogService.exportAs('pdf')
+                break
+        }
+
+        this.sidenav.close()
+    }
+
 }

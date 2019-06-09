@@ -1,0 +1,14 @@
+h2 {
+    text-align: center;
+}
+
+mat-dialog-content {
+    form, mat-form-field {
+        width: 100%;
+    }
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: space-around;
+}
