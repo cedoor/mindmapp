@@ -4,7 +4,7 @@
 
 <h2 mat-dialog-title>{{ "SHORTCUTS_TITLE" | translate }}</h2>
 
-<div mat-dialog-content>
+<div class="content">
     <mat-list>
         <mat-list-item *ngFor="let hotKey of hotKeys.slice(0, (hotKeys.length / 2))">
             <span *ngFor="let key of hotKey.combo[0].split('+'); let last = last">
