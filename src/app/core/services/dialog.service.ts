@@ -1,5 +1,4 @@
 import {Injectable, NgZone} from '@angular/core'
-import {IPFSService} from './ipfs.service'
 import {MmpService} from './mmp.service'
 import {SettingsComponent} from '../../modules/settings/pages/settings/settings.component'
 import {MatDialog} from '@angular/material/dialog'
@@ -28,7 +27,6 @@ export class DialogService {
     private forceQuit: boolean
 
     constructor (private ngZone: NgZone,
-                 private ipfsService: IPFSService,
                  private translateService: TranslateService,
                  private matDialog: MatDialog,
                  private mmpService: MmpService,

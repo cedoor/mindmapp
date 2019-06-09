@@ -2,9 +2,6 @@
     "general": {
         "language": "en"
     },
-    "sharing": {
-        "ipfs": false
-    },
     "mapOptions": {
         "centerOnResize": true,
         "drag": true,
