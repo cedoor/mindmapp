@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core'
+import {ShortcutsService} from '../../../../core/services/shortcuts.service'
+import {Hotkey} from 'angular2-hotkeys'
 
 @Component({
     selector: 'mindmapp-shortcuts',
@@ -7,10 +9,13 @@ import {Component, OnInit} from '@angular/core'
 })
 export class ShortcutsComponent implements OnInit {
 
-    constructor () {
+    public hotKeys: Hotkey[]
+
+    constructor (private shortcutsService: ShortcutsService) {
     }
 
     ngOnInit () {
+        this.hotKeys = this.shortcutsService.getHotKeys()
     }
 
 }

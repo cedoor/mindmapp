@@ -1,90 +1,28 @@
-<div class="shortcuts">
-    <button class="close-dialog" color="primary" mat-icon-button routerLink="/application">
-        <mat-icon aria-label="Example icon-button with a heart icon">close</mat-icon>
-    </button>
+<button color="primary" mat-icon-button routerLink="/application">
+    <mat-icon>arrow_back</mat-icon>
+</button>
 
-    <h2 mat-dialog-title>{{ "SHORTCUTS_TITLE" | translate }}</h2>
+<h2 mat-dialog-title>{{ "SHORTCUTS_TITLE" | translate }}</h2>
 
-    <mat-dialog-content>
-        <table>
-            <tr>
-                <td><span>Esc</span></td>
-                <td>{{ "TOOLTIPS.ESC" | translate }}</td>
-                <td><span>Shift</span> + <span>?</span></td>
-                <td>{{ "TOOLTIPS.SHORTCUTS" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Ctrl</span> + <span>n</span></td>
-                <td>{{ "TOOLTIPS.NEW_MAP" | translate }}</td>
-                <td><span>Ctrl</span> + <span>z</span></td>
-                <td>{{ "TOOLTIPS.UNDO_MAP" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Ctrl</span> + <span>o</span></td>
-                <td>{{ "TOOLTIPS.OPEN_MAP" | translate }}</td>
-                <td><span>Ctrl</span> + <span>Shift</span> + <span>z</span></td>
-                <td>{{ "TOOLTIPS.REDO_MAP" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Ctrl</span> + <span>s</span></td>
-                <td>{{ "TOOLTIPS.SAVE_MAP" | translate }}</td>
-                <td><span>Alt</span> + <span>+</span></td>
-                <td>{{ "TOOLTIPS.ADD_NODE" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Ctrl</span> + <span>shift</span> + <span>s</span></td>
-                <td>{{ "TOOLTIPS.SAVE_MAP_WITH_NAME" | translate }}</td>
-                <td><span>Alt</span> + <span>-</span></td>
-                <td>{{ "TOOLTIPS.REMOVE_NODE" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Alt</span> + <span>Shift</span> + <span>Left</span></td>
-                <td>{{ "TOOLTIPS.MOVE_NODE_TO_THE_LEFT" | translate }}</td>
-                <td><span>Alt</span> + <span>Left</span></td>
-                <td>{{ "TOOLTIPS.SELECT_NODE_ON_THE_LEFT" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Alt</span> + <span>Shift</span> + <span>Right</span></td>
-                <td>{{ "TOOLTIPS.MOVE_NODE_TO_THE_RIGHT" | translate }}</td>
-                <td><span>Alt</span> + <span>Right</span></td>
-                <td>{{ "TOOLTIPS.SELECT_NODE_ON_THE_RIGHT" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Alt</span> + <span>Shift</span> + <span>Up</span></td>
-                <td>{{ "TOOLTIPS.MOVE_NODE_UPWARD" | translate }}</td>
-                <td><span>Alt</span> + <span>Up</span></td>
-                <td>{{ "TOOLTIPS.SELECT_NODE_BELOW" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Alt</span> + <span>Shift</span> + <span>Down</span></td>
-                <td>{{ "TOOLTIPS.MOVE_NODE_DOWN" | translate }}</td>
-                <td><span>Alt</span> + <span>Down</span></td>
-                <td>{{ "TOOLTIPS.SELECT_NODE_ABOVE" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Ctrl</span> + <span>Alt</span> + <span>s</span></td>
-                <td>{{ "TOOLTIPS.SETTINGS" | translate }}</td>
-                <td><span>F2</span></td>
-                <td>{{ "TOOLTIPS.EDIT_NODE" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Ctrl</span> + <span>c</span></td>
-                <td>{{ "TOOLTIPS.COPY_NODE" | translate }}</td>
-                <td><span>Alt</span> + <span>c</span></td>
-                <td>{{ "TOOLTIPS.CENTER_MAP" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Ctrl</span> + <span>x</span></td>
-                <td>{{ "TOOLTIPS.CUT_NODE" | translate }}</td>
-                <td><span>Ctrl</span> + <span>+</span></td>
-                <td>{{ "TOOLTIPS.ZOOM_IN_MAP" | translate }}</td>
-            </tr>
-            <tr>
-                <td><span>Ctrl</span> + <span>v</span></td>
-                <td>{{ "TOOLTIPS.PASTE_NODE" | translate }}</td>
-                <td><span>Ctrl</span> + <span>-</span></td>
-                <td>{{ "TOOLTIPS.ZOOM_OUT_MAP" | translate }}</td>
-            </tr>
-        </table>
-    </mat-dialog-content>
+<div mat-dialog-content>
+    <mat-list>
+        <mat-list-item *ngFor="let hotKey of hotKeys.slice(0, (hotKeys.length / 2))">
+            <span *ngFor="let key of hotKey.combo[0].split('+'); let last = last">
+                <span class="key">{{ key }}</span><span *ngIf="!last">&nbsp;+&nbsp;</span>
+            </span>
+            <span class="description">
+                {{ hotKey.description | translate }}
+            </span>
+        </mat-list-item>
+    </mat-list>
+    <mat-list>
+        <mat-list-item *ngFor="let hotKey of hotKeys.slice(hotKeys.length / 2)">
+            <span *ngFor="let key of hotKey.combo[0].split('+'); let last = last">
+                <span class="key">{{ key }}</span><span *ngIf="!last">&nbsp;+&nbsp;</span>
+            </span>
+            <span class="description">
+                {{ hotKey.description | translate }}
+            </span>
+        </mat-list-item>
+    </mat-list>
 </div>

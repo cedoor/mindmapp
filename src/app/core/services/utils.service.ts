@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core'
-import {HttpClient} from '@angular/common/http'
 import * as packageInformations from '../../../../package.json'
 
 @Injectable({
@@ -13,7 +12,7 @@ export class UtilsService {
         packageInformations
     }
 
-    constructor (private http: HttpClient) {
+    constructor () {
         if (window.require) {
             this.remote = window.require('electron').remote
         }
@@ -23,6 +22,37 @@ export class UtilsService {
         }
 
         this.serviceCache.packageInformations = packageInformations
+    }
+
+    /**
+     * Download a file with a fake link click.
+     */
+    public static downloadFile (name: string, content: string) {
+        const fakeLink = document.createElement('a')
+
+        fakeLink.href = content
+        fakeLink.download = name
+
+        document.body.appendChild(fakeLink)
+
+        fakeLink.click()
+
+        document.body.removeChild(fakeLink)
+    }
+
+    /**
+     * Return the HTML image element from an image URI.
+     */
+    public static imageFromUri (uri: string): Promise<HTMLImageElement> {
+        return new Promise((resolve, reject) => {
+            const image = new Image()
+
+            image.onload = () => {
+                resolve(image)
+            }
+            image.onerror = reject
+            image.src = uri
+        })
     }
 
     /**

@@ -27,9 +27,7 @@ export class RootComponent implements OnInit {
         const {settings, isFirstTime} = await this.settingsService.init()
         const translations = await this.initTranslations(settings.general.language)
 
-        // Create all shortcuts of the application.
-        this.shortcutsService.createShortcuts()
-
+        this.shortcutsService.init()
         this.notificationService.setInformations(translations.INITIAL_INFORMATION, 4000)
 
         if (isFirstTime) {

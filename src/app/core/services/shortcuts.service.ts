@@ -1,191 +1,202 @@
-import {Injectable, NgZone} from '@angular/core'
+import {Injectable} from '@angular/core'
 import {DialogService} from './dialog.service'
 import {MmpService} from './mmp.service'
-import * as mousetrap from 'mousetrap'
+import {Router} from '@angular/router'
+import {Hotkey, HotkeysService} from 'angular2-hotkeys'
 
 @Injectable({
     providedIn: 'root'
 })
 export class ShortcutsService {
 
-    constructor (private ngZone: NgZone,
-                 private mmpService: MmpService,
+    private hotKeys: Hotkey[]
+
+    constructor (private mmpService: MmpService,
+                 private hotkeysService: HotkeysService,
+                 private router: Router,
                  private dialogService: DialogService) {
     }
 
     /**
-     * Set some global shortcuts.
+     * Add all global hot keys of the application.
      */
-    public createShortcuts () {
-        mousetrap.bind('esc', () => {
-            this.ngZone.run(() => {
-                if (this.dialogService.getMatDialogStatus('settings')) {
-                    this.dialogService.closeMatDialog('settings')
-                }
-
-                if (this.dialogService.getMatDialogStatus('about')) {
-                    this.dialogService.closeMatDialog('about')
-                }
-            })
-        })
-
-        mousetrap.bind('f2', () => {
-            this.ngZone.run(() => {
+    public init () {
+        this.hotKeys = [{
+            keys: '?',
+            description: 'TOOLTIPS.SHORTCUTS',
+            callback: () => {
+                this.router.navigate(['/shortcuts'])
+            }
+        }, {
+            keys: 'f2',
+            description: 'TOOLTIPS.EDIT_NODE',
+            callback: () => {
                 this.mmpService.editNode()
-            })
-        })
-
-        mousetrap.bind('ctrl+n', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+n',
+            description: 'TOOLTIPS.NEW_MAP',
+            callback: () => {
                 this.dialogService.newMap()
-            })
-        })
-
-        mousetrap.bind('ctrl+o', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+o',
+            description: 'TOOLTIPS.OPEN_MAP',
+            callback: () => {
                 this.dialogService.openMap()
-            })
-        })
-
-        mousetrap.bind('ctrl+s', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+s',
+            description: 'TOOLTIPS.SAVE_MAP',
+            callback: () => {
                 this.dialogService.saveMap()
-            })
-        })
-
-        mousetrap.bind('ctrl+shift+s', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+shift+s',
+            description: 'TOOLTIPS.SAVE_MAP_WITH_NAME',
+            callback: () => {
                 this.dialogService.saveMap(true)
-            })
-        })
-
-        mousetrap.bind('ctrl+z', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+z',
+            description: 'TOOLTIPS.UNDO_MAP',
+            callback: () => {
                 this.mmpService.undo()
-            })
-        })
-
-        mousetrap.bind('ctrl+shift+z', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+shift+z',
+            description: 'TOOLTIPS.REDO_MAP',
+            callback: () => {
                 this.mmpService.redo()
-            })
-        })
-
-        mousetrap.bind('alt+=', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'alt+=',
+            description: 'TOOLTIPS.ADD_NODE',
+            callback: () => {
                 this.mmpService.addNode()
-            })
-        })
-
-        mousetrap.bind('alt+-', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'alt+-',
+            description: 'TOOLTIPS.REMOVE_NODE',
+            callback: () => {
                 this.mmpService.removeNode()
-            })
-        })
-
-        mousetrap.bind('alt+shift+left', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'alt+shift+left',
+            description: 'TOOLTIPS.MOVE_NODE_TO_THE_LEFT',
+            callback: () => {
                 this.mmpService.moveNodeTo('left')
-            })
-        })
-
-        mousetrap.bind('alt+shift+right', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'alt+shift+right',
+            description: 'TOOLTIPS.MOVE_NODE_TO_THE_RIGHT',
+            callback: () => {
                 this.mmpService.moveNodeTo('right')
-            })
-        })
-
-        mousetrap.bind('alt+shift+up', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'alt+shift+up',
+            description: 'TOOLTIPS.MOVE_NODE_UPWARD',
+            callback: () => {
                 this.mmpService.moveNodeTo('up')
-            })
-        })
-
-        mousetrap.bind('alt+shift+down', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'alt+shift+down',
+            description: 'TOOLTIPS.MOVE_NODE_DOWN',
+            callback: () => {
                 this.mmpService.moveNodeTo('down')
-            })
-        })
-
-        mousetrap.bind('?', () => {
-            this.ngZone.run(() => {
-                if (this.dialogService.getMatDialogStatus('shortcuts')) {
-                    this.dialogService.closeMatDialog('shortcuts')
-                } else {
-                    this.dialogService.openMatDialog('shortcuts')
-                }
-            })
-        })
-
-        mousetrap.bind('ctrl+alt+s', () => {
-            this.ngZone.run(() => {
-                if (this.dialogService.getMatDialogStatus('settings')) {
-                    this.dialogService.closeMatDialog('settings')
-                } else {
-                    this.dialogService.openMatDialog('settings')
-                }
-            })
-        })
-
-        mousetrap.bind('alt+left', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+alt+s',
+            description: 'TOOLTIPS.SETTINGS',
+            callback: () => {
+                this.router.navigate(['/settings'])
+            }
+        }, {
+            keys: 'alt+left',
+            description: 'TOOLTIPS.SELECT_NODE_ON_THE_LEFT',
+            callback: () => {
                 this.mmpService.selectNode('left')
-            })
-        })
-
-        mousetrap.bind('alt+right', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'alt+right',
+            description: 'TOOLTIPS.SELECT_NODE_ON_THE_RIGHT',
+            callback: () => {
                 this.mmpService.selectNode('right')
-            })
-        })
-
-        mousetrap.bind('alt+up', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'alt+up',
+            description: 'TOOLTIPS.SELECT_NODE_BELOW',
+            callback: () => {
                 this.mmpService.selectNode('up')
-            })
-        })
-
-        mousetrap.bind('alt+down', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'alt+down',
+            description: 'TOOLTIPS.SELECT_NODE_ABOVE',
+            callback: () => {
                 this.mmpService.selectNode('down')
-            })
-        })
-
-        mousetrap.bind('alt+c', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'alt+c',
+            description: 'TOOLTIPS.CENTER_MAP',
+            callback: () => {
                 this.mmpService.center()
-            })
-        })
-
-        mousetrap.bind('ctrl+c', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+c',
+            description: 'TOOLTIPS.COPY_NODE',
+            callback: () => {
                 this.mmpService.copyNode()
-            })
-        })
-
-        mousetrap.bind('ctrl+x', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+x',
+            description: 'TOOLTIPS.CUT_NODE',
+            callback: () => {
                 this.mmpService.cutNode()
-            })
-        })
-
-        mousetrap.bind('ctrl+v', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+v',
+            description: 'TOOLTIPS.PASTE_NODE',
+            callback: () => {
                 this.mmpService.pasteNode()
-            })
-        })
-
-        mousetrap.bind('ctrl+=', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+=',
+            description: 'TOOLTIPS.ZOOM_IN_MAP',
+            callback: () => {
                 this.mmpService.zoomIn()
-            })
-        })
-
-        mousetrap.bind('ctrl+-', () => {
-            this.ngZone.run(() => {
+            }
+        }, {
+            keys: 'ctrl+-',
+            description: 'TOOLTIPS.ZOOM_OUT_MAP',
+            callback: () => {
                 this.mmpService.zoomOut()
-            })
-        })
+            }
+        }].map(this.getHotKey)
+
+        this.hotkeysService.add(this.hotKeys)
+    }
+
+    /**
+     * Return all the shortcuts.
+     */
+    public getHotKeys (): Hotkey[] {
+        return this.hotKeys
+    }
+
+
+    /**
+     * Get some shortcut parameters and return the corresponding hot key.
+     */
+    private getHotKey (options: {
+        keys: string | string[],
+        description: string,
+        callback: (event?: KeyboardEvent) => void
+    }) {
+        return new Hotkey(options.keys, (event: KeyboardEvent) => {
+            options.callback(event)
+
+            return false
+        }, undefined, options.description)
     }
 
 }
