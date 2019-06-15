@@ -1,12 +1,12 @@
 <div class="footer">
     <div class="footer-content">
-        <div>&#8829; {{ informations }}</div>
+        <div>&#8829; {{ message }}</div>
 
         <span class="footer-spacer"></span>
 
-        <div>
-            <span *ngIf="mapSaved" [title]="filePath">&#10003; {{ "SAVED" | translate }}</span>
-            <span *ngIf="!mapSaved">&#10007; {{ "NOT_SAVED" | translate }}</span>
+        <div *ngIf="mapCacheService.cached | async as cached">
+            <span *ngIf="cached">&#10003; {{ "SAVED" | translate }}</span>
+            <span *ngIf="!cached">&#10007; {{ "NOT_SAVED" | translate }}</span>
         </div>
     </div>
 </div>

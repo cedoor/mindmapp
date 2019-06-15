@@ -43,16 +43,23 @@ export class StorageService {
     }
 
     /**
-     * Return all the saved values of the storage.
+     * Return all the saved values in the storage.
      */
     public async getAll (): Promise<any[] | null> {
-        const items: any[] = []
+        return Object.values(this.storage).map((item: string) => {
+            return JSON.parse(item)
+        }) || null
+    }
 
-        for (const key of Object.keys(this.storage)) {
-            items.push(await this.get(key))
-        }
+    /**
+     * Return all the saved keys in the storage.
+     */
+    public async getAllEntries (): Promise<any[] | null> {
+        return Object.entries(this.storage).map((entry) => {
+            entry[1] = JSON.parse(entry[1])
 
-        return items && items.length > 0 ? items : null
+            return entry
+        }) || null
     }
 
     /**

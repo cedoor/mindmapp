@@ -3,6 +3,7 @@ import {DialogService} from './dialog.service'
 import {MmpService} from './mmp.service'
 import {Router} from '@angular/router'
 import {Hotkey, HotkeysService} from 'angular2-hotkeys'
+import {MapCacheService} from './map-cache.service'
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +14,7 @@ export class ShortcutsService {
 
     constructor (private mmpService: MmpService,
                  private hotkeysService: HotkeysService,
+                 private mapCacheService: MapCacheService,
                  private router: Router,
                  private dialogService: DialogService) {
     }
@@ -50,6 +52,16 @@ export class ShortcutsService {
             description: 'TOOLTIPS.EXPORT_MAP',
             callback: () => {
                 this.dialogService.exportMap()
+            }
+        }, {
+            keys: 'ctrl+s',
+            description: 'TOOLTIPS.SAVE_MAP',
+            callback: () => {
+                if (this.mapCacheService.getCachedStatus() === null) {
+                    this.mapCacheService.addMap()
+                } else {
+                    this.mapCacheService.updateMap()
+                }
             }
         }, {
             keys: 'ctrl+z',

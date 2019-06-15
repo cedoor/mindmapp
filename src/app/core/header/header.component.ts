@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core'
+import {Component, Input} from '@angular/core'
 import {MmpService} from '../services/mmp.service'
-import {FileService} from '../services/file.service'
+import {MapCacheService} from '../services/map-cache.service'
 import {UtilsService} from '../services/utils.service'
 import {MatSidenav} from '@angular/material/sidenav'
 import {DialogService} from '../services/dialog.service'
@@ -10,22 +10,22 @@ import {DialogService} from '../services/dialog.service'
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
     @Input() public node: any
     @Input() public sidenav: MatSidenav
 
-    public savingStatus: any
-
-    constructor (public dialogService: DialogService,
-                 public mmpService: MmpService,
-                 public fileService: FileService) {
+    constructor (public mapCacheService: MapCacheService,
+                 private dialogService: DialogService,
+                 private mmpService: MmpService) {
     }
 
-    public ngOnInit () {
-        this.fileService.watchSavingStatus().subscribe((savingStatus: any) => {
-            this.savingStatus = savingStatus
-        })
+    public saveMap () {
+        if (this.mapCacheService.getCachedStatus() === null) {
+            this.mapCacheService.addMap()
+        } else {
+            this.mapCacheService.updateMap()
+        }
     }
 
     public toggleFullScreen () {

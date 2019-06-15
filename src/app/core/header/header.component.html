@@ -5,6 +5,12 @@
                 mat-icon-button>
             <mat-icon>note_add</mat-icon>
         </button>
+        <button (click)="saveMap()" [disabled]="mapCacheService.cached | async"
+                [title]="'TOOLTIPS.SAVE_MAP' | translate"
+                class="save-map" color="primary"
+                mat-icon-button>
+            <mat-icon>save</mat-icon>
+        </button>
         <button (click)="dialogService.importMap()" [title]="'TOOLTIPS.IMPORT_MAP' | translate"
                 class="open-map" color="primary"
                 mat-icon-button>

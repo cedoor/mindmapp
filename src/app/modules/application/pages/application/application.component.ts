@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core'
 import {DialogService} from '../../../../core/services/dialog.service'
 import {MapOptions} from '../../../../shared/models/mmp.model'
-import {FileService} from '../../../../core/services/file.service'
+import {MapCacheService} from '../../../../core/services/map-cache.service'
 import {MmpService} from '../../../../core/services/mmp.service'
 import {SettingsService} from '../../../../core/services/settings.service'
 import {UtilsService} from '../../../../core/services/utils.service'
+import {CachedMap} from '../../../../shared/models/cached-map.model'
 
 @Component({
     selector: 'mindmapp-application',
@@ -18,7 +19,7 @@ export class ApplicationComponent implements OnInit {
     constructor (private dialogService: DialogService,
                  private mmpService: MmpService,
                  private settingsService: SettingsService,
-                 private fileService: FileService) {
+                 private mapCacheService: MapCacheService) {
         this.node = {}
     }
 
@@ -26,10 +27,7 @@ export class ApplicationComponent implements OnInit {
         const settings = this.settingsService.getCachedSettings()
 
         // Create the mind map.
-        this.createMap(settings.mapOptions)
-
-        // Initialize all listeners
-        this.createMapListeners()
+        this.initMap(settings.mapOptions)
 
         this.handleImageDropObservable()
     }
@@ -40,13 +38,21 @@ export class ApplicationComponent implements OnInit {
         })
     }
 
-    public createMap (options: MapOptions) {
+    public async initMap (options: MapOptions) {
         this.mmpService.create('map_1', options)
+
+        const lastCachedMap: CachedMap = await this.mapCacheService.setLastMap()
+
+        if (lastCachedMap) {
+            this.mmpService.new(lastCachedMap.data)
+        }
 
         this.node = this.mmpService.selectNode()
 
         this.mmpService.addNodesOnRightClick()
-        this.fileService.checkMapFile()
+
+        // Initialize all listeners
+        this.createMapListeners()
     }
 
     public createMapListeners () {
@@ -60,30 +66,30 @@ export class ApplicationComponent implements OnInit {
 
         this.mmpService.on('nodeUpdate').subscribe((node) => {
             Object.assign(this.node, node)
-            this.fileService.checkMapFile()
+            this.mapCacheService.updateCachedStatus()
         })
 
         this.mmpService.on('undo').subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode())
-            this.fileService.checkMapFile()
+            this.mapCacheService.updateCachedStatus()
         })
 
         this.mmpService.on('redo').subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode())
-            this.fileService.checkMapFile()
+            this.mapCacheService.updateCachedStatus()
         })
 
         this.mmpService.on('create').subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode())
-            this.fileService.checkMapFile()
+            this.mapCacheService.updateCachedStatus()
         })
 
         this.mmpService.on('nodeCreate').subscribe(() => {
-            this.fileService.checkMapFile()
+            this.mapCacheService.updateCachedStatus()
         })
 
         this.mmpService.on('nodeRemove').subscribe(() => {
-            this.fileService.checkMapFile()
+            this.mapCacheService.updateCachedStatus()
         })
     }
 

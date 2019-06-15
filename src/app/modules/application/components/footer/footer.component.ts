@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {NotificationsService} from '../../../../core/services/notifications.service'
-import {FileService} from '../../../../core/services/file.service'
+import {MapCacheService} from '../../../../core/services/map-cache.service'
 
 @Component({
     selector: 'mindmapp-footer',
@@ -9,23 +9,15 @@ import {FileService} from '../../../../core/services/file.service'
 })
 export class FooterComponent implements OnInit {
 
-    public informations: string
+    public message: string
 
-    public mapSaved: boolean
-    public filePath: string
-
-    constructor (public notificationsService: NotificationsService,
-                 public fileService: FileService) {
+    constructor (public mapCacheService: MapCacheService,
+                 private notificationsService: NotificationsService) {
     }
 
     ngOnInit () {
-        this.notificationsService.watchInfoStatus().subscribe((informations: string) => {
-            this.informations = informations
-        })
-
-        this.fileService.watchSavingStatus().subscribe((savingStatus: any) => {
-            this.mapSaved = savingStatus.saved
-            this.filePath = savingStatus.filePath
+        this.notificationsService.watchInfoStatus().subscribe((message: string) => {
+            this.message = message
         })
     }
 
