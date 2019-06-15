@@ -17,16 +17,19 @@ export class HeaderComponent implements OnInit {
 
     public savingStatus: any
 
-    constructor (public utilsService: UtilsService,
-                 public dialogService: DialogService,
+    constructor (public dialogService: DialogService,
                  public mmpService: MmpService,
                  public fileService: FileService) {
     }
 
-    ngOnInit () {
+    public ngOnInit () {
         this.fileService.watchSavingStatus().subscribe((savingStatus: any) => {
             this.savingStatus = savingStatus
         })
+    }
+
+    public toggleFullScreen () {
+        UtilsService.toggleFullScreen()
     }
 
     public toogleNodeFontStyle () {

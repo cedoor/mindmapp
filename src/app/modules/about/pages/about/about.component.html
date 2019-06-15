@@ -3,7 +3,7 @@
         <img class="logo" src="../resources/icons/64x64.png">
         <span class="app-name">
             Mindmapp
-            <span class="app-version">{{ packageInformations?.version }}</span>
+            <span class="app-version">{{ packageJson?.version }}</span>
         </span>
     </div>
 
@@ -12,12 +12,12 @@
         <div class="about-links">
             <p>Github: <span (click)="openLink($event)">https://github.com/Mindmapp</span></p>
             <p>{{ "WEBSITE" | translate }}: <span (click)="openLink($event)">
-                {{ packageInformations?.homepage }}
+                {{ packageJson?.homepage }}
             </span></p>
         </div>
     </div>
 
     <div class="about-footer">
-        <span>{{ "Copyright (c) " + currentYear + " " + packageInformations?.author?.name }}</span>
+        <span>{{ "Copyright (c) " + currentYear + " " + packageJson?.author?.name }}</span>
     </div>
 </div>

@@ -16,8 +16,7 @@ export class SettingsService {
 
     constructor (private storageService: StorageService,
                  private notificationService: NotificationsService,
-                 private httpService: HttpService,
-                 private utilsService: UtilsService) {
+                 private httpService: HttpService) {
         // Initialization of the behavior subjects.
         this.settingsSubject = new BehaviorSubject(null)
         this.settings = this.settingsSubject.asObservable()
@@ -31,7 +30,7 @@ export class SettingsService {
         const settings: Settings = await this.storageService.get(STORAGE_KEYS.SETTINGS)
 
         // Check if there are settings in the storage and if these settings have an old structure.
-        if (settings !== null && this.utilsService.haveSameStructure(defaultSettings, settings)) {
+        if (settings !== null && UtilsService.isSameJSONStructure(defaultSettings, settings)) {
             this.settingsSubject.next(settings)
 
             return {

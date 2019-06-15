@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {UtilsService} from '../../../../core/services/utils.service'
-import * as packageInformations from '../../../../../../package.json'
+import * as packageJson from '../../../../../../package.json'
 
 @Component({
     selector: 'mindmapp-about',
@@ -9,21 +9,19 @@ import * as packageInformations from '../../../../../../package.json'
 })
 export class AboutComponent implements OnInit {
 
-    public packageInformations: any
+    public packageJson: any
     public currentYear: string
 
-    constructor (public utilsService: UtilsService) {
-        this.packageInformations = packageInformations
+    constructor () {
+        this.packageJson = packageJson
     }
 
-    ngOnInit () {
+    public ngOnInit () {
         this.currentYear = new Date().getFullYear().toString()
     }
 
-    openLink (event: any) {
-        event.preventDefault()
-
-        this.utilsService.openExternalLink(event.target.innerHTML)
+    public openLink (event: any) {
+        UtilsService.openExternalLink(event.target.innerHTML)
     }
 
 }

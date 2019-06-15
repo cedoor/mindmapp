@@ -1,7 +1,8 @@
 import {Injectable, NgZone} from '@angular/core'
-import {DialogService} from './dialog.service'
 import {MmpService} from './mmp.service'
 import {FileService} from './file.service'
+import {environment} from '../../../environments/environment'
+// @ts-ignore
 import * as fs from 'fs'
 
 @Injectable({
@@ -15,9 +16,8 @@ export class DragDropService {
 
     constructor (private ngZone: NgZone,
                  private mmpService: MmpService,
-                 private fileService: FileService,
-                 private dialogService: DialogService) {
-        if (window.require) {
+                 private fileService: FileService) {
+        if (environment.electron) {
             this.fs = window.require('fs')
         }
     }
@@ -36,8 +36,8 @@ export class DragDropService {
             const files = event.dataTransfer.files
 
             if (files.length > 0) {
-                let url = files[0].path,
-                    extension = url.split('.').pop()
+                const url = files[0].name
+                let extension = url.split('.').pop()
 
                 // Insert the image in the selected node
                 if (this.IMAGE_EXTENSIONS.indexOf(extension) !== -1) {
@@ -45,23 +45,22 @@ export class DragDropService {
                         extension += '+xml'
                     }
 
-                    const buffer = new Buffer(this.fs.readFileSync(url)).toString('base64'),
-                        base64 = 'data:image/' + extension + ';base64,' + buffer
+                    // @ts-ignore
+                    const buffer = new Buffer(this.fs.readFileSync(url)).toString('base64')
+                    const base64 = 'data:image/' + extension + ';base64,' + buffer
 
                     this.mmpService.updateNode('imageSrc', base64)
                 }
 
                 // Load the map
-                if (extension === MmpService.MAP_FORMAT) {
-                    this.dialogService.showMapPreSavingMessage().then(() => {
-                        this.ngZone.run(() => {
-                            const data = this.fs.readFileSync(url).toString()
+                if (extension === 'json') {
+                    this.ngZone.run(() => {
+                        const data = this.fs.readFileSync(url).toString()
 
-                            this.fileService.setFilePath(url)
-                            this.fileService.setSavingStatus(true)
+                        this.fileService.setFilePath(url)
+                        this.fileService.setSavingStatus(true)
 
-                            this.mmpService.new(JSON.parse(data))
-                        })
+                        this.mmpService.new(JSON.parse(data))
                     })
                 }
             }

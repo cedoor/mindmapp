@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core'
 import {MmpService} from './mmp.service'
 import {BehaviorSubject, Observable} from 'rxjs'
+// @ts-ignore
 import * as fs from 'fs'
+// @ts-ignore
 import {FSWatcher} from 'fs'
 
 @Injectable({
@@ -42,8 +44,8 @@ export class FileService {
             this.setSavingStatus(false, true)
         } else {
             if (this.filePath) {
-                const fileData = this.fs.readFileSync(this.filePath).toString(),
-                    mapData = JSON.stringify(this.mmpService.exportAsJSON())
+                const fileData = this.fs.readFileSync(this.filePath).toString()
+                const mapData = JSON.stringify(this.mmpService.exportAsJSON())
 
                 if (fileData !== mapData) {
                     this.setSavingStatus(false)
@@ -58,8 +60,6 @@ export class FileService {
 
     /**
      * Set the status of the map saving.
-     * @param {boolean} saved
-     * @param {boolean} initial
      */
     public setSavingStatus (saved: boolean, initial: boolean = false) {
         this.savingStatus = {
@@ -76,7 +76,6 @@ export class FileService {
 
     /**
      * Return true if the map is saved.
-     * @returns {boolean}
      */
     public mapIsSaved (): boolean {
         return this.savingStatus.saved
@@ -84,7 +83,6 @@ export class FileService {
 
     /**
      * Return true if the map is the the initial map.
-     * @returns {boolean}
      */
     public mapIsinitial (): boolean {
         return this.savingStatus.initial
@@ -92,7 +90,6 @@ export class FileService {
 
     /**
      * Return an observable for mapSaved status.
-     * @returns {Observable<boolean>}
      */
     public watchSavingStatus (): Observable<any> {
         return this.savingStatusSource.asObservable()
@@ -100,7 +97,6 @@ export class FileService {
 
     /**
      * Set the path of the file where the map is saved.
-     * @param {string} filePath
      */
     public setFilePath (filePath: string) {
         this.filePath = filePath
@@ -114,7 +110,6 @@ export class FileService {
 
     /**
      * Return the path of the file where the map is saved.
-     * @returns {string}
      */
     public getFilePath (): string {
         return this.filePath

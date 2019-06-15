@@ -1,20 +1,14 @@
 <div class="toolbar">
     <mat-toolbar>
-        <button (click)="dialogService.newMap()" [title]="'TOOLTIPS.NEW_MAP' | translate"
+        <button (click)="mmpService.new()" [title]="'TOOLTIPS.NEW_MAP' | translate"
                 class="new-map" color="primary"
                 mat-icon-button>
             <mat-icon>note_add</mat-icon>
         </button>
-        <button (click)="dialogService.openMap()" [title]="'TOOLTIPS.OPEN_MAP' | translate"
+        <button (click)="dialogService.importMap()" [title]="'TOOLTIPS.IMPORT_MAP' | translate"
                 class="open-map" color="primary"
                 mat-icon-button>
             <mat-icon>folder_open</mat-icon>
-        </button>
-        <button (click)="dialogService.saveMap()" [disabled]="savingStatus.saved || savingStatus.initial"
-                [title]="'TOOLTIPS.SAVE_MAP' | translate"
-                class="save-map" color="primary"
-                mat-icon-button>
-            <mat-icon>save</mat-icon>
         </button>
 
         <div class="vertical-line"></div>
@@ -63,7 +57,7 @@
 
         <span class="toolbar-spacer"></span>
 
-        <button (click)="utilsService.toggleFullScreen()" [title]="'TOOLTIPS.FULLSCREEN' | translate"
+        <button (click)="toggleFullScreen()" [title]="'TOOLTIPS.FULLSCREEN' | translate"
                 class="fullscreen" color="primary"
                 mat-icon-button>
             <mat-icon>fullscreen</mat-icon>

@@ -11,8 +11,6 @@ import {SettingsService} from './settings.service'
 })
 export class MmpService {
 
-    public static readonly MAP_FORMAT = 'mmap'
-
     private maps: Map<string, any>
     private currentMap: any
     private currentId: string
