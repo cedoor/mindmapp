@@ -34,28 +34,22 @@ export class ShortcutsService {
                 this.mmpService.editNode()
             }
         }, {
-            keys: 'ctrl+n',
+            keys: 'alt+n',
             description: 'TOOLTIPS.NEW_MAP',
             callback: () => {
-                this.dialogService.newMap()
+                this.mmpService.new()
             }
         }, {
-            keys: 'ctrl+o',
-            description: 'TOOLTIPS.OPEN_MAP',
+            keys: 'ctrl+i',
+            description: 'TOOLTIPS.IMPORT_MAP',
             callback: () => {
-                this.dialogService.openMap()
+                this.dialogService.importMap()
             }
         }, {
-            keys: 'ctrl+s',
-            description: 'TOOLTIPS.SAVE_MAP',
+            keys: 'ctrl+e',
+            description: 'TOOLTIPS.EXPORT_MAP',
             callback: () => {
-                this.dialogService.saveMap()
-            }
-        }, {
-            keys: 'ctrl+shift+s',
-            description: 'TOOLTIPS.SAVE_MAP_WITH_NAME',
-            callback: () => {
-                this.dialogService.saveMap(true)
+                this.dialogService.exportMap()
             }
         }, {
             keys: 'ctrl+z',
