@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core'
 import {DialogService} from '../../../../core/services/dialog.service'
-import {DragDropService} from '../../../../core/services/dragdrop.service'
 import {MapOptions} from '../../../../shared/models/mmp.model'
 import {FileService} from '../../../../core/services/file.service'
 import {MmpService} from '../../../../core/services/mmp.service'
 import {SettingsService} from '../../../../core/services/settings.service'
+import {UtilsService} from '../../../../core/services/utils.service'
 
 @Component({
     selector: 'mindmapp-application',
@@ -16,7 +16,6 @@ export class ApplicationComponent implements OnInit {
     public node: any
 
     constructor (private dialogService: DialogService,
-                 private dragDropService: DragDropService,
                  private mmpService: MmpService,
                  private settingsService: SettingsService,
                  private fileService: FileService) {
@@ -31,7 +30,14 @@ export class ApplicationComponent implements OnInit {
 
         // Initialize all listeners
         this.createMapListeners()
-        this.dragDropService.createDragAndDropListener()
+
+        this.handleImageDropObservable()
+    }
+
+    public handleImageDropObservable () {
+        UtilsService.observableDroppedImages().subscribe((image: string) => {
+            this.mmpService.updateNode('imageSrc', image)
+        })
     }
 
     public createMap (options: MapOptions) {

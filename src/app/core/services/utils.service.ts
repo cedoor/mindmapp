@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core'
 import {environment} from '../../../environments/environment'
+import {Observable} from 'rxjs'
 
 @Injectable({
     providedIn: 'root'
@@ -7,6 +8,36 @@ import {environment} from '../../../environments/environment'
 export class UtilsService {
 
     constructor () {
+    }
+
+    /**
+     * Return an observable for drop events for images.
+     */
+    public static observableDroppedImages (): Observable<string> {
+        return new Observable((subscriber) => {
+            window.document.ondragover = (event: DragEvent) => {
+                event.preventDefault()
+            }
+
+            window.document.body.ondrop = (event: DragEvent) => {
+                event.preventDefault()
+
+                if (event.dataTransfer.files[0]) {
+                    const fileReader = new FileReader()
+
+                    fileReader.onload = () => {
+                        subscriber.next(fileReader.result.toString())
+                    }
+
+                    fileReader.onerror = subscriber.error
+
+                    fileReader.readAsDataURL(event.dataTransfer.files[0])
+                } else {
+                    subscriber.next(event.dataTransfer.getData('text/html').match(/src\s*=\s*"(.+?)"/)[1])
+
+                }
+            }
+        })
     }
 
     /**
