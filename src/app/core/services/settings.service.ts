@@ -3,7 +3,7 @@ import {STORAGE_KEYS, StorageService} from './storage.service'
 import {Settings} from '../../shared/models/settings.model'
 import {UtilsService} from './utils.service'
 import {API_URL, HttpService} from '../http/http.service'
-import {NotificationsService} from './notifications.service'
+import {NotificationService} from './notification.service'
 import {BehaviorSubject, Observable} from 'rxjs'
 
 @Injectable({
@@ -15,7 +15,7 @@ export class SettingsService {
     private settingsSubject: BehaviorSubject<Settings | null>
 
     constructor (private storageService: StorageService,
-                 private notificationService: NotificationsService,
+                 private notificationService: NotificationService,
                  private httpService: HttpService) {
         // Initialization of the behavior subjects.
         this.settingsSubject = new BehaviorSubject(null)

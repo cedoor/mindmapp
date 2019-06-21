@@ -21,9 +21,34 @@ export class MapCacheService {
         // Save the window title.
         this.windowTitle = window.document.title
         // Initialization of the behavior subjects.
-        this.cachedSubject = new BehaviorSubject<boolean>(null)
+        this.cachedSubject = new BehaviorSubject<boolean | null>(null)
         this.cached = this.cachedSubject.asObservable()
-        this.setCachedStatus(null)
+    }
+
+    public async init (): Promise<CachedMap | null> {
+        const storageEntries: any[] = await this.storageService.getAllEntries()
+        let lastCachedMap: CachedMap
+        let lastCachedKey: string
+
+        for (const entry of storageEntries) {
+            if (entry[0].includes('map-')) {
+                if (!lastCachedMap || entry[1].lastModified > lastCachedMap.lastModified) {
+                    lastCachedMap = entry[1]
+                    lastCachedKey = entry[0]
+                }
+            }
+        }
+
+        if (!lastCachedMap) {
+            this.setCachedStatus(null)
+            return null
+        }
+
+        this.cachedMapKey = lastCachedKey
+
+        this.setCachedStatus(true)
+
+        return lastCachedMap
     }
 
     public async removeMap (key: string) {
@@ -75,31 +100,6 @@ export class MapCacheService {
         }
 
         return cachedMap
-    }
-
-    public async setLastMap (): Promise<CachedMap | null> {
-        const storageEntries: any[] = await this.storageService.getAllEntries()
-        let lastCachedMap: CachedMap
-        let lastCachedKey: string
-
-        for (const entry of storageEntries) {
-            if (entry[0].includes('map-')) {
-                if (!lastCachedMap || entry[1].lastModified > lastCachedMap.lastModified) {
-                    lastCachedMap = entry[1]
-                    lastCachedKey = entry[0]
-                }
-            }
-        }
-
-        if (!lastCachedMap) {
-            return null
-        }
-
-        this.cachedMapKey = lastCachedKey
-
-        this.setCachedStatus(true)
-
-        return lastCachedMap
     }
 
     /**

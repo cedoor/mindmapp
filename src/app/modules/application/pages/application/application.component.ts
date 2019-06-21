@@ -41,7 +41,7 @@ export class ApplicationComponent implements OnInit {
     public async initMap (options: MapOptions) {
         this.mmpService.create('map_1', options)
 
-        const lastCachedMap: CachedMap = await this.mapCacheService.setLastMap()
+        const lastCachedMap: CachedMap = await this.mapCacheService.init()
 
         if (lastCachedMap) {
             this.mmpService.new(lastCachedMap.data)
