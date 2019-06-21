@@ -110,7 +110,7 @@ export class UtilsService {
      * Return the status of the full screen mode.
      */
     public static isFullScreen (): boolean {
-        return window.document.fullscreenEnabled
+        return !!window.document.fullscreenElement
     }
 
     /**
