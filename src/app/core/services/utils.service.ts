@@ -11,6 +11,13 @@ export class UtilsService {
     }
 
     /**
+     * Return the word with the first letter capitalized.
+     */
+    public static capitalizeWord (word: string): string {
+        return word.charAt(0).toUpperCase() + word.toLowerCase().slice(1)
+    }
+
+    /**
      * Return an observable for drop events for images.
      */
     public static observableDroppedImages (): Observable<string> {

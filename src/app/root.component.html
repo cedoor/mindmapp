@@ -7,7 +7,7 @@
         <div class="header-block"></div>
 
         <div class="page"
-             [@routeAnimation]="outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation">
+             [@routeAnimation]="outlet && outlet.activatedRouteData">
             <router-outlet #outlet="outlet"></router-outlet>
         </div>
     </mat-sidenav-content>
