@@ -3,30 +3,37 @@ import {MmpService} from './mmp.service'
 import {BehaviorSubject, Observable} from 'rxjs'
 import {StorageService} from './storage.service'
 import {CachedMap} from '../../shared/models/cached-map.model'
+import {AttachedMap} from '../../shared/models/attached-map.model'
 
 @Injectable({
     providedIn: 'root'
 })
 export class MapCacheService {
 
+    // The title of the browser window.
     private readonly windowTitle: string
 
-    public cached: Observable<boolean | null>
-    private readonly cachedSubject: BehaviorSubject<boolean | null>
-
-    private cachedMapKey: string
+    // Behavior subject with the attached map key.
+    public attachedMap: Observable<AttachedMap | null>
+    private readonly attachedMapSubject: BehaviorSubject<AttachedMap | null>
 
     constructor (private mmpService: MmpService,
                  private storageService: StorageService) {
         // Save the window title.
         this.windowTitle = window.document.title
         // Initialization of the behavior subjects.
-        this.cachedSubject = new BehaviorSubject<boolean | null>(null)
-        this.cached = this.cachedSubject.asObservable()
+        this.attachedMapSubject = new BehaviorSubject<AttachedMap | null>(null)
+        this.attachedMap = this.attachedMapSubject.asObservable()
     }
 
-    public async init (): Promise<CachedMap | null> {
+    /**
+     * If there are cached maps, then attach the last cached map.
+     * Otherwise set the attached map status to `null`.
+     */
+    public async init (): Promise<void> {
+        // Get all the storage entries.
         const storageEntries: any[] = await this.storageService.getAllEntries()
+        // Set the eventual last cached map variables.
         let lastCachedMap: CachedMap
         let lastCachedKey: string
 
@@ -39,100 +46,112 @@ export class MapCacheService {
             }
         }
 
+        // If there is not cached maps set attached map status to `null`.
         if (!lastCachedMap) {
-            this.setCachedStatus(null)
-            return null
-        }
-
-        this.cachedMapKey = lastCachedKey
-
-        this.setCachedStatus(true)
-
-        return lastCachedMap
-    }
-
-    public async removeMap (key: string) {
-        if (this.cachedMapKey === key) {
-            this.setCachedStatus(null)
-
-            this.cachedMapKey = ''
-        }
-
-        await this.storageService.remove(key)
-    }
-
-    public async addMap (): Promise<void> {
-        if (this.cachedSubject.getValue() === null) {
-            const cachedMap: CachedMap = {
-                data: this.mmpService.exportAsJSON(),
-                lastModified: Date.now()
-            }
-            this.cachedMapKey = this.createKey()
-
-            await this.storageService.set(this.cachedMapKey, cachedMap)
-
-            this.setCachedStatus(true)
-        }
-    }
-
-    public async updateMap (): Promise<void> {
-        if (this.cachedSubject.getValue() !== null) {
-            const cachedMap: CachedMap = {
-                data: this.mmpService.exportAsJSON(),
-                lastModified: Date.now()
-            }
-
-            await this.storageService.set(this.cachedMapKey, cachedMap)
-
-            this.setCachedStatus(true)
-        }
-    }
-
-    public async getMap (key: string = this.cachedMapKey): Promise<CachedMap | null> {
-        if (!key) {
-            return null
-        }
-
-        const cachedMap: CachedMap = await this.storageService.get(key)
-
-        if (!cachedMap || !cachedMap.data) {
+            this.setAttachedMap(null)
             return
         }
 
-        return cachedMap
+        this.setAttachedMap({
+            key: lastCachedKey,
+            updated: true
+        })
+
+        // Create a new map in the application with the last cached map data.
+        this.mmpService.new(lastCachedMap.data)
     }
 
     /**
-     * Update the map cached status. If there is a cached map check
-     * if the current map and the cached map are the same.
+     * If there's not attached maps, add the current application map to cache and attach it.
+     * Otherwise update the attached map with the current application map.
      */
-    public async updateCachedStatus () {
-        if (this.cachedSubject.getValue() !== null) {
-            const cachedMap: CachedMap = await this.storageService.get(this.cachedMapKey)
+    public async attachMap (): Promise<void> {
+        const attachedMap: AttachedMap = this.getAttachedMap()
+        const key: string = attachedMap ? attachedMap.key : this.createKey()
+        const cachedMap: CachedMap = {
+            data: this.mmpService.exportAsJSON(),
+            lastModified: Date.now()
+        }
+
+        await this.storageService.set(key, cachedMap)
+        this.setAttachedMap({
+            key: attachedMap.key,
+            updated: true
+        })
+    }
+
+    /**
+     * If there is an attached map, detach it.
+     */
+    public detachMap (): void {
+        const attachedMap: AttachedMap = this.getAttachedMap()
+
+        if (!attachedMap) {
+            return
+        }
+
+        this.setAttachedMap(null)
+    }
+
+    /**
+     * Remove a cached map from the storage.
+     */
+    public async removeMap (key: string): Promise<void> {
+        const attachedMap: AttachedMap = this.getAttachedMap()
+        // If the map to remove is the attached map, then detach it.
+        if (attachedMap && attachedMap.key === key) {
+            this.detachMap()
+        }
+        // Remove the map from the storage, if it exists.
+        await this.storageService.remove(key)
+    }
+
+    /**
+     * Return all the cached maps in the storage.
+     */
+    public async getCachedMap (): Promise<CachedMap[]> {
+        // Get all the storage entries.
+        const storageEntries: any[] = await this.storageService.getAllEntries()
+
+        return storageEntries.filter((entry: any[]) => {
+            return entry[0].includes('map-')
+        }).map((entry: any[]) => {
+            return entry[1]
+        })
+    }
+
+    /**
+     * Update the attached map update status. If there is an attached map check
+     * if the current application map and the corresponding cached map are the same.
+     */
+    public async updateAttachedMap () {
+        const attachedMap: AttachedMap = this.getAttachedMap()
+
+        if (attachedMap) {
+            const cachedMap: CachedMap = await this.storageService.get(attachedMap.key)
             const currentMapData = this.mmpService.exportAsJSON()
 
-            if (JSON.stringify(currentMapData) !== JSON.stringify(cachedMap.data)) {
-                this.setCachedStatus(false)
-            } else {
-                this.setCachedStatus(true)
-            }
+            this.setAttachedMap({
+                key: attachedMap.key,
+                updated: JSON.stringify(currentMapData) === JSON.stringify(cachedMap.data)
+            })
         }
     }
 
     /**
-     * Return the status of the cached map, or return null if there is no cached map.
+     * Return the attached cached map key, otherwise if there is no attached maps return `null`.
      */
-    public getCachedStatus (): boolean | null {
-        return this.cachedSubject.getValue()
+    public getAttachedMap (): AttachedMap | null {
+        return this.attachedMapSubject.getValue()
     }
 
     /**
-     * Set the status of the cached map, if there is one.
+     * Update the behavior subject with `null` or with the attached map data.
      */
-    private setCachedStatus (cached: boolean | null) {
-        window.document.title = cached ? this.windowTitle : this.windowTitle + '*'
+    private setAttachedMap (attachedMap: AttachedMap | null) {
+        window.document.title = attachedMap && attachedMap.updated ? this.windowTitle : this.windowTitle + '*'
 
-        this.cachedSubject.next(cached)
+        this.attachedMapSubject.next(attachedMap)
     }
 
     /**

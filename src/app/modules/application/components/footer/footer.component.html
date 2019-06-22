@@ -4,9 +4,9 @@
 
         <span class="footer-spacer"></span>
 
-        <div *ngIf="mapCacheService.cached | async as cached">
-            <span *ngIf="cached">&#10003; {{ "SAVED" | translate }}</span>
-            <span *ngIf="!cached">&#10007; {{ "NOT_SAVED" | translate }}</span>
+        <div *ngIf="mapCacheService.attachedMap | async as attachedMap">
+            <span *ngIf="attachedMap && attachedMap.updated">&#10003; {{ "SAVED" | translate }}</span>
+            <span *ngIf="!attachedMap || !attachedMap.updated">&#10007; {{ "NOT_SAVED" | translate }}</span>
         </div>
     </div>
 </div>

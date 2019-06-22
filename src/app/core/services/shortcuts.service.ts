@@ -57,11 +57,7 @@ export class ShortcutsService {
             keys: 'ctrl+s',
             description: 'TOOLTIPS.SAVE_MAP',
             callback: () => {
-                if (this.mapCacheService.getCachedStatus() === null) {
-                    this.mapCacheService.addMap()
-                } else {
-                    this.mapCacheService.updateMap()
-                }
+                this.mapCacheService.attachMap()
             }
         }, {
             keys: 'ctrl+z',

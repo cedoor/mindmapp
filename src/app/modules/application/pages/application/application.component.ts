@@ -5,7 +5,6 @@ import {MapCacheService} from '../../../../core/services/map-cache.service'
 import {MmpService} from '../../../../core/services/mmp.service'
 import {SettingsService} from '../../../../core/services/settings.service'
 import {UtilsService} from '../../../../core/services/utils.service'
-import {CachedMap} from '../../../../shared/models/cached-map.model'
 
 @Component({
     selector: 'mindmapp-application',
@@ -41,11 +40,7 @@ export class ApplicationComponent implements OnInit {
     public async initMap (options: MapOptions) {
         this.mmpService.create('map_1', options)
 
-        const lastCachedMap: CachedMap = await this.mapCacheService.init()
-
-        if (lastCachedMap) {
-            this.mmpService.new(lastCachedMap.data)
-        }
+        await this.mapCacheService.init()
 
         this.node = this.mmpService.selectNode()
 
@@ -66,30 +61,30 @@ export class ApplicationComponent implements OnInit {
 
         this.mmpService.on('nodeUpdate').subscribe((node) => {
             Object.assign(this.node, node)
-            this.mapCacheService.updateCachedStatus()
+            this.mapCacheService.updateAttachedMap()
         })
 
         this.mmpService.on('undo').subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode())
-            this.mapCacheService.updateCachedStatus()
+            this.mapCacheService.updateAttachedMap()
         })
 
         this.mmpService.on('redo').subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode())
-            this.mapCacheService.updateCachedStatus()
+            this.mapCacheService.updateAttachedMap()
         })
 
         this.mmpService.on('create').subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode())
-            this.mapCacheService.updateCachedStatus()
+            this.mapCacheService.updateAttachedMap()
         })
 
         this.mmpService.on('nodeCreate').subscribe(() => {
-            this.mapCacheService.updateCachedStatus()
+            this.mapCacheService.updateAttachedMap()
         })
 
         this.mmpService.on('nodeRemove').subscribe(() => {
-            this.mapCacheService.updateCachedStatus()
+            this.mapCacheService.updateAttachedMap()
         })
     }
 
