@@ -59,6 +59,15 @@ export class MapCacheService {
 
         // Create a new map in the application with the last cached map data.
         this.mmpService.new(lastCachedMap.data)
+
+        // Update the cached map for possible updated coordinates in the
+        // mmp loading process (ex. map centralization).
+        const cachedMap: CachedMap = {
+            data: this.mmpService.exportAsJSON(),
+            lastModified: Date.now()
+        }
+
+        await this.storageService.set(lastCachedKey, cachedMap)
     }
 
     /**
@@ -109,7 +118,7 @@ export class MapCacheService {
     /**
      * Return all the cached maps in the storage.
      */
-    public async getCachedMap (): Promise<CachedMap[]> {
+    public async getCachedMaps (): Promise<CachedMap[]> {
         // Get all the storage entries.
         const storageEntries: any[] = await this.storageService.getAllEntries()
 
