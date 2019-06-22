@@ -1,4 +1,4 @@
-div.toolbar {
+div.mindmapp-header {
     z-index: 2;
     position: fixed;
     top: 0;
@@ -8,13 +8,13 @@ div.toolbar {
     border-bottom: 1px solid lightgray;
 
     mat-toolbar.mat-toolbar {
-        height: 45px;
+        height: 50px;
         padding: 0 8px;
 
         div.vertical-line {
             width: 1px;
             height: 100%;
-            margin: 0 8px;
+            margin: 0 10px;
             background-color: #c2c2c2;
         }
 

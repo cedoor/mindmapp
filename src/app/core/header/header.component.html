@@ -1,18 +1,17 @@
-<div class="toolbar">
+<div class="mindmapp-header">
     <mat-toolbar>
         <button (click)="mmpService.new()" [title]="'TOOLTIPS.NEW_MAP' | translate"
                 class="new-map" color="primary"
                 mat-icon-button>
             <mat-icon>note_add</mat-icon>
         </button>
-        <ng-container *ngIf="mapCacheService.attachedMap | async as attachedMap">
-            <button (click)="saveMap()" [disabled]="attachedMap && attachedMap.updated"
-                    [title]="'TOOLTIPS.SAVE_MAP' | translate"
-                    class="save-map" color="primary"
-                    mat-icon-button>
-                <mat-icon>save</mat-icon>
-            </button>
-        </ng-container>
+        <button (click)="saveMap()"
+                [disabled]="(mapCacheService.attachedMap | async)?.updated"
+                [title]="'TOOLTIPS.SAVE_MAP' | translate"
+                class="save-map" color="primary"
+                mat-icon-button>
+            <mat-icon>save</mat-icon>
+        </button>
         <button (click)="dialogService.importMap()" [title]="'TOOLTIPS.IMPORT_MAP' | translate"
                 class="open-map" color="primary"
                 mat-icon-button>
