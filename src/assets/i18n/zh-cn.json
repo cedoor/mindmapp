@@ -39,6 +39,7 @@
     "NOT_SAVED": "未保存",
     "ROOT_NODE_NAME": "根节点名称",
     "NODE_NAME": "节点名称",
+    "APPLICATION_TITLE": "Application",
     "ABOUT_TITLE": "关于",
     "ABOUT_DESCRIPTION": "Mindmapp 是一个绘制思维导图的开源软件。如果你是开发人员，并且对此项目有兴趣、想做些贡献，欢迎点击下面的链接。",
     "SETTINGS_TITLE": "设置",

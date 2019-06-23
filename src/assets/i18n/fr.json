@@ -39,6 +39,7 @@
     "NOT_SAVED": "Non enregistré",
     "ROOT_NODE_NAME": "Nom du noeud racine",
     "NODE_NAME": "Nom du noeud",
+    "APPLICATION_TITLE": "Application",
     "ABOUT_TITLE": "A Propos",
     "ABOUT_DESCRIPTION": "Mindmapp est un projet open source qui vous permet de créer des cartes mentales. Si vous êtes développeur et que vous souhaitez contribuer à l'application, vous trouverez ci-dessous les liens du projet.",
     "SETTINGS_TITLE": "Paramètres",

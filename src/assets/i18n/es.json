@@ -39,6 +39,7 @@
     "NOT_SAVED": "No guardado",
     "ROOT_NODE_NAME": "Nombre del nodo raíz",
     "NODE_NAME": "Nombre del nodo",
+    "APPLICATION_TITLE": "Application",
     "ABOUT_TITLE": "Acerca",
     "ABOUT_DESCRIPTION": "Mindmapp es un proyecto de código abierto que te permite crear mapas mentales. Si eres desarrollador y quieres contribuir con la aplicación, a continuación encontrarás los enlaces del proyecto.",
     "SETTINGS_TITLE": "Ajustes",
