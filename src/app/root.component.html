@@ -6,8 +6,7 @@
         <mindmapp-header [node]="node" [sidenav]="sidenav"></mindmapp-header>
         <div class="header-block"></div>
 
-        <div class="page"
-             [@routeAnimation]="outlet && outlet.activatedRouteData">
+        <div class="page" [@routeAnimation]="outlet && outlet.activatedRouteData">
             <router-outlet #outlet="outlet"></router-outlet>
         </div>
     </mat-sidenav-content>

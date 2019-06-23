@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core'
+import {UtilsService} from './utils.service'
 
 /**
  * Enumerative of the possible keys present in the storage
@@ -28,7 +29,7 @@ export class StorageService {
      */
     public async get (keys: string | string[]): Promise<any | any[] | null> {
         if (typeof keys === 'string') {
-            return JSON.parse(this.storage.getItem(keys))
+            return this.parseItem(this.storage.getItem(keys))
         }
 
         const items: any[] = []
@@ -47,7 +48,7 @@ export class StorageService {
      */
     public async getAll (): Promise<any[] | null> {
         return Object.values(this.storage).map((item: string) => {
-            return JSON.parse(item)
+            return this.parseItem(item)
         }) || null
     }
 
@@ -56,7 +57,7 @@ export class StorageService {
      */
     public async getAllEntries (): Promise<any[] | null> {
         return Object.entries(this.storage).map((entry) => {
-            entry[1] = JSON.parse(entry[1])
+            entry[1] = this.parseItem(entry[1])
 
             return entry
         }) || null
@@ -98,6 +99,21 @@ export class StorageService {
         const items: any[] = await this.getAll()
 
         return items && items.length > 0
+    }
+
+    /**
+     * Parse the storage item and return the correct type.
+     */
+    private parseItem (item: string): any {
+        if (UtilsService.isJSONString(item)) {
+            return JSON.parse(item)
+        } else if (!Number.isNaN(+item)) {
+            return +item
+        } else if (item === 'true' || item === 'false') {
+            return item === 'true'
+        } else {
+            return item
+        }
     }
 
 }

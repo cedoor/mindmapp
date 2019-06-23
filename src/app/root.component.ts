@@ -25,21 +25,21 @@ export class RootComponent implements OnInit {
 
     public async ngOnInit () {
         const {settings, isFirstTime} = await this.settingsService.init()
-        const translations = await this.initTranslations(settings.general.language)
+        await this.initTranslations(settings.general.language)
 
         this.shortcutsService.init()
-        this.notificationService.setMessage(translations.INITIAL_INFORMATION, 4000)
+        this.notificationService.setMessage('INITIAL_INFORMATION')
 
         if (isFirstTime) {
-            this.notificationService.send(translations.WELCOME_MESSAGE)
+            this.notificationService.showSnackBarMessage('WELCOME_MESSAGE')
         }
 
         this.initialized = true
     }
 
-    private initTranslations (language: string): Promise<any> {
+    private async initTranslations (language: string): Promise<void> {
         this.translateService.setDefaultLang(language)
-        return this.translateService.use(language).toPromise()
+        await this.translateService.use(language).toPromise()
     }
 
 }

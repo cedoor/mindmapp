@@ -1,7 +1,7 @@
 <div class="mindmapp-header">
     <mat-toolbar *ngIf="currentPage">
         <ng-container *ngIf="currentPage === 'application'; else logo">
-            <button (click)="mmpService.new()" [title]="'TOOLTIPS.NEW_MAP' | translate"
+            <button (click)="createNewMap()" [title]="'TOOLTIPS.NEW_MAP' | translate"
                     class="new-map" color="primary"
                     mat-icon-button>
                 <mat-icon>note_add</mat-icon>
@@ -13,17 +13,27 @@
                     mat-icon-button>
                 <mat-icon>save</mat-icon>
             </button>
-            <button (click)="dialogService.importMap()" [title]="'TOOLTIPS.IMPORT_MAP' | translate"
+            <button [matMenuTriggerFor]="import_map" [title]="'TOOLTIPS.IMPORT_MAP' | translate"
                     class="import-map" color="primary"
                     mat-icon-button>
                 <mat-icon>folder_open</mat-icon>
             </button>
-            <button [matMenuTriggerFor]="export" [title]="'TOOLTIPS.EXPORT_MAP' | translate"
+            <mat-menu #import_map="matMenu">
+                <button (click)="dialogService.importMap()" mat-menu-item>
+                    <mat-icon>insert_drive_file</mat-icon>
+                    <span>{{ "JSON" | translate }}</span>
+                </button>
+                <button (click)="openCachedMaps()" mat-menu-item>
+                    <mat-icon>storage</mat-icon>
+                    <span>{{ "SAVED_MAPS" | translate }}</span>
+                </button>
+            </mat-menu>
+            <button [matMenuTriggerFor]="export_map" [title]="'TOOLTIPS.EXPORT_MAP' | translate"
                     class="export-map" color="primary"
                     mat-icon-button>
                 <mat-icon>get_app</mat-icon>
             </button>
-            <mat-menu #export="matMenu">
+            <mat-menu #export_map="matMenu">
                 <button (click)="exportMap('json')" mat-menu-item>
                     <mat-icon>insert_drive_file</mat-icon>
                     <span>{{ "JSON" | translate }}</span>

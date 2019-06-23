@@ -22,14 +22,17 @@ import {ColorPickerModule} from 'ngx-color-picker'
 import {SidenavComponent} from './components/sidenav/sidenav.component'
 import {RouterModule} from '@angular/router'
 import {DialogComponent} from './components/dialog/dialog.component'
+import {CachedMapsComponent} from './components/cached-maps/cached-maps.component'
 
 @NgModule({
     declarations: [
         SidenavComponent,
-        DialogComponent
+        DialogComponent,
+        CachedMapsComponent
     ],
     entryComponents: [
-        DialogComponent
+        DialogComponent,
+        CachedMapsComponent
     ],
     imports: [
         RouterModule,

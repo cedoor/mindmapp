@@ -10,6 +10,7 @@ export class NotificationService {
 
     public message: Observable<string>
     private readonly messageSubject: BehaviorSubject<string>
+    private messageTimeoutId: number | null
 
     constructor (private matSnackBar: MatSnackBar,
                  private translateService: TranslateService) {
@@ -19,9 +20,9 @@ export class NotificationService {
     }
 
     /**
-     * Show a notification with the message.
+     * Show a message with a material snack bar.
      */
-    public async send (message: string, values?: any, duration: number = 5000) {
+    public async showSnackBarMessage (message: string, values?: any, duration: number = 5000) {
         const action = await this.translate('DISMISS')
         message = await this.translate(message, values)
 
@@ -34,12 +35,18 @@ export class NotificationService {
     /**
      * Set a message.
      */
-    public setMessage (message: string, duration?: number) {
+    public async setMessage (message: string, duration: number = 4000) {
+        message = await this.translate(message)
         this.messageSubject.next(message)
 
         if (duration) {
-            setTimeout(() => {
+            if (this.messageTimeoutId !== null) {
+                clearTimeout(this.messageTimeoutId)
+            }
+
+            this.messageTimeoutId = setTimeout(() => {
                 this.messageSubject.next('')
+                this.messageTimeoutId = null
             }, duration)
         }
     }

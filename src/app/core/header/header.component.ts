@@ -5,7 +5,10 @@ import {UtilsService} from '../services/utils.service'
 import {MatSidenav} from '@angular/material/sidenav'
 import {DialogService} from '../services/dialog.service'
 import {ActivationEnd, Router, RouterEvent} from '@angular/router'
+import {CachedMapsComponent} from '../../shared/components/cached-maps/cached-maps.component'
+import {MatDialog} from '@angular/material'
 import * as packageJson from '../../../../package.json'
+import {NotificationService} from '../services/notification.service'
 
 @Component({
     selector: 'mindmapp-header',
@@ -20,6 +23,8 @@ export class HeaderComponent implements OnInit {
     public applicationName: string
 
     constructor (public mapCacheService: MapCacheService,
+                 private matDialog: MatDialog,
+                 private notificationService: NotificationService,
                  private dialogService: DialogService,
                  private router: Router,
                  private mmpService: MmpService) {
@@ -32,6 +37,24 @@ export class HeaderComponent implements OnInit {
                 this.currentPage = event.snapshot.routeConfig.path
             }
         })
+    }
+
+    public async openCachedMaps () {
+        const cachedMapEntries = await this.mapCacheService.getCachedMapEntries()
+
+        if (cachedMapEntries.length === 0) {
+            this.notificationService.setMessage('NO_SAVED_MAPS')
+            return
+        }
+
+        this.matDialog.open(CachedMapsComponent, {
+            data: cachedMapEntries
+        })
+    }
+
+    public createNewMap () {
+        this.mapCacheService.detachMap()
+        this.mmpService.new()
     }
 
     public exportMap (extension: string) {

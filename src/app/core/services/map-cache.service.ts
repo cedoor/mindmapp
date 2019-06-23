@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core'
 import {MmpService} from './mmp.service'
 import {BehaviorSubject, Observable} from 'rxjs'
 import {StorageService} from './storage.service'
-import {CachedMap} from '../../shared/models/cached-map.model'
+import {CachedMap, CachedMapEntry} from '../../shared/models/cached-map.model'
 import {AttachedMap} from '../../shared/models/attached-map.model'
 
 @Injectable({
@@ -74,9 +74,12 @@ export class MapCacheService {
      * If there's not attached maps, add the current application map to cache and attach it.
      * Otherwise update the attached map with the current application map.
      */
-    public async attachMap (): Promise<void> {
-        const attachedMap: AttachedMap = this.getAttachedMap()
-        const key: string = attachedMap ? attachedMap.key : this.createKey()
+    public async attachMap (key?: string): Promise<void> {
+        if (!key) {
+            const attachedMap: AttachedMap = this.getAttachedMap()
+            key = attachedMap ? attachedMap.key : this.createKey()
+        }
+
         const cachedMap: CachedMap = {
             data: this.mmpService.exportAsJSON(),
             lastModified: Date.now()
@@ -84,7 +87,7 @@ export class MapCacheService {
 
         await this.storageService.set(key, cachedMap)
         this.setAttachedMap({
-            key: attachedMap.key,
+            key,
             updated: true
         })
     }
@@ -116,16 +119,19 @@ export class MapCacheService {
     }
 
     /**
-     * Return all the cached maps in the storage.
+     * Return all the cached map entries (cachedMap + key) of the storage.
      */
-    public async getCachedMaps (): Promise<CachedMap[]> {
+    public async getCachedMapEntries (): Promise<CachedMapEntry[]> {
         // Get all the storage entries.
-        const storageEntries: any[] = await this.storageService.getAllEntries()
+        const storageEntries: any[] = await this.storageService.getAllEntries() || []
 
         return storageEntries.filter((entry: any[]) => {
             return entry[0].includes('map-')
         }).map((entry: any[]) => {
-            return entry[1]
+            return {
+                key: entry[0],
+                cachedMap: entry[1]
+            }
         })
     }
 
