@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core'
-import {UtilsService} from '../../../../core/services/utils.service'
+import {UtilsService} from '../../../../core/services/utils/utils.service'
 import * as packageJson from '../../../../../../package.json'
 
 @Component({

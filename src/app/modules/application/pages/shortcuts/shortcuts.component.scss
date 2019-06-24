@@ -1,7 +1,13 @@
-button {
+button.back-button {
     position: absolute;
     top: 10px;
     left: 10px;
+}
+
+button.open-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 h2 {

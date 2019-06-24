@@ -1,33 +1,37 @@
-div.settings {
-    button.close-dialog {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
+button.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
 
-    h2 {
-        text-align: center;
-    }
+button.open-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 
-    div.content {
-        padding: 20px;
-        font-size: 14px;
+h2 {
+    text-align: center;
+}
 
-        mat-card {
+div.content {
+    padding: 20px;
+    font-size: 14px;
+
+    mat-card {
+        margin-bottom: 20px;
+
+        hr {
+            margin-top: 0;
             margin-bottom: 20px;
-
-            hr {
-                margin-top: 0;
-                margin-bottom: 20px;
-                border: 0;
-                height: 1px;
-                background-color: lightgray;
-            }
+            border: 0;
+            height: 1px;
+            background-color: lightgray;
         }
+    }
 
-        mat-card:last-child {
-            margin-bottom: 0;
-        }
+    mat-card:last-child {
+        margin-bottom: 0;
     }
 
     div.general-options {
@@ -56,5 +60,4 @@ div.settings {
             }
         }
     }
-
 }

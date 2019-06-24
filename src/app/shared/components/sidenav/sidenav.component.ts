@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core'
-import {MatSidenav} from '@angular/material/sidenav'
+import {Component} from '@angular/core'
+import {SidenavService} from '../../../core/services/sidenav/sidenav.service'
 
 @Component({
     selector: 'mindmapp-sidenav',
@@ -8,9 +8,11 @@ import {MatSidenav} from '@angular/material/sidenav'
 })
 export class SidenavComponent {
 
-    @Input() public sidenav: MatSidenav
+    constructor (private sidenavService: SidenavService) {
+    }
 
-    constructor () {
+    public closeSidenav () {
+        this.sidenavService.close()
     }
 
 }

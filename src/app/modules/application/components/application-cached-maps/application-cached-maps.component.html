@@ -1,0 +1,24 @@
+<div class="cached-maps-dialog">
+    <h2 mat-dialog-title>
+        {{ 'SAVED_MAPS' | translate }}
+    </h2>
+
+    <button (click)="closeDialog()" class="close" color="primary" mat-icon-button>
+        <mat-icon>close</mat-icon>
+    </button>
+
+    <mat-dialog-content>
+        <mat-action-list>
+            <button (click)="openCachedMap(cachedMapEntry)"
+                    *ngFor="let cachedMapEntry of cachedMapEntries" mat-list-item>
+                <h3 matLine>{{ cachedMapEntry.cachedMap.data[0].name }}</h3>
+                <p matLine>{{ cachedMapEntry.key.replace('map-', '') | date: 'dd/MM/yyyy - HH:mm' }}</p>
+                <button (click)="removeCachedMap(cachedMapEntry.key, $event)"
+                        color="primary" mat-icon-button>
+                    <mat-icon>highlight_off</mat-icon>
+                </button>
+            </button>
+        </mat-action-list>
+    </mat-dialog-content>
+</div>
+

@@ -1,5 +1,12 @@
-<button color="primary" mat-icon-button routerLink="/application">
+<button routerLink="/application"
+        class="back-button" color="primary" mat-icon-button>
     <mat-icon>arrow_back</mat-icon>
+</button>
+
+<button (click)="openSidenav()"
+        [title]="'TOOLTIPS.OPEN_MENU' | translate"
+        class="open-menu" color="primary" mat-icon-button>
+    <mat-icon>menu</mat-icon>
 </button>
 
 <h2 mat-dialog-title>{{ "SHORTCUTS_TITLE" | translate }}</h2>

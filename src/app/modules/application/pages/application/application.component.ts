@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core'
-import {DialogService} from '../../../../core/services/dialog.service'
+import {DialogService} from '../../../../core/services/dialog/dialog.service'
 import {MapOptions} from '../../../../shared/models/mmp.model'
-import {MapCacheService} from '../../../../core/services/map-cache.service'
-import {MmpService} from '../../../../core/services/mmp.service'
-import {SettingsService} from '../../../../core/services/settings.service'
-import {UtilsService} from '../../../../core/services/utils.service'
+import {MapCacheService} from '../../../../core/services/map-cache/map-cache.service'
+import {MmpService} from '../../../../core/services/mmp/mmp.service'
+import {SettingsService} from '../../../../core/services/settings/settings.service'
+import {UtilsService} from '../../../../core/services/utils/utils.service'
 
 @Component({
     selector: 'mindmapp-application',

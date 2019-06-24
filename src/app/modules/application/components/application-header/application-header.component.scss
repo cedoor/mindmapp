@@ -1,0 +1,16 @@
+mat-toolbar {
+    height: 50px;
+    padding: 0 8px;
+    border-bottom: 1px solid lightgray;
+
+    div.vertical-line {
+        width: 1px;
+        height: 100%;
+        margin: 0 10px;
+        background-color: #c2c2c2;
+    }
+
+    span.toolbar-spacer {
+        flex: 1 1 auto;
+    }
+}

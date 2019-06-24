@@ -4,19 +4,4 @@ mat-sidenav-container {
     mat-sidenav {
         width: 260px;
     }
-
-    mat-sidenav-content {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-
-        div.header-block {
-            flex-basis: 50px;
-        }
-
-        div.page {
-            position: relative;
-            flex: 1;
-        }
-    }
 }
