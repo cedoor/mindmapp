@@ -7,6 +7,8 @@ import {FloatingButtonsComponent} from './components/floating-buttons/floating-b
 import {MapComponent} from './components/map/map.component'
 import {FooterComponent} from './components/footer/footer.component'
 import {ApplicationComponent} from './pages/application/application.component'
+import {SettingsComponent} from './pages/settings/settings.component'
+import {ShortcutsComponent} from './pages/shortcuts/shortcuts.component'
 
 @NgModule({
     imports: [
@@ -15,6 +17,8 @@ import {ApplicationComponent} from './pages/application/application.component'
     ],
     declarations: [
         ApplicationComponent,
+        SettingsComponent,
+        ShortcutsComponent,
         ColorsPanelComponent,
         FloatingButtonsComponent,
         FooterComponent,
