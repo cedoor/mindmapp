@@ -17,7 +17,7 @@
         <mat-icon>folder_open</mat-icon>
     </button>
     <mat-menu #import_map="matMenu">
-        <button (click)="dialogService.importMap()" mat-menu-item>
+        <button (click)="mmpService.importMap()" mat-menu-item>
             <mat-icon>insert_drive_file</mat-icon>
             <span>{{ "JSON" | translate }}</span>
         </button>
@@ -75,7 +75,7 @@
             mat-icon-button>
         <mat-icon>{{ node?.locked ? "lock_outline" : "lock_open" }}</mat-icon>
     </button>
-    <button (click)="dialogService.addNodeImage()" [title]="'TOOLTIPS.NODE_IMAGE' | translate"
+    <button (click)="mmpService.addNodeImage()" [title]="'TOOLTIPS.NODE_IMAGE' | translate"
             class="image" color="primary"
             mat-icon-button>
         <mat-icon>{{ node?.image?.src ? "broken_image" : "image" }}</mat-icon>

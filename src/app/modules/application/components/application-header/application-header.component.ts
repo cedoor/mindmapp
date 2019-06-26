@@ -2,7 +2,6 @@ import {Component, Input} from '@angular/core'
 import {MatDialog, MatSidenav} from '@angular/material'
 import {MapCacheService} from '../../../../core/services/map-cache/map-cache.service'
 import {NotificationService} from '../../../../core/services/notification/notification.service'
-import {DialogService} from '../../../../core/services/dialog/dialog.service'
 import {Router} from '@angular/router'
 import {MmpService} from '../../../../core/services/mmp/mmp.service'
 import {UtilsService} from '../../../../core/services/utils/utils.service'
@@ -22,7 +21,6 @@ export class ApplicationHeaderComponent {
     constructor (public mapCacheService: MapCacheService,
                  private matDialog: MatDialog,
                  private notificationService: NotificationService,
-                 private dialogService: DialogService,
                  private router: Router,
                  private sidenavService: SidenavService,
                  private mmpService: MmpService) {
@@ -50,21 +48,8 @@ export class ApplicationHeaderComponent {
         this.mmpService.new()
     }
 
-    public exportMap (extension: string) {
-        switch (extension) {
-            case 'png':
-                this.dialogService.exportMap('png')
-                break
-            case 'jpeg':
-                this.dialogService.exportMap('jpeg')
-                break
-            case 'pdf':
-                this.dialogService.exportMap('pdf')
-                break
-            case 'json':
-                this.dialogService.exportMap('json')
-                break
-        }
+    public exportMap (format: string) {
+        this.mmpService.exportMap(format)
 
         this.sidenav.close()
     }

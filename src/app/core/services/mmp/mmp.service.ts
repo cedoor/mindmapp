@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core'
 import {Observable} from 'rxjs'
 import {SettingsService} from '../settings/settings.service'
+import {UtilsService} from '../utils/utils.service'
+import * as JsPDF from 'jspdf'
 import * as mmp from 'mmp'
 
 /**
@@ -43,8 +45,7 @@ export class MmpService {
     }
 
     /**
-     * Return the version of mmp.
-     * @returns {string}
+     * Return the version of mmp library.
      */
     public static version (): string {
         return mmp.version
@@ -53,8 +54,6 @@ export class MmpService {
     /**
      * Create a mind mmp and save the instance with corresponding id.
      * All function below require the mmp id.
-     * @param {string} id
-     * @param options
      */
     public create (id: string, options?: any) {
         const map = mmp.create(id, options)
@@ -74,7 +73,6 @@ export class MmpService {
 
     /**
      * Clear or load an existing mind mmp.
-     * @param map
      */
     public new (map?: any) {
         this.currentMap.new(map)
@@ -82,7 +80,6 @@ export class MmpService {
 
     /**
      * Zoom in the mind mmp.
-     * @param {number} duration
      */
     public zoomIn (duration?: number) {
         this.currentMap.zoomIn(duration)
@@ -90,7 +87,6 @@ export class MmpService {
 
     /**
      * Zoom out the mind mmp.
-     * @param {number} duration
      */
     public zoomOut (duration?: number) {
         this.currentMap.zoomOut(duration)
@@ -98,8 +94,6 @@ export class MmpService {
 
     /**
      * Update the mind mmp option properties.
-     * @param {string} property
-     * @param value
      */
     public updateOptions (property: string, value: any) {
         this.currentMap.updateOptions(property, value)
@@ -107,7 +101,6 @@ export class MmpService {
 
     /**
      * Return the json of the mind mmp.
-     * @returns {any}
      */
     public exportAsJSON (): any {
         return this.currentMap.exportAsJSON()
@@ -115,8 +108,6 @@ export class MmpService {
 
     /**
      * Return a promise with the uri of the mind mmp image.
-     * @param {string} type
-     * @returns {Promise<any>}
      */
     public exportAsImage (type?: string): Promise<any> {
         return new Promise((resolve) => {
@@ -149,8 +140,6 @@ export class MmpService {
 
     /**
      * Center the mind mmp.
-     * @param {"position" | "zoom"} type
-     * @param {number} duration
      */
     public center (type?: 'position' | 'zoom', duration?: number) {
         this.currentMap.center(type, duration)
@@ -158,8 +147,6 @@ export class MmpService {
 
     /**
      * Return the subscribe of the mind mmp event with the node or nothing.
-     * @param {string} event
-     * @returns {Observable<Array<any>>}
      */
     public on (event: string): Observable<Array<any>> {
         return new Observable((observer) => {
@@ -171,7 +158,6 @@ export class MmpService {
 
     /**
      * Add a node in the mind mmp.
-     * @param properties
      */
     public addNode (properties: any = {}) {
         const selected = this.selectNode()
@@ -195,8 +181,6 @@ export class MmpService {
     /**
      * Select the node with the id or in the direction passed as parameter.
      * If the node id is not defined return the current selected node.
-     * @param {string | "left" | "right" | "up" | "down"} nodeId
-     * @returns {any}
      */
     public selectNode (nodeId?: string | 'left' | 'right' | 'up' | 'down'): any {
         return this.currentMap.selectNode(nodeId)
@@ -218,9 +202,6 @@ export class MmpService {
 
     /**
      * Update a property of the current selected node.
-     * @param {string} property
-     * @param value
-     * @param {boolean} graphic
      */
     public updateNode (property: string, value?: any, graphic?: boolean) {
         this.currentMap.updateNode(property, value, graphic)
@@ -229,7 +210,6 @@ export class MmpService {
     /**
      * Remove the node with the id passed as parameter or, if the id is
      * not defined, the current selected node.
-     * @param {string} nodeId
      */
     public removeNode (nodeId?: string) {
         this.currentMap.removeNode(nodeId)
@@ -238,7 +218,6 @@ export class MmpService {
     /**
      * Copy a node with his children in the mmp clipboard.
      * If id is not specified, copy the selected node.
-     * @param {string} nodeId
      */
     public copyNode (nodeId?: string) {
         this.currentMap.copyNode(nodeId)
@@ -247,7 +226,6 @@ export class MmpService {
     /**
      * Remove and copy a node with his children in the mmp clipboard.
      * If id is not specified, copy the selected node.
-     * @param {string} nodeId
      */
     public cutNode (nodeId?: string) {
         this.currentMap.cutNode(nodeId)
@@ -256,7 +234,6 @@ export class MmpService {
     /**
      * Paste the node of the mmp clipboard in the map. If id is not specified,
      * paste the nodes of the mmp clipboard in the selected node.
-     * @param {string} nodeId
      */
     public pasteNode (nodeId?: string) {
         this.currentMap.pasteNode(nodeId)
@@ -264,7 +241,6 @@ export class MmpService {
 
     /**
      * Return the children of the current node.
-     * @returns {Array<any>}
      */
     public nodeChildren (): Array<any> {
         return this.currentMap.nodeChildren()
@@ -272,8 +248,6 @@ export class MmpService {
 
     /**
      * Move the node in a direction.
-     * @param {"left" | "right" | "up" | "down"} direction
-     * @param {number} range
      */
     public moveNodeTo (direction: 'left' | 'right' | 'up' | 'down', range: number = 10) {
         const coordinates = this.currentMap.selectNode().coordinates
@@ -297,6 +271,65 @@ export class MmpService {
     }
 
     /**
+     * Export the current mind map with the format passed as parameter.
+     */
+    public async exportMap (format: string = 'json') {
+        const name = this.selectNode('map_1_node_0').name
+
+        switch (format) {
+            case 'json':
+                const json = JSON.stringify(this.exportAsJSON())
+                const uri = `data:text/json;charset=utf-8,${encodeURIComponent(json)}`
+
+                UtilsService.downloadFile(`${name}.${format}`, uri)
+
+                break
+            case 'pdf':
+                const imageUri = await this.exportAsImage('jpeg')
+                const htmlImageElement = await UtilsService.imageFromUri(imageUri)
+                const pdf = new JsPDF({
+                    orientation: htmlImageElement.width > htmlImageElement.height ? 'l' : 'p',
+                    format: [htmlImageElement.width * 0.75, htmlImageElement.height * 0.75]
+                })
+
+                pdf.addImage(imageUri, 'JPEG', 0, 0)
+
+                pdf.save(`${name}.${format}`)
+
+                break
+            case 'jpeg':
+            case 'png':
+                const image = await this.exportAsImage(format)
+
+                UtilsService.downloadFile(`${name}.${format === 'jpeg' ? 'jpg' : format}`, image)
+
+                break
+        }
+    }
+
+    /**
+     * Import an existing map from the local file system.
+     */
+    public async importMap () {
+        const json = await UtilsService.uploadFile()
+
+        this.new(JSON.parse(json))
+    }
+
+    /**
+     * Insert an image in the selected node.
+     */
+    public async addNodeImage () {
+        if (!this.selectNode().image.src) {
+            const image = await UtilsService.uploadFile(['image/png', 'image/gif', 'image/jpg', 'image/jpeg'])
+
+            this.updateNode('imageSrc', image)
+        } else {
+            this.updateNode('imageSrc', '')
+        }
+    }
+
+    /**
      * Create a listener to add a node on right click event.
      */
     public addNodesOnRightClick () {
@@ -314,7 +347,6 @@ export class MmpService {
 
     /**
      * Set the current mind mmp.
-     * @param {string} id
      */
     public setCurrentMap (id: string) {
         this.currentMap = this.maps.get(id)

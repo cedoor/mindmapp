@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core'
-import {DialogService} from '../dialog/dialog.service'
 import {MmpService} from '../mmp/mmp.service'
 import {Router} from '@angular/router'
 import {Hotkey, HotkeysService} from 'angular2-hotkeys'
@@ -15,8 +14,7 @@ export class ShortcutsService {
     constructor (private mmpService: MmpService,
                  private hotkeysService: HotkeysService,
                  private mapCacheService: MapCacheService,
-                 private router: Router,
-                 private dialogService: DialogService) {
+                 private router: Router) {
     }
 
     /**
@@ -45,13 +43,13 @@ export class ShortcutsService {
             keys: 'ctrl+i',
             description: 'TOOLTIPS.IMPORT_MAP',
             callback: () => {
-                this.dialogService.importMap()
+                this.mmpService.importMap()
             }
         }, {
             keys: 'ctrl+e',
             description: 'TOOLTIPS.EXPORT_MAP',
             callback: () => {
-                this.dialogService.exportMap()
+                this.mmpService.exportMap()
             }
         }, {
             keys: 'ctrl+s',

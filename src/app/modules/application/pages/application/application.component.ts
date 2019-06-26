@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core'
-import {DialogService} from '../../../../core/services/dialog/dialog.service'
 import {MapOptions} from '../../../../shared/models/mmp.model'
 import {MapCacheService} from '../../../../core/services/map-cache/map-cache.service'
 import {MmpService} from '../../../../core/services/mmp/mmp.service'
@@ -15,8 +14,7 @@ export class ApplicationComponent implements OnInit {
 
     public node: any
 
-    constructor (private dialogService: DialogService,
-                 private mmpService: MmpService,
+    constructor (private mmpService: MmpService,
                  private settingsService: SettingsService,
                  private mapCacheService: MapCacheService) {
         this.node = {}
