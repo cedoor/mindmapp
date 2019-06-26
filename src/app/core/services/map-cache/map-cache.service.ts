@@ -36,11 +36,11 @@ export class MapCacheService {
         let lastCachedMap: CachedMap
         let lastCachedKey: string
 
-        for (const entry of storageEntries) {
-            if (entry[0].includes('map-')) {
-                if (!lastCachedMap || entry[1].lastModified > lastCachedMap.lastModified) {
-                    lastCachedMap = entry[1]
-                    lastCachedKey = entry[0]
+        for (const [key, value] of storageEntries) {
+            if (key.includes('map-')) {
+                if (!lastCachedMap || value.lastModified > lastCachedMap.lastModified) {
+                    lastCachedMap = value
+                    lastCachedKey = key
                 }
             }
         }
