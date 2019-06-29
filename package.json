@@ -36,6 +36,7 @@
         "e2e": "ng e2e"
     },
     "devDependencies": {
+        "@angular/service-worker": "^8.0.0",
         "angular2-hotkeys": "^2.1.4",
         "@angular-devkit/build-angular": "~0.800.0",
         "@angular-devkit/schematics": "^7.3.9",
@@ -82,5 +83,8 @@
         "tslint": "~5.17.0",
         "typescript": "~3.4.5",
         "zone.js": "~0.9.1"
+    },
+    "dependencies": {
+        "@angular/pwa": "^0.800.6"
     }
 }

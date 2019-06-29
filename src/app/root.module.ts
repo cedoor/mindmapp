@@ -8,7 +8,9 @@ import {HttpClient, HttpClientModule} from '@angular/common/http'
 import {TranslateHttpLoader} from '@ngx-translate/http-loader'
 import {SharedModule} from './shared/shared.module'
 import {HotkeyModule} from 'angular2-hotkeys'
-import {MatSidenavModule} from '@angular/material'
+import {MatSidenavModule} from '@angular/material';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 export function createTranslateLoader (http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -29,7 +31,8 @@ export function createTranslateLoader (http: HttpClient) {
             }
         }),
         HotkeyModule.forRoot(),
-        SharedModule
+        SharedModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     declarations: [
         RootComponent
