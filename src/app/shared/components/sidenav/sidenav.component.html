@@ -1,26 +1,18 @@
 <mat-nav-list>
     <mat-list-item (click)="closeSidenav()" routerLink="/application">
-        <span matLine>{{ "APPLICATION_TITLE" | translate }}</span>
-        <button color="primary" mat-icon-button>
-            <mat-icon>layers</mat-icon>
-        </button>
+        <mat-icon color="primary" mat-list-icon>layers</mat-icon>
+        <h4 matLine>{{ "APPLICATION_TITLE" | translate }}</h4>
     </mat-list-item>
     <mat-list-item (click)="closeSidenav()" routerLink="/application/shortcuts">
-        <span matLine>{{ "SHORTCUTS_TITLE" | translate }}</span>
-        <button color="primary" mat-icon-button>
-            <mat-icon>timeline</mat-icon>
-        </button>
+        <mat-icon color="primary" mat-list-icon>timeline</mat-icon>
+        <h4 matLine>{{ "SHORTCUTS_TITLE" | translate }}</h4>
     </mat-list-item>
     <mat-list-item (click)="closeSidenav()" routerLink="/application/settings">
-        <span matLine>{{ "SETTINGS_TITLE" | translate }}</span>
-        <button color="primary" mat-icon-button>
-            <mat-icon>settings</mat-icon>
-        </button>
+        <mat-icon color="primary" mat-list-icon>settings</mat-icon>
+        <h4 matLine>{{ "SETTINGS_TITLE" | translate }}</h4>
     </mat-list-item>
     <mat-list-item (click)="closeSidenav()" routerLink="/about">
-        <span matLine>{{ "ABOUT_TITLE" | translate }}</span>
-        <button color="primary" mat-icon-button>
-            <mat-icon>info</mat-icon>
-        </button>
+        <mat-icon color="primary" mat-list-icon>info</mat-icon>
+        <h4 matLine>{{ "ABOUT_TITLE" | translate }}</h4>
     </mat-list-item>
 </mat-nav-list>
