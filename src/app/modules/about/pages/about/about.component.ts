@@ -12,9 +12,11 @@ export class AboutComponent implements OnInit {
 
     public currentYear: string
     public projectName: string
+    public projectRepositoryUrl: string
 
     constructor (private sidenavService: SidenavService) {
         this.projectName = UtilsService.capitalizeWord(packageJson.name)
+        this.projectRepositoryUrl = packageJson.repository.url
     }
 
     public openSidenav () {
@@ -23,10 +25,6 @@ export class AboutComponent implements OnInit {
 
     public ngOnInit () {
         this.currentYear = new Date().getFullYear().toString()
-    }
-
-    public openLink (event: any) {
-        UtilsService.openExternalLink(event.target.innerHTML)
     }
 
 }

@@ -4,17 +4,27 @@
             <img class="logo" width="36" src="./assets/icons/icon-72x72.png">
             <h3>{{ projectName }}</h3>
 
-            <a class="page" mat-button routerLink="/application">
+            <a class="page" routerLink="/application" mat-button>
                 {{ 'APPLICATION_TITLE' | translate }}
             </a>
-            <a class="page active" mat-button routerLink="/about">
+            <a class="page active" routerLink="/about" mat-button>
                 {{ 'ABOUT_TITLE' | translate }}
             </a>
 
             <span class="toolbar-spacer"></span>
 
+            <a class="link" href="https://join.slack.com/t/mindmapp-org/shared_invite/enQtNDE4OTUwOTQ4OTc3LWRkZDExM2E5MTJlNzZhZDBjZTFhMzVjMDhjMDFhOTY0NjBkMzMwYjRiY2FmNWNiNjRiYzdhZmNjZDE4YzkwYjk" target="_blank">
+                <fa-icon [icon]="['fab', 'slack']" size="lg"></fa-icon>
+            </a>
+
+            <a class="link" [href]="projectRepositoryUrl" target="_blank">
+                <fa-icon [icon]="['fab', 'github']" size="lg"></fa-icon>
+            </a>
+
+            <div class="vertical-line mobile"></div>
+
             <button (click)="openSidenav()" [title]="'TOOLTIPS.OPEN_MENU' | translate"
-                    class="open-menu" color="primary"
+                    class="open-menu mobile" color="primary"
                     mat-icon-button>
                 <mat-icon>menu</mat-icon>
             </button>

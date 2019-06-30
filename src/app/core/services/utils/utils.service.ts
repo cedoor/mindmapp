@@ -144,17 +144,6 @@ export class UtilsService {
     }
 
     /**
-     * Open a link with the default browser (for Electron application).
-     */
-    public static openExternalLink (href: string) {
-        if (environment.electron) {
-            window.require('electron').remote.shell.openExternal(href)
-        } else {
-            window.open(href)
-        }
-    }
-
-    /**
      * Return true if the two objects have the same structure (same keys).
      */
     public static isSameJSONStructure (json1: object, json2: object): boolean {

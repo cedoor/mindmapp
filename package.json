@@ -9,11 +9,11 @@
     },
     "author": {
         "name": "Omar Desogus",
-        "email": "omardesogus9@gmail.com"
+        "email": "omardesogus9@gmail.com",
+        "url": "https://cedoor.org"
     },
     "license": "MIT",
     "keywords": [
-        "electron",
         "mmp",
         "mindmap",
         "node",
@@ -85,6 +85,9 @@
         "zone.js": "~0.9.1"
     },
     "dependencies": {
-        "@angular/pwa": "^0.800.6"
+        "@angular/pwa": "^0.800.6",
+        "@fortawesome/angular-fontawesome": "^0.4.0",
+        "@fortawesome/fontawesome-svg-core": "^1.2.19",
+        "@fortawesome/free-brands-svg-icons": "^5.9.0"
     }
 }

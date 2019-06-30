@@ -18,6 +18,19 @@ div.mindmapp-about {
                 flex: 1 1 auto;
             }
 
+            div.vertical-line {
+                width: 1px;
+                height: 30px;
+                margin: 0 10px;
+                background-color: #c2c2c2;
+            }
+
+            a.link {
+                cursor: pointer;
+                color: mat-color($app-primary);
+                padding-right: 12px;
+            }
+
             img.logo {
                 padding-right: 10px;
             }
@@ -32,7 +45,7 @@ div.mindmapp-about {
                 border-bottom: 2px solid mat-color($app-primary, .8);
             }
 
-            button.open-menu {
+            .mobile {
                 display: none;
             }
 
@@ -41,7 +54,7 @@ div.mindmapp-about {
                     display: none;
                 }
 
-                button.open-menu {
+                .mobile {
                     display: block;
                 }
             }

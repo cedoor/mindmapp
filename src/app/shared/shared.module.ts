@@ -6,6 +6,9 @@ import {MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatSnackBa
 import {ColorPickerModule} from 'ngx-color-picker'
 import {SidenavComponent} from './components/sidenav/sidenav.component'
 import {RouterModule} from '@angular/router'
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {faGithub, faSlack} from '@fortawesome/free-brands-svg-icons'
 
 @NgModule({
     declarations: [
@@ -14,6 +17,7 @@ import {RouterModule} from '@angular/router'
     imports: [
         CommonModule,
         FormsModule,
+        FontAwesomeModule,
         RouterModule,
         TranslateModule,
         MatIconModule,
@@ -27,6 +31,7 @@ import {RouterModule} from '@angular/router'
     exports: [
         CommonModule,
         FormsModule,
+        FontAwesomeModule,
         TranslateModule,
         MatIconModule,
         MatSnackBarModule,
@@ -39,4 +44,7 @@ import {RouterModule} from '@angular/router'
     ]
 })
 export class SharedModule {
+    constructor () {
+        library.add(faGithub,faSlack)
+    }
 }
