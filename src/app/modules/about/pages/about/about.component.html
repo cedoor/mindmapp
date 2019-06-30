@@ -1,23 +1,28 @@
-<div class="about">
-    <div class="about-header">
-        <img class="logo" src="../resources/icons/64x64.png">
-        <span class="app-name">
-            Mindmapp
-            <span class="app-version">{{ packageJson?.version }}</span>
-        </span>
-    </div>
+<div class="mindmapp-about">
+    <div class="mindmapp-about-header mat-elevation-z6">
+        <nav>
+            <img class="logo" width="36" src="./assets/icons/icon-72x72.png">
+            <h3>{{ projectName }}</h3>
 
-    <div class="about-content">
-        <div class="about-description">{{ "ABOUT_DESCRIPTION" | translate }}</div>
-        <div class="about-links">
-            <p>Github: <span (click)="openLink($event)">https://github.com/Mindmapp</span></p>
-            <p>{{ "WEBSITE" | translate }}: <span (click)="openLink($event)">
-                {{ packageJson?.homepage }}
-            </span></p>
-        </div>
-    </div>
+            <a class="page" mat-button routerLink="/application">
+                {{ 'APPLICATION_TITLE' | translate }}
+            </a>
+            <a class="page active" mat-button routerLink="/about">
+                {{ 'ABOUT_TITLE' | translate }}
+            </a>
 
-    <div class="about-footer">
-        <span>{{ "Copyright (c) " + currentYear + " " + packageJson?.author?.name }}</span>
+            <span class="toolbar-spacer"></span>
+
+            <button (click)="openSidenav()" [title]="'TOOLTIPS.OPEN_MENU' | translate"
+                    class="open-menu" color="primary"
+                    mat-icon-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+        </nav>
+    </div>
+    <div class="mindmapp-about-content">
+        <section>
+
+        </section>
     </div>
 </div>

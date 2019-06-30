@@ -1,45 +1,50 @@
-div.about {
-    width: 520px;
-    color: dimgray;
-    text-align: center;
+@import "~src/theme.scss";
 
-    div.about-header {
-        img.logo, span.app-name {
-            vertical-align: middle;
-        }
+div.mindmapp-about {
+    div.mindmapp-about-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
 
-        span.app-name {
-            font-size: 35px;
-            margin-left: 10px;
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 8px 16px;
 
-            span.app-version {
-                font-size: 15px;
+            span.toolbar-spacer {
+                flex: 1 1 auto;
             }
-        }
-    }
 
-    div.about-content {
-        padding: 24px 0;
+            img.logo {
+                padding-right: 10px;
+            }
 
-        div.about-links {
-            padding-top: 10px;
+            h3 {
+                margin: 0 20px 3px 0;
+                font-weight: normal;
+            }
 
-            p {
-                margin: 0;
-                padding-top: 15px;
-                color: dimgray;
+            a.page.active {
+                border-radius: 0;
+                border-bottom: 2px solid mat-color($app-primary, .8);
+            }
 
-                span {
-                    margin-left: 10px;
-                    text-underline: none;
-                    color: #546e7a;
-                    cursor: pointer;
+            button.open-menu {
+                display: none;
+            }
+
+            @media only screen and (max-width: 600px) {
+                a.page {
+                    display: none;
+                }
+
+                button.open-menu {
+                    display: block;
                 }
             }
         }
-    }
-
-    div.about-footer {
-        text-align: center;
     }
 }

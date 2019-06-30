@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {UtilsService} from '../../../../core/services/utils/utils.service'
 import * as packageJson from '../../../../../../package.json'
+import {SidenavService} from '../../../../core/services/sidenav/sidenav.service'
 
 @Component({
     selector: 'mindmapp-about',
@@ -9,11 +10,15 @@ import * as packageJson from '../../../../../../package.json'
 })
 export class AboutComponent implements OnInit {
 
-    public packageJson: any
     public currentYear: string
+    public projectName: string
 
-    constructor () {
-        this.packageJson = packageJson
+    constructor (private sidenavService: SidenavService) {
+        this.projectName = UtilsService.capitalizeWord(packageJson.name)
+    }
+
+    public openSidenav () {
+        this.sidenavService.open()
     }
 
     public ngOnInit () {
