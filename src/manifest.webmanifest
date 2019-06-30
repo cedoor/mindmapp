@@ -1,8 +1,8 @@
 {
   "name": "Mindmapp",
   "short_name": "Mindmapp",
-  "theme_color": "#006064",
-  "background_color": "#006064",
+  "theme_color": "#37474f",
+  "background_color": "#37474f",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
