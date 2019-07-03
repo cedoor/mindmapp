@@ -1,7 +1,10 @@
+@import "~src/theme.scss";
+
 mat-toolbar {
     height: 50px;
     padding: 0 8px;
     border-bottom: 1px solid lightgray;
+    background-color: white !important;
 
     div.vertical-line {
         width: 1px;

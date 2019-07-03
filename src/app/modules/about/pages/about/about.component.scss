@@ -12,7 +12,7 @@ div.mindmapp-about {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            padding: 8px 16px;
+            padding: 12px 16px;
 
             span.toolbar-spacer {
                 flex: 1 1 auto;
@@ -20,7 +20,7 @@ div.mindmapp-about {
 
             div.vertical-line {
                 width: 1px;
-                height: 30px;
+                height: 35px;
                 margin: 0 10px;
                 background-color: #c2c2c2;
             }
@@ -38,6 +38,10 @@ div.mindmapp-about {
             h3 {
                 margin: 0 20px 3px 0;
                 font-weight: normal;
+            }
+
+            a.page {
+                margin-right: 10px;
             }
 
             a.page.active {
