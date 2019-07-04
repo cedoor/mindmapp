@@ -9,6 +9,7 @@ import {RouterModule} from '@angular/router'
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faGithub, faSlack} from '@fortawesome/free-brands-svg-icons'
+import {faCheckCircle} from '@fortawesome/free-regular-svg-icons'
 
 @NgModule({
     declarations: [
@@ -45,6 +46,6 @@ import {faGithub, faSlack} from '@fortawesome/free-brands-svg-icons'
 })
 export class SharedModule {
     constructor () {
-        library.add(faGithub,faSlack)
+        library.add(faGithub, faSlack, faCheckCircle)
     }
 }

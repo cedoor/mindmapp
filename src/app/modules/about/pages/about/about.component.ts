@@ -19,12 +19,22 @@ export class AboutComponent implements OnInit {
         this.projectRepositoryUrl = packageJson.repository.url
     }
 
+    public ngOnInit () {
+        this.currentYear = new Date().getFullYear().toString()
+    }
+
     public openSidenav () {
         this.sidenavService.open()
     }
 
-    public ngOnInit () {
-        this.currentYear = new Date().getFullYear().toString()
+    public slide (selector: string, event: Event) {
+        if (selector) {
+            event.preventDefault()
+
+            window.document.querySelector(selector).scrollIntoView({
+                behavior: 'smooth'
+            })
+        }
     }
 
 }

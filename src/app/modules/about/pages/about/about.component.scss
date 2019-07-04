@@ -41,7 +41,7 @@ div.mindmapp-about {
                 font-weight: normal;
             }
 
-            a.page {
+            a.anchor {
                 font-size: 16px;
                 margin-top: 2px;
                 margin-left: 5px;
@@ -52,7 +52,7 @@ div.mindmapp-about {
             }
 
             @media only screen and (max-width: 600px) {
-                a.page {
+                a.anchor {
                     display: none;
                 }
 
@@ -64,11 +64,16 @@ div.mindmapp-about {
     }
 
     div.mindmapp-about-content {
+        .container {
+            max-width: 1170px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
         section.intro-section {
-            z-index: 2;
-            background: url('../../../../../assets/images/about-bg.jpg') center center/cover no-repeat;
+            background-color: mat-color($app-primary);
             padding: 180px 0 100px 0;
-            color: #fff;
+            color: #ffffff;
             text-align: center;
 
             h1 {
@@ -81,6 +86,26 @@ div.mindmapp-about {
 
             p {
                 margin-bottom: 30px;
+            }
+        }
+
+        section.card-section {
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+            div.cards {
+                display: flex;
+                flex-wrap: wrap;
+
+                mat-card {
+                    flex: 1;
+                    min-width: 200px;
+                    margin: 10px;
+
+                    ::ng-deep mat-card-header > div {
+                        margin-left: 0 !important;
+                    }
+                }
             }
         }
 
