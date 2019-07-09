@@ -1,6 +1,6 @@
 <div class="mindmapp-about">
-    <div class="mindmapp-about-header mat-elevation-z6">
-        <nav>
+    <header class="mat-elevation-z6">
+        <nav class="container">
             <img class="logo" width="36" src="./assets/icons/icon-72x72.png">
             <h3>{{ projectName }}</h3>
 
@@ -32,108 +32,123 @@
                 <mat-icon>menu</mat-icon>
             </button>
         </nav>
-    </div>
+    </header>
     <div class="mindmapp-about-content">
         <section class="intro-section">
             <h1>{{ projectName }}</h1>
             <p>Web application to draw mind maps.</p>
             <a routerLink="/application" color="accent" mat-raised-button>Try it</a>
         </section>
-        <section id="section-1" class="card-section container">
-            <h1>{{ 'SECTION_1' | translate }}</h1>
-            <p>Web application to draw mind maps.</p>
-            <div class="cards">
-                <mat-card>
-                    <mat-card-header>
-                        <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Open Source</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                         alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                        <p>
-                            Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
-                            Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni iure.
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-                <mat-card>
-                    <mat-card-header>
-                        <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Real mind maps</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                         alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                        <p>
-                            Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
-                            Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni iure.
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-                <mat-card>
-                    <mat-card-header>
-                        <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Modern application</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                         alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                        <p>
-                            Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
-                            Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni iure.
-                        </p>
-                    </mat-card-content>
-                </mat-card>
+        <section id="section-1" class="card-section">
+            <div class="container">
+                <h1>{{ 'SECTION_1' | translate }}</h1>
+                <p>Web application to draw mind maps.</p>
+                <div class="cards">
+                    <mat-card>
+                        <mat-card-header>
+                            <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
+                            <mat-card-title>Open Source</mat-card-title>
+                        </mat-card-header>
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                             alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                            <p>
+                                Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
+                                Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni
+                                iure.
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
+                            <mat-card-title>Real mind maps</mat-card-title>
+                        </mat-card-header>
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                             alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                            <p>
+                                Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
+                                Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni
+                                iure.
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
+                            <mat-card-title>Modern application</mat-card-title>
+                        </mat-card-header>
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                             alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                            <p>
+                                Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
+                                Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni
+                                iure.
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
             </div>
         </section>
-        <section id="section-2" class="card-section container">
-            <h1>{{ 'SECTION_2' | translate }}</h1>
-            <p>Web application to draw mind maps.</p>
-            <div class="cards">
-                <mat-card>
-                    <mat-card-header>
-                        <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Open Source</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                         alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                        <p>
-                            Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
-                            Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni iure.
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-                <mat-card>
-                    <mat-card-header>
-                        <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Real mind maps</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                         alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                        <p>
-                            Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
-                            Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni iure.
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-                <mat-card>
-                    <mat-card-header>
-                        <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Modern application</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                         alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                        <p>
-                            Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
-                            Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni iure.
-                        </p>
-                    </mat-card-content>
-                </mat-card>
+        <section id="section-2" class="card-section">
+            <div class="container">
+                <h1>{{ 'SECTION_2' | translate }}</h1>
+                <p>Web application to draw mind maps.</p>
+                <div class="cards">
+                    <mat-card>
+                        <mat-card-header>
+                            <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
+                            <mat-card-title>Open Source</mat-card-title>
+                        </mat-card-header>
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                             alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                            <p>
+                                Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
+                                Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni
+                                iure.
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
+                            <mat-card-title>Real mind maps</mat-card-title>
+                        </mat-card-header>
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                             alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                            <p>
+                                Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
+                                Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni
+                                iure.
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
+                            <mat-card-title>Modern application</mat-card-title>
+                        </mat-card-header>
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                             alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                            <p>
+                                Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
+                                Quod laboriosam tenetur neque. Molestiae sunt perspiciatis minima iusto neque magni
+                                iure.
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
             </div>
         </section>
     </div>
+    <footer>
+        <div class="container">
+            <span>Copyright (c) {{ currentYear }} {{ projectAuthor }}</span>
+        </div>
+    </footer>
 </div>

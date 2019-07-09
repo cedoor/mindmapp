@@ -12,11 +12,13 @@ export class AboutComponent implements OnInit {
 
     public currentYear: string
     public projectName: string
+    public projectAuthor: string
     public projectRepositoryUrl: string
 
     constructor (private sidenavService: SidenavService) {
         this.projectName = UtilsService.capitalizeWord(packageJson.name)
         this.projectRepositoryUrl = packageJson.repository.url
+        this.projectAuthor = packageJson.author.name
     }
 
     public ngOnInit () {

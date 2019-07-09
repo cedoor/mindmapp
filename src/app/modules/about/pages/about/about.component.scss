@@ -1,15 +1,21 @@
 @import "~src/theme.scss";
 
 div.mindmapp-about {
-    div.mindmapp-about-header {
+    .container {
+        max-width: 1170px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    header {
         z-index: 999;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
+        background-color: white;
 
         nav {
-            background-color: white;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -64,10 +70,12 @@ div.mindmapp-about {
     }
 
     div.mindmapp-about-content {
-        .container {
-            max-width: 1170px;
-            margin: 0 auto;
-            padding: 0 15px;
+        section:nth-child(odd) {
+            background-color: white;
+        }
+
+        section:nth-child(even) {
+            background-color: #fafafa;
         }
 
         section.intro-section {
@@ -90,20 +98,21 @@ div.mindmapp-about {
         }
 
         section.card-section {
-            margin-top: 30px;
-            margin-bottom: 30px;
+            > div {
+                padding: 20px 15px 40px 15px;
 
-            div.cards {
-                display: flex;
-                flex-wrap: wrap;
+                div.cards {
+                    display: flex;
+                    flex-wrap: wrap;
 
-                mat-card {
-                    flex: 1;
-                    min-width: 200px;
-                    margin: 10px;
+                    mat-card {
+                        flex: 1;
+                        min-width: 200px;
+                        margin: 10px;
 
-                    ::ng-deep mat-card-header > div {
-                        margin-left: 0 !important;
+                        ::ng-deep mat-card-header > div {
+                            margin-left: 0 !important;
+                        }
                     }
                 }
             }
@@ -114,5 +123,11 @@ div.mindmapp-about {
                 padding: 120px 0 50px 0;
             }
         }
+    }
+
+    footer {
+        padding: 20px 0;
+        background-color: #2c2c2c;
+        color: whitesmoke;
     }
 }
