@@ -1,6 +1,20 @@
+@import "~src/theme.scss";
+
 // Scrollbar properties.
 mat-toolbar::-webkit-scrollbar {
     height: 6px;
+}
+
+mat-toolbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+mat-toolbar::-webkit-scrollbar-thumb {
+    background: mat-color($app-primary, .7);
+}
+
+mat-toolbar::-webkit-scrollbar-thumb:hover {
+    background: mat-color($app-primary, .8);
 }
 
 mat-toolbar {

@@ -1,0 +1,68 @@
+@import "~src/theme.scss";
+
+section.about-jumbotron {
+    background-color: mat-color($app-primary);
+    padding: 120px 0 50px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    h1, h4, p {
+        color: whitesmoke;
+    }
+
+    > div:first-child {
+        padding-bottom: 50px;
+    }
+
+    > div {
+        padding: 0 15px 0 15px;
+
+        > div {
+            padding-bottom: 20px;
+
+            > p {
+                margin: 0;
+            }
+
+            > mat-list {
+                text-align: left;
+                margin-bottom: 10px;
+
+                mat-list-item {
+                    height: 30px;
+                }
+
+                mat-icon {
+                    color: #74c13f;
+                }
+            }
+        }
+
+        > h1 {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            margin: 0 0 24px;
+            font-size: 42px;
+            font-weight: 400;
+            line-height: 54px;
+            text-shadow: 0 4px 4px rgba(0, 0, 0, .22);
+
+            > img {
+              width: 46px;
+            }
+        }
+
+        > a {
+            width: 150px;
+            font-weight: bold;
+            color: mat-color($app-primary);
+        }
+
+        > img {
+            max-width: 500px;
+            width: 100%;
+        }
+    }
+}

@@ -1,10 +1,5 @@
 @import "~src/theme.scss";
 
-// Scrollbar properties.
-div.mindmapp-about::-webkit-scrollbar {
-    width: 10px;
-}
-
 div.mindmapp-about {
     height: 100%;
     overflow-y: auto;
@@ -76,25 +71,6 @@ div.mindmapp-about {
 
         section:nth-child(even) {
             background-color: #fafafa;
-        }
-
-        section.intro-section {
-            background-color: mat-color($app-primary);
-            padding: 180px 0 100px 0;
-            color: #ffffff;
-            text-align: center;
-
-            h1 {
-                margin: 0 0 24px;
-                font-size: 42px;
-                font-weight: 900;
-                line-height: 54px;
-                text-shadow: 0 4px 4px rgba(0, 0, 0, .22);
-            }
-
-            p {
-                margin-bottom: 30px;
-            }
         }
 
         section.card-section {
