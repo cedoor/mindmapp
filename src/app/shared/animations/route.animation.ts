@@ -15,7 +15,7 @@ export const routeAnimation = trigger('routeAnimation', [
         }),
         // Animate the new page in
         query(':enter', [
-            animate('800ms ease', style({
+            animate('600ms ease', style({
                 opacity: 1
             })),
         ], {

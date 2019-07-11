@@ -1,8 +1,3 @@
-<mat-sidenav-container [hidden]="initialized">
-    <mat-sidenav #sidenav mode="over" position="end">
-        <mindmapp-sidenav></mindmapp-sidenav>
-    </mat-sidenav>
-    <mat-sidenav-content [@routeAnimation]="outlet && outlet.activatedRouteData">
-        <router-outlet #outlet="outlet"></router-outlet>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<main [@routeAnimation]="outlet && outlet.activatedRouteData">
+    <router-outlet #outlet="outlet"></router-outlet>
+</main>

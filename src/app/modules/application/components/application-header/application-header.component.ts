@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core'
-import {MatDialog, MatSidenav} from '@angular/material'
+import {MatDialog} from '@angular/material'
 import {MapCacheService} from '../../../../core/services/map-cache/map-cache.service'
 import {NotificationService} from '../../../../core/services/notification/notification.service'
 import {Router} from '@angular/router'
@@ -15,7 +15,6 @@ import {ApplicationCachedMapsComponent} from '../application-cached-maps/applica
 export class ApplicationHeaderComponent {
 
     @Input() public node: any
-    @Input() public sidenav: MatSidenav
 
     constructor (public mapCacheService: MapCacheService,
                  private matDialog: MatDialog,
@@ -44,8 +43,6 @@ export class ApplicationHeaderComponent {
 
     public exportMap (format: string) {
         this.mmpService.exportMap(format)
-
-        this.sidenav.close()
     }
 
     public saveMap () {

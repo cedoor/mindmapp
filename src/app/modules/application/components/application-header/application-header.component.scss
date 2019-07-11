@@ -1,18 +1,6 @@
 // Scrollbar properties.
-::-webkit-scrollbar {
+mat-toolbar::-webkit-scrollbar {
     height: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #b5b5b5;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
 }
 
 mat-toolbar {

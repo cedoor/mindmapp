@@ -1,3 +1,5 @@
+@import "~src/theme.scss";
+
 @font-face {
     font-family: "Source Sans Pro";
     src: url("assets/font/source-sans-pro/SourceSansPro-Regular.ttf") format("truetype");
@@ -61,6 +63,19 @@ snack-bar-container.snackbar {
             color: #555555;
         }
     }
+}
+
+// Scrollbar properties.
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: mat-color($app-primary, .7);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: mat-color($app-primary, .8);
 }
 
 
