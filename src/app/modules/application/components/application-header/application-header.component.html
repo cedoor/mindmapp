@@ -50,7 +50,7 @@
         </button>
     </mat-menu>
 
-    <div class="vertical-line"></div>
+    <div class="vertical-line"><div></div></div>
 
     <button (click)="mmpService.copyNode()" [title]="'TOOLTIPS.COPY_NODE' | translate"
             class="copy-node" color="primary"
@@ -68,7 +68,7 @@
         <mat-icon>content_paste</mat-icon>
     </button>
 
-    <div class="vertical-line"></div>
+    <div class="vertical-line"><div></div></div>
 
     <button (click)="mmpService.updateNode('locked')" [title]="'TOOLTIPS.LOCK_NODE' | translate"
             class="lock-node" color="primary"
@@ -81,7 +81,7 @@
         <mat-icon>{{ node?.image?.src ? "broken_image" : "image" }}</mat-icon>
     </button>
 
-    <div class="vertical-line"></div>
+    <div class="vertical-line"><div></div></div>
 
     <button (click)="toogleNodeFontWeight()" [title]="'TOOLTIPS.BOLD_TEXT' | translate"
             class="bold" color="primary"
@@ -102,11 +102,20 @@
         <mat-icon>fullscreen</mat-icon>
     </button>
 
-    <div class="vertical-line"></div>
+    <div class="vertical-line"><div></div></div>
 
-    <button (click)="openSidenav()" [title]="'TOOLTIPS.OPEN_MENU' | translate"
-            class="open-menu" color="primary"
-            mat-icon-button>
-        <mat-icon>menu</mat-icon>
+    <button routerLink="/application/shortcuts"
+            color="primary" mat-icon-button>
+        <mat-icon>timeline</mat-icon>
+    </button>
+
+    <button routerLink="/application/settings"
+            color="primary" mat-icon-button>
+        <mat-icon>settings</mat-icon>
+    </button>
+
+    <button routerLink="/about"
+            color="primary" mat-icon-button>
+        <mat-icon>info</mat-icon>
     </button>
 </mat-toolbar>

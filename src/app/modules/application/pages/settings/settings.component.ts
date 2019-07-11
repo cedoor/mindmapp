@@ -3,7 +3,6 @@ import {Settings} from '../../../../shared/models/settings.model'
 import {SettingsService} from '../../../../core/services/settings/settings.service'
 import {MmpService} from '../../../../core/services/mmp/mmp.service'
 import {TranslateService} from '@ngx-translate/core'
-import {SidenavService} from '../../../../core/services/sidenav/sidenav.service'
 
 @Component({
     selector: 'mindmapp-settings',
@@ -17,14 +16,9 @@ export class SettingsComponent {
 
     constructor (private settingsService: SettingsService,
                  private mmpService: MmpService,
-                 private sidenavService: SidenavService,
                  private translateService: TranslateService) {
         this.languages = ['en', 'fr', 'it', 'zh-tw', 'zh-cn', 'es', 'pt-br']
         this.settings = this.settingsService.getCachedSettings()
-    }
-
-    public openSidenav () {
-        this.sidenavService.open()
     }
 
     public async updateMapOptions () {

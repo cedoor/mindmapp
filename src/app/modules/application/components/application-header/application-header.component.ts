@@ -6,7 +6,6 @@ import {Router} from '@angular/router'
 import {MmpService} from '../../../../core/services/mmp/mmp.service'
 import {UtilsService} from '../../../../core/services/utils/utils.service'
 import {ApplicationCachedMapsComponent} from '../application-cached-maps/application-cached-maps.component'
-import {SidenavService} from '../../../../core/services/sidenav/sidenav.service'
 
 @Component({
     selector: 'mindmapp-application-header',
@@ -22,12 +21,7 @@ export class ApplicationHeaderComponent {
                  private matDialog: MatDialog,
                  private notificationService: NotificationService,
                  private router: Router,
-                 private sidenavService: SidenavService,
                  private mmpService: MmpService) {
-    }
-
-    public openSidenav () {
-        this.sidenavService.open()
     }
 
     public async openCachedMaps () {
