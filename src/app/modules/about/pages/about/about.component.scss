@@ -53,17 +53,9 @@ div.mindmapp-about {
                 margin-left: 5px;
             }
 
-            .mobile {
-                display: none;
-            }
-
             @media only screen and (max-width: 600px) {
                 a.anchor {
                     display: none;
-                }
-
-                .mobile {
-                    display: block;
                 }
             }
         }
