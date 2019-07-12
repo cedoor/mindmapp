@@ -1,70 +1,10 @@
 @import "~src/theme.scss";
 
-div.mindmapp-about {
+div.about {
     height: 100%;
     overflow-y: auto;
 
-    .container {
-        max-width: 1170px;
-        margin: 0 auto;
-        padding: 0 15px;
-    }
-
-    header {
-        z-index: 99;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background-color: white;
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            padding: 16px;
-
-            span.toolbar-spacer {
-                flex: 1 1 auto;
-            }
-
-            div.vertical-line {
-                width: 1px;
-                height: 35px;
-                margin: 0 10px;
-                background-color: #c2c2c2;
-            }
-
-            a.link {
-                cursor: pointer;
-                color: mat-color($app-primary);
-                padding-right: 12px;
-            }
-
-            img.logo {
-                padding-right: 10px;
-            }
-
-            h3 {
-                margin: 0 20px 3px 0;
-                font-weight: normal;
-            }
-
-            a.anchor {
-                font-size: 16px;
-                margin-top: 2px;
-                margin-left: 5px;
-            }
-
-            @media only screen and (max-width: 600px) {
-                a.anchor {
-                    display: none;
-                }
-            }
-        }
-    }
-
-    div.mindmapp-about-content {
+    div.about-content {
         section:nth-child(odd) {
             background-color: white;
         }
@@ -91,12 +31,6 @@ div.mindmapp-about {
                         }
                     }
                 }
-            }
-        }
-
-        @media only screen and (max-width: 600px) {
-            section.intro-section {
-                padding: 120px 0 50px 0;
             }
         }
     }

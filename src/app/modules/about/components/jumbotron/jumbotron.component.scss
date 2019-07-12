@@ -2,7 +2,7 @@
 
 section.about-jumbotron {
     background-color: mat-color($app-primary);
-    padding: 120px 0 50px 0;
+    padding: 100px 0 40px 0;
     text-align: center;
     display: flex;
     align-items: center;
@@ -13,12 +13,8 @@ section.about-jumbotron {
         color: whitesmoke;
     }
 
-    > div:first-child {
-        padding-bottom: 50px;
-    }
-
     > div {
-        padding: 0 15px 0 15px;
+        padding: 25px 15px;
 
         > div {
             padding-bottom: 20px;
@@ -50,7 +46,7 @@ section.about-jumbotron {
             text-shadow: 0 4px 4px rgba(0, 0, 0, .22);
 
             > img {
-              width: 46px;
+                width: 46px;
             }
         }
 
@@ -58,6 +54,7 @@ section.about-jumbotron {
             width: 150px;
             font-weight: bold;
             color: mat-color($app-primary);
+            margin-bottom: 10px;
         }
 
         > img {

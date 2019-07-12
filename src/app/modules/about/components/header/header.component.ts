@@ -1,24 +1,23 @@
 import {Component, OnInit} from '@angular/core'
+import {UtilsService} from '../../../../core/services/utils/utils.service'
 import * as packageJson from '../../../../../../package.json'
 
 @Component({
-    selector: 'mindmapp-about',
-    templateUrl: './about.component.html',
-    styleUrls: ['./about.component.scss']
+    selector: 'mindmapp-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
-export class AboutComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
-    public currentYear: string
-    public projectAuthor: string
+    public projectName: string
     public projectRepositoryUrl: string
 
     constructor () {
     }
 
-    public ngOnInit () {
+    ngOnInit () {
+        this.projectName = UtilsService.capitalizeWord(packageJson.name)
         this.projectRepositoryUrl = packageJson.repository.url
-        this.projectAuthor = packageJson.author.name
-        this.currentYear = new Date().getFullYear().toString()
     }
 
     public slide (selector: string, event: Event) {

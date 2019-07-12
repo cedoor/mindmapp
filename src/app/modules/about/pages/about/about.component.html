@@ -1,31 +1,7 @@
-<div class="mindmapp-about">
-    <header class="mat-elevation-z6">
-        <nav class="container">
-            <img class="logo" width="36" src="./assets/icons/icon-72x72.png">
-            <h3>{{ projectName }}</h3>
+<div class="about">
+    <mindmapp-header></mindmapp-header>
 
-            <a (click)="slide('#section-1', $event)" class="anchor" mat-button>
-                {{ 'SECTION_1' | translate }}
-            </a>
-
-            <a (click)="slide('#section-2', $event)" class="anchor" mat-button>
-                {{ 'SECTION_2' | translate }}
-            </a>
-
-            <span class="toolbar-spacer"></span>
-
-            <a class="link"
-               href="https://join.slack.com/t/mindmapp-org/shared_invite/enQtNDE4OTUwOTQ4OTc3LWRkZDExM2E5MTJlNzZhZDBjZTFhMzVjMDhjMDFhOTY0NjBkMzMwYjRiY2FmNWNiNjRiYzdhZmNjZDE4YzkwYjk"
-               target="_blank">
-                <fa-icon [icon]="['fab', 'slack']" size="lg"></fa-icon>
-            </a>
-
-            <a class="link" [href]="projectRepositoryUrl" target="_blank">
-                <fa-icon [icon]="['fab', 'github']" size="lg"></fa-icon>
-            </a>
-        </nav>
-    </header>
-    <div class="mindmapp-about-content">
+    <div class="about-content">
         <mindmapp-jumbotron></mindmapp-jumbotron>
 
         <section id="section-1" class="card-section">

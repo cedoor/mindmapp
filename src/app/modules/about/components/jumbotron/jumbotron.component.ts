@@ -12,10 +12,10 @@ export class JumbotronComponent implements OnInit {
     public projectName: string
 
     constructor () {
-        this.projectName = UtilsService.capitalizeWord(packageJson.name)
     }
 
     ngOnInit () {
+        this.projectName = UtilsService.capitalizeWord(packageJson.name)
     }
 
 }

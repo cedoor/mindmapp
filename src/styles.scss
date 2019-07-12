@@ -1,3 +1,5 @@
+@import "~src/theme.scss";
+
 @font-face {
     font-family: "Source Sans Pro";
     src: url("assets/font/source-sans-pro/SourceSansPro-Regular.ttf") format("truetype");
@@ -15,9 +17,15 @@ body {
     font-size: 17px;
 }
 
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
 ::selection {
     color: whitesmoke;
-    background: #546e7a;
+    background: mat-color($app-primary);
 }
 
 *:focus {
