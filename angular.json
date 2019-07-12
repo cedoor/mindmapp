@@ -36,35 +36,11 @@
                         "ngswConfigPath": "ngsw-config.json"
                     },
                     "configurations": {
-                        "browser": {
+                        "prod": {
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.browser.ts"
-                                }
-                            ],
-                            "optimization": true,
-                            "outputHashing": "all",
-                            "sourceMap": false,
-                            "extractCss": true,
-                            "namedChunks": false,
-                            "aot": true,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true,
-                            "budgets": [
-                                {
-                                    "type": "initial",
-                                    "maximumWarning": "2mb",
-                                    "maximumError": "5mb"
-                                }
-                            ]
-                        },
-                        "electron": {
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.electron.ts"
+                                    "with": "src/environments/environment.prod.ts"
                                 }
                             ],
                             "optimization": true,
@@ -92,11 +68,8 @@
                         "browserTarget": "mindmapp:build"
                     },
                     "configurations": {
-                        "browser": {
-                            "browserTarget": "mindmapp:build:browser"
-                        },
-                        "electron": {
-                            "browserTarget": "mindmapp:build:electron"
+                        "prod": {
+                            "browserTarget": "mindmapp:build:prod"
                         }
                     }
                 },
@@ -145,11 +118,8 @@
                         "devServerTarget": "mindmapp:serve"
                     },
                     "configurations": {
-                        "browser": {
-                            "devServerTarget": "mindmapp:serve:browser"
-                        },
-                        "electron": {
-                            "devServerTarget": "mindmapp:serve:electron"
+                        "prod": {
+                            "devServerTarget": "mindmapp:serve:prod"
                         }
                     }
                 }
