@@ -1,96 +1,101 @@
-<button routerLink="/application"
-        class="close-button" color="primary" mat-icon-button>
-    <mat-icon>close</mat-icon>
-</button>
+<div class="settings">
+    <mat-toolbar>
+        <div class="container">
+            <h2 mat-dialog-title>{{ "SETTINGS_TITLE" | translate }}</h2>
+            <button routerLink="/application"
+                    class="close-button" color="primary" mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
 
-<h2 mat-dialog-title>{{ "SETTINGS_TITLE" | translate }}</h2>
+    <div class="content container">
+        <mat-tab-group>
+            <mat-tab [label]="'SETTINGS_LABELS.GENERAL' | translate">
+                <div class="content general-options">
+                    <mat-card class="general-options-main">
+                        <mat-card-header>
+                            <mat-card-title>{{ "MAIN" | translate }}</mat-card-title>
+                        </mat-card-header>
+                        <hr>
+                        <mat-card-content>
+                            <mat-form-field>
+                                <mat-select (selectionChange)="updateLanguage()" [(value)]="settings.general.language"
+                                            [placeholder]="'LANGUAGE' | translate"
+                                            [title]="'TOOLTIPS.LANGUAGE' | translate">
+                                    <mat-option *ngFor="let language of languages"
+                                                [value]="language">
+                                        {{ "LANGUAGES." + language.toUpperCase() | translate }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </mat-tab>
 
-<div class="content">
-    <mat-tab-group>
-        <mat-tab [label]="'SETTINGS_LABELS.GENERAL' | translate">
-            <div class="content general-options">
-                <mat-card class="general-options-main">
-                    <mat-card-header>
-                        <mat-card-title>{{ "MAIN" | translate }}</mat-card-title>
-                    </mat-card-header>
-                    <hr>
-                    <mat-card-content>
-                        <mat-form-field>
-                            <mat-select (selectionChange)="updateLanguage()" [(value)]="settings.general.language"
-                                        [placeholder]="'LANGUAGE' | translate"
-                                        [title]="'TOOLTIPS.LANGUAGE' | translate">
-                                <mat-option *ngFor="let language of languages"
-                                            [value]="language">
-                                    {{ "LANGUAGES." + language.toUpperCase() | translate }}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </mat-tab>
-
-        <mat-tab [label]="'SETTINGS_LABELS.MAP_OPTIONS' | translate">
-            <div class="content map-options">
-                <mat-card class="map-options-map">
-                    <mat-card-header>
-                        <mat-card-title>{{ "MAP" | translate }}</mat-card-title>
-                    </mat-card-header>
-                    <hr>
-                    <mat-card-content>
-                        <mat-slide-toggle
-                            (change)="updateMapOptions()"
-                            [(ngModel)]="settings.mapOptions.centerOnResize"
-                            [title]="'TOOLTIPS.CENTER_ON_RESIZING' | translate"
-                            color="primary">
-                            {{ "CENTER_ON_RESIZING" | translate }}
-                        </mat-slide-toggle>
-                        <mat-slide-toggle
-                            (change)="updateMapOptions()"
-                            [(ngModel)]="settings.mapOptions.drag"
-                            [title]="'TOOLTIPS.NODE_DRAGGING' | translate"
-                            color="primary">
-                            {{ "NODE_DRAGGING" | translate }}
-                        </mat-slide-toggle>
-                        <mat-slide-toggle
-                            (change)="updateMapOptions()"
-                            [(ngModel)]="settings.mapOptions.zoom"
-                            [title]="'TOOLTIPS.MAP_ZOOM' | translate"
-                            color="primary">
-                            {{ "MAP_ZOOM" | translate }}
-                        </mat-slide-toggle>
-                        <mat-slide-toggle
-                            (change)="updateMapOptions()"
-                            [(ngModel)]="settings.mapOptions.autoBranchColors"
-                            [title]="'TOOLTIPS.AUTO_BRANCH_COLORS' | translate"
-                            color="primary">
-                            {{ "AUTO_BRANCH_COLORS" | translate }}
-                        </mat-slide-toggle>
-                    </mat-card-content>
-                </mat-card>
-                <mat-card class="map-options-nodes">
-                    <mat-card-header>
-                        <mat-card-title>{{ "NODES" | translate }}</mat-card-title>
-                    </mat-card-header>
-                    <hr>
-                    <mat-card-content>
-                        <mat-form-field>
-                            <input (change)="updateMapOptions()" [(ngModel)]="settings.mapOptions.rootNode.name"
-                                   [placeholder]="'ROOT_NODE_NAME' | translate"
-                                   [title]="'TOOLTIPS.ROOT_NODE_NAME_INPUT' | translate"
-                                   matInput
-                                   name="rootNodeName">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <input (change)="updateMapOptions()" [(ngModel)]="settings.mapOptions.defaultNode.name"
-                                   [placeholder]="'NODE_NAME' | translate"
-                                   [title]="'TOOLTIPS.NODE_NAME_INPUT' | translate"
-                                   matInput
-                                   name="defaultNodeName">
-                        </mat-form-field>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </mat-tab>
-    </mat-tab-group>
+            <mat-tab [label]="'SETTINGS_LABELS.MAP_OPTIONS' | translate">
+                <div class="content map-options">
+                    <mat-card class="map-options-map">
+                        <mat-card-header>
+                            <mat-card-title>{{ "MAP" | translate }}</mat-card-title>
+                        </mat-card-header>
+                        <hr>
+                        <mat-card-content>
+                            <mat-slide-toggle
+                                (change)="updateMapOptions()"
+                                [(ngModel)]="settings.mapOptions.centerOnResize"
+                                [title]="'TOOLTIPS.CENTER_ON_RESIZING' | translate"
+                                color="primary">
+                                {{ "CENTER_ON_RESIZING" | translate }}
+                            </mat-slide-toggle>
+                            <mat-slide-toggle
+                                (change)="updateMapOptions()"
+                                [(ngModel)]="settings.mapOptions.drag"
+                                [title]="'TOOLTIPS.NODE_DRAGGING' | translate"
+                                color="primary">
+                                {{ "NODE_DRAGGING" | translate }}
+                            </mat-slide-toggle>
+                            <mat-slide-toggle
+                                (change)="updateMapOptions()"
+                                [(ngModel)]="settings.mapOptions.zoom"
+                                [title]="'TOOLTIPS.MAP_ZOOM' | translate"
+                                color="primary">
+                                {{ "MAP_ZOOM" | translate }}
+                            </mat-slide-toggle>
+                            <mat-slide-toggle
+                                (change)="updateMapOptions()"
+                                [(ngModel)]="settings.mapOptions.autoBranchColors"
+                                [title]="'TOOLTIPS.AUTO_BRANCH_COLORS' | translate"
+                                color="primary">
+                                {{ "AUTO_BRANCH_COLORS" | translate }}
+                            </mat-slide-toggle>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card class="map-options-nodes">
+                        <mat-card-header>
+                            <mat-card-title>{{ "NODES" | translate }}</mat-card-title>
+                        </mat-card-header>
+                        <hr>
+                        <mat-card-content>
+                            <mat-form-field>
+                                <input (change)="updateMapOptions()" [(ngModel)]="settings.mapOptions.rootNode.name"
+                                       [placeholder]="'ROOT_NODE_NAME' | translate"
+                                       [title]="'TOOLTIPS.ROOT_NODE_NAME_INPUT' | translate"
+                                       matInput
+                                       name="rootNodeName">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input (change)="updateMapOptions()" [(ngModel)]="settings.mapOptions.defaultNode.name"
+                                       [placeholder]="'NODE_NAME' | translate"
+                                       [title]="'TOOLTIPS.NODE_NAME_INPUT' | translate"
+                                       matInput
+                                       name="defaultNodeName">
+                            </mat-form-field>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
 </div>
