@@ -11,6 +11,8 @@ import {BehaviorSubject, Observable} from 'rxjs'
 })
 export class SettingsService {
 
+    public static readonly LANGUAGES = ['en', 'fr', 'it', 'zh-tw', 'zh-cn', 'es', 'pt-br']
+
     public settings: Observable<Settings | null>
     private settingsSubject: BehaviorSubject<Settings | null>
 

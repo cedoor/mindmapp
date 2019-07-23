@@ -11,13 +11,13 @@ import {TranslateService} from '@ngx-translate/core'
 })
 export class SettingsComponent {
 
-    public readonly languages: Array<string>
+    public readonly languages: string[]
     public settings: Settings
 
     constructor (private settingsService: SettingsService,
                  private mmpService: MmpService,
                  private translateService: TranslateService) {
-        this.languages = ['en', 'fr', 'it', 'zh-tw', 'zh-cn', 'es', 'pt-br']
+        this.languages = SettingsService.LANGUAGES
         this.settings = this.settingsService.getCachedSettings()
     }
 

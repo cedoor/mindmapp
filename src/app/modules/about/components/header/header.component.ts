@@ -10,14 +10,12 @@ import * as packageJson from '../../../../../../package.json'
 export class HeaderComponent implements OnInit {
 
     public projectName: string
-    public projectRepositoryUrl: string
 
     constructor () {
     }
 
-    ngOnInit () {
+    public ngOnInit () {
         this.projectName = UtilsService.capitalizeWord(packageJson.name)
-        this.projectRepositoryUrl = packageJson.repository.url
     }
 
     public slide (selector: string, event: Event) {

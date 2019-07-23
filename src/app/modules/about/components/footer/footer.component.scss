@@ -2,4 +2,52 @@ footer.footer {
     padding: 20px 0;
     background-color: #2c2c2c;
     color: whitesmoke;
+
+    div.container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 16px;
+
+        div.links {
+            > span {
+                display: inline-block;
+                white-space: nowrap;
+                padding: 10px 30px 10px 0;
+            }
+
+            > a {
+                display: inline-block;
+                white-space: nowrap;
+                text-decoration: none;
+                color: whitesmoke;
+                padding-right: 15px;
+            }
+
+            > a:hover {
+                opacity: .8;
+            }
+        }
+
+        div.languages {
+            padding: 15px 0;
+
+            mat-select::ng-deep {
+                width: fit-content !important;
+                min-width: 100%;
+
+                .mat-select-value {
+                    width: fit-content;
+                    min-width: 2ch;
+                    max-width: 25ch;
+                    color: whitesmoke;
+                }
+
+                .mat-select-arrow {
+                    color: whitesmoke;
+                }
+            }
+        }
+    }
 }

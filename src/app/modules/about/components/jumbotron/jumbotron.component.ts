@@ -14,7 +14,7 @@ export class JumbotronComponent implements OnInit {
     constructor () {
     }
 
-    ngOnInit () {
+    public ngOnInit () {
         this.projectName = UtilsService.capitalizeWord(packageJson.name)
     }
 

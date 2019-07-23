@@ -27,7 +27,6 @@ import {
         MatDialogModule,
         MatInputModule,
         MatMenuModule,
-        MatSelectModule,
         MatSliderModule,
         MatSlideToggleModule,
         MatTabsModule,
