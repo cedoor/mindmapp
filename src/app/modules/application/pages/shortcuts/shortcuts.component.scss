@@ -1,37 +1,39 @@
-button.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
+div.shortcuts {
+    mat-toolbar {
+        background-color: transparent;
 
-button.open-menu {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
+        div.container {
+            width: 100%;
+            text-align: center;
+            position: relative;
 
-h2 {
-    text-align: center;
-}
-
-div.content {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding-bottom: 10px;
-
-    mat-list-item {
-        color: #555555;
+            button.close-button {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+            }
+        }
     }
 
-    .key {
-        padding: 6px 12px;
-        background: gainsboro;
-        border-radius: 3px;
-        font-size: 15px;
-    }
+    div.content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
 
-    .description {
-        padding-left: 10px;
+        mat-list-item {
+            color: #555555;
+        }
+
+        .key {
+            padding: 6px 12px;
+            background: gainsboro;
+            border-radius: 3px;
+            font-size: 15px;
+        }
+
+        .description {
+            padding-left: 10px;
+        }
     }
 }

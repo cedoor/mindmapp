@@ -1,29 +1,34 @@
-<button routerLink="/application"
-        class="close-button" color="primary" mat-icon-button>
-    <mat-icon>close</mat-icon>
-</button>
+<div class="shortcuts">
+    <mat-toolbar>
+        <div class="container">
+            <h2 mat-dialog-title>{{ "SHORTCUTS_TITLE" | translate }}</h2>
+            <button routerLink="/application"
+                    class="close-button" color="primary" mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
 
-<h2 mat-dialog-title>{{ "SHORTCUTS_TITLE" | translate }}</h2>
-
-<div class="content">
-    <mat-list>
-        <mat-list-item *ngFor="let hotKey of hotKeys.slice(0, (hotKeys.length / 2))">
+    <div class="content container">
+        <mat-list>
+            <mat-list-item *ngFor="let hotKey of hotKeys.slice(0, (hotKeys.length / 2))">
             <span *ngFor="let key of hotKey.combo[0].split('+'); let last = last">
                 <span class="key">{{ key }}</span><span *ngIf="!last">&nbsp;+&nbsp;</span>
             </span>
-            <span class="description">
+                <span class="description">
                 {{ hotKey.description | translate }}
             </span>
-        </mat-list-item>
-    </mat-list>
-    <mat-list>
-        <mat-list-item *ngFor="let hotKey of hotKeys.slice(hotKeys.length / 2)">
+            </mat-list-item>
+        </mat-list>
+        <mat-list>
+            <mat-list-item *ngFor="let hotKey of hotKeys.slice(hotKeys.length / 2)">
             <span *ngFor="let key of hotKey.combo[0].split('+'); let last = last">
                 <span class="key">{{ key }}</span><span *ngIf="!last">&nbsp;+&nbsp;</span>
             </span>
-            <span class="description">
+                <span class="description">
                 {{ hotKey.description | translate }}
             </span>
-        </mat-list-item>
-    </mat-list>
+            </mat-list-item>
+        </mat-list>
+    </div>
 </div>
