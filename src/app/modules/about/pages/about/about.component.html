@@ -5,13 +5,15 @@
 
     <section id="section-1" class="card-section">
         <div class="container">
-            <h1>{{ 'SECTION_1' | translate }}</h1>
+            <h1>
+                <fa-icon mat-card-avatar [icon]="['fas', 'brain']" size="1x"></fa-icon>
+                &nbsp;{{ 'Mind maps' | translate }}
+            </h1>
             <p>Web application to draw mind maps.</p>
             <div class="cards">
                 <mat-card>
                     <mat-card-header>
-                        <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Open Source</mat-card-title>
+                        <mat-card-title>Colors</mat-card-title>
                     </mat-card-header>
                     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
                          alt="Photo of a Shiba Inu">
@@ -25,8 +27,7 @@
                 </mat-card>
                 <mat-card>
                     <mat-card-header>
-                        <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Real mind maps</mat-card-title>
+                        <mat-card-title>Images</mat-card-title>
                     </mat-card-header>
                     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
                          alt="Photo of a Shiba Inu">
@@ -40,8 +41,7 @@
                 </mat-card>
                 <mat-card>
                     <mat-card-header>
-                        <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Modern application</mat-card-title>
+                        <mat-card-title>Neural</mat-card-title>
                     </mat-card-header>
                     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
                          alt="Photo of a Shiba Inu">
@@ -58,16 +58,17 @@
     </section>
     <section id="section-2" class="card-section">
         <div class="container">
-            <h1>{{ 'SECTION_2' | translate }}</h1>
+            <h1>
+                <fa-icon mat-card-avatar [icon]="['fas', 'rocket']" size="1x"></fa-icon>
+                &nbsp;{{ 'Features' | translate }}
+            </h1>
             <p>Web application to draw mind maps.</p>
             <div class="cards">
                 <mat-card>
                     <mat-card-header>
                         <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Open Source</mat-card-title>
+                        <mat-card-title>Simple design</mat-card-title>
                     </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                         alt="Photo of a Shiba Inu">
                     <mat-card-content>
                         <p>
                             Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
@@ -79,10 +80,8 @@
                 <mat-card>
                     <mat-card-header>
                         <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Real mind maps</mat-card-title>
+                        <mat-card-title>Import & export</mat-card-title>
                     </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                         alt="Photo of a Shiba Inu">
                     <mat-card-content>
                         <p>
                             Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
@@ -94,10 +93,8 @@
                 <mat-card>
                     <mat-card-header>
                         <fa-icon mat-card-avatar [icon]="['fab', 'github']" size="lg"></fa-icon>
-                        <mat-card-title>Modern application</mat-card-title>
+                        <mat-card-title>PWA</mat-card-title>
                     </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                         alt="Photo of a Shiba Inu">
                     <mat-card-content>
                         <p>
                             Saepe corporis odit non exercitationem deserunt. Facilis ut quae aliquid fugiat non.
@@ -107,6 +104,16 @@
                     </mat-card-content>
                 </mat-card>
             </div>
+        </div>
+    </section>
+
+    <section id="section-3" class="card-section">
+        <div class="container">
+            <h1>
+                <fa-icon mat-card-avatar [icon]="['fas', 'heart']" size="1x"></fa-icon>
+                &nbsp;{{ 'Donate' | translate }}
+            </h1>
+            <p>Web application to draw mind maps.</p>
         </div>
     </section>
 

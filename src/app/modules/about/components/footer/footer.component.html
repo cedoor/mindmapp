@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="container">
         <div class="license">
-            © {{ currentYear }} {{ projectAuthor }}
+            © {{ currentYear }} <a [href]="projectAuthor.url">{{ projectAuthor.name }}</a>
         </div>
         <div class="links">
             <a routerLink="/application" target="_blank">Application</a>

@@ -4,11 +4,13 @@
         <h3>{{ projectName }}</h3>
 
         <a (click)="slide('#section-1', $event)" class="anchor" mat-button>
-            {{ 'SECTION_1' | translate }}
+            {{ 'Mind maps' | translate }}
         </a>
-
         <a (click)="slide('#section-2', $event)" class="anchor" mat-button>
-            {{ 'SECTION_2' | translate }}
+            {{ 'Features' | translate }}
+        </a>
+        <a (click)="slide('#section-3', $event)" class="anchor" mat-button>
+            {{ 'Donate' | translate }}
         </a>
 
         <span class="toolbar-spacer"></span>
@@ -18,7 +20,6 @@
            target="_blank">
             <fa-icon [icon]="['fab', 'slack']" size="lg"></fa-icon>
         </a>
-
         <a class="link" [href]="'https://github.com/' + projectName" target="_blank">
             <fa-icon [icon]="['fab', 'github']" size="lg"></fa-icon>
         </a>

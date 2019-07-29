@@ -3,6 +3,10 @@
 div.about {
     height: 100%;
 
+    section {
+        position: relative;
+    }
+
     section:nth-child(odd) {
         background-color: white;
     }
@@ -14,6 +18,10 @@ div.about {
     section.card-section {
         > div {
             padding: 20px 15px 40px 15px;
+
+            h1 {
+                color: mat-color($app-primary);
+            }
 
             div.cards {
                 display: flex;

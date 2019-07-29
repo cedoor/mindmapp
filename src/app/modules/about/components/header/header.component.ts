@@ -21,9 +21,11 @@ export class HeaderComponent implements OnInit {
     public slide (selector: string, event: Event) {
         if (selector) {
             event.preventDefault()
+            const element = document.querySelector(selector)
 
-            window.document.querySelector(selector).scrollIntoView({
-                behavior: 'smooth'
+            window.scrollTo({
+                behavior: 'smooth',
+                top: element.getBoundingClientRect().top + window.scrollY - 70
             })
         }
     }

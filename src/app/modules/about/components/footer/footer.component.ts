@@ -17,7 +17,7 @@ export class FooterComponent implements OnInit {
 
     public projectName: string
     public currentYear: string
-    public projectAuthor: string
+    public projectAuthor: any
 
     constructor (private settingsService: SettingsService,
                  private translateService: TranslateService) {
@@ -29,7 +29,7 @@ export class FooterComponent implements OnInit {
 
         this.projectName = UtilsService.capitalizeWord(packageJson.name)
         this.currentYear = new Date().getFullYear().toString()
-        this.projectAuthor = packageJson.author.name
+        this.projectAuthor = packageJson.author
     }
 
     public async updateLanguage () {
