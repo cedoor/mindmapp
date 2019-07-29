@@ -10,12 +10,18 @@ footer.footer {
         flex-wrap: wrap;
         font-size: 16px;
 
+        div.spacer {
+            flex: 1 1 auto;
+        }
+
+        div.license {
+            display: inline-block;
+            white-space: nowrap;
+            padding: 8px 30px 8px 0;
+        }
+
         div.links {
-            > span {
-                display: inline-block;
-                white-space: nowrap;
-                padding: 10px 30px 10px 0;
-            }
+            padding: 8px 0;
 
             > a {
                 display: inline-block;
@@ -31,7 +37,7 @@ footer.footer {
         }
 
         div.languages {
-            padding: 15px 0;
+            padding: 8px 0;
 
             mat-select::ng-deep {
                 width: fit-content !important;
