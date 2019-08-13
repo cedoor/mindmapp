@@ -105,5 +105,55 @@
         "NODE_DRAGGING": "Allows to drag the nodes in the map",
         "MAP_ZOOM": "Allows to zoom the map",
         "AUTO_BRANCH_COLORS": "Allows to choose automatically the colors of the branches"
+    },
+    "PAGES": {
+        "ABOUT": {
+            "INTRODUCTION": {
+                "APPLICATION_DESCRIPTION": "Web application to draw mind maps.",
+                "APPLICATION_PROPERTIES": [
+                    "Effective mind maps",
+                    "Modern web application",
+                    "Simple interface",
+                    "Open source software"
+                ]
+            },
+            "SECTIONS": [{
+                "TITLE": "Mind maps",
+                "SUBTITLE": "",
+                "CARDS": [{
+                    "TITLE": "Colors",
+                    "CONTENT": ""
+                }, {
+                    "TITLE": "Images",
+                    "CONTENT": ""
+                }, {
+                    "TITLE": "Neurons",
+                    "CONTENT": ""
+                }]
+            }, {
+                "TITLE": "Features",
+                "SUBTITLE": "",
+                "CARDS": [{
+                    "TITLE": "Minimal design",
+                    "CONTENT": ""
+                }, {
+                    "TITLE": "Future-oriented",
+                    "CONTENT": ""
+                }, {
+                    "TITLE": "PWA",
+                    "CONTENT": ""
+                }]
+            }, {
+                "TITLE": "Donations",
+                "SUBTITLE": "Mindmapp è gratuita ed il suo codice è pubblico, ogni contributo sarà di grande aiuto per mantenere e migliorare l'applicazione!"
+            }]
+        }
+    },
+    "GENERAL": {
+        "ORGANIZATION": "Organization",
+        "LIBRARY": "Library",
+        "REPOSITORY": "Repository",
+        "APPLICATION": "Application",
+        "TRY_IT": "Try it"
     }
 }
