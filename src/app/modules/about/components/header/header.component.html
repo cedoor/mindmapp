@@ -3,14 +3,14 @@
         <img class="logo" width="36" src="./assets/icons/icon-72x72.png">
         <h3>{{ projectName }}</h3>
 
+        <a (click)="slide('#section-0', $event)" class="anchor" mat-button>
+            {{ 'PAGES.ABOUT.SECTIONS.0.TITLE' | translate }}
+        </a>
         <a (click)="slide('#section-1', $event)" class="anchor" mat-button>
-            {{ 'Mind maps' | translate }}
+            {{ 'PAGES.ABOUT.SECTIONS.1.TITLE' | translate }}
         </a>
         <a (click)="slide('#section-2', $event)" class="anchor" mat-button>
-            {{ 'Features' | translate }}
-        </a>
-        <a (click)="slide('#section-3', $event)" class="anchor" mat-button>
-            {{ 'Donate' | translate }}
+            {{ 'PAGES.ABOUT.SECTIONS.2.TITLE' | translate }}
         </a>
 
         <span class="toolbar-spacer"></span>

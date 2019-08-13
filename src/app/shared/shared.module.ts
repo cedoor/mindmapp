@@ -16,7 +16,7 @@ import {RouterModule} from '@angular/router'
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faGithub, faSlack} from '@fortawesome/free-brands-svg-icons'
-import {faBrain, faHeart, faRocket} from '@fortawesome/free-solid-svg-icons'
+import {faBrain, faChartLine, faCheck, faCogs, faHeart, faRocket} from '@fortawesome/free-solid-svg-icons'
 
 @NgModule({
     imports: [
@@ -50,6 +50,6 @@ import {faBrain, faHeart, faRocket} from '@fortawesome/free-solid-svg-icons'
 })
 export class SharedModule {
     constructor () {
-        library.add(faGithub, faSlack, faBrain, faRocket, faHeart)
+        library.add(faGithub, faSlack, faBrain, faRocket, faHeart, faChartLine, faCogs, faCheck)
     }
 }

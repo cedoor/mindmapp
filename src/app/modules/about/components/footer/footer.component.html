@@ -4,10 +4,18 @@
             © {{ currentYear }} <a [href]="projectAuthor.url">{{ projectAuthor.name }}</a>
         </div>
         <div class="links">
-            <a routerLink="/application" target="_blank">Application</a>
-            <a [href]="'https://github.com/' + projectName" target="_blank">Github Org</a>
-            <a [href]="'https://github.com/' + projectName + '/' + projectName" target="_blank">Github Repo</a>
-            <a [href]="'https://github.com/' + projectName + '/mmp'" target="_blank">Github Library</a>
+            <a routerLink="/application" target="_blank">
+                {{ "GENERAL.APPLICATION" | translate }}
+            </a>
+            <a [href]="'https://github.com/' + projectName" target="_blank">
+                {{ "GENERAL.ORGANIZATION" | translate }}
+            </a>
+            <a [href]="'https://github.com/' + projectName + '/' + projectName" target="_blank">
+                {{ "GENERAL.REPOSITORY" | translate }}
+            </a>
+            <a [href]="'https://github.com/' + projectName + '/mmp'" target="_blank">
+                {{ "GENERAL.LIBRARY" | translate }}
+            </a>
         </div>
         <div class="spacer"></div>
         <div class="languages">
