@@ -1,54 +1,4 @@
 {
-    "IPFS": "IPFS",
-    "DISMISS": "解除",
-    "SAVE_WITH_NAME": "另存为",
-    "EXPORT_AS": "导出为",
-    "NO_SAVED_MAPS": "No saved maps!",
-    "SAVED_MAPS": "Saved maps",
-    "JSON": "File (.json)",
-    "PNG": "图片 (.png)",
-    "JPG": "图片 (.jpg)",
-    "PDF": "文档 (.pdf)",
-    "QUIT": "退出",
-    "IMAGE": "图片",
-    "LANGUAGE": "语言",
-    "YES": "是",
-    "NO": "否",
-    "OK": "确定",
-    "SAVE": "保存",
-    "OPEN": "打开",
-    "EXPORT_IMAGE": "导出图像",
-    "EXPORT_PDF": "导出 PDF",
-    "LATER": "延后",
-    "INITIAL_INFORMATION": "Mindmapp 已经准备好了 ☺",
-    "WELCOME_MESSAGE": "欢迎使用 Mindmapp app ☺",
-    "WEBSITE": "网站",
-    "CANCEL": "取消",
-    "INSERT_NODE_IMAGE": "插入图片",
-    "SAVE_MAP_MESSAGE": "保存当前四位导图？",
-    "MINDMAPP_FILES": "Mindmapp 文件",
-    "ALL_FILES": "所有文件",
-    "MAIN": "主界面",
-    "CENTER_ON_RESIZING": "缩放之后居中",
-    "NODE_DRAGGING": "拖拽节点",
-    "MAP_ZOOM": "缩放",
-    "AUTO_BRANCH_COLORS": "自动分配分支颜色",
-    "MAP": "思维导图",
-    "NODES": "节点",
-    "SAVED": "已保存",
-    "NOT_SAVED": "未保存",
-    "ROOT_NODE_NAME": "根节点名称",
-    "NODE_NAME": "节点名称",
-    "APPLICATION_TITLE": "Application",
-    "ABOUT_TITLE": "关于",
-    "ABOUT_DESCRIPTION": "Mindmapp 是一个绘制思维导图的开源软件。如果你是开发人员，并且对此项目有兴趣、想做些贡献，欢迎点击下面的链接。",
-    "SETTINGS_TITLE": "设置",
-    "SHORTCUTS_TITLE": "快捷键",
-    "SETTINGS_LABELS": {
-        "SHARING": "分享",
-        "GENERAL": "一般",
-        "MAP_OPTIONS": "思维导图选项"
-    },
     "LANGUAGES": {
         "EN": "英语",
         "FR": "法语",
@@ -59,6 +9,8 @@
         "ES": "西班牙语"
     },
     "TOOLTIPS": {
+        "IMPORT_MAP": "Import map",
+        "EXPORT_MAP": "Export map",
         "ESC": "关闭",
         "FULLSCREEN": "全屏",
         "CLOSE_MENU": "关闭菜单",
@@ -147,13 +99,50 @@
                 "TITLE": "Donations",
                 "SUBTITLE": "Mindmapp is free and its code is public, every contribution is very helpful to maintain and improve the application!"
             }]
+        },
+        "SETTINGS": {
+            "TITLE": "设置"
+        },
+        "SHORTCUTS": {
+            "TITLE": "快捷键"
         }
+    },
+    "MESSAGES": {
+        "NO_SAVED_MAPS": "No saved maps!",
+        "INITIAL_INFORMATION": "Mindmapp 已经准备好了 ☺",
+        "WELCOME_MESSAGE": "欢迎使用 Mindmapp app ☺"
     },
     "GENERAL": {
         "ORGANIZATION": "Organization",
         "LIBRARY": "Library",
         "REPOSITORY": "Repository",
         "APPLICATION": "Application",
-        "TRY_IT": "Try it"
+        "TRY_IT": "Try it",
+        "GENERAL": "一般",
+        "MAP_OPTIONS": "思维导图选项",
+        "DISMISS": "解除",
+        "SAVED_MAPS": "Saved maps",
+        "JSON": "File (.json)",
+        "PNG": "图片 (.png)",
+        "JPG": "图片 (.jpg)",
+        "PDF": "文档 (.pdf)",
+        "LANGUAGE": "语言",
+        "YES": "是",
+        "NO": "否",
+        "OK": "确定",
+        "SAVE": "保存",
+        "OPEN": "打开",
+        "CANCEL": "取消",
+        "MAIN": "主界面",
+        "CENTER_ON_RESIZING": "缩放之后居中",
+        "NODE_DRAGGING": "拖拽节点",
+        "MAP_ZOOM": "缩放",
+        "AUTO_BRANCH_COLORS": "自动分配分支颜色",
+        "MAP": "思维导图",
+        "NODES": "节点",
+        "SAVED": "已保存",
+        "NOT_SAVED": "未保存",
+        "ROOT_NODE_NAME": "根节点名称",
+        "NODE_NAME": "节点名称"
     }
 }

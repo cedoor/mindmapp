@@ -23,7 +23,7 @@ export class NotificationService {
      * Show a message with a material snack bar.
      */
     public async showSnackBarMessage (message: string, values?: any, duration: number = 5000) {
-        const action = await this.translate('DISMISS')
+        const action = await this.translate('GENERAL.DISMISS')
         message = await this.translate(message, values)
 
         this.matSnackBar.open(message, action, {

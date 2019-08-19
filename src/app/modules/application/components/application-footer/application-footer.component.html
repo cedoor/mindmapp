@@ -5,8 +5,8 @@
         <span class="footer-spacer"></span>
 
         <div>
-            <span *ngIf="(mapCacheService.attachedMap | async)?.updated">&#10003; {{ "SAVED" | translate }}</span>
-            <span *ngIf="!(mapCacheService.attachedMap | async)?.updated">&#10007; {{ "NOT_SAVED" | translate }}</span>
+            <span *ngIf="(mapCacheService.attachedMap | async)?.updated">&#10003; {{ "GENERAL.SAVED" | translate }}</span>
+            <span *ngIf="!(mapCacheService.attachedMap | async)?.updated">&#10007; {{ "GENERAL.NOT_SAVED" | translate }}</span>
         </div>
     </div>
 </div>

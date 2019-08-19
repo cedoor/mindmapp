@@ -1,54 +1,4 @@
 {
-    "IPFS": "IPFS",
-    "DISMISS": "Dismiss",
-    "SAVE_WITH_NAME": "Save as",
-    "EXPORT_AS": "Export as",
-    "NO_SAVED_MAPS": "No saved maps!",
-    "SAVED_MAPS": "Saved maps",
-    "JSON": "File (.json)",
-    "PNG": "Image (.png)",
-    "JPG": "Image (.jpg)",
-    "PDF": "Document (.pdf)",
-    "QUIT": "Quit",
-    "IMAGE": "Image",
-    "LANGUAGE": "Language",
-    "YES": "Yes",
-    "NO": "No",
-    "OK": "Ok",
-    "SAVE": "Save",
-    "OPEN": "Open",
-    "EXPORT_IMAGE": "Export image",
-    "EXPORT_PDF": "Export PDF",
-    "LATER": "Later",
-    "INITIAL_INFORMATION": "Mindmapp is ready ☺",
-    "WELCOME_MESSAGE": "Welcome to the Mindmapp app ☺",
-    "WEBSITE": "Website",
-    "CANCEL": "Cancel",
-    "INSERT_NODE_IMAGE": "Insert an image",
-    "SAVE_MAP_MESSAGE": "Do you want to save the current map?",
-    "MINDMAPP_FILES": "Mindmapp files",
-    "ALL_FILES": "All files",
-    "MAIN": "Main",
-    "CENTER_ON_RESIZING": "Center on resizing",
-    "NODE_DRAGGING": "Node dragging",
-    "MAP_ZOOM": "Map zoom",
-    "AUTO_BRANCH_COLORS": "Automatic branch colors",
-    "MAP": "Map",
-    "NODES": "Nodes",
-    "SAVED": "Saved",
-    "NOT_SAVED": "Not saved",
-    "ROOT_NODE_NAME": "Root node name",
-    "NODE_NAME": "Node name",
-    "APPLICATION_TITLE": "Application",
-    "ABOUT_TITLE": "About",
-    "ABOUT_DESCRIPTION": "Mindmapp is an open source project that allows you to create mind maps. If you are a developer and you want to contribute to the application, below you will find the links of the project.",
-    "SETTINGS_TITLE": "Settings",
-    "SHORTCUTS_TITLE": "Shortcuts",
-    "SETTINGS_LABELS": {
-        "SHARING": "Sharing",
-        "GENERAL": "General",
-        "MAP_OPTIONS": "Map options"
-    },
     "LANGUAGES": {
         "EN": "English",
         "FR": "French",
@@ -59,6 +9,8 @@
         "ES": "Spanish"
     },
     "TOOLTIPS": {
+        "IMPORT_MAP": "Import map",
+        "EXPORT_MAP": "Export map",
         "ESC": "Closes the dialog window",
         "FULLSCREEN": "Sets the full screen",
         "CLOSE_MENU": "Closes the side menu",
@@ -147,13 +99,50 @@
                 "TITLE": "Donations",
                 "SUBTITLE": "Mindmapp is free and its code is public, every contribution is very helpful to maintain and improve the application!"
             }]
+        },
+        "SETTINGS": {
+            "TITLE": "Settings"
+        },
+        "SHORTCUTS": {
+            "TITLE": "Shortcuts"
         }
+    },
+    "MESSAGES": {
+        "NO_SAVED_MAPS": "No saved maps!",
+        "INITIAL_INFORMATION": "Mindmapp is ready ☺",
+        "WELCOME_MESSAGE": "Welcome to the Mindmapp app ☺"
     },
     "GENERAL": {
         "ORGANIZATION": "Organization",
         "LIBRARY": "Library",
         "REPOSITORY": "Repository",
         "APPLICATION": "Application",
-        "TRY_IT": "Try it"
+        "TRY_IT": "Try it",
+        "GENERAL": "General",
+        "MAP_OPTIONS": "Map options",
+        "DISMISS": "Dismiss",
+        "SAVED_MAPS": "Saved maps",
+        "JSON": "File (.json)",
+        "PNG": "Image (.png)",
+        "JPG": "Image (.jpg)",
+        "PDF": "Document (.pdf)",
+        "LANGUAGE": "Language",
+        "YES": "Yes",
+        "NO": "No",
+        "OK": "Ok",
+        "SAVE": "Save",
+        "OPEN": "Open",
+        "CANCEL": "Cancel",
+        "MAIN": "Main",
+        "CENTER_ON_RESIZING": "Center on resizing",
+        "NODE_DRAGGING": "Node dragging",
+        "MAP_ZOOM": "Map zoom",
+        "AUTO_BRANCH_COLORS": "Automatic branch colors",
+        "MAP": "Map",
+        "NODES": "Nodes",
+        "SAVED": "Saved",
+        "NOT_SAVED": "Not saved",
+        "ROOT_NODE_NAME": "Root node name",
+        "NODE_NAME": "Node name"
     }
 }

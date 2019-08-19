@@ -1,54 +1,4 @@
 {
-    "IPFS": "IPFS",
-    "DISMISS": "解除",
-    "SAVE_WITH_NAME": "另存新檔",
-    "EXPORT_AS": "匯出檔案",
-    "NO_SAVED_MAPS": "No saved maps!",
-    "SAVED_MAPS": "Saved maps",
-    "JSON": "File (.json)",
-    "PNG": "圖片 (.png)",
-    "JPG": "圖片 (.jpg)",
-    "PDF": "文件 (.pdf)",
-    "QUIT": "關閉",
-    "IMAGE": "圖片",
-    "LANGUAGE": "語系",
-    "YES": "是",
-    "NO": "否",
-    "OK": "確定",
-    "SAVE": "儲存",
-    "OPEN": "開啟",
-    "EXPORT_IMAGE": "匯出圖片",
-    "EXPORT_PDF": "匯出 PDF",
-    "LATER": "延後",
-    "INITIAL_INFORMATION": "Mindmapp 已準備好了 ☺",
-    "WELCOME_MESSAGE": "歡迎使用 Mindmapp app ☺",
-    "WEBSITE": "網站",
-    "CANCEL": "取消",
-    "INSERT_NODE_IMAGE": "插入圖片",
-    "SAVE_MAP_MESSAGE": "您是否要儲存當前地圖？",
-    "MINDMAPP_FILES": "Mindmapp 檔案",
-    "ALL_FILES": "所有檔案",
-    "MAIN": "主畫面",
-    "CENTER_ON_RESIZING": "視窗縮放後置中",
-    "NODE_DRAGGING": "拖曳節點",
-    "MAP_ZOOM": "地圖縮放",
-    "AUTO_BRANCH_COLORS": "自動分配分支顏色",
-    "MAP": "地圖",
-    "NODES": "節點",
-    "SAVED": "已儲存",
-    "NOT_SAVED": "尚未儲存",
-    "ROOT_NODE_NAME": "根節點名稱",
-    "NODE_NAME": "節點名稱",
-    "APPLICATION_TITLE": "Application",
-    "ABOUT_TITLE": "關於",
-    "ABOUT_DESCRIPTION": "Mindmapp 是一項繪製心智圖的開源專案，身為開發人員的你，若對專案有興趣、想貢獻一份心力，歡迎點擊下方連結。",
-    "SETTINGS_TITLE": "設定",
-    "SHORTCUTS_TITLE": "快捷鍵",
-    "SETTINGS_LABELS": {
-        "SHARING": "分享",
-        "GENERAL": "一般",
-        "MAP_OPTIONS": "地圖選項"
-    },
     "LANGUAGES": {
         "EN": "英文",
         "FR": "法文",
@@ -59,6 +9,8 @@
         "ES": "西班牙語"
     },
     "TOOLTIPS": {
+        "IMPORT_MAP": "Import map",
+        "EXPORT_MAP": "Export map",
         "ESC": "關閉對話窗口",
         "FULLSCREEN": "將應用程式全螢幕",
         "CLOSE_MENU": "關閉選單",
@@ -147,13 +99,50 @@
                 "TITLE": "Donations",
                 "SUBTITLE": "Mindmapp is free and its code is public, every contribution is very helpful to maintain and improve the application!"
             }]
+        },
+        "SETTINGS": {
+            "TITLE": "設定"
+        },
+        "SHORTCUTS": {
+            "TITLE": "快捷鍵"
         }
+    },
+    "MESSAGES": {
+        "NO_SAVED_MAPS": "No saved maps!",
+        "INITIAL_INFORMATION": "Mindmapp 已準備好了 ☺",
+        "WELCOME_MESSAGE": "歡迎使用 Mindmapp app ☺"
     },
     "GENERAL": {
         "ORGANIZATION": "Organization",
         "LIBRARY": "Library",
         "REPOSITORY": "Repository",
         "APPLICATION": "Application",
-        "TRY_IT": "Try it"
+        "TRY_IT": "Try it",
+        "GENERAL": "一般",
+        "MAP_OPTIONS": "地圖選項",
+        "DISMISS": "解除",
+        "SAVED_MAPS": "Saved maps",
+        "JSON": "File (.json)",
+        "PNG": "圖片 (.png)",
+        "JPG": "圖片 (.jpg)",
+        "PDF": "文件 (.pdf)",
+        "LANGUAGE": "語系",
+        "YES": "是",
+        "NO": "否",
+        "OK": "確定",
+        "SAVE": "儲存",
+        "OPEN": "開啟",
+        "CANCEL": "取消",
+        "MAIN": "主畫面",
+        "CENTER_ON_RESIZING": "視窗縮放後置中",
+        "NODE_DRAGGING": "拖曳節點",
+        "MAP_ZOOM": "地圖縮放",
+        "AUTO_BRANCH_COLORS": "自動分配分支顏色",
+        "MAP": "地圖",
+        "NODES": "節點",
+        "SAVED": "已儲存",
+        "NOT_SAVED": "尚未儲存",
+        "ROOT_NODE_NAME": "根節點名稱",
+        "NODE_NAME": "節點名稱"
     }
 }

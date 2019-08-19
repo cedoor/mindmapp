@@ -19,11 +19,11 @@
     <mat-menu #import_map="matMenu">
         <button (click)="mmpService.importMap()" mat-menu-item>
             <mat-icon>insert_drive_file</mat-icon>
-            <span>{{ "JSON" | translate }}</span>
+            <span>{{ "GENERAL.JSON" | translate }}</span>
         </button>
         <button (click)="openCachedMaps()" mat-menu-item>
             <mat-icon>storage</mat-icon>
-            <span>{{ "SAVED_MAPS" | translate }}</span>
+            <span>{{ "GENERAL.SAVED_MAPS" | translate }}</span>
         </button>
     </mat-menu>
     <button [matMenuTriggerFor]="export_map" [title]="'TOOLTIPS.EXPORT_MAP' | translate"
@@ -34,19 +34,19 @@
     <mat-menu #export_map="matMenu">
         <button (click)="exportMap('json')" mat-menu-item>
             <mat-icon>insert_drive_file</mat-icon>
-            <span>{{ "JSON" | translate }}</span>
+            <span>{{ "GENERAL.JSON" | translate }}</span>
         </button>
         <button (click)="exportMap('png')" mat-menu-item>
             <mat-icon>image</mat-icon>
-            <span>{{ "PNG" | translate }}</span>
+            <span>{{ "GENERAL.PNG" | translate }}</span>
         </button>
         <button (click)="exportMap('jpeg')" mat-menu-item>
             <mat-icon>image</mat-icon>
-            <span>{{ "JPG" | translate }}</span>
+            <span>{{ "GENERAL.JPG" | translate }}</span>
         </button>
         <button (click)="exportMap('pdf')" mat-menu-item>
             <mat-icon>picture_as_pdf</mat-icon>
-            <span>{{ "PDF" | translate }}</span>
+            <span>{{ "GENERAL.PDF" | translate }}</span>
         </button>
     </mat-menu>
 

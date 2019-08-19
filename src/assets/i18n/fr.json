@@ -1,54 +1,4 @@
 {
-    "IPFS": "IPFS",
-    "DISMISS": "Rejeter",
-    "SAVE_WITH_NAME": "Enregistrer avec le nom",
-    "EXPORT_AS": "Exporter sous",
-    "NO_SAVED_MAPS": "No saved maps!",
-    "SAVED_MAPS": "Saved maps",
-    "JSON": "File (.json)",
-    "PNG": "Image (.png)",
-    "JPG": "Image (.jpg)",
-    "PDF": "Document (.pdf)",
-    "QUIT": "Quitter",
-    "IMAGE": "Image",
-    "LANGUAGE": "Language",
-    "YES": "Oui",
-    "NO": "Non",
-    "OK": "Ok",
-    "SAVE": "Save",
-    "OPEN": "Open",
-    "EXPORT_IMAGE": "Export image",
-    "EXPORT_PDF": "Export PDF",
-    "LATER": "Plus tard",
-    "INITIAL_INFORMATION": "Mindmapp est prêt ☺",
-    "WELCOME_MESSAGE": "Welcome to the Mindmapp app ☺",
-    "WEBSITE": "Site Internet",
-    "CANCEL": "Annuler",
-    "INSERT_NODE_IMAGE": "Insérer une image",
-    "SAVE_MAP_MESSAGE": "Voulez-vous enregistrer la carte actuelle?",
-    "MINDMAPP_FILES": "Fichiers Mindmapp",
-    "ALL_FILES": "Tous les fichiers",
-    "MAIN": "Principale",
-    "CENTER_ON_RESIZING": "Centrer sur le redimensionnement",
-    "NODE_DRAGGING": "Noeud faisant glisser",
-    "MAP_ZOOM": "Map zoom",
-    "AUTO_BRANCH_COLORS": "Automatic branch colors",
-    "MAP": "Carte",
-    "NODES": "Noeuds",
-    "SAVED": "Enregistré",
-    "NOT_SAVED": "Non enregistré",
-    "ROOT_NODE_NAME": "Nom du noeud racine",
-    "NODE_NAME": "Nom du noeud",
-    "APPLICATION_TITLE": "Application",
-    "ABOUT_TITLE": "A Propos",
-    "ABOUT_DESCRIPTION": "Mindmapp est un projet open source qui vous permet de créer des cartes mentales. Si vous êtes développeur et que vous souhaitez contribuer à l'application, vous trouverez ci-dessous les liens du projet.",
-    "SETTINGS_TITLE": "Paramètres",
-    "SHORTCUTS_TITLE": "Raccourcis",
-    "SETTINGS_LABELS": {
-        "SHARING": "Partage",
-        "GENERAL": "Général",
-        "MAP_OPTIONS": "Options de carte"
-    },
     "LANGUAGES": {
         "EN": "Anglais",
         "FR": "Français",
@@ -59,6 +9,8 @@
         "ES": "Espagnol"
     },
     "TOOLTIPS": {
+        "IMPORT_MAP": "Import map",
+        "EXPORT_MAP": "Export map",
         "ESC": "Ferme la fenêtre de dialogue",
         "FULLSCREEN": "Mettre en plein écran",
         "CLOSE_MENU": "Ferme le menu latéral",
@@ -147,13 +99,50 @@
                 "TITLE": "Donations",
                 "SUBTITLE": "Mindmapp is free and its code is public, every contribution is very helpful to maintain and improve the application!"
             }]
+        },
+        "SETTINGS": {
+            "TITLE": "Paramètres"
+        },
+        "SHORTCUTS": {
+            "TITLE": "Raccourcis"
         }
+    },
+    "MESSAGES": {
+        "NO_SAVED_MAPS": "No saved maps!",
+        "INITIAL_INFORMATION": "Mindmapp est prêt ☺",
+        "WELCOME_MESSAGE": "Welcome to the Mindmapp app ☺"
     },
     "GENERAL": {
         "ORGANIZATION": "Organization",
         "LIBRARY": "Library",
         "REPOSITORY": "Repository",
         "APPLICATION": "Application",
-        "TRY_IT": "Try it"
+        "TRY_IT": "Try it",
+        "GENERAL": "Général",
+        "MAP_OPTIONS": "Options de carte",
+        "DISMISS": "Rejeter",
+        "SAVED_MAPS": "Saved maps",
+        "JSON": "File (.json)",
+        "PNG": "Image (.png)",
+        "JPG": "Image (.jpg)",
+        "PDF": "Document (.pdf)",
+        "LANGUAGE": "Language",
+        "YES": "Oui",
+        "NO": "Non",
+        "OK": "Ok",
+        "SAVE": "Save",
+        "OPEN": "Open",
+        "CANCEL": "Annuler",
+        "MAIN": "Principale",
+        "CENTER_ON_RESIZING": "Centrer sur le redimensionnement",
+        "NODE_DRAGGING": "Noeud faisant glisser",
+        "MAP_ZOOM": "Map zoom",
+        "AUTO_BRANCH_COLORS": "Automatic branch colors",
+        "MAP": "Carte",
+        "NODES": "Noeuds",
+        "SAVED": "Enregistré",
+        "NOT_SAVED": "Non enregistré",
+        "ROOT_NODE_NAME": "Nom du noeud racine",
+        "NODE_NAME": "Nom du noeud"
     }
 }
