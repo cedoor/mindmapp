@@ -9,8 +9,8 @@
         "ES": "Spanish"
     },
     "TOOLTIPS": {
-        "IMPORT_MAP": "Import map",
-        "EXPORT_MAP": "Export map",
+        "IMPORT_MAP": "Imports the map",
+        "EXPORT_MAP": "Exports the map",
         "ESC": "Closes the dialog window",
         "FULLSCREEN": "Sets the full screen",
         "CLOSE_MENU": "Closes the side menu",

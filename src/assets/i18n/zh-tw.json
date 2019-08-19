@@ -9,8 +9,8 @@
         "ES": "西班牙語"
     },
     "TOOLTIPS": {
-        "IMPORT_MAP": "Import map",
-        "EXPORT_MAP": "Export map",
+        "IMPORT_MAP": "Imports the map",
+        "EXPORT_MAP": "Exports the map",
         "ESC": "關閉對話窗口",
         "FULLSCREEN": "將應用程式全螢幕",
         "CLOSE_MENU": "關閉選單",
