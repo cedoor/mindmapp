@@ -1,35 +1,75 @@
-# ![](https://raw.githubusercontent.com/Mindmapp/mindmapp/master/resources/icons/32x32.png) Mindmapp<sup>beta</sup>
+[![mindmapp-illustration](https://raw.githubusercontent.com/Mindmapp/mindmapp/dev/src/assets/images/readme-header.png)][mindmapp-website-url]
 
-[![](https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square)](https://github.com/Mindmapp)
-[![](https://img.shields.io/badge/chat-Slack-orange.svg?style=flat-square)](https://join.slack.com/t/mindmapp-org/shared_invite/enQtNDE4OTUwOTQ4OTc3LWRkZDExM2E5MTJlNzZhZDBjZTFhMzVjMDhjMDFhOTY0NjBkMzMwYjRiY2FmNWNiNjRiYzdhZmNjZDE4YzkwYjk)
-[![](https://img.shields.io/github/license/mindmapp/mindmapp.svg?style=flat-square)](https://github.com/Mindmapp/mindmapp/blob/dev/LICENSE.md)
-[![](https://img.shields.io/david/mindmapp/mindmapp.svg?style=flat-square)](https://david-dm.org/mindmapp/mindmapp)
-[![](https://img.shields.io/david/dev/mindmapp/mindmapp.svg?style=flat-square)](https://david-dm.org/mindmapp/mindmapp?type=dev)
-[![](https://img.shields.io/github/downloads/mindmapp/mindmapp/total.svg?style=flat-square)](https://github.com/Mindmapp/mindmapp/releases)
-[![](https://img.shields.io/travis/Mindmapp/mindmapp.svg?style=flat-square)](https://travis-ci.org/Mindmapp/mindmapp)
+<p align="center">
+    <h1 align="center">
+        <img width="40" src="https://raw.githubusercontent.com/Mindmapp/mindmapp/dev/src/assets/icons/icon-72x72.png">
+        Mindmapp
+    </h1>
+    <p align="center">Web application to draw mind maps.</p>
+</p>
+    
+[![mindmapp-project][mindmapp-project]][mindmapp-project-url]
+[![slack][slack]][slack-url]
+[![license][license]][license-url]
+[![dependencies][dependencies]][dependencies-url]
+[![dev-dependencies][dev-dependencies]][dev-dependencies-url]
 
+___
 
-Mindmapp is a desktop application to draw mind maps quickly and efficiently. It was born with the intention to make the creation of mind maps extremely simple, while maintaining the fundamental properties that make the mind maps so efficient.
+## :paperclip: Table of Contents
+- :rocket: [Features](#rocket-features)
+- :hammer: [Install](#hammer-install)
+- :video_game: [Usage](#video_game-usage)
+- :chart_with_upwards_trend: [Development](#chart_with_upwards_trend-development)
+  - :raised_hand: [Contribute](#raised_hand-contribute)
+  - :scroll: [Rules](#scroll-rules)
+    - [Commits](#commits)
+    - [Branches](#branches)
+- :page_facing_up: [License](#page_facing_up-license)
+- :telephone_receiver: [Contacts](#telephone_receiver-contacts)
+  - :boy: [Developers](#boy-developers)
 
-![Mind map](https://raw.githubusercontent.com/Mindmapp/mindmapp/master/src/assets/images/example.png)
+## :rocket: Features
 
-## Development
+- :heavy_check_mark: Local storage
+- :heavy_check_mark: JSON export
+- :heavy_check_mark: Image export
+- :heavy_check_mark: PDF export
+- :heavy_check_mark: PWA support
+- :x: Distributed database
 
-### Clone and install dependencies
+## :hammer: Install
 
-```sh
-> git clone https://github.com/Mindmapp/mindmapp.git
-> cd mindmapp
-> npm i
+With the following installed:
+- git
+- node >= 12
+- npm >= 6
+
+Clone the repo and install the dependencies from npm.
+
+```bash
+git clone https://github.com/Mindmapp/mindmapp.git
+cd mindmapp
+npm i
 ```
 
-### Run angular & electron
+## :video_game: Usage
 
-```sh
-> npm run ng:build
-> npm start
+For local *development* with angular dev server:
+
+```bash
+npm start
 ```
-### Rules
+
+Then open [http://localhost:4200](http://localhost:4200) in your browser.
+
+## :chart_with_upwards_trend: Development
+
+### :raised_hand: Contribute
+
+Mindmapp is a work in progress. Remember that if you want you can make a small contribution with a pull request.
+
+### :scroll: Rules
 
 #### Commits
 
@@ -74,11 +114,28 @@ Examples:
     git branch -b feat/side-bar
     git branch -b style/header
 
-## License
-* See [LICENSE](https://github.com/mindmapp/mindmapp/blob/master/LICENSE) file
+## :page_facing_up: License
+* See [LICENSE](https://github.com/cedoor/ceditor/blob/master/LICENSE) file.
 
-## Contact
-#### Developer
+## :telephone_receiver: Contacts
+### :boy: Developers
 * e-mail : omardesogus9@gmail.com
 * github : [@cedoor](https://github.com/cedoor)
-* website : https://cedoor.github.io
+* website : https://cedoor.org
+
+[mindmapp-website-url]: https://mindmapp.cedoor.org
+
+[mindmapp-project]: https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square
+[mindmapp-project-url]: https://travis-ci.org/hamedbaatour/angularfire-lite
+
+[slack]: https://img.shields.io/badge/chat-Slack-orange.svg?style=flat-square
+[slack-url]: https://join.slack.com/t/mindmapp-org/shared_invite/enQtNDE4OTUwOTQ4OTc3LWRkZDExM2E5MTJlNzZhZDBjZTFhMzVjMDhjMDFhOTY0NjBkMzMwYjRiY2FmNWNiNjRiYzdhZmNjZDE4YzkwYjk
+
+[license]: https://img.shields.io/github/license/mindmapp/mindmapp.svg?style=flat-square
+[license-url]: https://github.com/Mindmapp/mindmapp/blob/master/LICENSE
+
+[dependencies]: https://img.shields.io/david/mindmapp/mindmapp.svg?style=flat-square
+[dependencies-url]: https://david-dm.org/mindmapp/mindmapp
+
+[dev-dependencies]: https://img.shields.io/david/dev/mindmapp/mindmapp.svg?style=flat-square
+[dev-dependencies-url]: https://david-dm.org/mindmapp/mindmapp?type=dev
