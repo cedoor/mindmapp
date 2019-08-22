@@ -1,4 +1,6 @@
-[![mindmapp-illustration](https://raw.githubusercontent.com/Mindmapp/mindmapp/dev/src/assets/images/readme-header.png)][mindmapp-website-url]
+<a href="https://mindmapp.cedoor.org" target="_blank">
+    <img src="https://raw.githubusercontent.com/Mindmapp/mindmapp/dev/src/assets/images/readme-header.png">
+</a>
 
 <p align="center">
     <h1 align="center">
@@ -8,11 +10,23 @@
     <p align="center">Web application to draw mind maps.</p>
 </p>
     
-[![mindmapp-project][mindmapp-project]][mindmapp-project-url]
-[![slack][slack]][slack-url]
-[![license][license]][license-url]
-[![dependencies][dependencies]][dependencies-url]
-[![dev-dependencies][dev-dependencies]][dev-dependencies-url]
+<p align="center">
+    <a href="https://github.com/Mindmapp" target="_blank">
+        <img src="https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square">
+    </a>
+    <a href="https://join.slack.com/t/mindmapp-org/shared_invite/enQtNDE4OTUwOTQ4OTc3LWRkZDExM2E5MTJlNzZhZDBjZTFhMzVjMDhjMDFhOTY0NjBkMzMwYjRiY2FmNWNiNjRiYzdhZmNjZDE4YzkwYjk" target="_blank">
+        <img src="https://img.shields.io/badge/chat-Slack-orange.svg?style=flat-square">
+    </a>
+    <a href="https://github.com/Mindmapp/mindmapp/blob/master/LICENSE" target="_blank">
+        <img src="https://img.shields.io/github/license/mindmapp/mindmapp.svg?style=flat-square">
+    </a>
+    <a href="https://david-dm.org/mindmapp/mindmapp" target="_blank">
+        <img src="https://img.shields.io/david/mindmapp/mindmapp.svg?style=flat-square">
+    </a>
+    <a href="https://david-dm.org/mindmapp/mindmapp?type=dev" target="_blank">
+        <img src="https://img.shields.io/david/dev/mindmapp/mindmapp.svg?style=flat-square">
+    </a>
+</p>
 
 ___
 
@@ -31,12 +45,13 @@ ___
 
 ## :rocket: Features
 
-- :heavy_check_mark: Local storage
-- :heavy_check_mark: JSON export
-- :heavy_check_mark: Image export
-- :heavy_check_mark: PDF export
-- :heavy_check_mark: PWA support
-- :x: Distributed database
+| Feature | Status | Description |
+|---------|:------:|:-----------:|
+| Local storage | :heavy_check_mark: | Save the maps in the browser local storage |
+| JSON export | :heavy_check_mark: | Export the map as JSON file |
+| Image export | :heavy_check_mark: | Export the map as image file (png, jpg) |
+| PDF export | :heavy_check_mark: | Export the map as PDF document |
+| PWA support | :x: | Support desktop and mobile browser PWA (Progressive Web App) |
 
 ## :hammer: Install
 
@@ -122,20 +137,3 @@ Examples:
 * e-mail : omardesogus9@gmail.com
 * github : [@cedoor](https://github.com/cedoor)
 * website : https://cedoor.org
-
-[mindmapp-website-url]: https://mindmapp.cedoor.org
-
-[mindmapp-project]: https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square
-[mindmapp-project-url]: https://travis-ci.org/hamedbaatour/angularfire-lite
-
-[slack]: https://img.shields.io/badge/chat-Slack-orange.svg?style=flat-square
-[slack-url]: https://join.slack.com/t/mindmapp-org/shared_invite/enQtNDE4OTUwOTQ4OTc3LWRkZDExM2E5MTJlNzZhZDBjZTFhMzVjMDhjMDFhOTY0NjBkMzMwYjRiY2FmNWNiNjRiYzdhZmNjZDE4YzkwYjk
-
-[license]: https://img.shields.io/github/license/mindmapp/mindmapp.svg?style=flat-square
-[license-url]: https://github.com/Mindmapp/mindmapp/blob/master/LICENSE
-
-[dependencies]: https://img.shields.io/david/mindmapp/mindmapp.svg?style=flat-square
-[dependencies-url]: https://david-dm.org/mindmapp/mindmapp
-
-[dev-dependencies]: https://img.shields.io/david/dev/mindmapp/mindmapp.svg?style=flat-square
-[dev-dependencies-url]: https://david-dm.org/mindmapp/mindmapp?type=dev
