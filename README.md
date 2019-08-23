@@ -14,8 +14,8 @@
     <a href="https://github.com/Mindmapp" target="_blank">
         <img src="https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square">
     </a>
-    <a href="https://join.slack.com/t/mindmapp-org/shared_invite/enQtNDE4OTUwOTQ4OTc3LWRkZDExM2E5MTJlNzZhZDBjZTFhMzVjMDhjMDFhOTY0NjBkMzMwYjRiY2FmNWNiNjRiYzdhZmNjZDE4YzkwYjk" target="_blank">
-        <img src="https://img.shields.io/badge/chat-Slack-orange.svg?style=flat-square">
+    <a href="https://gitter.im/mindmapp/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge" target="_blank">
+        <img src="https://badges.gitter.im/mindmapp/community.svg">
     </a>
     <a href="https://github.com/Mindmapp/mindmapp/blob/master/LICENSE" target="_blank">
         <img src="https://img.shields.io/github/license/mindmapp/mindmapp.svg?style=flat-square">
@@ -46,12 +46,12 @@ ___
 ## :rocket: Features
 
 | Feature | Status | Description |
-|---------|:------:|:-----------:|
+|---------|:------:|-------------|
 | Local storage | :heavy_check_mark: | Save the maps in the browser local storage |
 | JSON export | :heavy_check_mark: | Export the map as JSON file |
 | Image export | :heavy_check_mark: | Export the map as image file (png, jpg) |
 | PDF export | :heavy_check_mark: | Export the map as PDF document |
-| PWA support | :x: | Support desktop and mobile browser PWA (Progressive Web App) |
+| PWA support | :heavy_check_mark: | Support desktop and mobile browser PWA (Progressive Web App) |
 
 ## :hammer: Install
 
@@ -77,6 +77,14 @@ npm start
 ```
 
 Then open [http://localhost:4200](http://localhost:4200) in your browser.
+
+If you want to generate the project documentation:
+
+```bash
+npm run doc
+```
+
+A `documentation` folder will be generated in the project path.
 
 ## :chart_with_upwards_trend: Development
 
