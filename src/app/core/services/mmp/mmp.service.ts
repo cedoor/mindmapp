@@ -275,6 +275,7 @@ export class MmpService {
      */
     public async exportMap (format: string = 'json') {
         const name = this.selectNode('map_1_node_0').name
+            .replace(/\n/g, ' ').replace(/\s+/g, ' ')
 
         switch (format) {
             case 'json':
