@@ -27,7 +27,7 @@ export class ApplicationHeaderComponent {
         const cachedMapEntries = await this.mapCacheService.getCachedMapEntries()
 
         if (cachedMapEntries.length === 0) {
-            this.notificationService.setMessage('NO_SAVED_MAPS')
+            this.notificationService.showSnackBarMessage('MESSAGES.NO_SAVED_MAPS')
             return
         }
 

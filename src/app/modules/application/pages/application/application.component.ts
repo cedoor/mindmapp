@@ -4,6 +4,7 @@ import {MapCacheService} from '../../../../core/services/map-cache/map-cache.ser
 import {MmpService} from '../../../../core/services/mmp/mmp.service'
 import {SettingsService} from '../../../../core/services/settings/settings.service'
 import {UtilsService} from '../../../../core/services/utils/utils.service'
+import {NotificationService} from '../../../../core/services/notification/notification.service'
 
 @Component({
     selector: 'mindmapp-application',
@@ -16,6 +17,7 @@ export class ApplicationComponent implements OnInit {
 
     constructor (private mmpService: MmpService,
                  private settingsService: SettingsService,
+                 private notificationService: NotificationService,
                  private mapCacheService: MapCacheService) {
         this.node = {}
     }
@@ -25,6 +27,8 @@ export class ApplicationComponent implements OnInit {
 
         // Create the mind map.
         this.initMap(settings.mapOptions)
+
+        this.notificationService.setMessage('MESSAGES.INITIAL_INFORMATION')
 
         this.handleImageDropObservable()
     }

@@ -30,10 +30,9 @@ export class RootComponent implements OnInit {
         await this.initTranslations(settings.general.language)
 
         this.shortcutsService.init()
-        this.notificationService.setMessage('INITIAL_INFORMATION')
 
         if (isFirstTime) {
-            this.notificationService.showSnackBarMessage('WELCOME_MESSAGE')
+            this.notificationService.showSnackBarMessage('MESSAGES.WELCOME_MESSAGE')
         }
     }
 
