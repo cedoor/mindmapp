@@ -3,10 +3,10 @@ import {MmpService} from '../../../../core/services/mmp/mmp.service'
 
 @Component({
     selector: 'mindmapp-colors-panel',
-    templateUrl: './application-color-panels.component.html',
-    styleUrls: ['./application-color-panels.component.scss']
+    templateUrl: './color-panels.component.html',
+    styleUrls: ['./color-panels.component.scss']
 })
-export class ApplicationColorPanelsComponent implements OnInit {
+export class ColorPanelsComponent implements OnInit {
 
     @Input() public node: any
 

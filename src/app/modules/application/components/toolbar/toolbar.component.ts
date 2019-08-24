@@ -5,14 +5,14 @@ import {NotificationService} from '../../../../core/services/notification/notifi
 import {Router} from '@angular/router'
 import {MmpService} from '../../../../core/services/mmp/mmp.service'
 import {UtilsService} from '../../../../core/services/utils/utils.service'
-import {ApplicationCachedMapsComponent} from '../application-cached-maps/application-cached-maps.component'
+import {CachedMapsComponent} from '../cached-maps/cached-maps.component'
 
 @Component({
-    selector: 'mindmapp-application-header',
-    templateUrl: './application-header.component.html',
-    styleUrls: ['./application-header.component.scss']
+    selector: 'mindmapp-toolbar',
+    templateUrl: './toolbar.component.html',
+    styleUrls: ['./toolbar.component.scss']
 })
-export class ApplicationHeaderComponent {
+export class ToolbarComponent {
 
     @Input() public node: any
 
@@ -31,7 +31,7 @@ export class ApplicationHeaderComponent {
             return
         }
 
-        this.matDialog.open(ApplicationCachedMapsComponent, {
+        this.matDialog.open(CachedMapsComponent, {
             data: cachedMapEntries
         })
     }

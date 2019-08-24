@@ -6,14 +6,14 @@ import {MmpService} from '../../../../core/services/mmp/mmp.service'
 
 @Component({
     selector: 'mindmapp-cached-maps',
-    templateUrl: './application-cached-maps.component.html',
-    styleUrls: ['./application-cached-maps.component.scss']
+    templateUrl: './cached-maps.component.html',
+    styleUrls: ['./cached-maps.component.scss']
 })
-export class ApplicationCachedMapsComponent {
+export class CachedMapsComponent {
 
     constructor (private mapCacheService: MapCacheService,
                  private mmpService: MmpService,
-                 private matDialogRef: MatDialogRef<ApplicationCachedMapsComponent>,
+                 private matDialogRef: MatDialogRef<CachedMapsComponent>,
                  @Inject(MAT_DIALOG_DATA) public cachedMapEntries: CachedMapEntry[]) {
     }
 

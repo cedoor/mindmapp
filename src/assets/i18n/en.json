@@ -69,36 +69,48 @@
                     "Open source software"
                 ]
             },
-            "SECTIONS": [{
-                "TITLE": "Mind maps",
-                "SUBTITLE": "Mindmapp follows the Tony Buzan approach, which uses the evocative power of images and colors to make the memorization of concepts easier, stimulating creativity and mental associations.",
-                "CARDS": [{
-                    "TITLE": "Colors and images",
-                    "CONTENT": "Colors and images of mind maps exploit brain characteristics to express concepts in a more effective and lasting way."
-                }, {
-                    "TITLE": "Radial tree",
-                    "CONTENT": "Hierarchical structure of mind maps exploits the radial geometry, which is divided on several levels and facilitates concept expressiveness."
-                }, {
-                    "TITLE": "Uses",
-                    "CONTENT": "Mind maps are particularly effective to learn or organize ideas, for example in educational or business contexts."
-                }]
-            }, {
-                "TITLE": "Goals",
-                "SUBTITLE": "Mindmapp is based on the simplicity and adaptability principles, and according to these principles it grows following the user's needs and future technologies, but always ensuring an intuitive application.",
-                "CARDS": [{
-                    "TITLE": "Minimal design",
-                    "CONTENT": "The application offers all the essential tools to create mind maps quickly, but maintaining a simple and intuitive design."
-                }, {
-                    "TITLE": "Future-oriented",
-                    "CONTENT": "Web technologies are constantly evolving, and with them the way they are used. Mindmapp follows and eventually adopts the latest technologies to ensure a better service."
-                }, {
-                    "TITLE": "Customizable",
-                    "CONTENT": "A compact but adaptable and extensible system makes it easier to meet the user's individual needs. The application will grow giving particular importance to this aspect."
-                }]
-            }, {
-                "TITLE": "Donations",
-                "SUBTITLE": "Mindmapp is free and its code is public, every contribution is very helpful to maintain and improve the application!"
-            }]
+            "SECTIONS": [
+                {
+                    "TITLE": "Mind maps",
+                    "SUBTITLE": "Mindmapp follows the Tony Buzan approach, which uses the evocative power of images and colors to make the memorization of concepts easier, stimulating creativity and mental associations.",
+                    "CARDS": [
+                        {
+                            "TITLE": "Colors and images",
+                            "CONTENT": "Colors and images of mind maps exploit brain characteristics to express concepts in a more effective and lasting way."
+                        },
+                        {
+                            "TITLE": "Radial tree",
+                            "CONTENT": "Hierarchical structure of mind maps exploits the radial geometry, which is divided on several levels and facilitates concept expressiveness."
+                        },
+                        {
+                            "TITLE": "Uses",
+                            "CONTENT": "Mind maps are particularly effective to learn or organize ideas, for example in educational or business contexts."
+                        }
+                    ]
+                },
+                {
+                    "TITLE": "Goals",
+                    "SUBTITLE": "Mindmapp is based on the simplicity and adaptability principles, and according to these principles it grows following the user's needs and future technologies, but always ensuring an intuitive application.",
+                    "CARDS": [
+                        {
+                            "TITLE": "Minimal design",
+                            "CONTENT": "The application offers all the essential tools to create mind maps quickly, but maintaining a simple and intuitive design."
+                        },
+                        {
+                            "TITLE": "Future-oriented",
+                            "CONTENT": "Web technologies are constantly evolving, and with them the way they are used. Mindmapp follows and eventually adopts the latest technologies to ensure a better service."
+                        },
+                        {
+                            "TITLE": "Customizable",
+                            "CONTENT": "A compact but adaptable and extensible system makes it easier to meet the user's individual needs. The application will grow giving particular importance to this aspect."
+                        }
+                    ]
+                },
+                {
+                    "TITLE": "Donations",
+                    "SUBTITLE": "Mindmapp is free and its code is public, every contribution is very helpful to maintain and improve the application!"
+                }
+            ]
         },
         "SETTINGS": {
             "TITLE": "Settings"

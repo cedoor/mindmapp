@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing'
 
-import {ApplicationHeaderComponent} from './application-header.component'
+import {ToolbarComponent} from './toolbar.component'
 
 describe('ApplicationHeaderComponent', () => {
-    let component: ApplicationHeaderComponent
-    let fixture: ComponentFixture<ApplicationHeaderComponent>
+    let component: ToolbarComponent
+    let fixture: ComponentFixture<ToolbarComponent>
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ApplicationHeaderComponent]
+            declarations: [ToolbarComponent]
         })
             .compileComponents()
     }))
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ApplicationHeaderComponent)
+        fixture = TestBed.createComponent(ToolbarComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })

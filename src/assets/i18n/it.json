@@ -69,36 +69,48 @@
                     "Software open source"
                 ]
             },
-            "SECTIONS": [{
-                "TITLE": "Mappe mentali",
-                "SUBTITLE": "Mindmapp segue l'approccio delle mappe mentali di Tony Buzan, che sfruttano l'evocatività delle immagini e dei colori per facilitare la memorizzazione di concetti, stimolando la creatività e le associazioni mentali.",
-                "CARDS": [{
-                    "TITLE": "Colori e immagini",
-                    "CONTENT": "I colori e le immagini delle mappe sfruttano le caratteristiche del nostro cervello per esprimere i concetti in modo più efficace e duraturo."
-                }, {
-                    "TITLE": "Geometria radiale",
-                    "CONTENT": "La struttura gerarchica delle mappe mentali sfrutta una geometria radiale, la quale viene suddivisa su più livelli e facilità l'espressività dei concetti."
-                }, {
-                    "TITLE": "Utilizzi",
-                    "CONTENT": "Le mappe mentali sono particolarmente efficaci nelle fasi di apprendimento e nell'organizzazione di idee, per esempio in contesti educativi o aziendali."
-                }]
-            }, {
-                "TITLE": "Obiettivi",
-                "SUBTITLE": "Mindmapp si pone come principi cardine la semplicità e l'adattabilità, e sulla base di tali principi cresce secondo le esigenze dell'utente e le tecnologie future, ma assicurando sempre un'applicazione intuitiva.",
-                "CARDS": [{
-                    "TITLE": "Design minimale",
-                    "CONTENT": "L'applicazione offre tutti gli strumenti essenziali per la creazione di mappe mentali in modo rapido, ma mantenendo un design semplice ed intuitivo."
-                }, {
-                    "TITLE": "Orientata al futuro",
-                    "CONTENT": "Le tecnologie web si evolvono continuamente, e con esse il modo in cui vengono utilizzate. Mindmapp segue ed eventualmente adotta le ultime tecnologie per garantire un servizio sempre migliore."
-                }, {
-                    "TITLE": "Personalizzabile",
-                    "CONTENT": "Un sistema compatto ma adattabile ed estendibile rende più semplice raggiungere le singole esigenze dell'utente. L'applicazione crescerà dando particolare importanza a quest'aspetto."
-                }]
-            }, {
-                "TITLE": "Donazioni",
-                "SUBTITLE": "Mindmapp è gratuita ed il suo codice è pubblico, ogni contributo sarà di grande aiuto per mantenere e migliorare l'applicazione!"
-            }]
+            "SECTIONS": [
+                {
+                    "TITLE": "Mappe mentali",
+                    "SUBTITLE": "Mindmapp segue l'approccio delle mappe mentali di Tony Buzan, che sfruttano l'evocatività delle immagini e dei colori per facilitare la memorizzazione di concetti, stimolando la creatività e le associazioni mentali.",
+                    "CARDS": [
+                        {
+                            "TITLE": "Colori e immagini",
+                            "CONTENT": "I colori e le immagini delle mappe sfruttano le caratteristiche del nostro cervello per esprimere i concetti in modo più efficace e duraturo."
+                        },
+                        {
+                            "TITLE": "Geometria radiale",
+                            "CONTENT": "La struttura gerarchica delle mappe mentali sfrutta una geometria radiale, la quale viene suddivisa su più livelli e facilità l'espressività dei concetti."
+                        },
+                        {
+                            "TITLE": "Utilizzi",
+                            "CONTENT": "Le mappe mentali sono particolarmente efficaci nelle fasi di apprendimento e nell'organizzazione di idee, per esempio in contesti educativi o aziendali."
+                        }
+                    ]
+                },
+                {
+                    "TITLE": "Obiettivi",
+                    "SUBTITLE": "Mindmapp si pone come principi cardine la semplicità e l'adattabilità, e sulla base di tali principi cresce secondo le esigenze dell'utente e le tecnologie future, ma assicurando sempre un'applicazione intuitiva.",
+                    "CARDS": [
+                        {
+                            "TITLE": "Design minimale",
+                            "CONTENT": "L'applicazione offre tutti gli strumenti essenziali per la creazione di mappe mentali in modo rapido, ma mantenendo un design semplice ed intuitivo."
+                        },
+                        {
+                            "TITLE": "Orientata al futuro",
+                            "CONTENT": "Le tecnologie web si evolvono continuamente, e con esse il modo in cui vengono utilizzate. Mindmapp segue ed eventualmente adotta le ultime tecnologie per garantire un servizio sempre migliore."
+                        },
+                        {
+                            "TITLE": "Personalizzabile",
+                            "CONTENT": "Un sistema compatto ma adattabile ed estendibile rende più semplice raggiungere le singole esigenze dell'utente. L'applicazione crescerà dando particolare importanza a quest'aspetto."
+                        }
+                    ]
+                },
+                {
+                    "TITLE": "Donazioni",
+                    "SUBTITLE": "Mindmapp è gratuita ed il suo codice è pubblico, ogni contributo sarà di grande aiuto per mantenere e migliorare l'applicazione!"
+                }
+            ]
         },
         "SETTINGS": {
             "TITLE": "Impostazioni"

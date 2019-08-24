@@ -3,10 +3,10 @@ import {MmpService} from '../../../../core/services/mmp/mmp.service'
 
 @Component({
     selector: 'mindmapp-sliders-panel',
-    templateUrl: './application-slider-panels.component.html',
-    styleUrls: ['./application-slider-panels.component.scss']
+    templateUrl: './slider-panels.component.html',
+    styleUrls: ['./slider-panels.component.scss']
 })
-export class ApplicationSliderPanelsComponent {
+export class SliderPanelsComponent {
 
     @Input() public node: any
 
