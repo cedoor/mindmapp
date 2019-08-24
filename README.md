@@ -1,10 +1,10 @@
 <a href="https://mindmapp.cedoor.org" target="_blank">
-    <img src="https://raw.githubusercontent.com/Mindmapp/mindmapp/dev/src/assets/images/readme-header.png">
+    <img src="https://raw.githubusercontent.com/Mindmapp/mindmapp/master/src/assets/images/readme-header.png">
 </a>
 
 <p align="center">
     <h1 align="center">
-        <img width="40" src="https://raw.githubusercontent.com/Mindmapp/mindmapp/dev/src/assets/icons/icon-72x72.png">
+        <img width="40" src="https://raw.githubusercontent.com/Mindmapp/mindmapp/master/src/assets/icons/icon-72x72.png">
         Mindmapp
     </h1>
     <p align="center">Web application to draw mind maps.</p>
@@ -47,11 +47,18 @@ ___
 
 | Feature | Status | Description |
 |---------|:------:|-------------|
-| Local storage | :heavy_check_mark: | Save the maps in the browser local storage |
-| JSON export | :heavy_check_mark: | Export the map as JSON file |
-| Image export | :heavy_check_mark: | Export the map as image file (png, jpg) |
-| PDF export | :heavy_check_mark: | Export the map as PDF document |
-| PWA support | :heavy_check_mark: | Support desktop and mobile browser PWA (Progressive Web App) |
+| Basic mind map properties | :heavy_check_mark: | Set node images, colors and font properties. |
+| Undo/Redo | :heavy_check_mark: | History of map changes. |
+| Map centering | :heavy_check_mark: | Center map in x, y, z axes. |
+| Shortcuts | :heavy_check_mark: | Main shortcuts to speed things up. |
+| Local storage | :heavy_check_mark: | Save maps in the browser local storage. |
+| JSON import/export | :heavy_check_mark: | Export and import maps as JSON file. |
+| Image & PDF export | :heavy_check_mark: | Export maps as image (png, jpg) or PDF document. |
+| PWA support | :heavy_check_mark: | Support of desktop and mobile browser PWA (Progressive Web App). |
+| p2p database | :x: | Orbit (or something else) peer-to-peer database to share and eventually sync maps. |
+| Plugin system | :x: | A plugin system to add third-party features. |
+| Multiple selection | :x: | Select multiple nodes at the same time. |
+| Multiple maps | :x: | Multiple maps at the same time with multi-tabs. |
 
 ## :hammer: Install
 
