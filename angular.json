@@ -36,7 +36,7 @@
                         "ngswConfigPath": "ngsw-config.json"
                     },
                     "configurations": {
-                        "prod": {
+                        "production": {
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
@@ -68,8 +68,8 @@
                         "browserTarget": "mindmapp:build"
                     },
                     "configurations": {
-                        "prod": {
-                            "browserTarget": "mindmapp:build:prod"
+                        "production": {
+                            "browserTarget": "mindmapp:build:production"
                         }
                     }
                 },
@@ -118,8 +118,8 @@
                         "devServerTarget": "mindmapp:serve"
                     },
                     "configurations": {
-                        "prod": {
-                            "devServerTarget": "mindmapp:serve:prod"
+                        "production": {
+                            "devServerTarget": "mindmapp:serve:production"
                         }
                     }
                 },
