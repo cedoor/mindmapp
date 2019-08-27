@@ -122,6 +122,10 @@
                             "devServerTarget": "mindmapp:serve:prod"
                         }
                     }
+                },
+                "deploy": {
+                    "builder": "angular-cli-ghpages:deploy",
+                    "options": {}
                 }
             }
         }
