@@ -1,0 +1,45 @@
+{
+    "general": {
+        "language": "en"
+    },
+    "mapOptions": {
+        "centerOnResize": true,
+        "drag": true,
+        "zoom": true,
+        "autoBranchColors": false,
+        "defaultNode": {
+            "name": "Node",
+            "image": {
+                "src": "",
+                "size": 60
+            },
+            "colors": {
+                "name": "#666666",
+                "background": "#f5f5f5",
+                "branch": "#546e7a"
+            },
+            "font": {
+                "size": 22,
+                "style": "normal",
+                "weight": "normal"
+            },
+            "locked": true
+        },
+        "rootNode": {
+            "name": "Root node",
+            "image": {
+                "src": "",
+                "size": 70
+            },
+            "colors": {
+                "name": "#666666",
+                "background": "#f5f5f5"
+            },
+            "font": {
+                "size": 26,
+                "style": "normal",
+                "weight": "normal"
+            }
+        }
+    }
+}

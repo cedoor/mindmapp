@@ -1,0 +1,160 @@
+{
+    "LANGUAGES": {
+        "EN": "Inglese",
+        "FR": "Francese",
+        "IT": "Italiano",
+        "ZH-TW": "Cinese tradizionale",
+        "ZH-CN": "Cinese semplificato",
+        "PT-BR": "Portoghese Brasile",
+        "ES": "Spagnolo"
+    },
+    "TOOLTIPS": {
+        "IMPORT_MAP": "Importa la mappa",
+        "EXPORT_MAP": "Esporta la mappa",
+        "ESC": "Chiude la finestra di dialogo",
+        "FULLSCREEN": "Imposta lo schermo intero",
+        "CLOSE_MENU": "Chiude il menu' laterale",
+        "OPEN_MENU": "Apre il menu' laterale",
+        "SHORTCUTS": "Mostra le scorciatoie da tastiera",
+        "MENU": "Apre il menù",
+        "NEW_MAP": "Pulisce la mappa",
+        "OPEN_MAP": "Carica una mappa esistente",
+        "SAVE_MAP": "Salva la mappa",
+        "SAVE_MAP_WITH_NAME": "Salva la mappa con nome",
+        "COPY_NODE": "Copia il nodo selezionato",
+        "CUT_NODE": "Taglia il nodo selezionato",
+        "PASTE_NODE": "Incolla il nodo copiato",
+        "MOVE_NODE_TO_THE_LEFT": "Muove il nodo a sinistra",
+        "MOVE_NODE_TO_THE_RIGHT": "Muove il nodo a destra",
+        "MOVE_NODE_DOWN": "Muove il nodo in basso",
+        "MOVE_NODE_UPWARD": "Muove il nodo in alto",
+        "SELECT_NODE_ON_THE_LEFT": "Seleziona il nodo a sinistra",
+        "SELECT_NODE_ON_THE_RIGHT": "Seleziona il nodo a destra",
+        "SELECT_NODE_BELOW": "Seleziona il nodo in alto",
+        "SELECT_NODE_ABOVE": "Seleziona il nodo in basso",
+        "EDIT_NODE": "Permette di modificare il testo del nodo",
+        "LOCK_NODE": "Blocca o sblocca il nodo",
+        "NODE_IMAGE": "Aggiunge un'immagine al nodo",
+        "BOLD_TEXT": "Cambia la larghezza del testo",
+        "ITALIC_TEXT": "Cambia lo stile del testo",
+        "TEXT_SIZE": "Cambia la dimensione del testo e del nodo",
+        "IMAGE_SIZE": "Cambia la dimensione dell'immage del nodo",
+        "ADD_NODE": "Aggiunge un nodo",
+        "REMOVE_NODE": "Rimuove un nodo",
+        "ZOOM_IN_MAP": "Esegue uno zoom-in",
+        "ZOOM_OUT_MAP": "Esegue uno zoom-out",
+        "CENTER_MAP": "Centra la mappa",
+        "UNDO_MAP": "Annulla la precedente modifica",
+        "REDO_MAP": "Rieffettua una modifica",
+        "NODE_COLOR": "Cambia il colore del nodo",
+        "BRANCH_COLOR": "Cambia il colore del ramo",
+        "TEXT_COLOR": "Cambia il colore del testo",
+        "ROOT_NODE_NAME_INPUT": "Cambia il nome predefinito del nodo radice",
+        "NODE_NAME_INPUT": "Cambia il nome predefinito dei nodi",
+        "LANGUAGE": "Cambia la lingua",
+        "SETTINGS": "Apre le impostazioni",
+        "CENTER_ON_RESIZING": "Centra la mappa quando viene ridimensionata la finestra",
+        "NODE_DRAGGING": "Permette di trascinare i nodi nella mappa",
+        "MAP_ZOOM": "Permette di effettuare lo zoom sulla mappa",
+        "AUTO_BRANCH_COLORS": "Permette di scegliere in modo automatico i colori dei rami"
+    },
+    "PAGES": {
+        "ABOUT": {
+            "INTRODUCTION": {
+                "APPLICATION_DESCRIPTION": "Applicazione web per creare mappe mentali.",
+                "APPLICATION_PROPERTIES": [
+                    "Mappe mentali efficaci",
+                    "Applicazione web moderna",
+                    "Semplice interfaccia",
+                    "Software open source"
+                ]
+            },
+            "SECTIONS": [
+                {
+                    "TITLE": "Mappe mentali",
+                    "SUBTITLE": "Mindmapp segue l'approccio delle mappe mentali di Tony Buzan, che sfruttano l'evocatività delle immagini e dei colori per facilitare la memorizzazione di concetti, stimolando la creatività e le associazioni mentali.",
+                    "CARDS": [
+                        {
+                            "TITLE": "Colori e immagini",
+                            "CONTENT": "I colori e le immagini delle mappe sfruttano le caratteristiche del nostro cervello per esprimere i concetti in modo più efficace e duraturo."
+                        },
+                        {
+                            "TITLE": "Geometria radiale",
+                            "CONTENT": "La struttura gerarchica delle mappe mentali sfrutta una geometria radiale, la quale viene suddivisa su più livelli e facilità l'espressività dei concetti."
+                        },
+                        {
+                            "TITLE": "Utilizzi",
+                            "CONTENT": "Le mappe mentali sono particolarmente efficaci nelle fasi di apprendimento e nell'organizzazione di idee, per esempio in contesti educativi o aziendali."
+                        }
+                    ]
+                },
+                {
+                    "TITLE": "Obiettivi",
+                    "SUBTITLE": "Mindmapp si pone come principi cardine la semplicità e l'adattabilità, e sulla base di tali principi cresce secondo le esigenze dell'utente e le tecnologie future, ma assicurando sempre un'applicazione intuitiva.",
+                    "CARDS": [
+                        {
+                            "TITLE": "Design minimale",
+                            "CONTENT": "L'applicazione offre tutti gli strumenti essenziali per la creazione di mappe mentali in modo rapido, ma mantenendo un design semplice ed intuitivo."
+                        },
+                        {
+                            "TITLE": "Orientata al futuro",
+                            "CONTENT": "Le tecnologie web si evolvono continuamente, e con esse il modo in cui vengono utilizzate. Mindmapp segue ed eventualmente adotta le ultime tecnologie per garantire un servizio sempre migliore."
+                        },
+                        {
+                            "TITLE": "Personalizzabile",
+                            "CONTENT": "Un sistema compatto ma adattabile ed estendibile rende più semplice raggiungere le singole esigenze dell'utente. L'applicazione crescerà dando particolare importanza a quest'aspetto."
+                        }
+                    ]
+                },
+                {
+                    "TITLE": "Donazioni",
+                    "SUBTITLE": "Mindmapp è gratuita ed il suo codice è pubblico, ogni contributo sarà di grande aiuto per mantenere e migliorare l'applicazione!"
+                }
+            ]
+        },
+        "SETTINGS": {
+            "TITLE": "Impostazioni"
+        },
+        "SHORTCUTS": {
+            "TITLE": "Scorciatoie da tastiera"
+        }
+    },
+    "MESSAGES": {
+        "NO_SAVED_MAPS": "Nessuna mappa salvata!",
+        "INITIAL_INFORMATION": "Mindmapp è pronto ☺",
+        "WELCOME_MESSAGE": "Benvenuti nell'app Mindmapp ☺"
+    },
+    "GENERAL": {
+        "ORGANIZATION": "Organizzazione",
+        "LIBRARY": "Libreria",
+        "REPOSITORY": "Repository",
+        "APPLICATION": "Applicazione",
+        "TRY_IT": "Provala",
+        "GENERAL": "Generali",
+        "MAP_OPTIONS": "Opzioni mappa",
+        "DISMISS": "Chiudi",
+        "SAVED_MAPS": "Mappe salvate",
+        "JSON": "File (.json)",
+        "PNG": "Immagine (.png)",
+        "JPG": "Immagine (.jpg)",
+        "PDF": "Documento (.pdf)",
+        "LANGUAGE": "Lingua",
+        "YES": "Si",
+        "NO": "No",
+        "OK": "Ok",
+        "SAVE": "Salva",
+        "OPEN": "Apri",
+        "CANCEL": "Annulla",
+        "MAIN": "Principali",
+        "CENTER_ON_RESIZING": "Centra al ridimensionamento",
+        "NODE_DRAGGING": "Trascinamento dei nodi",
+        "MAP_ZOOM": "Zoom della mappa",
+        "AUTO_BRANCH_COLORS": "Colori automatici per i rami",
+        "MAP": "Mappa",
+        "NODES": "Nodi",
+        "SAVED": "Salvato",
+        "NOT_SAVED": "Non salvato",
+        "ROOT_NODE_NAME": "Nome nodo radice",
+        "NODE_NAME": "Nome nodo"
+    }
+}
