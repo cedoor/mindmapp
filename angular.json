@@ -24,6 +24,7 @@
                         "tsConfig": "src/tsconfig.app.json",
                         "assets": [
                             "src/assets",
+                            "src/CNAME",
                             "src/manifest.webmanifest"
                         ],
                         "styles": [
@@ -88,6 +89,7 @@
                         "karmaConfig": "karma.conf.js",
                         "assets": [
                             "src/assets",
+                            "src/CNAME",
                             "src/manifest.webmanifest"
                         ],
                         "styles": [
