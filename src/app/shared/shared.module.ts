@@ -7,7 +7,7 @@ import {
     MatCardModule,
     MatIconModule,
     MatListModule,
-    MatSelectModule,
+    MatSelectModule, MatSliderModule,
     MatSnackBarModule,
     MatToolbarModule
 } from '@angular/material'
@@ -20,6 +20,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
         CommonModule,
         FormsModule,
         FontAwesomeModule,
+        MatSliderModule,
         RouterModule,
         TranslateModule,
         MatIconModule,
@@ -34,6 +35,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
         CommonModule,
         FormsModule,
         FontAwesomeModule,
+        MatSliderModule,
         TranslateModule,
         MatIconModule,
         MatSelectModule,

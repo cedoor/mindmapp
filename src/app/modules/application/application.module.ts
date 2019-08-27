@@ -11,7 +11,7 @@ import {SettingsComponent} from './pages/settings/settings.component'
 import {ShortcutsComponent} from './pages/shortcuts/shortcuts.component'
 import {ToolbarComponent} from './components/toolbar/toolbar.component'
 import {CachedMapsComponent} from './components/cached-maps/cached-maps.component'
-import {MatDialogModule, MatInputModule, MatMenuModule, MatSliderModule, MatSlideToggleModule, MatTabsModule} from '@angular/material'
+import {MatDialogModule, MatInputModule, MatMenuModule, MatSlideToggleModule, MatTabsModule} from '@angular/material'
 
 @NgModule({
     imports: [
@@ -19,7 +19,6 @@ import {MatDialogModule, MatInputModule, MatMenuModule, MatSliderModule, MatSlid
         MatDialogModule,
         MatInputModule,
         MatMenuModule,
-        MatSliderModule,
         MatSlideToggleModule,
         MatTabsModule,
         ApplicationRoutingModule

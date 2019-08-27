@@ -18,6 +18,7 @@ export function createTranslateLoader (http: HttpClient) {
 @NgModule({
     imports: [
         BrowserModule,
+        SharedModule,
         BrowserAnimationsModule,
         RootRoutingModule,
         HttpClientModule,
@@ -29,7 +30,6 @@ export function createTranslateLoader (http: HttpClient) {
             }
         }),
         HotkeyModule.forRoot(),
-        SharedModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
     ],
     declarations: [
