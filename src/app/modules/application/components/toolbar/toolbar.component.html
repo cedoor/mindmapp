@@ -1,19 +1,16 @@
 <mat-toolbar class="mat-elevation-z6">
     <button (click)="createNewMap()" [title]="'TOOLTIPS.NEW_MAP' | translate"
-            class="new-map" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>note_add</mat-icon>
     </button>
     <button (click)="saveMap()"
             [disabled]="(mapCacheService.attachedMap | async)?.updated"
             [title]="'TOOLTIPS.SAVE_MAP' | translate"
-            class="save-map" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>save</mat-icon>
     </button>
     <button [matMenuTriggerFor]="import_map" [title]="'TOOLTIPS.IMPORT_MAP' | translate"
-            class="import-map" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>folder_open</mat-icon>
     </button>
     <mat-menu #import_map="matMenu">
@@ -27,8 +24,7 @@
         </button>
     </mat-menu>
     <button [matMenuTriggerFor]="export_map" [title]="'TOOLTIPS.EXPORT_MAP' | translate"
-            class="export-map" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>get_app</mat-icon>
     </button>
     <mat-menu #export_map="matMenu">
@@ -55,18 +51,15 @@
     </div>
 
     <button (click)="mmpService.copyNode()" [title]="'TOOLTIPS.COPY_NODE' | translate"
-            class="copy-node" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>content_copy</mat-icon>
     </button>
     <button (click)="mmpService.cutNode()" [title]="'TOOLTIPS.CUT_NODE' | translate"
-            class="cut-node" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>content_cut</mat-icon>
     </button>
     <button (click)="mmpService.pasteNode()" [title]="'TOOLTIPS.PASTE_NODE' | translate"
-            class="paste-node" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>content_paste</mat-icon>
     </button>
 
@@ -75,13 +68,11 @@
     </div>
 
     <button (click)="mmpService.updateNode('locked')" [title]="'TOOLTIPS.LOCK_NODE' | translate"
-            class="lock-node" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>{{ node?.locked ? "lock_outline" : "lock_open" }}</mat-icon>
     </button>
     <button (click)="mmpService.addNodeImage()" [title]="'TOOLTIPS.NODE_IMAGE' | translate"
-            class="image" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>{{ node?.image?.src ? "broken_image" : "image" }}</mat-icon>
     </button>
 
@@ -90,21 +81,18 @@
     </div>
 
     <button (click)="toogleNodeFontWeight()" [title]="'TOOLTIPS.BOLD_TEXT' | translate"
-            class="bold" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>format_bold</mat-icon>
     </button>
     <button (click)="toogleNodeFontStyle()" [title]="'TOOLTIPS.ITALIC_TEXT' | translate"
-            class="italic" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>format_italic</mat-icon>
     </button>
 
     <span class="toolbar-spacer"></span>
 
     <button (click)="toggleFullScreen()" [title]="'TOOLTIPS.FULLSCREEN' | translate"
-            class="fullscreen" color="primary"
-            mat-icon-button>
+            color="primary" mat-icon-button>
         <mat-icon>fullscreen</mat-icon>
     </button>
 
@@ -112,18 +100,15 @@
         <div></div>
     </div>
 
-    <button color="primary"
-            mat-icon-button routerLink="/app/shortcuts">
+    <button color="primary" mat-icon-button routerLink="/app/shortcuts">
         <mat-icon>timeline</mat-icon>
     </button>
 
-    <button color="primary"
-            mat-icon-button routerLink="/app/settings">
+    <button color="primary" mat-icon-button routerLink="/app/settings">
         <mat-icon>settings</mat-icon>
     </button>
 
-    <button color="primary"
-            mat-icon-button routerLink="/">
+    <button color="primary" mat-icon-button routerLink="/">
         <mat-icon>info</mat-icon>
     </button>
 </mat-toolbar>
