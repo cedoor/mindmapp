@@ -54,7 +54,7 @@
     "hammerjs": "^2.0.8",
     "jspdf": "^1.5.3",
     "material-design-icons": "^3.0.1",
-    "mmp": "0.2.16",
+    "mmp": "0.2.18",
     "ngx-color-picker": "^8.1.0",
     "rxjs": "~6.5.2",
     "tslib": "^1.10.0",
