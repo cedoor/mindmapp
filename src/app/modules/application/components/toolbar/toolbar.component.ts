@@ -2,7 +2,6 @@ import {Component, Input} from '@angular/core'
 import {MatDialog} from '@angular/material'
 import {MapCacheService} from '../../../../core/services/map-cache/map-cache.service'
 import {NotificationService} from '../../../../core/services/notification/notification.service'
-import {Router} from '@angular/router'
 import {MmpService} from '../../../../core/services/mmp/mmp.service'
 import {UtilsService} from '../../../../core/services/utils/utils.service'
 import {CachedMapsComponent} from '../cached-maps/cached-maps.component'
@@ -17,10 +16,9 @@ export class ToolbarComponent {
     @Input() public node: any
 
     constructor (public mapCacheService: MapCacheService,
+                 public mmpService: MmpService,
                  private matDialog: MatDialog,
-                 private notificationService: NotificationService,
-                 private router: Router,
-                 private mmpService: MmpService) {
+                 private notificationService: NotificationService) {
     }
 
     public async openCachedMaps () {
