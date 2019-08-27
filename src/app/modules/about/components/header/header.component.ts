@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {UtilsService} from '../../../../core/services/utils/utils.service'
 import * as packageJson from '../../../../../../package.json'
+import {faGithub, faGitter} from '@fortawesome/free-brands-svg-icons'
 
 @Component({
     selector: 'mindmapp-header',
@@ -10,6 +11,9 @@ import * as packageJson from '../../../../../../package.json'
 export class HeaderComponent implements OnInit {
 
     public projectName: string
+
+    public faGithub = faGithub
+    public faGitter = faGitter
 
     constructor () {
     }
