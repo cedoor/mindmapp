@@ -30,7 +30,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "doc": "compodoc -p src/tsconfig.app.json",
-        "deploy": "ng deploy --base-href=/mindmapp/"
+        "deploy": "ng deploy"
     },
     "dependencies": {
         "@angular/animations": "^8.2.3",
