@@ -5,7 +5,7 @@
 <p align="center">
     <h1 align="center">
         <img width="40" src="https://raw.githubusercontent.com/Mindmapp/mindmapp/master/src/assets/icons/icon-72x72.png">
-        Mindmapp
+        Mindmapp <sup>beta</sup>
     </h1>
     <p align="center">Web application to draw mind maps.</p>
 </p>
