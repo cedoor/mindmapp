@@ -9,13 +9,21 @@ import {Hotkey} from 'angular2-hotkeys'
 })
 export class ShortcutsComponent implements OnInit {
 
-    public hotKeys: Hotkey[]
+    public shortcuts: any[]
 
     constructor (private shortcutsService: ShortcutsService) {
     }
 
     public ngOnInit () {
-        this.hotKeys = this.shortcutsService.getHotKeys()
+        const hotKeys: Hotkey[] = this.shortcutsService.getHotKeys()
+        this.shortcuts = hotKeys.map((hotKey: Hotkey) => {
+            const keys = hotKey.combo[0]
+
+            return {
+                keys: keys === '+' ? [keys] : keys.split('+'),
+                description: hotKey.description
+            }
+        })
     }
 
 }

@@ -22,10 +22,22 @@ export class ShortcutsService {
      */
     public init () {
         this.hotKeys = [{
+            keys: 'esc',
+            description: 'TOOLTIPS.ESC',
+            callback: () => {
+                this.router.navigate(['app'])
+            }
+        }, {
             keys: '?',
             description: 'TOOLTIPS.SHORTCUTS',
             callback: () => {
-                this.router.navigate(['/shortcuts'])
+                this.router.navigate(['app', 'shortcuts'])
+            }
+        }, {
+            keys: 'alt+s',
+            description: 'TOOLTIPS.SETTINGS',
+            callback: () => {
+                this.router.navigate(['app', 'settings'])
             }
         }, {
             keys: 'f2',
@@ -34,112 +46,28 @@ export class ShortcutsService {
                 this.mmpService.editNode()
             }
         }, {
-            keys: 'alt+n',
+            keys: 'n',
             description: 'TOOLTIPS.NEW_MAP',
             callback: () => {
                 this.mmpService.new()
             }
         }, {
-            keys: 'ctrl+i',
-            description: 'TOOLTIPS.IMPORT_MAP',
+            keys: 'c',
+            description: 'TOOLTIPS.CENTER_MAP',
             callback: () => {
-                this.mmpService.importMap()
+                this.mmpService.center()
             }
         }, {
-            keys: 'ctrl+e',
-            description: 'TOOLTIPS.EXPORT_MAP',
-            callback: () => {
-                this.mmpService.exportMap()
-            }
-        }, {
-            keys: 'ctrl+s',
-            description: 'TOOLTIPS.SAVE_MAP',
-            callback: () => {
-                this.mapCacheService.attachMap()
-            }
-        }, {
-            keys: 'ctrl+z',
-            description: 'TOOLTIPS.UNDO_MAP',
-            callback: () => {
-                this.mmpService.undo()
-            }
-        }, {
-            keys: 'ctrl+shift+z',
-            description: 'TOOLTIPS.REDO_MAP',
-            callback: () => {
-                this.mmpService.redo()
-            }
-        }, {
-            keys: 'alt+=',
+            keys: '+',
             description: 'TOOLTIPS.ADD_NODE',
             callback: () => {
                 this.mmpService.addNode()
             }
         }, {
-            keys: 'alt+-',
+            keys: '-',
             description: 'TOOLTIPS.REMOVE_NODE',
             callback: () => {
                 this.mmpService.removeNode()
-            }
-        }, {
-            keys: 'alt+shift+left',
-            description: 'TOOLTIPS.MOVE_NODE_TO_THE_LEFT',
-            callback: () => {
-                this.mmpService.moveNodeTo('left')
-            }
-        }, {
-            keys: 'alt+shift+right',
-            description: 'TOOLTIPS.MOVE_NODE_TO_THE_RIGHT',
-            callback: () => {
-                this.mmpService.moveNodeTo('right')
-            }
-        }, {
-            keys: 'alt+shift+up',
-            description: 'TOOLTIPS.MOVE_NODE_UPWARD',
-            callback: () => {
-                this.mmpService.moveNodeTo('up')
-            }
-        }, {
-            keys: 'alt+shift+down',
-            description: 'TOOLTIPS.MOVE_NODE_DOWN',
-            callback: () => {
-                this.mmpService.moveNodeTo('down')
-            }
-        }, {
-            keys: 'ctrl+alt+s',
-            description: 'TOOLTIPS.SETTINGS',
-            callback: () => {
-                this.router.navigate(['/settings'])
-            }
-        }, {
-            keys: 'alt+left',
-            description: 'TOOLTIPS.SELECT_NODE_ON_THE_LEFT',
-            callback: () => {
-                this.mmpService.selectNode('left')
-            }
-        }, {
-            keys: 'alt+right',
-            description: 'TOOLTIPS.SELECT_NODE_ON_THE_RIGHT',
-            callback: () => {
-                this.mmpService.selectNode('right')
-            }
-        }, {
-            keys: 'alt+up',
-            description: 'TOOLTIPS.SELECT_NODE_BELOW',
-            callback: () => {
-                this.mmpService.selectNode('up')
-            }
-        }, {
-            keys: 'alt+down',
-            description: 'TOOLTIPS.SELECT_NODE_ABOVE',
-            callback: () => {
-                this.mmpService.selectNode('down')
-            }
-        }, {
-            keys: 'alt+c',
-            description: 'TOOLTIPS.CENTER_MAP',
-            callback: () => {
-                this.mmpService.center()
             }
         }, {
             keys: 'ctrl+c',
@@ -170,6 +98,84 @@ export class ShortcutsService {
             description: 'TOOLTIPS.ZOOM_OUT_MAP',
             callback: () => {
                 this.mmpService.zoomOut()
+            }
+        }, {
+            keys: 'left',
+            description: 'TOOLTIPS.SELECT_NODE_ON_THE_LEFT',
+            callback: () => {
+                this.mmpService.selectNode('left')
+            }
+        }, {
+            keys: 'right',
+            description: 'TOOLTIPS.SELECT_NODE_ON_THE_RIGHT',
+            callback: () => {
+                this.mmpService.selectNode('right')
+            }
+        }, {
+            keys: 'up',
+            description: 'TOOLTIPS.SELECT_NODE_BELOW',
+            callback: () => {
+                this.mmpService.selectNode('up')
+            }
+        }, {
+            keys: 'down',
+            description: 'TOOLTIPS.SELECT_NODE_ABOVE',
+            callback: () => {
+                this.mmpService.selectNode('down')
+            }
+        }, {
+            keys: 'alt+left',
+            description: 'TOOLTIPS.MOVE_NODE_TO_THE_LEFT',
+            callback: () => {
+                this.mmpService.moveNodeTo('left')
+            }
+        }, {
+            keys: 'alt+right',
+            description: 'TOOLTIPS.MOVE_NODE_TO_THE_RIGHT',
+            callback: () => {
+                this.mmpService.moveNodeTo('right')
+            }
+        }, {
+            keys: 'alt+up',
+            description: 'TOOLTIPS.MOVE_NODE_UPWARD',
+            callback: () => {
+                this.mmpService.moveNodeTo('up')
+            }
+        }, {
+            keys: 'alt+down',
+            description: 'TOOLTIPS.MOVE_NODE_DOWN',
+            callback: () => {
+                this.mmpService.moveNodeTo('down')
+            }
+        }, {
+            keys: 'ctrl+i',
+            description: 'TOOLTIPS.IMPORT_MAP',
+            callback: () => {
+                this.mmpService.importMap()
+            }
+        }, {
+            keys: 'ctrl+e',
+            description: 'TOOLTIPS.EXPORT_MAP',
+            callback: () => {
+                this.mmpService.exportMap()
+            }
+        }, {
+            keys: 'ctrl+s',
+            description: 'TOOLTIPS.SAVE_MAP',
+            callback: () => {
+                this.mapCacheService.attachMap()
+            }
+        }, {
+            keys: 'ctrl+z',
+            description: 'TOOLTIPS.UNDO_MAP',
+            callback: () => {
+                this.mmpService.undo()
+            }
+        }, {
+            keys: 'ctrl+shift+z',
+            description: 'TOOLTIPS.REDO_MAP',
+            callback: () => {
+                this.mmpService.redo()
             }
         }].map(this.getHotKey)
 
