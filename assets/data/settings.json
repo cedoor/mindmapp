@@ -3,9 +3,7 @@
         "language": "en"
     },
     "mapOptions": {
-        "centerOnResize": true,
-        "drag": true,
-        "zoom": true,
+        "centerOnResize": false,
         "autoBranchColors": false,
         "defaultNode": {
             "name": "Node",

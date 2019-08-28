@@ -122,7 +122,8 @@
     "MESSAGES": {
         "NO_SAVED_MAPS": "No saved maps!",
         "INITIAL_INFORMATION": "Mindmapp está listo ☺",
-        "WELCOME_MESSAGE": "Bienvenido a Mindmapp app ☺"
+        "WELCOME_MESSAGE": "Bienvenido a Mindmapp app ☺",
+        "MAP_DELETION_CONFIRM": "Are you sure you want to delete the map?"
     },
     "GENERAL": {
         "ORGANIZATION": "Organization",
