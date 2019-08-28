@@ -71,7 +71,7 @@ export class SettingsService {
      * Return the default settings.
      */
     private getDefaultSettings (): Promise<Settings> {
-        return this.httpService.get(API_URL.LOCAL_ASSETS, 'defaultSettings.json')
+        return this.httpService.get(API_URL.LOCAL_ASSETS, 'settings.json')
     }
 
 }

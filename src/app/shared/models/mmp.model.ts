@@ -1,7 +1,5 @@
 export interface MapOptions {
     centerOnResize: boolean
-    drag: boolean
-    zoom: boolean
     autoBranchColors: boolean
     defaultNode: DefaultNode
     rootNode: RootNode

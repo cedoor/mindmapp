@@ -27,8 +27,6 @@ export class SettingsComponent {
         this.mmpService.updateOptions('rootNode', this.settings.mapOptions.rootNode)
         this.mmpService.updateOptions('defaultNode', this.settings.mapOptions.defaultNode)
         this.mmpService.updateOptions('centerOnResize', this.settings.mapOptions.centerOnResize)
-        this.mmpService.updateOptions('drag', this.settings.mapOptions.drag)
-        this.mmpService.updateOptions('zoom', this.settings.mapOptions.zoom)
 
     }
 

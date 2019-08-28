@@ -51,20 +51,6 @@
                             </mat-slide-toggle>
                             <mat-slide-toggle
                                 (change)="updateMapOptions()"
-                                [(ngModel)]="settings.mapOptions.drag"
-                                [title]="'TOOLTIPS.NODE_DRAGGING' | translate"
-                                color="primary">
-                                {{ "GENERAL.NODE_DRAGGING" | translate }}
-                            </mat-slide-toggle>
-                            <mat-slide-toggle
-                                (change)="updateMapOptions()"
-                                [(ngModel)]="settings.mapOptions.zoom"
-                                [title]="'TOOLTIPS.MAP_ZOOM' | translate"
-                                color="primary">
-                                {{ "GENERAL.MAP_ZOOM" | translate }}
-                            </mat-slide-toggle>
-                            <mat-slide-toggle
-                                (change)="updateMapOptions()"
                                 [(ngModel)]="settings.mapOptions.autoBranchColors"
                                 [title]="'TOOLTIPS.AUTO_BRANCH_COLORS' | translate"
                                 color="primary">
