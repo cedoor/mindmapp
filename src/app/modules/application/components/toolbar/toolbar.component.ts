@@ -30,7 +30,8 @@ export class ToolbarComponent {
         }
 
         this.matDialog.open(CachedMapsComponent, {
-            data: cachedMapEntries
+            data: cachedMapEntries,
+            width: '500px'
         })
     }
 
