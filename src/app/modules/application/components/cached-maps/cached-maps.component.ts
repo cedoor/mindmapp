@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
 import {CachedMapEntry} from '../../../../shared/models/cached-map.model'
 import {MapCacheService} from '../../../../core/services/map-cache/map-cache.service'
 import {MmpService} from '../../../../core/services/mmp/mmp.service'
+import {UtilsService} from '../../../../core/services/utils/utils.service'
 
 @Component({
     selector: 'mindmapp-cached-maps',
@@ -13,6 +14,7 @@ export class CachedMapsComponent {
 
     constructor (private mapCacheService: MapCacheService,
                  private mmpService: MmpService,
+                 private utilsService: UtilsService,
                  private matDialogRef: MatDialogRef<CachedMapsComponent>,
                  @Inject(MAT_DIALOG_DATA) public cachedMapEntries: CachedMapEntry[]) {
     }
@@ -27,10 +29,16 @@ export class CachedMapsComponent {
         this.closeDialog()
     }
 
-    public removeCachedMap (key: string, event: MouseEvent) {
+    public async removeCachedMap (key: string, event: MouseEvent) {
         event.stopPropagation()
 
-        this.mapCacheService.removeMap(key)
+        const confirmed = await this.utilsService.confirmDialog('MESSAGES.MAP_DELETION_CONFIRM')
+
+        if (!confirmed) {
+            return
+        }
+
+        await this.mapCacheService.removeMap(key)
 
         if (this.cachedMapEntries.length === 1) {
             this.closeDialog()

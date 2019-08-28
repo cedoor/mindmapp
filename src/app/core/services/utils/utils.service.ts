@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core'
 import {Observable} from 'rxjs'
+import {TranslateService} from '@ngx-translate/core'
 
 @Injectable({
     providedIn: 'root'
 })
 export class UtilsService {
 
-    constructor () {
+    constructor (private translateService: TranslateService) {
     }
 
     /**
@@ -163,6 +164,22 @@ export class UtilsService {
         }
 
         return checkObjectStructure(json1, json2) && checkObjectStructure(json2, json1)
+    }
+
+    /**
+     * Return a translated string with given message and values.
+     */
+    public translate (message: string, values?: any): Promise<string> {
+        return this.translateService.get(message, values).toPromise()
+    }
+
+    /**
+     * Show a dialog window to confirm a choice.
+     */
+    public async confirmDialog (message: string): Promise<boolean> {
+        message = await this.translate(message)
+
+        return confirm(message)
     }
 
 }
