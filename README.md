@@ -12,7 +12,10 @@
     
 <p align="center">
     <a href="https://github.com/Mindmapp" target="_blank">
-        <a href="https://opencollective.com/mindmapp" alt="Financial Contributors on Open Collective"><img src="https://opencollective.com/mindmapp/all/badge.svg?label=financial+contributors" /></a> <img src="https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square">
+        <img src="https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square">
+    </a>
+    <a href="https://opencollective.com/mindmapp" alt="Financial Contributors on Open Collective">
+        <img src="https://opencollective.com/mindmapp/all/badge.svg?label=financial+contributors">
     </a>
     <a href="https://gitter.im/mindmapp/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge" target="_blank">
         <img src="https://badges.gitter.im/mindmapp/community.svg">
@@ -35,10 +38,12 @@ ___
 - :hammer: [Install](#hammer-install)
 - :video_game: [Usage](#video_game-usage)
 - :chart_with_upwards_trend: [Development](#chart_with_upwards_trend-development)
-  - :raised_hand: [Contribute](#raised_hand-contribute)
   - :scroll: [Rules](#scroll-rules)
     - [Commits](#commits)
     - [Branches](#branches)
+- :raised_hand: [Contributors](#raised_hand-contributors)
+  - :computer: [Code Contributors](#computer-code-contributors)
+  - :moneybag: [Financial Contributors](#moneybag-financial-contributors)
 - :page_facing_up: [License](#page_facing_up-license)
 - :telephone_receiver: [Contacts](#telephone_receiver-contacts)
   - :boy: [Developers](#boy-developers)
@@ -95,10 +100,6 @@ A `documentation` folder will be generated in the project path.
 
 ## :chart_with_upwards_trend: Development
 
-### :raised_hand: Contribute
-
-Mindmapp is a work in progress. Remember that if you want you can make a small contribution with a pull request.
-
 ### :scroll: Rules
 
 #### Commits
@@ -144,14 +145,16 @@ Examples:
     git branch -b feat/side-bar
     git branch -b style/header
 
-## Contributors
+## :raised_hand: Contributors
 
-### Code Contributors
+Mindmapp is a work in progress. Remember that if you want you can make a small contribution with a pull request.
+
+### :computer: Code Contributors
 
 This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
 <a href="https://github.com/Mindmapp/mindmapp/graphs/contributors"><img src="https://opencollective.com/mindmapp/contributors.svg?width=890&button=false" /></a>
 
-### Financial Contributors
+### :moneybag: Financial Contributors
 
 Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/mindmapp/contribute)]
 
