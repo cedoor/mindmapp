@@ -12,7 +12,7 @@
     
 <p align="center">
     <a href="https://github.com/Mindmapp" target="_blank">
-        <img src="https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square">
+        <a href="https://opencollective.com/mindmapp" alt="Financial Contributors on Open Collective"><img src="https://opencollective.com/mindmapp/all/badge.svg?label=financial+contributors" /></a> <img src="https://img.shields.io/badge/project-Mindmapp-blue.svg?style=flat-square">
     </a>
     <a href="https://gitter.im/mindmapp/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge" target="_blank">
         <img src="https://badges.gitter.im/mindmapp/community.svg">
@@ -143,6 +143,36 @@ Examples:
     git branch -b test/one-function
     git branch -b feat/side-bar
     git branch -b style/header
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/Mindmapp/mindmapp/graphs/contributors"><img src="https://opencollective.com/mindmapp/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/mindmapp/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/mindmapp"><img src="https://opencollective.com/mindmapp/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/mindmapp/contribute)]
+
+<a href="https://opencollective.com/mindmapp/organization/0/website"><img src="https://opencollective.com/mindmapp/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/mindmapp/organization/1/website"><img src="https://opencollective.com/mindmapp/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/mindmapp/organization/2/website"><img src="https://opencollective.com/mindmapp/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/mindmapp/organization/3/website"><img src="https://opencollective.com/mindmapp/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/mindmapp/organization/4/website"><img src="https://opencollective.com/mindmapp/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/mindmapp/organization/5/website"><img src="https://opencollective.com/mindmapp/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/mindmapp/organization/6/website"><img src="https://opencollective.com/mindmapp/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/mindmapp/organization/7/website"><img src="https://opencollective.com/mindmapp/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/mindmapp/organization/8/website"><img src="https://opencollective.com/mindmapp/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/mindmapp/organization/9/website"><img src="https://opencollective.com/mindmapp/organization/9/avatar.svg"></a>
 
 ## :page_facing_up: License
 * See [LICENSE](https://github.com/cedoor/ceditor/blob/master/LICENSE) file.

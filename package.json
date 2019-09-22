@@ -30,7 +30,8 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "doc": "compodoc -p src/tsconfig.app.json",
-        "deploy": "ng deploy"
+        "deploy": "ng deploy",
+        "postinstall": "opencollective-postinstall || true"
     },
     "dependencies": {
         "@angular/animations": "^8.2.3",
@@ -58,6 +59,7 @@
         "material-design-icons": "^3.0.1",
         "mmp": "0.2.18",
         "ngx-color-picker": "^8.1.0",
+        "opencollective-postinstall": "^2.0.2",
         "rxjs": "~6.5.2",
         "tslib": "^1.10.0",
         "zone.js": "0.10.2"
@@ -86,5 +88,9 @@
         "ts-node": "~8.3.0",
         "tslint": "~5.19.0",
         "typescript": "~3.5.3"
+    },
+    "collective": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/mindmapp"
     }
 }
