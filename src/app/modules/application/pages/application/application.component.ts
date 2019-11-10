@@ -63,30 +63,30 @@ export class ApplicationComponent implements OnInit {
 
         this.mmpService.on('nodeUpdate').subscribe((node) => {
             Object.assign(this.node, node)
-            this.mapCacheService.updateAttachedMap()
+            this.mapCacheService.attachMap()
         })
 
         this.mmpService.on('undo').subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode())
-            this.mapCacheService.updateAttachedMap()
+            this.mapCacheService.attachMap()
         })
 
         this.mmpService.on('redo').subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode())
-            this.mapCacheService.updateAttachedMap()
+            this.mapCacheService.attachMap()
         })
 
         this.mmpService.on('create').subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode())
-            this.mapCacheService.updateAttachedMap()
+            this.mapCacheService.attachMap()
         })
 
         this.mmpService.on('nodeCreate').subscribe(() => {
-            this.mapCacheService.updateAttachedMap()
+            this.mapCacheService.attachMap()
         })
 
         this.mmpService.on('nodeRemove').subscribe(() => {
-            this.mapCacheService.updateAttachedMap()
+            this.mapCacheService.attachMap()
         })
     }
 

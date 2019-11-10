@@ -3,12 +3,6 @@
             color="primary" mat-icon-button>
         <mat-icon>note_add</mat-icon>
     </button>
-    <button (click)="saveMap()"
-            [disabled]="(mapCacheService.attachedMap | async)?.updated"
-            [title]="'TOOLTIPS.SAVE_MAP' | translate"
-            color="primary" mat-icon-button>
-        <mat-icon>save</mat-icon>
-    </button>
     <button [matMenuTriggerFor]="import_map" [title]="'TOOLTIPS.IMPORT_MAP' | translate"
             color="primary" mat-icon-button>
         <mat-icon>folder_open</mat-icon>
