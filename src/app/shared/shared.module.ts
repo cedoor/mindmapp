@@ -7,7 +7,8 @@ import {
     MatCardModule,
     MatIconModule,
     MatListModule,
-    MatSelectModule, MatSliderModule,
+    MatSelectModule,
+    MatSliderModule,
     MatSnackBarModule,
     MatToolbarModule
 } from '@angular/material'

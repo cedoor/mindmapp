@@ -1,10 +1,7 @@
 import {Component, Input} from '@angular/core'
-import {MatDialog} from '@angular/material'
 import {MapCacheService} from '../../../../core/services/map-cache/map-cache.service'
-import {NotificationService} from '../../../../core/services/notification/notification.service'
 import {MmpService} from '../../../../core/services/mmp/mmp.service'
 import {UtilsService} from '../../../../core/services/utils/utils.service'
-import {CachedMapsComponent} from '../cached-maps/cached-maps.component'
 
 @Component({
     selector: 'mindmapp-toolbar',
@@ -16,36 +13,16 @@ export class ToolbarComponent {
     @Input() public node: any
 
     constructor (public mapCacheService: MapCacheService,
-                 public mmpService: MmpService,
-                 private matDialog: MatDialog,
-                 private notificationService: NotificationService) {
-    }
-
-    public async openCachedMaps () {
-        const cachedMapEntries = await this.mapCacheService.getCachedMapEntries()
-
-        if (cachedMapEntries.length === 0) {
-            this.notificationService.showSnackBarMessage('MESSAGES.NO_SAVED_MAPS')
-            return
-        }
-
-        this.matDialog.open(CachedMapsComponent, {
-            data: cachedMapEntries,
-            width: '500px'
-        })
+                 public mmpService: MmpService) {
     }
 
     public createNewMap () {
-        this.mapCacheService.detachMap()
         this.mmpService.new()
+        this.mapCacheService.attachNewMap()
     }
 
     public exportMap (format: string) {
         this.mmpService.exportMap(format)
-    }
-
-    public saveMap () {
-        this.mapCacheService.attachMap()
     }
 
     public toggleFullScreen () {

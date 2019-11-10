@@ -160,12 +160,6 @@ export class ShortcutsService {
                 this.mmpService.exportMap()
             }
         }, {
-            keys: 'ctrl+s',
-            description: 'TOOLTIPS.SAVE_MAP',
-            callback: () => {
-                this.mapCacheService.attachMap()
-            }
-        }, {
             keys: 'ctrl+z',
             description: 'TOOLTIPS.UNDO_MAP',
             callback: () => {

@@ -53,6 +53,10 @@ export class ApplicationComponent implements OnInit {
     }
 
     public createMapListeners () {
+        this.mmpService.on('create').subscribe(() => {
+            Object.assign(this.node, this.mmpService.selectNode())
+        })
+
         this.mmpService.on('nodeSelect').subscribe((node) => {
             Object.assign(this.node, node)
         })
@@ -63,30 +67,25 @@ export class ApplicationComponent implements OnInit {
 
         this.mmpService.on('nodeUpdate').subscribe((node) => {
             Object.assign(this.node, node)
-            this.mapCacheService.attachMap()
+            this.mapCacheService.updateAttachedMap()
         })
 
         this.mmpService.on('undo').subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode())
-            this.mapCacheService.attachMap()
+            this.mapCacheService.updateAttachedMap()
         })
 
         this.mmpService.on('redo').subscribe(() => {
             Object.assign(this.node, this.mmpService.selectNode())
-            this.mapCacheService.attachMap()
-        })
-
-        this.mmpService.on('create').subscribe(() => {
-            Object.assign(this.node, this.mmpService.selectNode())
-            this.mapCacheService.attachMap()
+            this.mapCacheService.updateAttachedMap()
         })
 
         this.mmpService.on('nodeCreate').subscribe(() => {
-            this.mapCacheService.attachMap()
+            this.mapCacheService.updateAttachedMap()
         })
 
         this.mmpService.on('nodeRemove').subscribe(() => {
-            this.mapCacheService.attachMap()
+            this.mapCacheService.updateAttachedMap()
         })
     }
 

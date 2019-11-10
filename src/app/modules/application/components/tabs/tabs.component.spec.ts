@@ -1,19 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing'
-import {CachedMapsComponent} from './cached-maps.component'
 
-describe('ApplicationCachedMapsComponent', () => {
-    let component: CachedMapsComponent
-    let fixture: ComponentFixture<CachedMapsComponent>
+import {TabsComponent} from './tabs.component'
+
+describe('TabsComponent', () => {
+    let component: TabsComponent
+    let fixture: ComponentFixture<TabsComponent>
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [CachedMapsComponent]
+            declarations: [TabsComponent]
         })
             .compileComponents()
     }))
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(CachedMapsComponent)
+        fixture = TestBed.createComponent(TabsComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })

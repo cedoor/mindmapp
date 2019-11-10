@@ -1,22 +1,12 @@
-<mat-toolbar class="mat-elevation-z6">
+<mat-toolbar>
     <button (click)="createNewMap()" [title]="'TOOLTIPS.NEW_MAP' | translate"
             color="primary" mat-icon-button>
         <mat-icon>note_add</mat-icon>
     </button>
-    <button [matMenuTriggerFor]="import_map" [title]="'TOOLTIPS.IMPORT_MAP' | translate"
+    <button (click)="mmpService.importMap()" [title]="'TOOLTIPS.IMPORT_MAP' | translate"
             color="primary" mat-icon-button>
-        <mat-icon>folder_open</mat-icon>
+        <mat-icon>publish</mat-icon>
     </button>
-    <mat-menu #import_map="matMenu">
-        <button (click)="mmpService.importMap()" mat-menu-item>
-            <mat-icon>insert_drive_file</mat-icon>
-            <span>{{ "GENERAL.JSON" | translate }}</span>
-        </button>
-        <button (click)="openCachedMaps()" mat-menu-item>
-            <mat-icon>storage</mat-icon>
-            <span>{{ "GENERAL.SAVED_MAPS" | translate }}</span>
-        </button>
-    </mat-menu>
     <button [matMenuTriggerFor]="export_map" [title]="'TOOLTIPS.EXPORT_MAP' | translate"
             color="primary" mat-icon-button>
         <mat-icon>get_app</mat-icon>

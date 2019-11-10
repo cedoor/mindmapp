@@ -1,0 +1,12 @@
+<div class="tabs">
+    <div (click)="openCachedMap(cachedMapEntry)"
+         *ngFor="let cachedMapEntry of cachedMapEntries"
+         [ngClass]="{ 'selected': attachedMap.key === cachedMapEntry.key  }"
+         [title]="cachedMapEntry.cachedMap.data[0].name" class="tab">
+        <span>{{ cachedMapEntry.cachedMap.data[0].name }}</span>
+        <button (click)="removeCachedMap(cachedMapEntry.key, $event)"
+                color="primary" mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>

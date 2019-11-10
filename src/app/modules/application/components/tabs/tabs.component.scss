@@ -1,0 +1,49 @@
+@import "~src/theme.scss";
+
+div.tabs {
+    overflow-x: auto;
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+
+    div.tab {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        width: 150px;
+        padding-left: 10px;
+        color: #373737;
+        border-right: 1px solid lightgray;
+
+        > span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    div.tab.selected,
+    div.tab:hover {
+        background-color: whitesmoke;
+    }
+}
+
+
+// Scrollbar properties.
+div.tabs::-webkit-scrollbar {
+    height: 6px;
+}
+
+div.tabs::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+div.tabs::-webkit-scrollbar-thumb {
+    background: mat-color($app-primary, .7);
+}
+
+div.tabs::-webkit-scrollbar-thumb:hover {
+    background: mat-color($app-primary, .8);
+}

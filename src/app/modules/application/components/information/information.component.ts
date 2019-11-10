@@ -1,6 +1,5 @@
 import {Component} from '@angular/core'
 import {NotificationService} from '../../../../core/services/notification/notification.service'
-import {MapCacheService} from '../../../../core/services/map-cache/map-cache.service'
 
 @Component({
     selector: 'mindmapp-information',
@@ -9,8 +8,7 @@ import {MapCacheService} from '../../../../core/services/map-cache/map-cache.ser
 })
 export class InformationComponent {
 
-    constructor (public mapCacheService: MapCacheService,
-                 public notificationsService: NotificationService) {
+    constructor (public notificationsService: NotificationService) {
     }
 
 }
