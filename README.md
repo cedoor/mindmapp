@@ -63,7 +63,7 @@ ___
 | p2p database | :x: | Orbit (or something else) peer-to-peer database to share and eventually sync maps. |
 | Plugin system | :x: | A plugin system to add third-party features. |
 | Multiple selection | :x: | Select multiple nodes at the same time. |
-| Multiple maps | :x: | Multiple maps at the same time with multi-tabs. |
+| Multiple maps | :heavy_check_mark: | Multiple maps at the same time with multi-tabs. |
 
 ## :hammer: Install
 
