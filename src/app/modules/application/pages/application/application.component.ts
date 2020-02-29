@@ -46,8 +46,6 @@ export class ApplicationComponent implements OnInit {
 
         this.node = this.mmpService.selectNode()
 
-        this.mmpService.addNodesOnRightClick()
-
         // Initialize all listeners
         this.createMapListeners()
     }

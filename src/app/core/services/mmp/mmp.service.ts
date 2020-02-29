@@ -331,22 +331,6 @@ export class MmpService {
     }
 
     /**
-     * Create a listener to add a node on right click event.
-     */
-    public addNodesOnRightClick () {
-        const svg: HTMLElement = window.document.querySelector('#' + this.currentId + '> svg')
-
-        svg.oncontextmenu = (event: MouseEvent) => {
-            const x = event.offsetX
-            const y = event.offsetY
-
-            this.addNode({
-                coordinates: {x, y}
-            })
-        }
-    }
-
-    /**
      * Set the current mind mmp.
      */
     public setCurrentMap (id: string) {
