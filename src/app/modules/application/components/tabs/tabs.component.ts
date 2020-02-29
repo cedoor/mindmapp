@@ -36,8 +36,6 @@ export class TabsComponent implements OnInit {
             }
 
             this.cachedMapEntries.unshift(attachedMap)
-
-            console.log(attachedMap)
         })
     }
 

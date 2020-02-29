@@ -10,7 +10,7 @@ export class ColorPanelsComponent implements OnInit {
 
     @Input() public node: any
 
-    @ViewChild('background', {static: false}) public background: ElementRef
+    @ViewChild('background') public background: ElementRef
 
     public options: any
 

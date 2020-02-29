@@ -10,8 +10,12 @@ import {ApplicationComponent} from './pages/application/application.component'
 import {SettingsComponent} from './pages/settings/settings.component'
 import {ShortcutsComponent} from './pages/shortcuts/shortcuts.component'
 import {ToolbarComponent} from './components/toolbar/toolbar.component'
-import {MatDialogModule, MatInputModule, MatMenuModule, MatSlideToggleModule, MatTabsModule} from '@angular/material'
 import {TabsComponent} from './components/tabs/tabs.component'
+import {MatDialogModule} from '@angular/material/dialog'
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'
+import {MatMenuModule} from '@angular/material/menu'
+import {MatInputModule} from '@angular/material/input'
+import {MatTabsModule} from '@angular/material/tabs'
 
 @NgModule({
     imports: [
@@ -37,4 +41,5 @@ import {TabsComponent} from './components/tabs/tabs.component'
     ]
 })
 export class ApplicationModule {
+
 }
