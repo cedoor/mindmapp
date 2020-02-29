@@ -1,4 +1,4 @@
-<a href="https://mindmapp.cedoor.org" target="_blank">
+<a href="https://mindmapp.cedoor.dev" target="_blank">
     <img src="https://raw.githubusercontent.com/Mindmapp/mindmapp/master/src/assets/images/readme-header.png">
 </a>
 
@@ -182,6 +182,6 @@ Support this project with your organization. Your logo will show up here with a 
 
 ## :telephone_receiver: Contacts
 ### :boy: Developers
-* e-mail : omardesogus9@gmail.com
+* e-mail : me@cedoor.dev
 * github : [@cedoor](https://github.com/cedoor)
-* website : https://cedoor.org
+* website : https://cedoor.dev
