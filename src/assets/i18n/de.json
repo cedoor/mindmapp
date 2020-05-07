@@ -1,0 +1,162 @@
+{
+    "LANGUAGES": {
+        "EN": "English",
+        "FR": "French",
+        "IT": "Italian",
+        "ZH-TW": "Traditional Chinese",
+        "ZH-CN": "Simplified Chinese",
+        "PT-BR": "Portuguese Brazil",
+        "ES": "Spanish"
+        "DE": "Deutsch"
+    },
+    "TOOLTIPS": {
+        "IMPORT_MAP": "Mindmap importieren",
+        "EXPORT_MAP": "Mindmap exportieren",
+        "ESC": "Dialog schließen",
+        "FULLSCREEN": "Vollbild",
+        "CLOSE_MENU": "Seitenmenü öffnen",
+        "OPEN_MENU": "Seitenmenü schließen",
+        "SHORTCUTS": "Shortcuts anzeigen",
+        "MENU": "Menü öffnen",
+        "NEW_MAP": "Neue Mindmap",
+        "OPEN_MAP": "Mindmap öffnen",
+        "SAVE_MAP": "Mindmap speichern",
+        "SAVE_MAP_WITH_NAME": "Mindmap speichern unter...",
+        "COPY_NODE": "Aktuellen Knoten kopieren",
+        "CUT_NODE": "Aktuellen Knoten ausschneiden",
+        "PASTE_NODE": "Kopierten Knoten einfügen",
+        "MOVE_NODE_TO_THE_LEFT": "Knoten nach links verschieben",
+        "MOVE_NODE_TO_THE_RIGHT": "Knoten nach rechts verschieben",
+        "MOVE_NODE_DOWN": "Knoten nach unten verschieben",
+        "MOVE_NODE_UPWARD": "Knoten nach oben verschieben",
+        "SELECT_NODE_ON_THE_LEFT": "Linken Knoten auswählen",
+        "SELECT_NODE_ON_THE_RIGHT": "Rechten Knoten auswählen",
+        "SELECT_NODE_BELOW": "Knoten unten auswählen",
+        "SELECT_NODE_ABOVE": "Knoten oben auswählen",
+        "EDIT_NODE": "Änderungen am Text eines Knotens erlauben",
+        "LOCK_NODE": "Knoten sperren oder entsperren",
+        "NODE_IMAGE": "Bild zum Knoten hinzufügen",
+        "BOLD_TEXT": "Fett",
+        "ITALIC_TEXT": "Kursiv",
+        "TEXT_SIZE": "Textgröße",
+        "IMAGE_SIZE": "Bildgröße",
+        "ADD_NODE": "Knoten hinzufügen",
+        "REMOVE_NODE": "Knoten löschen",
+        "ZOOM_IN_MAP": "Mindmap vergrößern",
+        "ZOOM_OUT_MAP": "Mindmap verkleinern",
+        "CENTER_MAP": "Mindmap zentrieren",
+        "UNDO_MAP": "Letzte Änderung zurücknehmen",
+        "REDO_MAP": "Letzte Änderung wiederherstellen",
+        "NODE_COLOR": "Knotenfarbe ändern",
+        "BRANCH_COLOR": "Zweigfarbe ändern",
+        "TEXT_COLOR": "Textfarbe ändern",
+        "ROOT_NODE_NAME_INPUT": "Standardbezeichnung des Wurzelknotens ändern",
+        "NODE_NAME_INPUT": "Standardbezeichnung von Knoten ändern",
+        "LANGUAGE": "Sprache ändern",
+        "SETTINGS": "Einstellungen",
+        "CENTER_ON_RESIZING": "Mindmap bei Änderung der Fenstergröße zentrieren",
+        "NODE_DRAGGING": "Verschieben von Knoten erlauben",
+        "MAP_ZOOM": "Zoomen der Mindmap erlauben",
+        "AUTO_BRANCH_COLORS": "Automatische Auswahl von Zweigfarben erlauben"
+    },
+     "PAGES": {
+        "ABOUT": {
+            "INTRODUCTION": {
+                "APPLICATION_DESCRIPTION": "Web application to draw mind maps.",
+                "APPLICATION_PROPERTIES": [
+                    "Effective mind maps",
+                    "Modern web application",
+                    "Simple interface",
+                    "Open source software"
+                ]
+            },
+            "SECTIONS": [
+                {
+                    "TITLE": "Mind maps",
+                    "SUBTITLE": "Mindmapp follows the Tony Buzan approach, which uses the evocative power of images and colors to make the memorization of concepts easier, stimulating creativity and mental associations.",
+                    "CARDS": [
+                        {
+                            "TITLE": "Colors and images",
+                            "CONTENT": "Colors and images of mind maps exploit brain characteristics to express concepts in a more effective and lasting way."
+                        },
+                        {
+                            "TITLE": "Radial tree",
+                            "CONTENT": "Hierarchical structure of mind maps exploits the radial geometry, which is divided on several levels and facilitates concept expressiveness."
+                        },
+                        {
+                            "TITLE": "Uses",
+                            "CONTENT": "Mind maps are particularly effective to learn or organize ideas, for example in educational or business contexts."
+                        }
+                    ]
+                },
+                {
+                    "TITLE": "Goals",
+                    "SUBTITLE": "Mindmapp is based on the simplicity and adaptability principles, and according to these principles it grows following the user's needs and future technologies, but always ensuring an intuitive application.",
+                    "CARDS": [
+                        {
+                            "TITLE": "Minimal design",
+                            "CONTENT": "The application offers all the essential tools to create mind maps quickly, but maintaining a simple and intuitive design."
+                        },
+                        {
+                            "TITLE": "Future-oriented",
+                            "CONTENT": "Web technologies are constantly evolving, and with them the way they are used. Mindmapp follows and eventually adopts the latest technologies to ensure a better service."
+                        },
+                        {
+                            "TITLE": "Customizable",
+                            "CONTENT": "A compact but adaptable and extensible system makes it easier to meet the user's individual needs. The application will grow giving particular importance to this aspect."
+                        }
+                    ]
+                },
+                {
+                    "TITLE": "Donations",
+                    "SUBTITLE": "Mindmapp is free and its code is public, every contribution is very helpful to maintain and improve the application!"
+                }
+            ]
+        },
+        "SETTINGS": {
+            "TITLE": "Einstellungen"
+        },
+        "SHORTCUTS": {
+            "TITLE": "Shortcuts"
+        }
+    },
+    "MESSAGES": {
+        "NO_SAVED_MAPS": "Keine Mindmap vorhanden!",
+        "INITIAL_INFORMATION": "»Mindmapp« ist bereit ☺",
+        "WELCOME_MESSAGE": "Willkommen zur Anwendung »Mindmapp« ☺",
+        "MAP_DELETION_CONFIRM": "Bist du sicher, dass du die Mindmap löschen möchtest?"
+    },
+    "GENERAL": {
+        "ORGANIZATION": "Organisation",
+        "LIBRARY": "Library",
+        "REPOSITORY": "Repository",
+        "APPLICATION": "Anwendung",
+        "TRY_IT": "Ausprobieren",
+        "GENERAL": "Allgemein",
+        "MAP_OPTIONS": "Mindmap-Optionen",
+        "DISMISS": "Verwerfen",
+        "SAVED_MAPS": "Gespeicherte Mindmaps",
+        "JSON": "Datei (.json)",
+        "PNG": "Bild (.png)",
+        "JPG": "Bild (.jpg)",
+        "PDF": "Dokument (.pdf)",
+        "LANGUAGE": "Sprache",
+        "YES": "Ja",
+        "NO": "Nein",
+        "OK": "Ok",
+        "SAVE": "Speichern",
+        "OPEN": "Öffnen",
+        "CANCEL": "Abbrechen",
+        "MAIN": "Grundeinstellungen",
+        "CENTER_ON_RESIZING": "Zentrieren bei Größenänderung",
+        "NODE_DRAGGING": "Verschieben von Knoten",
+        "MAP_ZOOM": "Zoom",
+        "AUTO_BRANCH_COLORS": "Automatische Zweigfarben",
+        "MAP": "Mindmap",
+        "NODES": "Knoten",
+        "SAVED": "Gespeichert",
+        "NOT_SAVED": "Nicht gespeichert",
+        "ROOT_NODE_NAME": "Bezeichnung des Wurzelknotens",
+        "NODE_NAME": "Bezeichnung von Knoten"
+    }
+}
