@@ -1,12 +1,12 @@
 {
     "LANGUAGES": {
-        "EN": "English",
-        "FR": "French",
-        "IT": "Italian",
-        "ZH-TW": "Traditional Chinese",
-        "ZH-CN": "Simplified Chinese",
-        "PT-BR": "Portuguese Brazil",
-        "ES": "Spanish"
+        "EN": "Englisch",
+        "FR": "Französisch",
+        "IT": "Italienisch",
+        "ZH-TW": "Traditionelles Chinesisch",
+        "ZH-CN": "Vereinfachtes Chinesisch",
+        "PT-BR": "Portugiesisch (Brasilien",
+        "ES": "Spanisch",
         "DE": "Deutsch"
     },
     "TOOLTIPS": {
