@@ -6,7 +6,8 @@
         "ZH-TW": "Cinese tradizionale",
         "ZH-CN": "Cinese semplificato",
         "PT-BR": "Portoghese Brasile",
-        "ES": "Spagnolo"
+        "ES": "Spagnolo",
+        "DE": "Tedesco"
     },
     "TOOLTIPS": {
         "IMPORT_MAP": "Importa la mappa",
