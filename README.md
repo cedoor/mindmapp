@@ -1,3 +1,10 @@
+<p align="center">
+    <h1 align="center">
+         :broken_heart: Project no longer supported
+    </h1>
+    <p align="center">Fork it to continue development!</p>
+</p>
+
 <a href="https://mindmapp.cedoor.dev" target="_blank">
     <img src="https://raw.githubusercontent.com/Mindmapp/mindmapp/master/src/assets/images/readme-header.png">
 </a>
