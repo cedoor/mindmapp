@@ -1,8 +1,8 @@
 <p align="center">
     <h1 align="center">
-         :broken_heart: Project no longer supported
+         🚨 No longer maintained
     </h1>
-    <p align="center">Fork it to continue development!</p>
+    <p align="center">Thank you for your interest in this project. Unfortunately, I am no longer maintaining it. I highly recommend checking out <a href="https://github.com/b310-digital/teammapper" target="_blank">TeamMapper</a>, which is actively developed and maintained by other developers, or fork it yourself!</p>
 </p>
 
 <a href="https://mindmapp.cedoor.dev" target="_blank">
