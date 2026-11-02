@@ -2,6 +2,7 @@
     <h1 align="center">
          🚨 No longer maintained
     </h1>
+    <p align="center">I'm now building <a href="https://nesso.how/" target="_blank">Nesso</a>, a local-first desktop app for connecting ideas and building understanding through a personal knowledge graph. If you're interested, I'd love your feedback.</p>
     <p align="center">Thank you for your interest in this project. Unfortunately, I am no longer maintaining it. I highly recommend checking out <a href="https://github.com/b310-digital/teammapper" target="_blank">TeamMapper</a>, which is actively developed and maintained by other developers, or fork it yourself!</p>
 </p>
 
